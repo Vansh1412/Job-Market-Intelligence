@@ -1,4 +1,4 @@
-name: JobIntel Phase 8.6.2 Protected Docker Release Gate
+name: JobIntel Phase 8.6.3 Protected Docker Release Gate
 
 on:
   workflow_dispatch:
@@ -100,6 +100,8 @@ jobs:
 
           if ($existing -contains $containerName) {
               Write-Host "Existing certification container found. Stopping..."
+              $prevEAP = $ErrorActionPreference
+              $ErrorActionPreference = "Continue"
               docker stop $containerName 2>$null
               if ($LASTEXITCODE -ne 0) {
                   Write-Warning "Container stop returned non-zero; continuing to removal."
@@ -109,6 +111,7 @@ jobs:
               if ($LASTEXITCODE -ne 0) {
                   Write-Warning "Container removal returned non-zero."
               }
+              $ErrorActionPreference = $prevEAP
           }
           else {
               Write-Host "No existing certification container found. Continuing."
@@ -131,22 +134,57 @@ jobs:
           Write-Host "Waiting 8 seconds for application warmup..."
           Start-Sleep -Seconds 8
           docker ps
+          $prevEAP = $ErrorActionPreference
+          $ErrorActionPreference = "Continue"
           docker logs --tail 35 $containerName
+          $ErrorActionPreference = $prevEAP
 
       - name: 10. Verify Container Filesystem & Read-Only Mount
         run: |
           Write-Host "=== 8 & 9. VERIFYING CONTAINER FILESYSTEM & READ-ONLY MOUNT ==="
-          docker exec jobintel-phase8-6-certification ls -la /app/data/processed/modeling_dataset.parquet
-          docker exec jobintel-phase8-6-certification ls -la /app/data/processed/india/india_modeling_cohort.parquet
+          $containerName = "jobintel-phase8-6-certification"
+
+          docker exec $containerName ls -la /app/data/processed/modeling_dataset.parquet
+          docker exec $containerName ls -la /app/data/processed/india/india_modeling_cohort.parquet
           if ($LASTEXITCODE -ne 0) { Write-Error "Mounted datasets missing in container"; exit 1 }
-          
-          # Prove write rejection
-          docker exec jobintel-phase8-6-certification touch /app/data/processed/test_mutation.txt 2>$null
-          if ($LASTEXITCODE -eq 0) {
-              Write-Error "CRITICAL SECURITY BREACH: Volume mount is NOT read-only!"
+
+          # Attempt write mutation on read-only mount (EXPECTED TO FAIL)
+          $mutationExitCode = 0
+          $mutationOutput = ""
+          try {
+              $prevEAP = $ErrorActionPreference
+              $ErrorActionPreference = "Continue"
+              $mutationOutput = & docker exec $containerName touch /app/data/processed/test_mutation.txt 2>&1
+              $mutationExitCode = $LASTEXITCODE
+              $ErrorActionPreference = $prevEAP
+          } catch {
+              $mutationExitCode = 1
+              $mutationOutput = $_.Exception.Message
+          }
+
+          if ($mutationExitCode -eq 0) {
+              Write-Error "CRITICAL SECURITY BREACH: Read-only mutation unexpectedly succeeded!"
               exit 1
           }
-          Write-Host "PASS: Container mount verified read-only (:ro)."
+
+          # Assert that mutation file does not exist inside container
+          $fileCheckExit = 0
+          try {
+              $prevEAP = $ErrorActionPreference
+              $ErrorActionPreference = "Continue"
+              $null = & docker exec $containerName sh -c "test -e /app/data/processed/test_mutation.txt" 2>&1
+              $fileCheckExit = $LASTEXITCODE
+              $ErrorActionPreference = $prevEAP
+          } catch {
+              $fileCheckExit = 1
+          }
+
+          if ($fileCheckExit -eq 0) {
+              Write-Error "CRITICAL SECURITY BREACH: Mutation file exists despite read-only mount!"
+              exit 1
+          }
+
+          Write-Host "PASS: Read-only mount correctly rejected mutation attempt."
 
       - name: 11. In-Container Cryptographic Hash Verification (10/10)
         run: |
@@ -387,9 +425,25 @@ jobs:
 
           if ($existing -contains $containerName) {
               Write-Host "Collecting container logs..."
-              docker logs $containerName > container.log 2>&1
+              $logExit = 0
+              try {
+                  $prevEAP = $ErrorActionPreference
+                  $ErrorActionPreference = "Continue"
+                  cmd.exe /c "docker logs $containerName > container.log 2>&1"
+                  $logExit = $LASTEXITCODE
+                  $ErrorActionPreference = $prevEAP
+              } catch {
+                  $logExit = 1
+              }
+
+              if ($logExit -ne 0) {
+                  Write-Error "Failed to retrieve logs for container $containerName (exit code $logExit)!"
+                  exit 1
+              }
 
               Write-Host "Stopping container..."
+              $prevEAP = $ErrorActionPreference
+              $ErrorActionPreference = "Continue"
               docker stop $containerName 2>$null
               if ($LASTEXITCODE -ne 0) {
                   Write-Warning "Container stop returned non-zero."
@@ -400,6 +454,7 @@ jobs:
               if ($LASTEXITCODE -ne 0) {
                   Write-Warning "Container removal returned non-zero."
               }
+              $ErrorActionPreference = $prevEAP
 
               if (Test-Path container.log) {
                   Get-Content container.log | Select-Object -Last 30

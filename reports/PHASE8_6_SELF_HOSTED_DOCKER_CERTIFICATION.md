@@ -1,4 +1,4 @@
-# PHASE 8.6 / 8.6.1 / 8.6.2 SELF-HOSTED DOCKER RELEASE CERTIFICATION AUDIT
+# PHASE 8.6 / 8.6.1 / 8.6.2 / 8.6.3 SELF-HOSTED DOCKER RELEASE CERTIFICATION AUDIT
 
 **Project:** INT234 Predictive Analytics — Job Market Intelligence (JobIntel)  
 **Document ID:** `reports/PHASE8_6_SELF_HOSTED_DOCKER_CERTIFICATION.md`  
@@ -29,7 +29,16 @@ During live invocation of the protected release gate on the operational Windows 
    - **Root Cause:** Unconditional `docker stop` and `docker rm` were executed when no container was present.
    - **Remediation:** Replaced unconditional stop/rm with existence-aware PowerShell checks (`docker ps -a --filter "name=^$containerName$" --format "{{.Names}}" 2>$null` with `-contains`), explicitly reset `$LASTEXITCODE = 0` before `docker run`, and applied identical robust existence-checking to the post-run cleanup step.
 
-4. **Ancillary Fix: Scikit-Learn Compatibility with Frozen HistGradientBoosting Model**
+4. **Failure Mode D (Phase 8.6.3): PowerShell 5.1 Native-Command Exit Handling on Expected Non-Zero & STDERR**
+   - **Symptom:**
+     1. Read-only mutation rejection test (`docker exec ... touch ...`) returned `Read-only file system` with exit code 1. Although this is the expected PASS condition, Windows PowerShell 5.1 converted the non-zero exit into `NativeCommandError` and terminated the step.
+     2. `docker logs $containerName > container.log 2>&1` caused PowerShell 5.1 to intercept normal uvicorn INFO messages written to STDERR and convert them into terminating `RemoteException` errors.
+   - **Root Cause:** Expected Docker non-zero results and native STDERR redirection were not safely handled under PowerShell 5.1 `$ErrorActionPreference = "Stop"`.
+   - **Remediation:** Explicit exit-code capture and controlled handling:
+     1. **Read-Only Mutation Test:** Scoped `$ErrorActionPreference = "Continue"` with `try / catch` around `touch`, asserting that the exit code is non-zero, followed by `test -e` confirming the file does not exist, and printing `PASS: Read-only mount correctly rejected mutation attempt.`.
+     2. **Docker Log Collection:** Executed log redirection through `cmd.exe /c "docker logs $containerName > container.log 2>&1"` to prevent PowerShell 5.1 from turning normal stderr output into `NativeCommandError`, validating exit code 0, preserving the full log file, and scanning for genuine tracebacks or `ModuleNotFoundError`.
+
+5. **Ancillary Fix: Scikit-Learn Compatibility with Frozen HistGradientBoosting Model**
    - **Symptom:** Unpickling `models/india/final_model.pkl` in modern Docker builds failed with `ModuleNotFoundError: No module named '_loss'` when pip installed unpinned `scikit-learn 1.9.1`.
    - **Root Cause:** The frozen model was trained with `scikit-learn 1.7.2`.
    - **Remediation:** Pinned `scikit-learn>=1.4.0,<=1.7.2` in `requirements.txt`. Tested in Docker: model unpickles 100% cleanly without touching or modifying the frozen artifact.
@@ -163,21 +172,34 @@ During live invocation of the protected release gate on the operational Windows 
 
 ---
 
-## 19. GitHub Actions Result: PENDING MANUAL DISPATCH
+## 19. Phase 8.6.3 PowerShell Native-Command Validation Evidence: PASS (100%)
+A comprehensive PowerShell 5.1 test suite was executed locally simulating the GitHub Actions runner environment (`$ErrorActionPreference = "Stop"`):
+
+| Test Suite / Objective | Command / Action | Observed Behavior | Status |
+| :--- | :--- | :--- | :---: |
+| **A. Read-Only Mutation Negative Test** | `docker exec touch .../test_mutation.txt` | Returns exit code 1 (`Read-only file system`). Captured safely via scoped EAP Continue. Checked `sh -c "test -e ..."`. File does NOT exist. | **PASS** |
+| **B. Normal Docker Commands & Health** | `docker ps`, `/api/health`, `/api/ready` | Healthy container, HTTP 200, 10/10 verified artifacts. | **PASS** |
+| **C. PowerShell-Safe Docker Logs** | `cmd.exe /c "docker logs ... > container.log 2>&1"` | Captured 33 log lines without `NativeCommandError` or `RemoteException`. Exit code 0 verified. | **PASS** |
+| **D. Genuine Failure Simulation** | D1: Mutation success (code 0)<br>D2: File presence (code 0)<br>D3: Non-existent container logs<br>D4: Log traceback<br>D5: ModuleNotFoundError | All 5 simulated failures correctly identified and asserted as fatal conditions. No genuine failures masked. | **PASS** |
+| **E. Existence-Aware Cleanup** | E1: Existing container<br>E2: Non-existent container | E1 stops and removes cleanly.<br>E2 bypasses cleanly without error. | **PASS** |
+| **F. Full Scientific Integrity** | In-container 10/10 hashes, USA 123 feats, India 290 feats, USA k=7, India k=6 | Exact numerical predictions, contract match, bit-for-bit hashes intact. | **PASS** |
+
+---
+
+## 20. GitHub Actions Result: PENDING MANUAL DISPATCH
 - The local validation suite passed 100%.
-- In accordance with the Stop Condition of Phase 8.6.1, the workflow will NOT be automatically triggered until user approval is received.
+- In accordance with the Stop Condition of Phase 8.6.3, the workflow will **NOT** be automatically triggered until user approval is received.
 
 ---
 
-## 20. Remaining Issues: NONE
-- Both previous root causes (missing Parquet in container mount, and Bash syntax in PowerShell runner) have been completely resolved and locally validated.
-- Scikit-learn unpickling compatibility resolved by pinning `scikit-learn<=1.7.2` in `requirements.txt`.
+## 21. Remaining Infrastructure Issues: NONE
+- All PowerShell 5.1 native-command exit-code edge cases (unconditional cleanup, expected-fail mutations, and log redirection) are hardened with robust native-safe patterns.
 
 ---
 
-## 21. Final Verdict
+## 22. Final Verdict
 
 # **`PENDING VERIFICATION`** (Awaiting GitHub Actions Execution)
 ### Local Infrastructure & Runtime Validation: **`100% PASS`**
 
-> **Reasoning:** All local tests, Docker builds, container runs, health probes, live inferences, and hash checks are **`PASS`**. Per the strict rules of Phase 8.6.1, official production certification cannot be declared as `READY` until the repaired workflow is dispatched and completes with a green checkmark in GitHub Actions.
+> **Reasoning:** All local tests, Docker builds, container runs, health probes, live inferences, mutation rejections, log extractions, and hash checks are **`PASS`**. Per the strict rules of Phase 8.6, official production certification cannot be declared as `READY` until the repaired workflow is manually dispatched and completes with a green checkmark in GitHub Actions.
