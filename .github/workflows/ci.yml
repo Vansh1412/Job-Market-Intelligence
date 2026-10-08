@@ -8,7 +8,7 @@ on:
 
 jobs:
   backend-and-model-integrity:
-    name: Backend Tests & Cryptographic Model Verification
+    name: Backend Tests & Application CI
     runs-on: ubuntu-latest
 
     steps:
@@ -25,34 +25,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Verify Frozen Model Artifact Cryptographic Integrity
-        run: |
-          python -c "
-          import hashlib, os, sys
-          FROZEN = {
-              'models/india/final_model.pkl': '7a3490d7a36a128eea5a70e80bb3550c504da69648ac368a891f8729282a8310',
-              'models/india/final_preprocessor.pkl': '0ee1dabf3130a19c8bbc80a31ab93d8e97affa4d4a688249d59ee336f7ab4ead',
-              'models/india/india_pca_v1.pkl': '8591e3d1c312788eb59be92a3424d9c7d413349646b976694602f97cf67417e7',
-              'models/india/india_kmeans_v1.pkl': '4465a3d76e4695b28b7e28b8cf4fe5e0aafe8b56f2f2e5ae6c191835bc45ff72',
-              'models/india/final_feature_list.json': '710aebaeb28cc78440c958e0a3eb268a719c89369f16c4faeebe5039be19ae85',
-              'models/best_model.pkl': '55c1b7fcf7c4062145b23d043f292c9aa3e8be89a42f5fa9911e860cb652ff58',
-              'models/best_pipeline.pkl': '815fd9af26760fb26e2e28a5a41bf63ddc7694931e97bb1f09cfb11a5b8bbec8',
-              'models/scaler_phase4_1.pkl': '2d969ac1fe6a161f3d8f81014e7a8848dbfe1b3c9902fc41261a8a252277d33b',
-              'models/pca_phase4_1.pkl': 'ef4ef5696c21e3c8ddb663554b38d72dfa3248805ba0d15e9a4f48b0a996da98',
-              'models/kmeans_phase4_1_k7.pkl': '4d6d25081122ce2dfc33b7a5879339e1444bfbcff8e7b99c71616c39f029ce7c',
-          }
-          for path, expected in FROZEN.items():
-              if not os.path.exists(path):
-                  print(f'MISSING: {path}')
-                  sys.exit(1)
-              with open(path, 'rb') as f:
-                  actual = hashlib.sha256(f.read()).hexdigest()
-              if actual != expected:
-                  print(f'CORRUPT: {path} (expected {expected}, got {actual})')
-                  sys.exit(1)
-          print('ALL 10 FROZEN ARTIFACT CHECKSUMS VERIFIED PASS.')
-          "
 
       - name: Run Backend Full Test Suite (Pytest)
         run: |

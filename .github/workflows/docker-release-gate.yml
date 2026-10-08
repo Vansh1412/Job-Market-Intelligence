@@ -171,7 +171,7 @@ jobs:
         run: |
           echo "=== TESTING MODEL REGISTRY INITIALIZATION INSIDE RUNNING CONTAINER ==="
           docker exec jobintel-phase8-3-certification python -c "
-          from src.backend.model_registry import get_model_registry
+          from src.backend.models.model_registry import get_model_registry
           from src.backend.data_service import data_service
           registry = get_model_registry()
           status = registry.get_readiness_status()
