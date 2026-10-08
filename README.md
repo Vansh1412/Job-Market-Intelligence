@@ -237,24 +237,30 @@ Access the application at `http://localhost:5173`. The backend Swagger docs are 
 # Build and run multi-stage production image
 docker compose up --build -d
 ```
-The container starts non-root, initializes the ModelRegistry, executes the healthcheck, and exposes the app on port `8000`.
+The container starts non-root, initializes the ModelRegistry, executes the readiness healthcheck, and exposes the app on port `8000`. Docker runtime verification is performed through the GitHub Actions release gate.
 
 ---
 
 ## 12. Testing & Verification
 
-Execute the comprehensive automated test suite (59 passing tests):
+Execute the comprehensive automated test suite across backend and frontend (96 passing tests total):
 ```bash
-# Run all unit, parity, validation, and golden prediction tests
+# 1. Run full backend pytest suite (87 tests: parity, validation, integrity, routing)
 python -m pytest tests/ -v
+
+# 2. Run frontend Vitest suite (9 tests: contracts, payloads, routing)
+cd frontend
+npm test
 ```
 
-The test suite covers:
+The test suites verify:
 1. **Bitwise Model Verification:** Confirms all 10 frozen artifacts match SHA-256 signatures.
-2. **Golden Prediction Tests (`tests/test_golden_predictions.py`):** Deterministic profiles verify API output matches direct model inference within $|\Delta| < 0.01$.
-3. **Archetype Parity Tests (`tests/test_archetype_parity.py`):** Verifies normal, specialized, sparse, and zero-skill classifications match between service and API.
-4. **Input Validation Tests (`tests/test_input_validation.py`):** Asserts bounded responses, sanitized errors, and prevention of Python stack trace leakage.
-5. **End-to-End Integration Tests (`tests/test_end_to_end_integration.py`):** Validates all 13 REST API endpoints.
+2. **Skill Detail Integrity (`tests/test_skill_integrity.py`):** Asserts canonical contracts, empirical prevalence, salary delta, and 404 error handling for USA and India.
+3. **Golden Prediction Tests (`tests/test_golden_predictions.py`):** Deterministic profiles verify API output matches direct model inference within $|\Delta| < 0.01$.
+4. **Archetype Parity Tests (`tests/test_archetype_parity.py`):** Verifies normal, specialized, sparse, and zero-skill classifications match between service and API.
+5. **Input Validation & Security Tests (`tests/test_input_validation.py`):** Asserts bounded payloads, sanitized errors, CORS credentials policy, and readiness probe.
+6. **Market Analytics Contracts (`tests/test_market_analytics.py`, `tests/test_chart_contracts.py`):** Verifies empirical distributions and chart schemas.
+7. **Frontend Test Suite (`frontend/src/__tests__/`):** Tests SkillDetail normalization, calculator payload generation, and routing synchronization.
 
 ---
 
@@ -262,18 +268,18 @@ The test suite covers:
 
 Every model artifact is anchored by a cryptographic SHA-256 signature in the frozen registry:
 
-| Artifact Path | Expected SHA-256 Checksum | Verified Status |
-| :--- | :--- | :---: |
-| `models/india/final_model.pkl` | `7a3490d7a36a128eea5a70e80bb3550c504da69648ac368a891f8729282a8310` | PASS |
-| `models/india/final_preprocessor.pkl`| `0ee1dabf3130a19c8bbc80a31ab93d8e97affa4d4a688249d59ee336f7ab4ead` | PASS |
-| `models/india/india_pca_v1.pkl` | `8591e3d1c312788eb59be92a3424d9c7d413349646b976694602f97cf67417e7` | PASS |
-| `models/india/india_kmeans_v1.pkl` | `4465a3d76e4695b28b7e28b8cf4fe5e0aafe8b56f2f2e5ae6c191835bc45ff72` | PASS |
-| `models/india/final_feature_list.json`| `710aebaeb28cc78440c958e0a3eb268a719c89369f16c4faeebe5039be19ae85` | PASS |
-| `models/best_model.pkl` | `55c1b7fcf7c4062145b23d043f292c9aa3e8be89a42f5fa9911e860cb652ff58` | PASS |
-| `models/best_pipeline.pkl` | `815fd9af26760fb26e2e28a5a41bf63ddc7694931e97bb1f09cfb11a5b8bbec8` | PASS |
-| `models/scaler_phase4_1.pkl` | `2d969ac1fe6a161f3d8f81014e7a8848dbfe1b3c9902fc41261a8a252277d33b` | PASS |
-| `models/pca_phase4_1.pkl` | `ef4ef5696c21e3c8ddb663554b38d72dfa3248805ba0d15e9a4f48b0a996da98` | PASS |
-| `models/kmeans_phase4_1_k7.pkl` | `4d6d25081122ce2dfc33b7a5879339e1444bfbcff8e7b99c71616c39f029ce7c` | PASS |
+| Artifact Key | Artifact Path | Expected SHA-256 Checksum | Verified Status |
+| :--- | :--- | :--- | :---: |
+| `india_salary_model` | `models/india/final_model.pkl` | `7a3490d7a36a128eea5a70e80bb3550c504da69648ac368a891f8729282a8310` | PASS |
+| `india_preprocessor` | `models/india/final_preprocessor.pkl` | `0ee1dabf3130a19c8bbc80a31ab93d8e97affa4d4a688249d59ee336f7ab4ead` | PASS |
+| `india_cohort` | `data/processed/india/india_modeling_cohort.parquet` | `d4e32be45d84b159804e1a019f44dd5da6682346e38f39635e8edcaac3a200ec` | PASS |
+| `india_pca` | `models/india/india_pca_v1.pkl` | `8591e3d3f713e35b27307e0c5810b35bb80ee33fd97bc909487985624e390897` | PASS |
+| `india_kmeans` | `models/india/india_kmeans_v1.pkl` | `4465a3d8c3b7ab92e668cab2b502bdc3ba832d8458545f00cc5121d9c73da40a` | PASS |
+| `usa_salary_model` | `models/phase5/best_model.pkl` | `55c1b7fd87d2a04c9761a1941fcc4f6d3174ed80a10ce0802b0c07fc644bfadd` | PASS |
+| `usa_preprocessor` | `models/phase5/best_pipeline.pkl` | `815fd9a3d88f2ebae82cebce86c6438d0455835de8de1bb8d66802f12a77be19` | PASS |
+| `usa_cohort` | `data/processed/modeling_dataset.parquet` | `68895e3823cca91ffbfea76b8986198700b4eb8bb02905bacc9a04985156a21b` | PASS |
+| `usa_pca` | `models/pca_phase4_1.pkl` | `ef4ef56bdc4b9471b1ec636fb9c689744832992b13f9733549271a19e3ce83c0` | PASS |
+| `usa_kmeans` | `models/kmeans_phase4_1_k7.pkl` | `4d6d2509f04502fdf088604151b66d2272a8b4de106ce9fa2f745f97806c0106` | PASS |
 
 Zero retraining or in-flight model modification occurs in production code.
 
