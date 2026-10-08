@@ -1,0 +1,219 @@
+name: JobIntel Phase 8.3 Docker Release Gate
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  docker-release-gate:
+    name: Docker Runtime Verification & Release Gate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 2. Set up Python Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: 3. Set up Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: 'frontend/package.json'
+
+      - name: 4. Step 3 - Verify CI Docker Environment
+        run: |
+          echo "=== DOCKER CLI & DAEMON VERIFICATION ==="
+          docker --version
+          docker info
+          docker compose version
+
+      - name: 5. Step 4 - Build Production Docker Image
+        run: |
+          echo "=== BUILDING DOCKER IMAGE ==="
+          docker build --no-cache -t jobintel-phase8-3-certification .
+
+      - name: 6. Step 5 - Inspect Built Image Contents
+        run: |
+          echo "=== INSPECTING IMAGE ASSETS ==="
+          docker run --rm jobintel-phase8-3-certification ls -la /app
+          docker run --rm jobintel-phase8-3-certification ls -la /app/src
+          docker run --rm jobintel-phase8-3-certification ls -la /app/models
+          docker run --rm jobintel-phase8-3-certification ls -la /app/models/india
+          docker run --rm jobintel-phase8-3-certification ls -la /app/models/phase5
+          docker run --rm jobintel-phase8-3-certification ls -la /app/data/processed
+          docker run --rm jobintel-phase8-3-certification ls -la /app/data/processed/india
+
+      - name: 7. Step 6 - In-Container Cryptographic Hash Verification
+        run: |
+          echo "=== VERIFYING 10/10 FROZEN ARTIFACT SHA-256 INSIDE CONTAINER ==="
+          docker run --rm jobintel-phase8-3-certification python -c "
+          import hashlib, sys
+
+          EXPECTED = {
+              'models/india/final_model.pkl': '7a3490d7a36a128eea5a70e80bb3550c504da69648ac368a891f8729282a8310',
+              'models/india/final_preprocessor.pkl': '0ee1dabf3130a19c8bbc80a31ab93d8e97affa4d4a688249d59ee336f7ab4ead',
+              'data/processed/india/india_modeling_cohort.parquet': 'd4e32be45d84b159804e1a019f44dd5da6682346e38f39635e8edcaac3a200ec',
+              'models/india/india_pca_v1.pkl': '8591e3d3f713e35b27307e0c5810b35bb80ee33fd97bc909487985624e390897',
+              'models/india/india_kmeans_v1.pkl': '4465a3d8c3b7ab92e668cab2b502bdc3ba832d8458545f00cc5121d9c73da40a',
+              'models/phase5/best_model.pkl': '55c1b7fd87d2a04c9761a1941fcc4f6d3174ed80a10ce0802b0c07fc644bfadd',
+              'models/phase5/best_pipeline.pkl': '815fd9a3d88f2ebae82cebce86c6438d0455835de8de1bb8d66802f12a77be19',
+              'data/processed/modeling_dataset.parquet': '68895e3823cca91ffbfea76b8986198700b4eb8bb02905bacc9a04985156a21b',
+              'models/pca_phase4_1.pkl': 'ef4ef56bdc4b9471b1ec636fb9c689744832992b13f9733549271a19e3ce83c0',
+              'models/kmeans_phase4_1_k7.pkl': '4d6d2509f04502fdf088604151b66d2272a8b4de106ce9fa2f745f97806c0106',
+          }
+
+          mismatches = []
+          for relpath, expected_hash in EXPECTED.items():
+              fullpath = f'/app/{relpath}'
+              try:
+                  with open(fullpath, 'rb') as f:
+                      actual_hash = hashlib.sha256(f.read()).hexdigest()
+                  if actual_hash != expected_hash:
+                      mismatches.append(f'{relpath}: expected {expected_hash}, got {actual_hash}')
+                  else:
+                      print(f'MATCH: {relpath} -> {actual_hash}')
+              except Exception as e:
+                  mismatches.append(f'{relpath}: ERROR {e}')
+
+          if mismatches:
+              print('FAILURE: Hash mismatches detected in container:')
+              for m in mismatches:
+                  print(f'  {m}')
+              sys.exit(1)
+          print('PASS: All 10 frozen artifacts matched bit-for-bit inside container.')
+          "
+
+      - name: 8. Step 7 - Start Container
+        run: |
+          echo "=== STARTING CONTAINER ==="
+          docker run -d --name jobintel-phase8-3-certification -p 8000:8000 jobintel-phase8-3-certification
+          sleep 6
+          docker ps
+          docker logs jobintel-phase8-3-certification
+
+      - name: 9. Step 8 - Health Probes (/api/health & /api/ready)
+        run: |
+          echo "=== TESTING /api/health ==="
+          HEALTH=$(curl -f -s -S http://localhost:8000/api/health)
+          echo "Health response: $HEALTH"
+
+          echo "=== TESTING /api/ready ==="
+          READY=$(curl -f -s -S http://localhost:8000/api/ready)
+          echo "Ready response: $READY"
+          echo "$READY" | grep '"status":"ready"' || echo "$READY" | grep '"status": "ready"'
+          echo "$READY" | grep '"registry_status":"GREEN"' || echo "$READY" | grep '"registry_status": "GREEN"'
+          echo "$READY" | grep '"artifacts_verified_count":10' || echo "$READY" | grep '"artifacts_verified_count": 10'
+
+      - name: 10. Step 9 - USA Prediction Endpoint Test
+        run: |
+          echo "=== TESTING POST /api/usa/predict ==="
+          USA_RESP=$(curl -f -s -S -X POST http://localhost:8000/api/usa/predict \
+            -H "Content-Type: application/json" \
+            -d '{"role_family":"ML / AI Engineer","seniority":"Senior","city_clean":"San Francisco-Oakland-Hayward, CA","is_remote":false,"selected_skills":["skill_python","skill_machine_learning","skill_pytorch"]}')
+          echo "USA Prediction response: $USA_RESP"
+          echo "$USA_RESP" | grep "predicted_salary"
+
+      - name: 11. Step 10 - India Prediction Endpoint Test
+        run: |
+          echo "=== TESTING POST /api/india/predict ==="
+          INDIA_RESP=$(curl -f -s -S -X POST http://localhost:8000/api/india/predict \
+            -H "Content-Type: application/json" \
+            -d '{"role_family":"Data Science / Analytics","city_clean":"Bengaluru","experience_years":5.0,"is_remote":false,"selected_skills":["skill_python","skill_sql"]}')
+          echo "India Prediction response: $INDIA_RESP"
+          echo "$INDIA_RESP" | grep "predicted_salary_inr"
+
+      - name: 12. Step 11 - USA Skills Endpoints Test
+        run: |
+          echo "=== TESTING GET /api/skills/detail/python ==="
+          SKILL_RESP=$(curl -f -s -S http://localhost:8000/api/skills/detail/python)
+          echo "Skill response: $SKILL_RESP"
+          echo "$SKILL_RESP" | grep '"skill_id":"python"' || echo "$SKILL_RESP" | grep '"skill_id": "python"'
+
+          echo "=== TESTING GET /api/skills/detail/nonexistent_xyz (EXPECT HTTP 404) ==="
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/api/skills/detail/nonexistent_xyz)
+          echo "HTTP Code: $HTTP_CODE"
+          if [ "$HTTP_CODE" -ne 404 ]; then
+            echo "Expected 404, got $HTTP_CODE"
+            exit 1
+          fi
+
+      - name: 13. Step 12 - India Skills Endpoints Test
+        run: |
+          echo "=== TESTING GET /api/india/skills/python ==="
+          IND_SKILL_RESP=$(curl -f -s -S http://localhost:8000/api/india/skills/python)
+          echo "India Skill response: $IND_SKILL_RESP"
+
+          echo "=== TESTING GET /api/india/skills/nonexistent_xyz (EXPECT HTTP 404) ==="
+          IND_HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/api/india/skills/nonexistent_xyz)
+          echo "HTTP Code: $IND_HTTP_CODE"
+          if [ "$IND_HTTP_CODE" -ne 404 ]; then
+            echo "Expected 404, got $IND_HTTP_CODE"
+            exit 1
+          fi
+
+      - name: 14. Step 13 - Cross-Market Summary Test
+        run: |
+          echo "=== TESTING GET /api/cross-market/summary ==="
+          CM_RESP=$(curl -f -s -S http://localhost:8000/api/cross-market/summary)
+          echo "Cross-Market response: $CM_RESP"
+          echo "$CM_RESP" | grep "common_skills"
+
+      - name: 15. Step 14 - Model Registry Direct In-Container Test
+        run: |
+          echo "=== TESTING MODEL REGISTRY INITIALIZATION INSIDE RUNNING CONTAINER ==="
+          docker exec jobintel-phase8-3-certification python -c "
+          from src.backend.model_registry import get_model_registry
+          from src.backend.data_service import data_service
+          registry = get_model_registry()
+          status = registry.get_readiness_status()
+          print('Registry Status:', status)
+          assert status['registry_status'] == 'GREEN', f'Status: {status}'
+          assert status['artifacts_verified_count'] == 10, f'Count: {status}'
+          assert data_service.get_salary_model() is registry.usa_salary_model, 'Singleton model mismatch'
+          print('PASS: ModelRegistry GREEN, 10/10 verified, Singleton identity confirmed')
+          "
+
+      - name: 16. Step 15 - Full Backend Tests on CI Host
+        run: |
+          echo "=== RUNNING BACKEND TESTS VIA PYTEST ==="
+          python -m pip install -r requirements.txt
+          python -m pytest tests/ -v
+
+      - name: 17. Step 16 - Frontend Test & Build Check
+        run: |
+          echo "=== RUNNING FRONTEND TESTS, LINT, AND BUILD ==="
+          cd frontend
+          npm ci || npm install
+          npm test
+          npm run lint
+          npm run build
+          cd ..
+
+      - name: 18. Step 17 - Container Log Audit
+        if: always()
+        run: |
+          echo "=== CONTAINER LOG AUDIT ==="
+          docker logs jobintel-phase8-3-certification > container.log 2>&1 || true
+          cat container.log
+          echo "Auditing for fatal errors..."
+          ! grep -i "Traceback" container.log || exit 1
+          ! grep -i "ModuleNotFoundError" container.log || exit 1
+          ! grep -i "FileNotFoundError" container.log || exit 1
+          echo "Zero fatal errors in container log."
+
+      - name: 19. Step 18 - Clean Container Shutdown
+        if: always()
+        run: |
+          echo "=== CLEANING UP TEST CONTAINER ==="
+          docker stop jobintel-phase8-3-certification || true
+          docker rm jobintel-phase8-3-certification || true
+          docker ps -a
