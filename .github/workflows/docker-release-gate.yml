@@ -2,8 +2,6 @@ name: JobIntel Phase 8.5 Protected Docker Release Gate
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main, master ]
 
 jobs:
   docker-release-gate:
