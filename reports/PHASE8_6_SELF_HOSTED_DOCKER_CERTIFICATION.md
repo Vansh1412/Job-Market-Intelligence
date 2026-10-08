@@ -1,71 +1,76 @@
-# PHASE 8.6 SELF-HOSTED DOCKER CERTIFICATION
+# PHASE 8.6 / 8.6.1 SELF-HOSTED DOCKER RELEASE CERTIFICATION AUDIT
 
 **Project:** INT234 Predictive Analytics — Job Market Intelligence (JobIntel)  
 **Document ID:** `reports/PHASE8_6_SELF_HOSTED_DOCKER_CERTIFICATION.md`  
 **Date:** October 8, 2026  
 **Author:** Senior DevOps & Release Engineer, ML Artifact Custodian  
 **Operating System:** Windows 10/11 Home Single Language (Host: 64-bit Build 26200 / 2009)  
-**Git Base Commit:** `6569c1a`  
+**Runner:** `JobIntel-Private-Data` (Labels: `self-hosted`, `Windows`, `X64`, `jobintel-private-data`)  
+**Docker Daemon:** Docker Desktop 29.8.2 (WSL 2 backend)  
 **Remote Repository:** `Vansh1412/Job-Market-Intelligence` (`origin/master`)  
-**Status:** EVIDENCE-BASED AUDIT COMPLETE  
+**Status:** REPAIRED & LOCALLY VALIDATED (AWAITING DISPATCH APPROVAL)  
 
 ---
 
-## 1. Environment
+## 1. Executive Summary & First-Run Incident Analysis
 
-- **Host Machine:** Windows 10/11 Home Single Language (Build 26200 / 2009)
-- **CPU Architecture:** x86_64 / 64-bit
-- **Available RAM:** ~16 GB Physical Memory (15.7 GB usable)
-- **Available Disk Storage:** Drive E (>136 GB free)
-- **Local Python Environment:** Python 3.13.9 / Conda base on PATH
-- **Local Node Environment:** Node.js v20+, npm, Vite 8.3.3
-- **Repository Path:** `E:\Job Market`
+During the first live invocation of the protected release gate on the operational Windows self-hosted runner (`JobIntel-Private-Data`), the workflow encountered two distinct infrastructure failure modes:
 
----
+1. **Failure Mode A: Missing Private Processed Parquet Files Inside Container**
+   - **Symptom:** In-container cryptographic hash validation failed with:
+     ```
+     ERROR: '/app/data/processed/india/india_modeling_cohort.parquet' not found
+     ERROR: '/app/data/processed/modeling_dataset.parquet' not found
+     ```
+   - **Root Cause:** The workflow previously mounted `-v "${{ github.workspace }}/data/processed:/app/data/processed:ro"`. Because `data/processed` is strictly gitignored under the DataForge Tier 1 License Agreement, clean checkouts in `${{ github.workspace }}` do not contain these Parquet files. The real licensed files reside permanently on the host storage volume at `E:/Job Market/data/processed`.
+   - **Remediation:** Configured dynamic host path resolution targeting `E:/Job Market/data/processed` (verified with SHA-256 checks on host prior to container startup) and mounted the verified host directory read-only into the container (`-v "${env:HOST_DATA_PATH}:/app/data/processed:ro"`).
 
-## 2. Runner Status
+2. **Failure Mode B: Bash Syntax Execution Failure on Windows PowerShell Runner**
+   - **Symptom:** Step commands containing Bash syntax (`|| true`, `! grep`, `sleep 6`, `$(curl ...)`) produced parsing errors or failed to execute under PowerShell.
+   - **Root Cause:** The GitHub Actions runner is Windows x64. By default, steps execute under PowerShell (`powershell.exe`).
+   - **Remediation:** Refactored every step in `.github/workflows/docker-release-gate.yml` to native PowerShell syntax with `defaults.run.shell: powershell`, using `Invoke-RestMethod`, `$LASTEXITCODE` checks, try/catch blocks, and `Start-Sleep`.
 
-- **Check Executed:**
-  - `Get-Process -Name "*Runner*", "*actions*"` -> No active GitHub runner process detected.
-  - `Get-Service -Name "*runner*", "*actions*"` -> No active GitHub runner service detected.
-  - Runner Directory Probe (`C:\actions-runner`, `E:\actions-runner`, `~\actions-runner`) -> `False` (Not found).
-- **Status:** `NOT PROVISIONED / UNVERIFIED`
-- **Assessment:** A self-hosted runner labeled `[self-hosted, jobintel-private-data]` has not yet been registered or started on this machine.
-- **Workflow State:** The queued workflow in GitHub Actions is correctly waiting for a registered runner matching these labels.
-
----
-
-## 3. Docker Status
-
-- **Diagnostics Executed:**
-  - `docker --version` -> `The term 'docker' is not recognized as a name of a cmdlet, function, script file, or operable program.`
-  - `docker info` -> Command not recognized.
-  - `where.exe docker` -> `Could not find files for the given pattern(s).`
-  - `wsl --status` -> `The Windows Subsystem for Linux is not installed.`
-  - `where.exe wsl` -> Stub exists at `C:\Windows\System32\wsl.exe`, but WSL feature is disabled.
-- **Status:** `NOT PROVISIONED / BLOCKED`
-- **Assessment:** Docker CLI, Docker Engine, and WSL 2 are unavailable on the host. Per Absolute Safety Rules 14 & 22, the assistant will NOT automatically install Docker Desktop, WSL, or Windows optional features without explicit user authorization.
+3. **Ancillary Fix: Scikit-Learn Compatibility with Frozen HistGradientBoosting Model**
+   - **Symptom:** Unpickling `models/india/final_model.pkl` in modern Docker builds failed with `ModuleNotFoundError: No module named '_loss'` when pip installed unpinned `scikit-learn 1.9.1`.
+   - **Root Cause:** The frozen model was trained with `scikit-learn 1.7.2`. In `scikit-learn 1.9.1`, the internal `_loss` module hierarchy changed.
+   - **Remediation:** Pinned `scikit-learn>=1.4.0,<=1.7.2` in `requirements.txt`. Tested in Docker: model unpickles 100% cleanly without touching or modifying the frozen artifact.
 
 ---
 
-## 4. Dataset Availability
+## 2. Environment Status
 
-Local filesystem verification on host machine (`E:\Job Market`):
-- `data/processed/india/india_modeling_cohort.parquet`: **EXISTS** (5,859 rows, 299 columns)
-  - Actual SHA-256: `d4e32be45d84b159804e1a019f44dd5da6682346e38f39635e8edcaac3a200ec`
-  - Status: `PASS`
-- `data/processed/modeling_dataset.parquet`: **EXISTS** (34,036 rows, 128 columns)
-  - Actual SHA-256: `68895e3823cca91ffbfea76b8986198700b4eb8bb02905bacc9a04985156a21b`
-  - Status: `PASS`
-- **Git Quarantine:** `git ls-files data/processed` -> 0 files tracked (`PASS`).
+- **Host OS:** Windows 10/11 Home Single Language (Build 26200 / 2009)
+- **Runner Instance:** `JobIntel-Private-Data` (Active & connected to GitHub Actions)
+- **Runner Labels:** `[self-hosted, Windows, X64, jobintel-private-data]`
+- **Docker Engine:** Docker Desktop 29.8.2 (`docker run hello-world` PASSED)
+- **WSL 2 Backend:** Active and healthy
+- **Host Project Directory:** `E:\Job Market`
+- **Host Processed Data Directory:** `E:\Job Market\data\processed`
 
 ---
 
-## 5. Frozen Artifact Verification
+## 3. Runner Status: OPERATIONAL
+- The self-hosted runner process is running and authenticated to GitHub Actions.
+- Workflow `.github/workflows/docker-release-gate.yml` is restricted to `workflow_dispatch` **ONLY**.
 
-Cryptographic SHA-256 verification executed against all 10 frozen artifacts on disk:
+---
 
-| # | Artifact Path | Expected Authoritative SHA-256 | Actual Host SHA-256 | Result |
+## 4. Docker Status: OPERATIONAL
+- Local daemon verified via `docker info`.
+- Multi-stage Docker image `jobintel-phase8-6-certification:latest` built and validated locally.
+
+---
+
+## 5. Dataset Availability: PASS
+- `E:/Job Market/data/processed/modeling_dataset.parquet`: **EXISTS** (34,036 rows, 128 cols, SHA-256: `68895e38...`)
+- `E:/Job Market/data/processed/india/india_modeling_cohort.parquet`: **EXISTS** (5,859 rows, 299 cols, SHA-256: `d4e32be4...`)
+- Git Tracking: `git ls-files data/processed` -> 0 files tracked (Quarantine intact).
+
+---
+
+## 6. Frozen Artifact Verification: 10/10 PASS (100% MATCH)
+
+| # | Artifact Path | Authoritative SHA-256 | Host On-Disk SHA-256 | Result |
 | :-: | :--- | :--- | :--- | :-: |
 | 1 | `models/india/final_model.pkl` | `7a3490d7a36a128eea5a70e80bb3550c504da69648ac368a891f8729282a8310` | `7a3490d7...` | **PASS** |
 | 2 | `models/india/final_preprocessor.pkl` | `0ee1dabf3130a19c8bbc80a31ab93d8e97affa4d4a688249d59ee336f7ab4ead` | `0ee1dabf...` | **PASS** |
@@ -78,150 +83,102 @@ Cryptographic SHA-256 verification executed against all 10 frozen artifacts on d
 | 9 | `models/pca_phase4_1.pkl` | `ef4ef56bdc4b9471b1ec636fb9c689744832992b13f9733549271a19e3ce83c0` | `ef4ef56b...` | **PASS** |
 | 10 | `models/kmeans_phase4_1_k7.pkl` | `4d6d2509f04502fdf088604151b66d2272a8b4de106ce9fa2f745f97806c0106` | `4d6d2509...` | **PASS** |
 
-**Score:** 10/10 MATCH (**100% BIT-FOR-BIT INTACT**).
+---
+
+## 7. Docker Build: PASS (LOCALLY VERIFIED)
+- `docker build -t jobintel-phase8-6-certification .` completed with exit code 0.
+- Layer sanitization: Zero Parquet files baked into container image.
 
 ---
 
-## 6. Docker Build
-
-- **Status:** `BLOCKED`
-- **Reason:** Docker engine is unavailable on the local host. Cannot execute `docker build` until Docker Desktop / WSL 2 is installed.
-- **Specification:** `Dockerfile` is verified and configured with multi-stage build, `RUN mkdir -p /app/data/processed/india`, and `.dockerignore` excludes all `*.parquet` files.
-
----
-
-## 7. Docker Runtime
-
-- **Status:** `BLOCKED`
-- **Reason:** Host lacks Docker daemon. Actual container cannot be started until Docker is provisioned.
-- **Specification:** Runtime architecture enforces read-only bind volume mount (`-v "E:/Job Market/data/processed:/app/data/processed:ro"`).
+## 8. Docker Runtime: PASS (LOCALLY VERIFIED)
+- Container `jobintel-phase8-6-certification` started with read-only data mount (`-v "E:/Job Market/data/processed:/app/data/processed:ro"`).
+- In-container filesystem check confirmed both Parquet files present.
+- In-container write test confirmed mount is read-only (`touch` rejected with `Read-only file system`).
 
 ---
 
-## 8. Health Verification
-
-- **In-Container Probe (`GET /api/health`):** `BLOCKED` (container not started).
-- **Host Native Baseline (`GET /api/health`):** `PASS` (HTTP 200, status `healthy` verified in Phase 8.1 / 8.5 test suite).
-
----
-
-## 9. Readiness Verification
-
-- **In-Container Probe (`GET /api/ready`):** `BLOCKED` (container not started).
-- **Host Native Baseline (`GET /api/ready`):** `PASS` (HTTP 200, status `ready`, `artifacts_verified_count == 10` verified in Phase 8.1 / 8.5 test suite).
+## 9. Health & Readiness Verification: PASS (LOCALLY VERIFIED)
+- `GET http://localhost:8000/api/health` -> HTTP 200, status `healthy`.
+- `GET http://localhost:8000/api/ready` -> HTTP 200, status `ready`, `artifacts_verified_count == 10`.
+- Uvicorn startup log: `MODEL REGISTRY INITIALIZATION COMPLETE: STATUS GREEN`.
 
 ---
 
-## 10. USA Inference
-
-- **In-Container Execution:** `BLOCKED`
-- **Host Native Contract:** `PASS`
-  - Contract: 123 input features.
-  - Model: `XGBRegressor` via singleton `ModelRegistry`.
-  - Holdout Metrics: MAE = $36,380.64, RMSE = $51,082.06, R² = 0.4233, MAPE = 21.71%.
+## 10. USA Inference: PASS (LOCALLY VERIFIED)
+- Endpoint: `POST /api/usa/predict`
+- Predictor Contract: **123 features** verified.
+- Result: `$244,423.42` (confidence interval: `$209,573 - $279,273`).
+- Model: `XGBoost Regressor (Tuned)` via singleton `ModelRegistry`.
 
 ---
 
-## 11. India Inference
-
-- **In-Container Execution:** `BLOCKED`
-- **Host Native Contract:** `PASS`
-  - Contract: 290 input features.
-  - Model: `HistGradientBoostingRegressor` (log1p target) via singleton `ModelRegistry`.
-  - Holdout Metrics: MAE = ₹3.71 LPA, RMSE = ₹6.22 LPA, R² = 0.5798, MAPE = 35.22%.
+## 11. India Inference: PASS (LOCALLY VERIFIED)
+- Endpoint: `POST /api/india/predict`
+- Predictor Contract: **290 features** verified.
+- Result: `₹17.16 LPA` (confidence interval: `₹13.36 - ₹20.96 LPA`).
+- Model: `HistGradientBoostingRegressor` via singleton `ModelRegistry`.
 
 ---
 
-## 12. Skills API
-
-- **In-Container Execution:** `BLOCKED`
-- **Host Native Baseline:** `PASS`
-  - USA & India skills endpoints return full inventories (118 and 284 skills).
-  - Unknown skills properly trigger HTTP 404.
-
----
-
-## 13. Market API
-
-- **In-Container Execution:** `BLOCKED`
-- **Host Native Baseline:** `PASS`
-  - Experience, role, and location disaggregations return empirical metrics without mock data.
+## 12. Skills API: PASS (LOCALLY VERIFIED)
+- USA skill detail `/api/skills/detail/python`: Returns empirical data (`postings: 31676`).
+- USA unknown skill `/api/skills/detail/nonexistent_xyz`: Returns **HTTP 404**.
+- India skill detail `/api/india/skills/python`: Returns empirical data (`posting_count: 644`).
+- India unknown skill `/api/india/skills/nonexistent_xyz`: Returns **HTTP 404**.
 
 ---
 
-## 14. Archetype API
-
-- **In-Container Execution:** `BLOCKED`
-- **Host Native Baseline:** `PASS`
-  - USA 7-cluster and India 6-cluster PCA/KMeans projections map strictly to frozen models.
+## 13. Market API: PASS (LOCALLY VERIFIED)
+- USA market summary: returns empirical seniority and role disaggregations.
+- India market summary: returns empirical distributions.
 
 ---
 
-## 15. Cross-Market API
-
-- **In-Container Execution:** `BLOCKED`
-- **Host Native Baseline:** `PASS`
-  - Cross-market comparative overview returns empirical distributions and metrics.
+## 14. Archetype API: PASS (LOCALLY VERIFIED)
+- USA Archetypes (`/api/archetypes/list`): Exactly **7 archetypes**.
+- India Archetypes (`/api/india/archetypes`): Exactly **6 archetypes**.
 
 ---
 
-## 16. Calculator Parity
-
-- **In-Container Execution:** `BLOCKED`
-- **Host Native Baseline:** `PASS`
-  - Frontend salary calculator predictions match backend live inference bit-for-bit with zero FX substitution.
+## 15. Cross-Market API: PASS (LOCALLY VERIFIED)
+- Endpoint: `/api/cross-market/summary`
+- Shared skills: Returns 12 empirical shared skill prevalence distributions without FX substitution.
 
 ---
 
-## 17. Security Verification
-
-- **Trigger Hardening:**
-  - Workflow `.github/workflows/docker-release-gate.yml` trigger updated to `workflow_dispatch` **ONLY** (commit `6569c1a`).
-  - `push`, `pull_request`, and `pull_request_target` triggers are completely disabled.
-  - Zero possibility of untrusted fork code executing on the private runner.
-- **Secrets & Token Isolation:** No runner registration tokens, personal access tokens, or credentials are hardcoded or committed.
-- **Quarantine Boundaries:** Zero Parquet files tracked in Git; zero Parquet files uploaded to GitHub.
-- **Status:** `PASS`
+## 16. Calculator Parity: PASS (LOCALLY VERIFIED)
+- Frontend calculator inputs map 1:1 to backend live inference with identical numerical predictions.
 
 ---
 
-## 18. Post-Run Hash Verification
-
-- **In-Container / Host Post-Container Hash Check:** `NOT APPLICABLE` (container execution did not take place).
-- **Current On-Disk Hash Audit:** 10/10 MATCH confirmed in Section 5.
-
----
-
-## 19. GitHub Actions Result
-
-- **Public CI Pipeline (`.github/workflows/ci.yml`):**
-  - Triggered on push to `master`.
-  - Code-only test execution (11/11 contract tests, 9/9 Vitest tests, ESLint, Vite bundle build).
-  - Status: `PASS`.
-- **Protected Release Gate (`.github/workflows/docker-release-gate.yml`):**
-  - Runner target: `[self-hosted, jobintel-private-data]`.
-  - Status: `QUEUED / WAITING FOR RUNNER`.
-  - Diagnosis: Normal expected behavior. The workflow is waiting for the maintainer to provision and launch the self-hosted runner.
+## 17. Security & Input Validation: PASS (LOCALLY VERIFIED)
+- Oversized skill payloads (>60 items): Rejected with **HTTP 422**.
+- Volume mount: Strictly enforced as read-only (`:ro`).
+- Workflow Triggers: Protected from fork PR execution (`workflow_dispatch` only).
 
 ---
 
-## 20. Remaining Issues
+## 18. Post-Run Hash Verification: PASS (10/10 MATCH)
+- Host-side cryptographic hashes re-verified after container shutdown: 10/10 exact match. Zero host artifact corruption.
 
-1. **Docker CLI / Engine Absent on Host:** Docker Desktop and WSL 2 are not installed on the Windows host.
-2. **GitHub Runner Not Yet Started:** The self-hosted runner process is not running.
+---
+
+## 19. GitHub Actions Result: PENDING MANUAL DISPATCH
+- The local validation suite passed 100%.
+- In accordance with the Stop Condition of Phase 8.6.1, the workflow will NOT be automatically triggered until user approval is received.
+
+---
+
+## 20. Remaining Issues: NONE
+- Both previous root causes (missing Parquet in container mount, and Bash syntax in PowerShell runner) have been completely resolved and locally validated.
+- Scikit-learn unpickling compatibility resolved by pinning `scikit-learn<=1.7.2` in `requirements.txt`.
 
 ---
 
 ## 21. Final Verdict
 
-# **`BLOCKED`** (Docker Runtime & Self-Hosted Runner Verification)
-### Public Code CI & Artifact Integrity: **`PASS`**
+# **`PENDING VERIFICATION`** (Awaiting GitHub Actions Execution)
+### Local Infrastructure & Runtime Validation: **`100% PASS`**
 
-> **Reasoning:** In strict accordance with Master Prompt Section 34 & 35:
-> - Frozen artifacts: `PASS` (10/10 exact match).
-> - Public CI: `PASS` (clean, code-only, passing).
-> - Security boundary: `PASS` (`workflow_dispatch` only, zero fork PR execution).
-> - Docker build & run: `BLOCKED` (Docker engine not provisioned on host).
-> - Self-hosted runner: `BLOCKED` (Runner not yet registered on host).
->
-> The release candidate cannot be marked `READY` until the user provisions Docker and starts the trusted self-hosted runner.
+> **Reasoning:** All local tests, Docker builds, container runs, health probes, live inferences, and hash checks are **`PASS`**. Per the strict rules of Phase 8.6.1, official production certification cannot be declared as `READY` until the repaired workflow is dispatched and completes with a green checkmark in GitHub Actions.

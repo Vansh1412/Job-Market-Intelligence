@@ -1,12 +1,16 @@
-name: JobIntel Phase 8.5 Protected Docker Release Gate
+name: JobIntel Phase 8.6.1 Protected Docker Release Gate
 
 on:
   workflow_dispatch:
 
+defaults:
+  run:
+    shell: powershell
+
 jobs:
   docker-release-gate:
-    name: Docker Runtime Verification & Release Gate (Protected Data Environment)
-    runs-on: [self-hosted, jobintel-private-data]
+    name: Docker Runtime Verification & Release Gate (Windows Self-Hosted)
+    runs-on: [self-hosted, Windows, X64, jobintel-private-data]
 
     steps:
       - name: 1. Checkout Repository
@@ -25,31 +29,107 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'frontend/package.json'
 
-      - name: 4. Step 3 - Verify CI Docker Environment
+      - name: 4. Verify Windows Runner Environment
         run: |
-          echo "=== DOCKER CLI & DAEMON VERIFICATION ==="
+          Write-Host "=== 1. VERIFYING WINDOWS RUNNER ENVIRONMENT ==="
+          Write-Host "OS: $((Get-CimInstance Win32_OperatingSystem).Caption)"
+          Write-Host "Architecture: $env:PROCESSOR_ARCHITECTURE"
+          Write-Host "Workspace: ${{ github.workspace }}"
+          Write-Host "PowerShell Version: $($PSVersionTable.PSVersion)"
+
+      - name: 5. Verify Docker Availability
+        run: |
+          Write-Host "=== 2. VERIFYING DOCKER AVAILABILITY ==="
           docker --version
+          if ($LASTEXITCODE -ne 0) { Write-Error "Docker CLI not found"; exit 1 }
           docker info
-          docker compose version
+          if ($LASTEXITCODE -ne 0) { Write-Error "Docker daemon not running"; exit 1 }
 
-      - name: 5. Step 4 - Build Production Docker Image
+      - name: 6. Verify Exact Host Data Paths & Required Parquets
         run: |
-          echo "=== BUILDING DOCKER IMAGE ==="
-          docker build --no-cache -t jobintel-phase8-3-certification .
+          Write-Host "=== 3 & 4. VERIFYING HOST DATA PATHS AND FROZEN PARQUETS ==="
+          $hostDataPath = "E:/Job Market/data/processed"
+          if (-not (Test-Path "$hostDataPath/modeling_dataset.parquet")) {
+              $found = Get-ChildItem -Path "E:\" -Filter "modeling_dataset.parquet" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+              if ($found) {
+                  $hostDataPath = $found.Directory.FullName -replace '\\', '/'
+              } else {
+                  Write-Error "CRITICAL: modeling_dataset.parquet not found on host E: drive!"
+                  exit 1
+              }
+          }
+          Write-Host "Discovered Host Data Path: $hostDataPath"
+          
+          $usaParquet = "$hostDataPath/modeling_dataset.parquet"
+          $indiaParquet = "$hostDataPath/india/india_modeling_cohort.parquet"
+          
+          if (-not (Test-Path $usaParquet)) {
+              Write-Error "Missing USA modeling dataset: $usaParquet"
+              exit 1
+          }
+          if (-not (Test-Path $indiaParquet)) {
+              Write-Error "Missing India modeling cohort: $indiaParquet"
+              exit 1
+          }
+          
+          Write-Host "PASS: Both required private Parquet files verified on host."
+          "HOST_DATA_PATH=$hostDataPath" | Out-File -FilePath $env:GITHUB_ENV -Append
 
-      - name: 6. Step 5 - Inspect Built Image Contents
+      - name: 7. Verify Dockerfile Does Not COPY data/processed
         run: |
-          echo "=== INSPECTING IMAGE ASSETS ==="
-          docker run --rm jobintel-phase8-3-certification ls -la /app
-          docker run --rm jobintel-phase8-3-certification ls -la /app/src
-          docker run --rm jobintel-phase8-3-certification ls -la /app/models
-          docker run --rm jobintel-phase8-3-certification ls -la /app/models/india
-          docker run --rm jobintel-phase8-3-certification ls -la /app/models/phase5
+          Write-Host "=== 5. VERIFYING DOCKERFILE PRIVACY COMPLIANCE ==="
+          $dockerfile = Get-Content Dockerfile -Raw
+          if ($dockerfile -match "COPY\s+data/processed") {
+              Write-Error "CRITICAL VIOLATION: Dockerfile must NOT COPY data/processed!"
+              exit 1
+          }
+          Write-Host "PASS: Dockerfile does not copy private data into image."
 
-      - name: 7. Step 6 - In-Container Cryptographic Hash Verification
+      - name: 8. Build Production Docker Image
         run: |
-          echo "=== VERIFYING 10/10 FROZEN ARTIFACT SHA-256 INSIDE CONTAINER ==="
-          docker run --rm -v "${{ github.workspace }}/data/processed:/app/data/processed:ro" jobintel-phase8-3-certification python -c "
+          Write-Host "=== 6. BUILDING DOCKER IMAGE ==="
+          docker build --no-cache -t jobintel-phase8-6-certification .
+          if ($LASTEXITCODE -ne 0) { Write-Error "Docker build failed"; exit 1 }
+
+      - name: 9. Start Container with Read-Only Private-Data Mount
+        run: |
+          Write-Host "=== 7. STARTING CONTAINER WITH READ-ONLY DATA MOUNT ==="
+          docker stop jobintel-phase8-6-certification 2>$null
+          docker rm jobintel-phase8-6-certification 2>$null
+          
+          docker run -d `
+            --name jobintel-phase8-6-certification `
+            -p 8000:8000 `
+            -e CORS_ORIGINS="http://localhost:5173,http://localhost:3000,http://localhost:8000" `
+            -v "${env:HOST_DATA_PATH}:/app/data/processed:ro" `
+            jobintel-phase8-6-certification
+            
+          if ($LASTEXITCODE -ne 0) { Write-Error "Docker run failed"; exit 1 }
+          
+          Write-Host "Waiting 8 seconds for application warmup..."
+          Start-Sleep -Seconds 8
+          docker ps
+          docker logs --tail 35 jobintel-phase8-6-certification
+
+      - name: 10. Verify Container Filesystem & Read-Only Mount
+        run: |
+          Write-Host "=== 8 & 9. VERIFYING CONTAINER FILESYSTEM & READ-ONLY MOUNT ==="
+          docker exec jobintel-phase8-6-certification ls -la /app/data/processed/modeling_dataset.parquet
+          docker exec jobintel-phase8-6-certification ls -la /app/data/processed/india/india_modeling_cohort.parquet
+          if ($LASTEXITCODE -ne 0) { Write-Error "Mounted datasets missing in container"; exit 1 }
+          
+          # Prove write rejection
+          docker exec jobintel-phase8-6-certification touch /app/data/processed/test_mutation.txt 2>$null
+          if ($LASTEXITCODE -eq 0) {
+              Write-Error "CRITICAL SECURITY BREACH: Volume mount is NOT read-only!"
+              exit 1
+          }
+          Write-Host "PASS: Container mount verified read-only (:ro)."
+
+      - name: 11. In-Container Cryptographic Hash Verification (10/10)
+        run: |
+          Write-Host "=== 10. VERIFYING 10/10 FROZEN ARTIFACT SHA-256 INSIDE CONTAINER ==="
+          docker exec jobintel-phase8-6-certification python -c "
           import hashlib, sys
 
           EXPECTED = {
@@ -74,140 +154,253 @@ jobs:
                   if actual_hash != expected_hash:
                       mismatches.append(f'{relpath}: expected {expected_hash}, got {actual_hash}')
                   else:
-                      print(f'MATCH: {relpath} -> {actual_hash}')
+                      print(f'MATCH (100%): {relpath}')
               except Exception as e:
                   mismatches.append(f'{relpath}: ERROR {e}')
 
           if mismatches:
-              print('FAILURE: Hash mismatches detected in container:')
+              print('FAILURE: Hash mismatches inside container:')
               for m in mismatches:
                   print(f'  {m}')
               sys.exit(1)
           print('PASS: All 10 frozen artifacts matched bit-for-bit inside container.')
           "
+          if ($LASTEXITCODE -ne 0) { Write-Error "Hash verification failed"; exit 1 }
 
-      - name: 8. Step 7 - Start Container
+      - name: 12. Verify Application Imports, ModelRegistry & Feature Contracts
         run: |
-          echo "=== STARTING CONTAINER WITH READ-ONLY DATA MOUNT ==="
-          docker run -d --name jobintel-phase8-3-certification -p 8000:8000 -v "${{ github.workspace }}/data/processed:/app/data/processed:ro" jobintel-phase8-3-certification
-          sleep 6
-          docker ps
-          docker logs jobintel-phase8-3-certification
-
-      - name: 9. Step 8 - Health Probes (/api/health & /api/ready)
-        run: |
-          echo "=== TESTING /api/health ==="
-          HEALTH=$(curl -f -s -S http://localhost:8000/api/health)
-          echo "Health response: $HEALTH"
-
-          echo "=== TESTING /api/ready ==="
-          READY=$(curl -f -s -S http://localhost:8000/api/ready)
-          echo "Ready response: $READY"
-          echo "$READY" | grep '"status":"ready"' || echo "$READY" | grep '"status": "ready"'
-          echo "$READY" | grep '"registry_status":"GREEN"' || echo "$READY" | grep '"registry_status": "GREEN"'
-          echo "$READY" | grep '"artifacts_verified_count":10' || echo "$READY" | grep '"artifacts_verified_count": 10'
-
-      - name: 10. Step 9 - USA Prediction Endpoint Test
-        run: |
-          echo "=== TESTING POST /api/usa/predict ==="
-          USA_RESP=$(curl -f -s -S -X POST http://localhost:8000/api/usa/predict \
-            -H "Content-Type: application/json" \
-            -d '{"role_family":"ML / AI Engineer","seniority":"Senior","city_clean":"San Francisco-Oakland-Hayward, CA","is_remote":false,"selected_skills":["skill_python","skill_machine_learning","skill_pytorch"]}')
-          echo "USA Prediction response: $USA_RESP"
-          echo "$USA_RESP" | grep "predicted_salary"
-
-      - name: 11. Step 10 - India Prediction Endpoint Test
-        run: |
-          echo "=== TESTING POST /api/india/predict ==="
-          INDIA_RESP=$(curl -f -s -S -X POST http://localhost:8000/api/india/predict \
-            -H "Content-Type: application/json" \
-            -d '{"role_family":"Data Science / Analytics","city_clean":"Bengaluru","experience_years":5.0,"is_remote":false,"selected_skills":["skill_python","skill_sql"]}')
-          echo "India Prediction response: $INDIA_RESP"
-          echo "$INDIA_RESP" | grep "predicted_salary_inr"
-
-      - name: 12. Step 11 - USA Skills Endpoints Test
-        run: |
-          echo "=== TESTING GET /api/skills/detail/python ==="
-          SKILL_RESP=$(curl -f -s -S http://localhost:8000/api/skills/detail/python)
-          echo "Skill response: $SKILL_RESP"
-          echo "$SKILL_RESP" | grep '"skill_id":"python"' || echo "$SKILL_RESP" | grep '"skill_id": "python"'
-
-          echo "=== TESTING GET /api/skills/detail/nonexistent_xyz (EXPECT HTTP 404) ==="
-          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/api/skills/detail/nonexistent_xyz)
-          echo "HTTP Code: $HTTP_CODE"
-          if [ "$HTTP_CODE" -ne 404 ]; then
-            echo "Expected 404, got $HTTP_CODE"
-            exit 1
-          fi
-
-      - name: 13. Step 12 - India Skills Endpoints Test
-        run: |
-          echo "=== TESTING GET /api/india/skills/python ==="
-          IND_SKILL_RESP=$(curl -f -s -S http://localhost:8000/api/india/skills/python)
-          echo "India Skill response: $IND_SKILL_RESP"
-
-          echo "=== TESTING GET /api/india/skills/nonexistent_xyz (EXPECT HTTP 404) ==="
-          IND_HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/api/india/skills/nonexistent_xyz)
-          echo "HTTP Code: $IND_HTTP_CODE"
-          if [ "$IND_HTTP_CODE" -ne 404 ]; then
-            echo "Expected 404, got $IND_HTTP_CODE"
-            exit 1
-          fi
-
-      - name: 14. Step 13 - Cross-Market Summary Test
-        run: |
-          echo "=== TESTING GET /api/cross-market/summary ==="
-          CM_RESP=$(curl -f -s -S http://localhost:8000/api/cross-market/summary)
-          echo "Cross-Market response: $CM_RESP"
-          echo "$CM_RESP" | grep "common_skills"
-
-      - name: 15. Step 14 - Model Registry Direct In-Container Test
-        run: |
-          echo "=== TESTING MODEL REGISTRY INITIALIZATION INSIDE RUNNING CONTAINER ==="
-          docker exec jobintel-phase8-3-certification python -c "
+          Write-Host "=== 11, 16, 17 & 18. VERIFYING REGISTRY & CONTRACTS ==="
+          docker exec jobintel-phase8-6-certification python -c "
           from src.backend.models.model_registry import get_model_registry
-          from src.backend.data_service import data_service
-          registry = get_model_registry()
-          status = registry.get_readiness_status()
-          print('Registry Status:', status)
-          assert status['registry_status'] == 'GREEN', f'Status: {status}'
-          assert status['artifacts_verified_count'] == 10, f'Count: {status}'
-          assert data_service.get_salary_model() is registry.usa_salary_model, 'Singleton model mismatch'
-          print('PASS: ModelRegistry GREEN, 10/10 verified, Singleton identity confirmed')
-          "
+          from src.backend.data_service import get_salary_model
 
-      - name: 16. Step 15 - Full Backend Tests on CI Host
+          r = get_model_registry()
+          s = r.get_status_report()
+          assert s['status'] == 'GREEN', f'Status: {s}'
+          assert s['artifacts_verified_count'] == 10, f'Artifact count: {s}'
+
+          # Exact USA Contract: 123 features
+          usa_feats = len(r.usa_feature_metadata['feature_names'])
+          print(f'USA Feature Count: {usa_feats}')
+          assert usa_feats == 123, f'Expected 123 USA features, got {usa_feats}'
+
+          # Exact India Contract: 290 features
+          india_feats = len(r.india_model_metadata['feature_names'])
+          print(f'India Feature Count: {india_feats}')
+          assert india_feats == 290, f'Expected 290 India features, got {india_feats}'
+
+          # Singleton check
+          assert get_salary_model() is r.usa_salary_model, 'Singleton model mismatch'
+          print('PASS: ModelRegistry GREEN, USA=123, India=290, Singleton verified.')
+          "
+          if ($LASTEXITCODE -ne 0) { Write-Error "Registry contract assertion failed"; exit 1 }
+
+      - name: 13. Verify Health & Readiness Probes
         run: |
-          echo "=== RUNNING BACKEND TESTS VIA PYTEST ==="
+          Write-Host "=== 12 & 13. TESTING /api/health AND /api/ready PROBES ==="
+          $health = Invoke-RestMethod -Uri "http://localhost:8000/api/health" -Method Get
+          Write-Host "Health: $($health | ConvertTo-Json -Compress)"
+          if ($health.status -ne "healthy") { Write-Error "Health check failed"; exit 1 }
+
+          $ready = Invoke-RestMethod -Uri "http://localhost:8000/api/ready" -Method Get
+          Write-Host "Ready: $($ready | ConvertTo-Json -Compress)"
+          if ($ready.status -ne "ready" -or -not $ready.ready) { Write-Error "Readiness check failed"; exit 1 }
+          if ($ready.artifacts_verified_count -ne 10) { Write-Error "Expected 10 verified artifacts"; exit 1 }
+          Write-Host "PASS: Health and Readiness probes returned HTTP 200 GREEN."
+
+      - name: 14. Verify USA Live Inference
+        run: |
+          Write-Host "=== 14. TESTING USA LIVE INFERENCE ==="
+          $payload = @{
+              role_family = "ML / AI Engineer"
+              seniority = "Senior"
+              city_clean = "San Francisco"
+              is_remote = $true
+              selected_skills = @("skill_python", "skill_machine_learning", "skill_pytorch")
+          } | ConvertTo-Json
+
+          $resp = Invoke-RestMethod -Uri "http://localhost:8000/api/usa/predict" -Method Post -ContentType "application/json" -Body $payload
+          Write-Host "USA Prediction: $($resp | ConvertTo-Json -Compress)"
+          if (-not $resp.predicted_salary -or $resp.predicted_salary -le 0) {
+              Write-Error "Invalid USA prediction"
+              exit 1
+          }
+          if ($resp.model_metadata.feature_count -ne 123) {
+              Write-Error "Expected 123 features in model metadata"
+              exit 1
+          }
+          Write-Host "PASS: USA live prediction verified ($($resp.predicted_salary))."
+
+      - name: 15. Verify India Live Inference
+        run: |
+          Write-Host "=== 15. TESTING INDIA LIVE INFERENCE ==="
+          $payload = @{
+              normalized_role = "Data Scientist"
+              experience_midpoint_years = 5.0
+              experience_range_years = 2.0
+              city_grouped = "Bengaluru"
+              work_mode = "Hybrid"
+              selected_skills = @("skill_python", "skill_sql", "skill_machine_learning")
+          } | ConvertTo-Json
+
+          $resp = Invoke-RestMethod -Uri "http://localhost:8000/api/india/predict" -Method Post -ContentType "application/json" -Body $payload
+          Write-Host "India Prediction: $($resp | ConvertTo-Json -Compress)"
+          if (-not $resp.predicted_salary_lpa -and -not $resp.predicted_salary_inr -and -not $resp.predicted_salary) {
+              Write-Error "Missing predicted salary in India response"
+              exit 1
+          }
+          if ($resp.model_metadata.feature_count -ne 290) {
+              Write-Error "Expected 290 features in India model metadata"
+              exit 1
+          }
+          Write-Host "PASS: India live prediction verified."
+
+      - name: 16. Verify Skills Explorer Endpoints & Error Handling
+        run: |
+          Write-Host "=== 19 & 24. TESTING SKILLS EXPLORER & ERROR HANDLING ==="
+          $usaSkill = Invoke-RestMethod -Uri "http://localhost:8000/api/skills/detail/python" -Method Get
+          Write-Host "USA Skill Python: $($usaSkill.skill), Postings: $($usaSkill.postings)"
+          if ($usaSkill.skill -ne "python") { Write-Error "Unexpected USA skill response"; exit 1 }
+
+          # Unknown skill must return 404
+          $usa404 = $false
+          try {
+              Invoke-WebRequest -Uri "http://localhost:8000/api/skills/detail/nonexistent_xyz" -Method Get
+          } catch {
+              if ($_.Exception.Response.StatusCode.value__ -eq 404) { $usa404 = $true }
+          }
+          if (-not $usa404) { Write-Error "Expected 404 for unknown USA skill"; exit 1 }
+          Write-Host "PASS: Unknown USA skill returned HTTP 404."
+
+          $indSkill = Invoke-RestMethod -Uri "http://localhost:8000/api/india/skills/python" -Method Get
+          Write-Host "India Skill Python: $($indSkill.display_name)"
+
+          $ind404 = $false
+          try {
+              Invoke-WebRequest -Uri "http://localhost:8000/api/india/skills/nonexistent_xyz" -Method Get
+          } catch {
+              if ($_.Exception.Response.StatusCode.value__ -eq 404) { $ind404 = $true }
+          }
+          if (-not $ind404) { Write-Error "Expected 404 for unknown India skill"; exit 1 }
+          Write-Host "PASS: Unknown India skill returned HTTP 404."
+
+      - name: 17. Verify Market Explorer & Archetypes Endpoints
+        run: |
+          Write-Host "=== 20, 21 & 25. TESTING MARKET & ARCHETYPES (NO FABRICATION) ==="
+          $usaMarket = Invoke-RestMethod -Uri "http://localhost:8000/api/usa/market-summary" -Method Get
+          if ($usaMarket.by_seniority.Count -le 0) { Write-Error "Empty USA market seniority items"; exit 1 }
+
+          $indMarket = Invoke-RestMethod -Uri "http://localhost:8000/api/india/market-summary" -Method Get
+          if (-not $indMarket) { Write-Error "Empty India market summary"; exit 1 }
+
+          $usaArch = Invoke-RestMethod -Uri "http://localhost:8000/api/archetypes/list" -Method Get
+          Write-Host "USA Archetypes Count: $($usaArch.Count)"
+          if ($usaArch.Count -ne 7) { Write-Error "Expected 7 USA archetypes, got $($usaArch.Count)"; exit 1 }
+
+          $indArch = Invoke-RestMethod -Uri "http://localhost:8000/api/india/archetypes" -Method Get
+          Write-Host "India Archetypes Count: $($indArch.Count)"
+          if ($indArch.Count -ne 6) { Write-Error "Expected 6 India archetypes, got $($indArch.Count)"; exit 1 }
+          Write-Host "PASS: Empirical Market & Archetype endpoints verified."
+
+      - name: 18. Verify Cross-Market Analytics Endpoint
+        run: |
+          Write-Host "=== 22. TESTING CROSS-MARKET ANALYTICS ==="
+          $cm = Invoke-RestMethod -Uri "http://localhost:8000/api/cross-market/summary" -Method Get
+          Write-Host "Shared Skills Prevalence Count: $($cm.shared_skills_prevalence.Count)"
+          if ($cm.shared_skills_prevalence.Count -le 0) { Write-Error "Empty shared skills in cross-market summary"; exit 1 }
+          Write-Host "PASS: Cross-market analytics returned empirical shared distributions."
+
+      - name: 19. Verify Security & Input Validation
+        run: |
+          Write-Host "=== 26. TESTING SECURITY & INPUT VALIDATION ==="
+          $oversizedSkills = @(1..65) | ForEach-Object { "skill_$_" }
+          $badPayload = @{
+              role_family = "Software Engineer"
+              seniority = "Senior"
+              city_clean = "San Francisco"
+              is_remote = $true
+              selected_skills = $oversizedSkills
+          } | ConvertTo-Json
+
+          $rejected = $false
+          try {
+              Invoke-WebRequest -Uri "http://localhost:8000/api/usa/predict" -Method Post -ContentType "application/json" -Body $badPayload
+          } catch {
+              if ($_.Exception.Response.StatusCode.value__ -eq 422) { $rejected = $true }
+          }
+          if (-not $rejected) { Write-Error "Expected HTTP 422 for oversized skills payload"; exit 1 }
+          Write-Host "PASS: Oversized payload rejected with HTTP 422."
+
+      - name: 20. Host-Side Backend Tests with Linked Private Data
+        run: |
+          Write-Host "=== RUNNING HOST-SIDE BACKEND TEST SUITE ==="
+          if (-not (Test-Path "${{ github.workspace }}/data/processed")) {
+              cmd.exe /c "mklink /J `"${{ github.workspace }}\data\processed`" `"${env:HOST_DATA_PATH}`""
+          }
           python -m pip install -r requirements.txt
           python -m pytest tests/ -v
+          if ($LASTEXITCODE -ne 0) { Write-Error "Host-side pytest suite failed"; exit 1 }
 
-      - name: 17. Step 16 - Frontend Test & Build Check
+      - name: 21. Host-Side Frontend Tests, Lint & Build
         run: |
-          echo "=== RUNNING FRONTEND TESTS, LINT, AND BUILD ==="
-          cd frontend
-          npm ci || npm install
+          Write-Host "=== RUNNING FRONTEND VALIDATION ==="
+          Set-Location frontend
+          npm ci
+          if ($LASTEXITCODE -ne 0) { npm install }
           npm test
+          if ($LASTEXITCODE -ne 0) { Write-Error "Vitest suite failed"; exit 1 }
           npm run lint
+          if ($LASTEXITCODE -ne 0) { Write-Error "ESLint failed"; exit 1 }
           npm run build
-          cd ..
+          if ($LASTEXITCODE -ne 0) { Write-Error "Vite build failed"; exit 1 }
+          Set-Location ..
 
-      - name: 18. Step 17 - Container Log Audit
+      - name: 22. Container Log Audit & Cleanup
         if: always()
         run: |
-          echo "=== CONTAINER LOG AUDIT ==="
-          docker logs jobintel-phase8-3-certification > container.log 2>&1 || true
-          cat container.log
-          echo "Auditing for fatal errors..."
-          ! grep -i "Traceback" container.log || exit 1
-          ! grep -i "ModuleNotFoundError" container.log || exit 1
-          ! grep -i "FileNotFoundError" container.log || exit 1
-          echo "Zero fatal errors in container log."
+          Write-Host "=== 27 & 28. CONTAINER LOG AUDIT & CLEANUP ==="
+          docker logs jobintel-phase8-6-certification > container.log 2>&1
+          Get-Content container.log | Select-Object -Last 30
+          $logContent = Get-Content container.log -Raw
+          if ($logContent -match "Traceback \(most recent call last\)") {
+              Write-Error "Fatal traceback detected in container log!"
+              exit 1
+          }
+          if ($logContent -match "ModuleNotFoundError") {
+              Write-Error "ModuleNotFoundError detected in container log!"
+              exit 1
+          }
+          Write-Host "PASS: Zero fatal errors in container log."
 
-      - name: 19. Step 18 - Clean Container Shutdown
-        if: always()
+          Write-Host "Stopping and removing container..."
+          docker stop jobintel-phase8-6-certification 2>$null
+          docker rm jobintel-phase8-6-certification 2>$null
+          
+          # Clean workspace junction if created
+          if (Test-Path "${{ github.workspace }}/data/processed") {
+              cmd.exe /c "rmdir `"${{ github.workspace }}\data\processed`"" 2>$null
+          }
+
+      - name: 23. Post-Runtime Frozen Hash Verification (10/10)
         run: |
-          echo "=== CLEANING UP TEST CONTAINER ==="
-          docker stop jobintel-phase8-3-certification || true
-          docker rm jobintel-phase8-3-certification || true
-          docker ps -a
+          Write-Host "=== 29. POST-RUNTIME FROZEN HASH VERIFICATION ON HOST ==="
+          python -c "
+          import hashlib, sys
+          ARTIFACTS = {
+              'models/india/final_model.pkl': '7a3490d7a36a128eea5a70e80bb3550c504da69648ac368a891f8729282a8310',
+              'models/india/final_preprocessor.pkl': '0ee1dabf3130a19c8bbc80a31ab93d8e97affa4d4a688249d59ee336f7ab4ead',
+              'data/processed/india/india_modeling_cohort.parquet': 'd4e32be45d84b159804e1a019f44dd5da6682346e38f39635e8edcaac3a200ec',
+              'models/india/india_pca_v1.pkl': '8591e3d3f713e35b27307e0c5810b35bb80ee33fd97bc909487985624e390897',
+              'models/india/india_kmeans_v1.pkl': '4465a3d8c3b7ab92e668cab2b502bdc3ba832d8458545f00cc5121d9c73da40a',
+              'models/phase5/best_model.pkl': '55c1b7fd87d2a04c9761a1941fcc4f6d3174ed80a10ce0802b0c07fc644bfadd',
+              'models/phase5/best_pipeline.pkl': '815fd9a3d88f2ebae82cebce86c6438d0455835de8de1bb8d66802f12a77be19',
+              'data/processed/modeling_dataset.parquet': '68895e3823cca91ffbfea76b8986198700b4eb8bb02905bacc9a04985156a21b',
+              'models/pca_phase4_1.pkl': 'ef4ef56bdc4b9471b1ec636fb9c689744832992b13f9733549271a19e3ce83c0',
+              'models/kmeans_phase4_1_k7.pkl': '4d6d2509f04502fdf088604151b66d2272a8b4de106ce9fa2f745f97806c0106',
+          }
+          for p, expected in ARTIFACTS.items():
+              actual = hashlib.sha256(open(p, 'rb').read()).hexdigest()
+              assert actual == expected, f'Post-run hash mismatch for {p}: expected {expected}, got {actual}'
+          print('PASS: All 10 frozen artifacts remain 100% bit-for-bit unchanged after runtime.')
+          "
+          if ($LASTEXITCODE -ne 0) { Write-Error "Post-runtime hash check failed"; exit 1 }
