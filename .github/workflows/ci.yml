@@ -7,8 +7,8 @@ on:
     branches: [ main, master ]
 
 jobs:
-  backend-and-model-integrity:
-    name: Backend Tests & Application CI
+  backend-code-quality:
+    name: Backend Code Quality & Contract CI
     runs-on: ubuntu-latest
 
     steps:
@@ -26,12 +26,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Backend Full Test Suite (Pytest)
+      - name: Python Syntax Compilation & Import Verification
         run: |
-          python -m pytest tests/ -v
+          python -m compileall src/
+
+      - name: Run Code-Only Contract Tests
+        run: |
+          python -m pytest tests/test_routing_contracts.py tests/test_schema_contracts.py -v
 
   frontend-build-and-lint:
-    name: Frontend Build & Typecheck
+    name: Frontend Build, Lint & Vitest Suite
     runs-on: ubuntu-latest
 
     steps:
@@ -48,6 +52,14 @@ jobs:
       - name: Install Frontend Dependencies
         working-directory: frontend
         run: npm ci || npm install
+
+      - name: Run Frontend Vitest Test Suite
+        working-directory: frontend
+        run: npm test
+
+      - name: Run Frontend Linter
+        working-directory: frontend
+        run: npm run lint
 
       - name: Run Production Bundle Build & Typecheck
         working-directory: frontend

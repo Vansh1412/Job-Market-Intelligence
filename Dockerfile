@@ -39,7 +39,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY src/ /app/src/
 COPY models/ /app/models/
 COPY reports/ /app/reports/
-COPY data/processed/ /app/data/processed/
+# Create mount directory structure for runtime read-only data volume mount
+RUN mkdir -p /app/data/processed/india
 
 # Copy compiled frontend assets
 COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist

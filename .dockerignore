@@ -12,6 +12,8 @@ dist
 scratch
 notebooks
 data/raw
+data/processed
+*.parquet
 jobs-tier1-L-2026-08-01
 nextgig_jobs_*.parquet
 *.log

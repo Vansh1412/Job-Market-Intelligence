@@ -1,16 +1,14 @@
-name: JobIntel Phase 8.3 Docker Release Gate
+name: JobIntel Phase 8.5 Protected Docker Release Gate
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
-  workflow_dispatch:
 
 jobs:
   docker-release-gate:
-    name: Docker Runtime Verification & Release Gate
-    runs-on: ubuntu-latest
+    name: Docker Runtime Verification & Release Gate (Protected Data Environment)
+    runs-on: [self-hosted, jobintel-private-data]
 
     steps:
       - name: 1. Checkout Repository
@@ -49,13 +47,11 @@ jobs:
           docker run --rm jobintel-phase8-3-certification ls -la /app/models
           docker run --rm jobintel-phase8-3-certification ls -la /app/models/india
           docker run --rm jobintel-phase8-3-certification ls -la /app/models/phase5
-          docker run --rm jobintel-phase8-3-certification ls -la /app/data/processed
-          docker run --rm jobintel-phase8-3-certification ls -la /app/data/processed/india
 
       - name: 7. Step 6 - In-Container Cryptographic Hash Verification
         run: |
           echo "=== VERIFYING 10/10 FROZEN ARTIFACT SHA-256 INSIDE CONTAINER ==="
-          docker run --rm jobintel-phase8-3-certification python -c "
+          docker run --rm -v "${{ github.workspace }}/data/processed:/app/data/processed:ro" jobintel-phase8-3-certification python -c "
           import hashlib, sys
 
           EXPECTED = {
@@ -94,8 +90,8 @@ jobs:
 
       - name: 8. Step 7 - Start Container
         run: |
-          echo "=== STARTING CONTAINER ==="
-          docker run -d --name jobintel-phase8-3-certification -p 8000:8000 jobintel-phase8-3-certification
+          echo "=== STARTING CONTAINER WITH READ-ONLY DATA MOUNT ==="
+          docker run -d --name jobintel-phase8-3-certification -p 8000:8000 -v "${{ github.workspace }}/data/processed:/app/data/processed:ro" jobintel-phase8-3-certification
           sleep 6
           docker ps
           docker logs jobintel-phase8-3-certification
