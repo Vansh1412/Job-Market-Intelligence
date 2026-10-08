@@ -1,4 +1,4 @@
-name: JobIntel Phase 8.6.1 Protected Docker Release Gate
+name: JobIntel Phase 8.6.2 Protected Docker Release Gate
 
 on:
   workflow_dispatch:
@@ -94,22 +94,44 @@ jobs:
       - name: 9. Start Container with Read-Only Private-Data Mount
         run: |
           Write-Host "=== 7. STARTING CONTAINER WITH READ-ONLY DATA MOUNT ==="
-          docker stop jobintel-phase8-6-certification 2>$null
-          docker rm jobintel-phase8-6-certification 2>$null
-          
+          $containerName = "jobintel-phase8-6-certification"
+
+          $existing = docker ps -a --filter "name=^$containerName$" --format "{{.Names}}" 2>$null
+
+          if ($existing -contains $containerName) {
+              Write-Host "Existing certification container found. Stopping..."
+              docker stop $containerName 2>$null
+              if ($LASTEXITCODE -ne 0) {
+                  Write-Warning "Container stop returned non-zero; continuing to removal."
+              }
+
+              docker rm $containerName 2>$null
+              if ($LASTEXITCODE -ne 0) {
+                  Write-Warning "Container removal returned non-zero."
+              }
+          }
+          else {
+              Write-Host "No existing certification container found. Continuing."
+          }
+
+          $LASTEXITCODE = 0
+
           docker run -d `
-            --name jobintel-phase8-6-certification `
+            --name $containerName `
             -p 8000:8000 `
             -e CORS_ORIGINS="http://localhost:5173,http://localhost:3000,http://localhost:8000" `
             -v "${env:HOST_DATA_PATH}:/app/data/processed:ro" `
             jobintel-phase8-6-certification
-            
-          if ($LASTEXITCODE -ne 0) { Write-Error "Docker run failed"; exit 1 }
-          
+
+          if ($LASTEXITCODE -ne 0) {
+              Write-Error "Docker run failed"
+              exit 1
+          }
+
           Write-Host "Waiting 8 seconds for application warmup..."
           Start-Sleep -Seconds 8
           docker ps
-          docker logs --tail 35 jobintel-phase8-6-certification
+          docker logs --tail 35 $containerName
 
       - name: 10. Verify Container Filesystem & Read-Only Mount
         run: |
@@ -359,23 +381,44 @@ jobs:
         if: always()
         run: |
           Write-Host "=== 27 & 28. CONTAINER LOG AUDIT & CLEANUP ==="
-          docker logs jobintel-phase8-6-certification > container.log 2>&1
-          Get-Content container.log | Select-Object -Last 30
-          $logContent = Get-Content container.log -Raw
-          if ($logContent -match "Traceback \(most recent call last\)") {
-              Write-Error "Fatal traceback detected in container log!"
-              exit 1
-          }
-          if ($logContent -match "ModuleNotFoundError") {
-              Write-Error "ModuleNotFoundError detected in container log!"
-              exit 1
-          }
-          Write-Host "PASS: Zero fatal errors in container log."
+          $containerName = "jobintel-phase8-6-certification"
 
-          Write-Host "Stopping and removing container..."
-          docker stop jobintel-phase8-6-certification 2>$null
-          docker rm jobintel-phase8-6-certification 2>$null
-          
+          $existing = docker ps -a --filter "name=^$containerName$" --format "{{.Names}}" 2>$null
+
+          if ($existing -contains $containerName) {
+              Write-Host "Collecting container logs..."
+              docker logs $containerName > container.log 2>&1
+
+              Write-Host "Stopping container..."
+              docker stop $containerName 2>$null
+              if ($LASTEXITCODE -ne 0) {
+                  Write-Warning "Container stop returned non-zero."
+              }
+
+              Write-Host "Removing container..."
+              docker rm $containerName 2>$null
+              if ($LASTEXITCODE -ne 0) {
+                  Write-Warning "Container removal returned non-zero."
+              }
+
+              if (Test-Path container.log) {
+                  Get-Content container.log | Select-Object -Last 30
+                  $logContent = Get-Content container.log -Raw
+                  if ($logContent -match "Traceback \(most recent call last\)") {
+                      Write-Error "Fatal traceback detected in container log!"
+                      exit 1
+                  }
+                  if ($logContent -match "ModuleNotFoundError") {
+                      Write-Error "ModuleNotFoundError detected in container log!"
+                      exit 1
+                  }
+                  Write-Host "PASS: Zero fatal errors in container log."
+              }
+          }
+          else {
+              Write-Host "Container does not exist; cleanup not required."
+          }
+
           # Clean workspace junction if created
           if (Test-Path "${{ github.workspace }}/data/processed") {
               cmd.exe /c "rmdir `"${{ github.workspace }}\data\processed`"" 2>$null

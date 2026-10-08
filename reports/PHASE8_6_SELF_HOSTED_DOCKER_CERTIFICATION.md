@@ -1,4 +1,4 @@
-# PHASE 8.6 / 8.6.1 SELF-HOSTED DOCKER RELEASE CERTIFICATION AUDIT
+# PHASE 8.6 / 8.6.1 / 8.6.2 SELF-HOSTED DOCKER RELEASE CERTIFICATION AUDIT
 
 **Project:** INT234 Predictive Analytics — Job Market Intelligence (JobIntel)  
 **Document ID:** `reports/PHASE8_6_SELF_HOSTED_DOCKER_CERTIFICATION.md`  
@@ -12,27 +12,26 @@
 
 ---
 
-## 1. Executive Summary & First-Run Incident Analysis
+## 1. Executive Summary & Incident Analysis
 
-During the first live invocation of the protected release gate on the operational Windows self-hosted runner (`JobIntel-Private-Data`), the workflow encountered two distinct infrastructure failure modes:
+During live invocation of the protected release gate on the operational Windows self-hosted runner (`JobIntel-Private-Data`), the workflow encountered the following failure modes:
 
 1. **Failure Mode A: Missing Private Processed Parquet Files Inside Container**
-   - **Symptom:** In-container cryptographic hash validation failed with:
-     ```
-     ERROR: '/app/data/processed/india/india_modeling_cohort.parquet' not found
-     ERROR: '/app/data/processed/modeling_dataset.parquet' not found
-     ```
-   - **Root Cause:** The workflow previously mounted `-v "${{ github.workspace }}/data/processed:/app/data/processed:ro"`. Because `data/processed` is strictly gitignored under the DataForge Tier 1 License Agreement, clean checkouts in `${{ github.workspace }}` do not contain these Parquet files. The real licensed files reside permanently on the host storage volume at `E:/Job Market/data/processed`.
-   - **Remediation:** Configured dynamic host path resolution targeting `E:/Job Market/data/processed` (verified with SHA-256 checks on host prior to container startup) and mounted the verified host directory read-only into the container (`-v "${env:HOST_DATA_PATH}:/app/data/processed:ro"`).
+   - **Symptom:** In-container cryptographic hash validation failed because `data/processed` is gitignored under the DataForge Tier 1 License Agreement.
+   - **Remediation:** Dynamic host path resolution targeting `E:/Job Market/data/processed` and mounted read-only (`-v "${env:HOST_DATA_PATH}:/app/data/processed:ro"`).
 
 2. **Failure Mode B: Bash Syntax Execution Failure on Windows PowerShell Runner**
-   - **Symptom:** Step commands containing Bash syntax (`|| true`, `! grep`, `sleep 6`, `$(curl ...)`) produced parsing errors or failed to execute under PowerShell.
-   - **Root Cause:** The GitHub Actions runner is Windows x64. By default, steps execute under PowerShell (`powershell.exe`).
-   - **Remediation:** Refactored every step in `.github/workflows/docker-release-gate.yml` to native PowerShell syntax with `defaults.run.shell: powershell`, using `Invoke-RestMethod`, `$LASTEXITCODE` checks, try/catch blocks, and `Start-Sleep`.
+   - **Symptom:** Step commands containing Bash syntax (`|| true`, `! grep`, `sleep 6`) produced parsing errors under PowerShell.
+   - **Remediation:** Refactored every step in `.github/workflows/docker-release-gate.yml` to native PowerShell syntax with `defaults.run.shell: powershell`.
 
-3. **Ancillary Fix: Scikit-Learn Compatibility with Frozen HistGradientBoosting Model**
+3. **Failure Mode C (Phase 8.6.2): PowerShell NativeCommandError on Unconditional Pre-Cleanup**
+   - **Symptom:** The workflow failed at Step 7/9 BEFORE `docker run` because `docker stop jobintel-phase8-6-certification 2>$null` exited with code 1 (`Error response from daemon: No such container: jobintel-phase8-6-certification`). PowerShell treated this as a terminating `NativeCommandError` under GitHub Actions stop semantics.
+   - **Root Cause:** Unconditional `docker stop` and `docker rm` were executed when no container was present.
+   - **Remediation:** Replaced unconditional stop/rm with existence-aware PowerShell checks (`docker ps -a --filter "name=^$containerName$" --format "{{.Names}}" 2>$null` with `-contains`), explicitly reset `$LASTEXITCODE = 0` before `docker run`, and applied identical robust existence-checking to the post-run cleanup step.
+
+4. **Ancillary Fix: Scikit-Learn Compatibility with Frozen HistGradientBoosting Model**
    - **Symptom:** Unpickling `models/india/final_model.pkl` in modern Docker builds failed with `ModuleNotFoundError: No module named '_loss'` when pip installed unpinned `scikit-learn 1.9.1`.
-   - **Root Cause:** The frozen model was trained with `scikit-learn 1.7.2`. In `scikit-learn 1.9.1`, the internal `_loss` module hierarchy changed.
+   - **Root Cause:** The frozen model was trained with `scikit-learn 1.7.2`.
    - **Remediation:** Pinned `scikit-learn>=1.4.0,<=1.7.2` in `requirements.txt`. Tested in Docker: model unpickles 100% cleanly without touching or modifying the frozen artifact.
 
 ---
