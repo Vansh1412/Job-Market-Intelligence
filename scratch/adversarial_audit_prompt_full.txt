@@ -1,0 +1,1562 @@
+<USER_REQUEST>
+============================================================
+JOBINTEL — ADVERSARIAL PRODUCT AUDIT
+REAL BROWSER QA • FUNCTIONAL BUG HUNT • UX BUG HUNT
+DATA/ML INTEGRITY • API/UI CONSISTENCY • LAYMAN USABILITY
+============================================================
+
+ROLE
+============================================================
+
+You are now acting as an:
+
+- Senior QA Engineer
+- Principal Frontend Engineer
+- Product Designer
+- UX Researcher
+- Browser Automation Engineer
+- API Integration Tester
+- Data Integrity Auditor
+- ML Product Integrity Auditor
+- Accessibility Auditor
+- Adversarial Software Reviewer
+
+You are NOT acting as the developer who built this application.
+
+Your job is to FIND PROBLEMS.
+
+Do not defend the existing implementation.
+
+Do not assume that previous audit results are correct.
+
+Do not assume that:
+
+59/59 tests passing
+65/65 gates passing
+43/43 Phase 6 gates passing
+production build passing
+screenshots existing
+
+means that the website is actually correct.
+
+The user has personally inspected the website and reported that
+important errors STILL exist.
+
+Therefore this audit must actively attempt to BREAK the application.
+
+============================================================
+1. PRIMARY OBJECTIVE
+============================================================
+
+Find every meaningful remaining problem in the JobIntel application.
+
+Focus especially on problems that:
+
+1. A normal user can encounter.
+2. A user can see visually.
+3. Produce incorrect information.
+4. Produce inconsistent information.
+5. Break navigation.
+6. Break calculator flow.
+7. Produce incorrect salary predictions.
+8. Display wrong labels or wrong metrics.
+9. Mix USA and India data/models.
+10. Show misleading explanations.
+11. Have buttons that appear functional but do nothing.
+12. Have filters that don't actually filter.
+13. Have charts whose labels/values don't match backend data.
+14. Have mobile/responsive problems.
+15. Have layout/spacing/overflow problems.
+16. Have loading/error/empty-state problems.
+17. Have accessibility problems.
+18. Have scientific wording problems.
+19. Have stale or hardcoded data.
+20. Have inconsistent terminology.
+21. Have incorrect API/frontend contracts.
+22. Have state persistence bugs.
+23. Have browser refresh/deep-link bugs.
+24. Have edge-case input failures.
+
+============================================================
+2. ABSOLUTE AUDIT RULE
+============================================================
+
+DO NOT modify the application initially.
+
+First:
+
+AUDIT → REPRODUCE → DOCUMENT → PRIORITIZE
+
+Only after the audit report is complete may you fix issues.
+
+This is critical.
+
+I want to know what was actually wrong BEFORE you fix it.
+
+============================================================
+3. NO SELF-CERTIFICATION
+============================================================
+
+Previous reports contain statements such as:
+
+"production-certified"
+"fully verified"
+"all acceptance criteria passed"
+
+Do NOT use these as evidence.
+
+Treat previous audit results as untrusted.
+
+A previous test saying:
+
+PASS
+
+does NOT mean the user-facing behavior is correct.
+
+You must independently verify it.
+
+============================================================
+4. REAL BROWSER AUDIT
+============================================================
+
+Use an actual browser wherever possible.
+
+Do NOT rely only on:
+
+- source-code inspection
+- TypeScript compilation
+- pytest
+- API curl requests
+- screenshot generation
+- static analysis
+
+Those are necessary but insufficient.
+
+Actually interact with the application.
+
+Use:
+
+click
+type
+select
+scroll
+back
+forward
+refresh
+resize
+switch country
+change values
+submit
+retry
+navigate
+open deep links
+
+Observe the rendered result.
+
+============================================================
+5. COMPLETE USER JOURNEY TEST
+============================================================
+
+Perform the following journey from a completely fresh browser state.
+
+------------------------------------------------------------
+JOURNEY A — USA
+------------------------------------------------------------
+
+Open Home.
+
+Verify:
+
+- headline
+- CTA
+- navigation
+- page loading
+- visual hierarchy
+
+Click:
+
+Estimate My Salary
+
+Select:
+
+USA
+
+Role:
+
+Software Engineer
+
+Experience:
+
+Senior / approximately 5 years
+
+Location:
+
+New York
+
+Skills:
+
+Python
+AWS
+Kubernetes
+
+Work mode:
+
+Remote
+
+Submit.
+
+Record:
+
+- displayed prediction
+- displayed currency
+- displayed role
+- displayed experience
+- displayed location
+- displayed skills
+- archetype
+- explanatory text
+- metrics
+- warnings
+
+Then compare the result with the backend response.
+
+Every displayed number must match.
+
+------------------------------------------------------------
+JOURNEY B — INDIA
+------------------------------------------------------------
+
+Start completely fresh.
+
+Select:
+
+India
+
+Role:
+
+Software Engineer
+
+Experience:
+
+4 years
+
+Location:
+
+Bengaluru
+
+Skills:
+
+Python
+Machine Learning
+AWS
+
+Work mode:
+
+Hybrid
+
+Submit.
+
+Record everything.
+
+Compare UI against backend.
+
+============================================================
+6. COUNTRY SWITCHING ATTACK
+============================================================
+
+This is a HIGH PRIORITY audit.
+
+Start USA.
+
+Enter:
+
+USA profile
+
+Then switch to:
+
+India
+
+Before submitting again, inspect:
+
+- role
+- location
+- skills
+- salary currency
+- work mode
+- hidden state
+- model selection
+- archetype state
+- API payload
+
+Then reverse:
+
+India → USA
+
+Check for stale state.
+
+Look specifically for:
+
+USA location remaining in India.
+
+India location remaining in USA.
+
+USD displayed for India.
+
+INR displayed for USA.
+
+USA archetype shown after switching to India.
+
+India archetype shown after switching to USA.
+
+Old prediction remaining after switching market.
+
+Old warning remaining.
+
+Old form selections remaining incorrectly.
+
+If state should reset, verify it resets.
+
+If state should persist, verify it persists correctly.
+
+============================================================
+7. REFRESH / BACK / FORWARD ATTACK
+============================================================
+
+During the calculator:
+
+- refresh browser
+- go back
+- go forward
+- navigate directly to pages
+- open deep links
+
+Check:
+
+- state recovery
+- routing
+- blank pages
+- crashes
+- incorrect page state
+- lost context
+- stale prediction
+
+Test:
+
+/salary
+/explore
+/skills
+/archetypes
+/cross-market
+/how-it-works
+
+If routes use different actual paths, discover them first.
+
+============================================================
+8. SALARY CALCULATOR ATTACK
+============================================================
+
+Test all steps.
+
+------------------------------------------------------------
+ROLE
+------------------------------------------------------------
+
+Try:
+
+valid role
+
+unknown role
+
+empty role
+
+search partial role
+
+rapidly changing role
+
+------------------------------------------------------------
+EXPERIENCE
+------------------------------------------------------------
+
+Test:
+
+0
+1
+2
+3
+5
+10
+15
+16+
+
+Also try:
+
+negative
+very large
+decimal if UI allows
+empty
+
+Verify frontend and backend constraints agree.
+
+------------------------------------------------------------
+LOCATION
+------------------------------------------------------------
+
+Test:
+
+valid location
+
+invalid location
+
+search partial
+
+empty
+
+location from wrong country
+
+------------------------------------------------------------
+SKILLS
+------------------------------------------------------------
+
+Test:
+
+zero skills
+
+one skill
+
+many skills
+
+duplicate skills
+
+rapid selection
+
+remove skill
+
+select all visible suggestions
+
+skills unavailable in selected market
+
+unknown skill if possible
+
+------------------------------------------------------------
+WORK MODE
+------------------------------------------------------------
+
+Test:
+
+Remote
+Hybrid
+On-site
+
+Switch repeatedly.
+
+============================================================
+9. ZERO-SKILL TEST
+============================================================
+
+This is particularly important.
+
+Submit a profile with:
+
+valid role
+valid experience
+valid location
+ZERO skills
+
+Verify:
+
+- prediction still works if intended
+- fallback behavior is correct
+- archetype becomes unassigned/fallback if appropriate
+- UI does not claim a misleading archetype
+- no crash
+- no fake skill explanation
+
+============================================================
+10. ARCHETYPE ADVERSARIAL TEST
+============================================================
+
+Test specialized skill combinations.
+
+USA examples:
+
+Python + ML + PyTorch
+
+Kubernetes + Docker + Terraform + AWS
+
+React + TypeScript + JavaScript
+
+AWS + Azure
+
+C++ + Linux
+
+India examples:
+
+Spark + Scala + Airflow
+
+Java + Spring Boot + Microservices
+
+Python + ML + Deep Learning
+
+React + Node.js + JavaScript
+
+SAP + FICO + Consulting
+
+Check whether:
+
+UI archetype
+
+API archetype
+
+direct model archetype
+
+and expected frozen archetype mapping
+
+all agree.
+
+Do NOT assume they agree because a parity test passed.
+
+============================================================
+11. PREDICTION INTEGRITY
+============================================================
+
+For several manually chosen profiles:
+
+Capture API response.
+
+Capture displayed frontend value.
+
+Compare mathematically.
+
+Check:
+
+currency
+rounding
+units
+LPA conversion
+dollars/year
+decimal formatting
+
+Example:
+
+Backend:
+₹11.472...
+
+Frontend must not display:
+
+₹114.72 LPA
+
+or
+
+₹11,472 LPA
+
+or
+
+₹11.47/year
+
+Check all transformations.
+
+============================================================
+12. "WHY THIS ESTIMATE?" AUDIT
+============================================================
+
+This is one of the most important areas.
+
+Inspect every explanatory statement.
+
+Ask:
+
+Is this statement actually supported by the model?
+
+Dangerous examples:
+
+"Python increases salary by..."
+
+"Your AWS skill adds $20k."
+
+"Experience causes..."
+
+"This skill guarantees..."
+
+"The model thinks you are..."
+
+These must NOT appear.
+
+Also detect subtler misleading statements.
+
+For every explanation classify:
+
+SUPPORTED
+MISLEADING
+UNSUPPORTED
+CAUSAL
+DESCRIPTIVE
+UNKNOWN
+
+Fix only after documenting.
+
+============================================================
+13. METRIC AUDIT
+============================================================
+
+Search the entire frontend and backend for:
+
+31525
+31,525
+45862
+45,862
+0.587
+36,380
+36380
+51,082
+0.4233
+3.71
+6.22
+0.5798
+35.22
+
+Check every occurrence.
+
+Historical audit documents may contain obsolete values if clearly
+identified as historical errors.
+
+LIVE UI and CURRENT documentation must not.
+
+Also search for:
+
+accuracy
+causes
+proves
+guaranteed
+exact
+occupation
+
+Inspect context rather than blindly replacing strings.
+
+============================================================
+14. MARKET EXPLORER AUDIT
+============================================================
+
+For every filter:
+
+Country
+Role
+Experience
+Location
+Skill
+
+change the filter.
+
+Verify that the actual charts/data change.
+
+Do NOT accept a UI control that merely changes visual state.
+
+Example:
+
+If selecting:
+
+Python
+
+the skill chart/table must actually respond if the product claims
+cross-filtering.
+
+Test:
+
+USA → India
+
+India → USA
+
+Role filters
+
+Location filters
+
+Skill filters
+
+Reset filters
+
+Multiple filters
+
+No-result filters
+
+============================================================
+15. CHART DATA AUDIT
+============================================================
+
+For every chart:
+
+Identify:
+
+source endpoint
+source field
+aggregation
+unit
+filter
+
+Then compare:
+
+backend raw response
+
+against:
+
+rendered chart.
+
+Check:
+
+- labels
+- ordering
+- units
+- rounding
+- percentages
+- currency
+- missing values
+- tooltip
+- axis
+
+Look for charts that are visually correct but numerically wrong.
+
+============================================================
+16. SKILLS PAGE AUDIT
+============================================================
+
+Test:
+
+search
+
+sorting
+
+selection
+
+details
+
+associated roles
+
+associated archetypes
+
+salary difference
+
+demand percentage
+
+Check wording:
+
+"Observed Salary Difference"
+
+must remain observational.
+
+Make sure it does NOT become:
+
+"Salary impact"
+
+or
+
+"Salary increase"
+
+unless scientifically justified.
+
+============================================================
+17. ARCHETYPES PAGE AUDIT
+============================================================
+
+Verify:
+
+USA = 7 archetypes
+
+India = 6 archetypes
+
+Check every:
+
+name
+description
+skill
+salary
+sample size
+cluster ID
+
+against the frozen artifact metadata.
+
+Look for:
+
+wrong cluster mapping
+wrong skill labels
+wrong salary
+wrong sample size
+wrong country
+wrong archetype description
+
+============================================================
+18. USA VS INDIA AUDIT
+============================================================
+
+This page receives special scrutiny.
+
+Verify:
+
+USA values are USD.
+
+India values are INR/LPA.
+
+NO FX conversion.
+
+NO combined meaningless salary average.
+
+No statement implying direct currency equivalence.
+
+Verify that all country-specific metrics originate from
+the correct model/dataset.
+
+============================================================
+19. MOBILE AUDIT
+============================================================
+
+Test at:
+
+390 × 844
+375 × 812
+768 × 1024
+
+Inspect every major page.
+
+Look for:
+
+horizontal scrolling
+cut-off buttons
+overlapping text
+broken charts
+tiny text
+navigation overflow
+cards too wide
+modal overflow
+calculator steps broken
+sticky elements covering content
+incorrect viewport height
+footer problems
+
+Do NOT only test the Home page.
+
+Test:
+
+Home
+Calculator
+Result
+Explore
+Skills
+Archetypes
+Cross Market
+Methodology
+
+============================================================
+20. DESKTOP AUDIT
+============================================================
+
+Test:
+
+1366 × 768
+1440 × 900
+1920 × 1080
+
+Look for:
+
+excessive whitespace
+content too narrow
+content too wide
+misaligned sections
+oversized typography
+charts too small
+sidebar problems
+header problems
+
+============================================================
+21. VISUAL HIERARCHY AUDIT
+============================================================
+
+For every page ask:
+
+What is the ONE thing the user should notice first?
+
+If the answer is unclear:
+
+FLAG IT.
+
+Check:
+
+headline
+primary CTA
+primary metric
+secondary information
+technical detail
+
+Technical information must not overpower the main user experience.
+
+============================================================
+22. NAVIGATION AUDIT
+============================================================
+
+Click EVERY navigation item.
+
+Verify:
+
+correct page
+correct active state
+correct URL
+no full page crash
+no duplicate route
+no broken back button
+
+Click logo.
+
+Click primary CTA.
+
+Click secondary CTA.
+
+Click footer links.
+
+Click "Explore this archetype".
+
+Click "See skills".
+
+Click "Compare USA & India".
+
+Every interactive element must either:
+
+WORK
+
+or
+
+NOT EXIST.
+
+============================================================
+23. BUTTON AUDIT
+============================================================
+
+Programmatically and manually inspect buttons.
+
+Look for:
+
+onClick missing
+
+disabled buttons
+
+buttons with no effect
+
+fake CTAs
+
+links styled as buttons
+
+buttons triggering wrong action
+
+double submission
+
+multiple API requests from one click
+
+============================================================
+24. API FAILURE AUDIT
+============================================================
+
+Temporarily simulate:
+
+backend unavailable
+slow backend
+HTTP 422
+HTTP 500
+malformed response
+empty response
+
+Verify UI produces useful messages.
+
+No:
+
+stack traces
+JSON dumps
+Python exceptions
+undefined
+NaN
+blank screen
+
+============================================================
+25. LOADING AUDIT
+============================================================
+
+Throttle network.
+
+Observe:
+
+calculator
+market explorer
+skills
+archetypes
+
+Check:
+
+loading indicator
+
+button disabled appropriately
+
+no duplicate request
+
+no flicker
+
+no stale data presented as current data
+
+============================================================
+26. ACCESSIBILITY AUDIT
+============================================================
+
+Keyboard only.
+
+Test:
+
+Tab
+Shift+Tab
+Enter
+Space
+Escape
+Arrow keys where appropriate
+
+Check:
+
+focus visibility
+
+logical tab order
+
+form labels
+
+button names
+
+select accessibility
+
+modal accessibility
+
+screen-reader-friendly semantics
+
+contrast
+
+Do not claim accessibility is PASS merely because semantic HTML exists.
+
+Actually test interaction.
+
+============================================================
+27. CONSOLE AUDIT
+============================================================
+
+Open browser console.
+
+Record:
+
+errors
+warnings
+failed requests
+React warnings
+key warnings
+hydration warnings
+404 assets
+CORS problems
+
+A production website should not have unexplained runtime errors.
+
+============================================================
+28. NETWORK AUDIT
+============================================================
+
+Inspect browser network requests.
+
+Check:
+
+duplicate requests
+failed requests
+unexpected endpoints
+wrong country endpoint
+requests containing stale state
+requests containing wrong currency
+requests containing unknown skills
+
+Ensure prediction request occurs only when expected.
+
+============================================================
+29. STATE MANAGEMENT AUDIT
+============================================================
+
+Check for:
+
+stale React state
+
+race conditions
+
+state updates after unmount
+
+double submit
+
+filter persistence
+
+country persistence
+
+calculator state persistence
+
+prediction state persistence
+
+navigation state
+
+refresh behavior
+
+============================================================
+30. HARD-CODED DATA AUDIT
+============================================================
+
+Search frontend for:
+
+salary numbers
+archetype numbers
+sample sizes
+metrics
+skill counts
+market values
+
+Identify every hardcoded value.
+
+Classify:
+
+A. immutable certified metadata
+B. UI copy
+C. suspicious analytical value
+D. stale value
+E. duplicated backend data
+
+Anything in C/D/E must be investigated.
+
+============================================================
+31. SOURCE-OF-TRUTH AUDIT
+============================================================
+
+For every major displayed metric:
+
+UI
+ ↓
+API
+ ↓
+SERVICE
+ ↓
+MODEL/DATA
+
+Trace the entire lineage.
+
+Produce a table:
+
+Metric | UI | API | Backend Source | Correct? | Issue
+
+============================================================
+32. SCIENTIFIC INTEGRITY AUDIT
+============================================================
+
+Search every page for claims involving:
+
+salary
+skills
+experience
+location
+archetypes
+prediction accuracy
+model quality
+
+Classify each claim.
+
+No causal claims.
+
+No guarantee claims.
+
+No R² = accuracy.
+
+No archetype = occupation.
+
+No "AI knows your salary."
+
+No fake confidence interval.
+
+No invented salary range.
+
+============================================================
+33. UX LAYMAN TEST
+============================================================
+
+Pretend you know NOTHING about:
+
+ML
+PCA
+KMeans
+XGBoost
+MAE
+R²
+feature engineering
+
+Navigate the website.
+
+At each page ask:
+
+"What does this mean?"
+
+"What should I click?"
+
+"What do I get?"
+
+If the answer isn't obvious in 5–10 seconds:
+
+FLAG IT.
+
+Record exact UI text causing confusion.
+
+============================================================
+34. CONTENT AUDIT
+============================================================
+
+Look for:
+
+typos
+awkward grammar
+inconsistent capitalization
+inconsistent terminology
+USA vs United States
+salary vs compensation
+skill pattern vs archetype
+estimate vs prediction
+LPA formatting
+USD formatting
+
+Check consistency globally.
+
+============================================================
+35. ERROR PRIORITIZATION
+============================================================
+
+DO NOT give me a generic list.
+
+Classify every discovered issue:
+
+P0 — CRITICAL
+
+Examples:
+
+wrong salary prediction
+wrong country model
+currency contamination
+crash
+data corruption
+scientifically false claim
+
+P1 — HIGH
+
+Examples:
+
+broken calculator step
+wrong chart
+wrong archetype
+wrong filter
+major mobile issue
+wrong API/UI value
+
+P2 — MEDIUM
+
+Examples:
+
+UX confusion
+incorrect state persistence
+bad error message
+minor visual issue
+
+P3 — LOW
+
+Examples:
+
+spacing
+small typography
+minor animation
+cosmetic inconsistency
+
+============================================================
+36. BUG REPORT FORMAT
+============================================================
+
+For EVERY issue provide:
+
+BUG ID
+
+Severity
+
+Page
+
+URL
+
+Viewport
+
+Exact reproduction steps
+
+Expected behavior
+
+Actual behavior
+
+Evidence
+
+Root cause
+
+Affected component
+
+Affected API if any
+
+Scientific/data impact
+
+Recommended fix
+
+Confidence
+
+Example:
+
+BUG-007
+
+Severity:
+P1 HIGH
+
+Page:
+Salary Calculator
+
+Viewport:
+1440×900
+
+Steps:
+1. Select India
+2. Select Software Engineer
+3. Select Bengaluru
+4. Select Python
+5. Submit
+
+Expected:
+India model prediction displayed in ₹ LPA.
+
+Actual:
+UI displays USD formatting.
+
+Root cause:
+Currency formatter receives stale market state.
+
+Impact:
+User receives materially misleading output.
+
+============================================================
+37. CREATE AN ACTUAL BUG MATRIX
+============================================================
+
+Create:
+
+reports/website_audit/bug_matrix.csv
+
+Columns:
+
+bug_id
+severity
+page
+category
+description
+reproduction
+expected
+actual
+root_cause
+scientific_impact
+user_impact
+status
+confidence
+
+============================================================
+38. CREATE DETAILED AUDIT
+============================================================
+
+Create:
+
+reports/website_audit/adversarial_audit.md
+
+Sections:
+
+1. Executive Summary
+2. Environment
+3. Browser Tests
+4. Calculator Audit
+5. API Audit
+6. Data Integrity Audit
+7. Prediction Audit
+8. Archetype Audit
+9. Chart Audit
+10. Navigation Audit
+11. State Management Audit
+12. Mobile Audit
+13. Desktop Audit
+14. Accessibility Audit
+15. Console Audit
+16. Network Audit
+17. Scientific Language Audit
+18. Source-of-Truth Audit
+19. Hardcoded Data Audit
+20. Bug Matrix
+21. Severity Summary
+22. Recommended Fix Order
+23. Final Verdict
+
+============================================================
+39. SCREENSHOT EVIDENCE
+============================================================
+
+For every serious visual bug create a screenshot.
+
+Store in:
+
+reports/website_audit/screenshots/
+
+Use names:
+
+BUG-P0-001.png
+BUG-P1-001.png
+BUG-P2-001.png
+
+Do not create screenshots merely for decoration.
+
+Screenshots must prove the bug.
+
+============================================================
+40. DO NOT FIX YET
+============================================================
+
+THIS FIRST RUN IS AUDIT ONLY.
+
+Do not modify production application code.
+
+You MAY create:
+
+reports/website_audit/*
+scratch/*
+test files specifically for reproduction
+
+But do NOT silently fix the discovered problems.
+
+At the end tell me:
+
+"Audit complete. X bugs found."
+
+============================================================
+41. FINAL AUDIT SUMMARY
+============================================================
+
+Produce:
+
+Critical P0:
+X
+
+High P1:
+X
+
+Medium P2:
+X
+
+Low P3:
+X
+
+False alarms:
+X
+
+Total:
+X
+
+Then:
+
+Top 10 issues to fix first.
+
+============================================================
+42. MOST IMPORTANT RULE
+============================================================
+
+Do not tell me:
+
+"Everything passed."
+
+unless you have genuinely attempted to break it.
+
+A test suite passing is evidence of test coverage,
+NOT proof of product correctness.
+
+A screenshot existing is evidence that a screenshot was captured,
+NOT proof that the UX is correct.
+
+A build succeeding is evidence that the application compiles,
+NOT proof that the application works.
+
+Your job is to find what the previous audit missed.
+
+============================================================
+43. FINAL OUTPUT
+============================================================
+
+At the end provide exactly:
+
+------------------------------------------------------------
+
+JOBINTEL ADVERSARIAL AUDIT
+
+Overall Product Health:
+GREEN / YELLOW / RED
+
+P0:
+X
+
+P1:
+X
+
+P2:
+X
+
+P3:
+X
+
+Total Bugs:
+X
+
+Most Serious Issue:
+...
+
+Most User-Visible Issue:
+...
+
+Most Scientifically Important Issue:
+...
+
+Most Important Fix:
+...
+
+Can the current application be trusted by a layman?
+YES / NO
+
+Can the current application be demonstrated to an evaluator?
+YES / NO
+
+Should production code be changed?
+YES / NO
+
+Recommended next action:
+...
+
+------------------------------------------------------------
+
+STOP.
+
+Do not automatically fix anything unless explicitly instructed
+in the next prompt.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-07T22:34:18+05:30.
+
+The user's current state is as follows:
+Active Document: e:\Job Market\reports\phase7_dashboard_feasibility.md (LANGUAGE_MARKDOWN)
+Cursor is on line: 1
+Other open documents:
+- e:\Job Market\reports\role_family_audit.md (LANGUAGE_MARKDOWN)
+- e:\Job Market\scratch\test_all_models_cv.py (LANGUAGE_PYTHON)
+- e:\Job Market\reports\phase4_1_archetype_report.md (LANGUAGE_MARKDOWN)
+- e:\Job Market\reports\phase4_archetype_report.md (LANGUAGE_MARKDOWN)
+- e:\Job Market\reports\phase2_summary.md (LANGUAGE_MARKDOWN)
+Browser State:
+  Page CA57E431823A8F3712EE0AD086C110CC (JOBINTEL — Job Market Intelligence | Skills · Archetypes · Salaries · Machine Learning) - http://localhost:5173/ [ACTIVE]
+    Viewport: 1536x730, Page Height: 3175
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from Gemini 3.8 Flash (High) to Claude Sonnet 4.6 (Thinking). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>

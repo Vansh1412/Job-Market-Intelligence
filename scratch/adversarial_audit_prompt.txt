@@ -1,0 +1,148 @@
+<USER_REQUEST>
+============================================================
+JOBINTEL — ADVERSARIAL PRODUCT AUDIT
+REAL BROWSER QA • FUNCTIONAL BUG HUNT • UX BUG HUNT
+DATA/ML INTEGRITY • API/UI CONSISTENCY • LAYMAN USABILITY
+============================================================
+
+ROLE
+============================================================
+
+You are now acting as an:
+
+- Senior QA Engineer
+- Principal Frontend Engineer
+- Product Designer
+- UX Researcher
+- Browser Automation Engineer
+- API Integration Tester
+- Data Integrity Auditor
+- ML Product Integrity Auditor
+- Accessibility Auditor
+- Adversarial Software Reviewer
+
+You are NOT acting as the developer who built this application.
+
+Your job is to FIND PROBLEMS.
+
+Do not defend the existing implementation.
+
+Do not assume that previous audit results are correct.
+
+Do not assume that:
+
+59/59 tests passing
+65/65 gates passing
+43/43 Phase 6 gates passing
+production build passing
+screenshots existing
+
+means that the website is actually correct.
+
+The user has personally inspected the website and reported that
+important errors STILL exist.
+
+Therefore this audit must actively attempt to BREAK the application.
+
+============================================================
+1. PRIMARY OBJECTIVE
+============================================================
+
+Find every meaningful remaining problem in the JobIntel application.
+
+Focus especially on problems that:
+
+1. A normal user can encounter.
+2. A user can see visually.
+3. Produce incorrect information.
+4. Produce inconsistent information.
+5. Break navigation.
+6. Break calculator flow.
+7. Produce incorrect salary predictions.
+8. Display wrong labels or wrong metrics.
+9. Mix USA and India data/models.
+10. Show misleading explanations.
+11. Have buttons that appear functional but do nothing.
+12. Have filters that don't actually filter.
+13. Have charts whose labels/values don't match backend data.
+14. Have mobile/responsive problems.
+15. Have layout/s
+<truncated 23271 bytes>
+=========================================================
+43. FINAL OUTPUT
+============================================================
+
+At the end provide exactly:
+
+------------------------------------------------------------
+
+JOBINTEL ADVERSARIAL AUDIT
+
+Overall Product Health:
+GREEN / YELLOW / RED
+
+P0:
+X
+
+P1:
+X
+
+P2:
+X
+
+P3:
+X
+
+Total Bugs:
+X
+
+Most Serious Issue:
+...
+
+Most User-Visible Issue:
+...
+
+Most Scientifically Important Issue:
+...
+
+Most Important Fix:
+...
+
+Can the current application be trusted by a layman?
+YES / NO
+
+Can the current application be demonstrated to an evaluator?
+YES / NO
+
+Should production code be changed?
+YES / NO
+
+Recommended next action:
+...
+
+------------------------------------------------------------
+
+STOP.
+
+Do not automatically fix anything unless explicitly instructed
+in the next prompt.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-07T22:34:18+05:30.
+
+The user's current state is as follows:
+Active Document: e:\Job Market\reports\phase7_dashboard_feasibility.md (LANGUAGE_MARKDOWN)
+Cursor is on line: 1
+Other open documents:
+- e:\Job Market\reports\role_family_audit.md (LANGUAGE_MARKDOWN)
+- e:\Job Market\scratch\test_all_models_cv.py (LANGUAGE_PYTHON)
+- e:\Job Market\reports\phase4_1_archetype_report.md (LANGUAGE_MARKDOWN)
+- e:\Job Market\reports\phase4_archetype_report.md (LANGUAGE_MARKDOWN)
+- e:\Job Market\reports\phase2_summary.md (LANGUAGE_MARKDOWN)
+Browser State:
+  Page CA57E431823A8F3712EE0AD086C110CC (JOBINTEL — Job Market Intelligence | Skills · Archetypes · Salaries · Machine Learning) - http://localhost:5173/ [ACTIVE]
+    Viewport: 1536x730, Page Height: 3175
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from Gemini 3.8 Flash (High) to Claude Sonnet 4.6 (Thinking). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>

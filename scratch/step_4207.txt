@@ -1,0 +1,7 @@
+{
+  "step_index": 4207,
+  "source": "SYSTEM",
+  "type": "CONVERSATION_HISTORY",
+  "status": "DONE",
+  "created_at": "2026-10-07T17:18:10Z"
+}

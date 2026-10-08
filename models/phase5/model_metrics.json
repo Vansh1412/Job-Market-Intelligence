@@ -1,0 +1,93 @@
+[
+  {
+    "Model": "Dummy (Median)",
+    "Feature_Set": "Set A",
+    "Train_MAE": 49496.66095141031,
+    "Train_RMSE": 65753.28040737075,
+    "Train_R2": -0.009357568980180586,
+    "Test_MAE": 50805.556061251475,
+    "Test_RMSE": 67659.87213557039,
+    "Test_R2": -0.011707447696861717,
+    "Test_MAPE": 31.455654005184915,
+    "Generalization_Gap_MAE": 1308.8951098411635,
+    "Generalization_Gap_R2": 0.002349878716681131
+  },
+  {
+    "Model": "Ridge",
+    "Feature_Set": "Set A",
+    "Train_MAE": 38356.92753808609,
+    "Train_RMSE": 52620.13090277073,
+    "Train_R2": 0.3535811037259379,
+    "Test_MAE": 39147.248693184185,
+    "Test_RMSE": 54123.468628200884,
+    "Test_R2": 0.3526131928856492,
+    "Test_MAPE": 23.649196130755993,
+    "Generalization_Gap_MAE": 790.3211550980923,
+    "Generalization_Gap_R2": 0.0009679108402886882
+  },
+  {
+    "Model": "Random Forest",
+    "Feature_Set": "Set A",
+    "Train_MAE": 34306.131264301504,
+    "Train_RMSE": 47309.48361927352,
+    "Train_R2": 0.4774755574416393,
+    "Test_MAE": 37699.167256356784,
+    "Test_RMSE": 52225.91855810485,
+    "Test_R2": 0.3972117530146988,
+    "Test_MAPE": 22.603876144429393,
+    "Generalization_Gap_MAE": 3393.03599205528,
+    "Generalization_Gap_R2": 0.08026380442694048
+  },
+  {
+    "Model": "Gradient Boosting",
+    "Feature_Set": "Set A",
+    "Train_MAE": 35784.37624465629,
+    "Train_RMSE": 49339.4564334672,
+    "Train_R2": 0.4316721790260677,
+    "Test_MAE": 37445.960385384,
+    "Test_RMSE": 52118.687749556484,
+    "Test_R2": 0.39968451426890517,
+    "Test_MAPE": 22.538557922549845,
+    "Generalization_Gap_MAE": 1661.5841407277112,
+    "Generalization_Gap_R2": 0.031987664757162526
+  },
+  {
+    "Model": "XGBoost (Default)",
+    "Feature_Set": "Set A",
+    "Train_MAE": 35764.8626714515,
+    "Train_RMSE": 49247.41130016001,
+    "Train_R2": 0.43379068695949474,
+    "Test_MAE": 37459.91418294654,
+    "Test_RMSE": 52143.31976372742,
+    "Test_R2": 0.3991169453428274,
+    "Test_MAPE": 22.553924642960958,
+    "Generalization_Gap_MAE": 1695.0515114950394,
+    "Generalization_Gap_R2": 0.034673741616667364
+  },
+  {
+    "Model": "XGBoost (Tuned)",
+    "Feature_Set": "Set A",
+    "Train_MAE": 33525.35375872264,
+    "Train_RMSE": 46309.53480524317,
+    "Train_R2": 0.49933061970233106,
+    "Test_MAE": 36380.63972064116,
+    "Test_RMSE": 51082.056286255705,
+    "Test_R2": 0.42332736368742996,
+    "Test_MAPE": 21.713276352124115,
+    "Generalization_Gap_MAE": 2855.2859619185183,
+    "Generalization_Gap_R2": 0.0760032560149011
+  },
+  {
+    "Model": "XGBoost (Set C Archetype)",
+    "Feature_Set": "Set C",
+    "Train_MAE": 33464.671681994405,
+    "Train_RMSE": 46204.163533649276,
+    "Train_R2": 0.5016064425798616,
+    "Test_MAE": 36423.84272992252,
+    "Test_RMSE": 50986.96055744996,
+    "Test_R2": 0.4254724636947578,
+    "Test_MAPE": 21.772368741630995,
+    "Generalization_Gap_MAE": 2959.1710479281173,
+    "Generalization_Gap_R2": 0.07613397888510387
+  }
+]

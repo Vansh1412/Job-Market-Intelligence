@@ -1,0 +1,343 @@
+{
+  "files": {
+    "raw_excel": {
+      "path": "data/raw/india/indian-job-market-dataset-2025.xlsx",
+      "size_bytes": 31709363
+    },
+    "cleaned_master": {
+      "path": "data/processed/india/cleaned_india_jobs.parquet",
+      "size_bytes": 34141012,
+      "rows": 97929,
+      "cols": 31
+    },
+    "job_postings": {
+      "path": "data/processed/india/india_job_postings.parquet",
+      "size_bytes": 34271208,
+      "rows": 97679,
+      "cols": 34
+    },
+    "job_skills": {
+      "path": "data/processed/india/india_job_skills.parquet",
+      "size_bytes": 3234151,
+      "rows": 751947,
+      "cols": 2
+    },
+    "taxonomy_json": {
+      "path": "data/processed/india/india_taxonomy.json",
+      "size_bytes": 2880
+    }
+  },
+  "columns_audit": [
+    {
+      "column": "job_id",
+      "dtype": "int64",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 97679,
+      "sample_val": "270925008041"
+    },
+    {
+      "column": "original_title",
+      "dtype": "object",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 55103,
+      "sample_val": "Sr. HR Recruiter (NON IT)"
+    },
+    {
+      "column": "company_name",
+      "dtype": "object",
+      "null_count": 4,
+      "null_pct": 0.0,
+      "unique_count": 18668,
+      "sample_val": "Orion"
+    },
+    {
+      "column": "company_id",
+      "dtype": "int64",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 18328,
+      "sample_val": "645563"
+    },
+    {
+      "column": "original_location",
+      "dtype": "object",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 10065,
+      "sample_val": "Kolkata(Chinar Park)"
+    },
+    {
+      "column": "normalized_city",
+      "dtype": "object",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 1486,
+      "sample_val": "Kolkata"
+    },
+    {
+      "column": "normalized_state",
+      "dtype": "object",
+      "null_count": 10725,
+      "null_pct": 10.98,
+      "unique_count": 18,
+      "sample_val": "West Bengal"
+    },
+    {
+      "column": "currency",
+      "dtype": "object",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 2,
+      "sample_val": "INR"
+    },
+    {
+      "column": "original_salary",
+      "dtype": "object",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 1339,
+      "sample_val": "2-4 Lacs PA"
+    },
+    {
+      "column": "minimum_salary_inr",
+      "dtype": "float64",
+      "null_count": 64563,
+      "null_pct": 66.1,
+      "unique_count": 156,
+      "sample_val": "200000.0"
+    },
+    {
+      "column": "maximum_salary_inr",
+      "dtype": "float64",
+      "null_count": 64563,
+      "null_pct": 66.1,
+      "unique_count": 195,
+      "sample_val": "400000.0"
+    },
+    {
+      "column": "salary_midpoint_inr",
+      "dtype": "float64",
+      "null_count": 64563,
+      "null_pct": 66.1,
+      "unique_count": 406,
+      "sample_val": "300000.0"
+    },
+    {
+      "column": "salary_lpa",
+      "dtype": "float64",
+      "null_count": 64563,
+      "null_pct": 66.1,
+      "unique_count": 406,
+      "sample_val": "3.0"
+    },
+    {
+      "column": "original_experience",
+      "dtype": "object",
+      "null_count": 2102,
+      "null_pct": 2.15,
+      "unique_count": 287,
+      "sample_val": "2-4 Yrs"
+    },
+    {
+      "column": "minimum_experience",
+      "dtype": "float64",
+      "null_count": 571,
+      "null_pct": 0.58,
+      "unique_count": 31,
+      "sample_val": "2.0"
+    },
+    {
+      "column": "maximum_experience",
+      "dtype": "float64",
+      "null_count": 571,
+      "null_pct": 0.58,
+      "unique_count": 33,
+      "sample_val": "4.0"
+    },
+    {
+      "column": "experience_midpoint",
+      "dtype": "float64",
+      "null_count": 571,
+      "null_pct": 0.58,
+      "unique_count": 63,
+      "sample_val": "3.0"
+    },
+    {
+      "column": "experience_band",
+      "dtype": "object",
+      "null_count": 571,
+      "null_pct": 0.58,
+      "unique_count": 4,
+      "sample_val": "3-5 Yrs (Mid)"
+    },
+    {
+      "column": "normalized_role",
+      "dtype": "object",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 15,
+      "sample_val": "Non-Tech"
+    },
+    {
+      "column": "is_tech_role",
+      "dtype": "bool",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 2,
+      "sample_val": "False"
+    },
+    {
+      "column": "tags_and_skills",
+      "dtype": "object",
+      "null_count": 571,
+      "null_pct": 0.58,
+      "unique_count": 84306,
+      "sample_val": "Communication,Manpower,Staffing,Convinci"
+    },
+    {
+      "column": "job_description",
+      "dtype": "object",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 80678,
+      "sample_val": "Preferred candidate profile . ."
+    },
+    {
+      "column": "job_uploaded",
+      "dtype": "object",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 30,
+      "sample_val": "6 Days Ago"
+    },
+    {
+      "column": "reviews_count",
+      "dtype": "float64",
+      "null_count": 35163,
+      "null_pct": 36.0,
+      "unique_count": 1375,
+      "sample_val": "5162.0"
+    },
+    {
+      "column": "aggregate_rating",
+      "dtype": "float64",
+      "null_count": 35163,
+      "null_pct": 36.0,
+      "unique_count": 41,
+      "sample_val": "4.0"
+    },
+    {
+      "column": "is_salary_valid",
+      "dtype": "bool",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 2,
+      "sample_val": "True"
+    },
+    {
+      "column": "is_inr",
+      "dtype": "bool",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 2,
+      "sample_val": "True"
+    },
+    {
+      "column": "is_exact_duplicate",
+      "dtype": "bool",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 1,
+      "sample_val": "False"
+    },
+    {
+      "column": "is_jobid_duplicate",
+      "dtype": "bool",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 1,
+      "sample_val": "False"
+    },
+    {
+      "column": "is_content_duplicate",
+      "dtype": "bool",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 2,
+      "sample_val": "False"
+    },
+    {
+      "column": "is_analytical_eligible",
+      "dtype": "bool",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 2,
+      "sample_val": "True"
+    },
+    {
+      "column": "city",
+      "dtype": "object",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 1486,
+      "sample_val": "Kolkata"
+    },
+    {
+      "column": "state",
+      "dtype": "object",
+      "null_count": 10725,
+      "null_pct": 10.98,
+      "unique_count": 18,
+      "sample_val": "West Bengal"
+    },
+    {
+      "column": "role_category",
+      "dtype": "object",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "unique_count": 15,
+      "sample_val": "Non-Tech"
+    }
+  ],
+  "subsets": {
+    "raw_total": 97929,
+    "postings_total": 97679,
+    "unique_job_ids": 97679,
+    "inr_count": 97550,
+    "usd_count": 129,
+    "valid_inr_salaries": 33116,
+    "valid_inr_nonnull_lpa": 33116,
+    "tech_postings": 32066,
+    "tech_with_valid_salary": 5945,
+    "nontech_with_valid_salary": 27171,
+    "unique_roles": 15,
+    "unique_cities": 1486,
+    "known_city_count": 97679,
+    "valid_exp_count": 97108,
+    "valid_exp_pct": 99.42
+  },
+  "salary_stats": {
+    "count": 33116,
+    "min_lpa": 0.01,
+    "q25_lpa": 2.875,
+    "median_lpa": 4.25,
+    "mean_lpa": 7.577823710593067,
+    "q75_lpa": 8.25,
+    "p90_lpa": 18.0,
+    "p99_lpa": 45.0,
+    "p99_9_lpa": 80.0,
+    "max_lpa": 825.0,
+    "negative_count": 0,
+    "zero_count": 0,
+    "min_gt_max_count": 0
+  },
+  "skills_stats": {
+    "total_pairs": 751947,
+    "unique_jobs_in_skills": 97108,
+    "unique_skills": 43947,
+    "duplicate_pairs": 0,
+    "orphan_jobs": 0
+  }
+}

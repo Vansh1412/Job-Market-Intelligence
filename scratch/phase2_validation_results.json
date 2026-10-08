@@ -1,0 +1,108 @@
+{
+  "sql_validations": {
+    "postings_by_city": {
+      "status": "PASS",
+      "sql_rows": 15,
+      "pandas_rows": 15,
+      "top_city": "Bengaluru",
+      "top_city_postings": 20075,
+      "top_city_pct": 20.6
+    },
+    "postings_by_role": {
+      "status": "PASS",
+      "sql_rows": 15,
+      "pandas_rows": 15,
+      "top_role": "Non-Tech",
+      "top_role_postings": 65613
+    },
+    "salary_by_experience": {
+      "status": "PASS",
+      "sql_rows": 4,
+      "pandas_rows": 4,
+      "bands_evaluated": [
+        "0-2 Yrs (Entry)",
+        "3-5 Yrs (Mid)",
+        "6-10 Yrs (Senior)",
+        "11+ Yrs (Lead / Principal)"
+      ],
+      "total_salary_obs": 33116
+    },
+    "salary_by_role": {
+      "status": "PASS",
+      "sql_rows": 15,
+      "pandas_rows": 15,
+      "highest_paying_role": "Product / Program Manager",
+      "highest_paying_avg_lpa": 20.34
+    },
+    "salary_by_city_analyst": {
+      "status": "PASS",
+      "sql_rows": 12,
+      "pandas_rows": 12,
+      "top_analyst_city": "Bengaluru",
+      "top_analyst_avg_lpa": 16.38
+    },
+    "top_skills_by_role": {
+      "status": "PASS",
+      "sql_rows": 66677,
+      "pandas_rows": 66677,
+      "count_discrepancies": 0,
+      "total_role_skill_pairs": 66677
+    },
+    "job_market_analysis": {
+      "status": "PASS",
+      "description": "Master script consolidating Views 1-5"
+    }
+  },
+  "cross_checks": {
+    "CHECK 1 (Role count sum == total postings)": {
+      "status": "PASS",
+      "role_sum": 97679,
+      "total_postings": 97679
+    },
+    "CHECK 2 (City counts sum == total known city)": {
+      "status": "PASS",
+      "city_sum": 97679,
+      "total_known_city": 97679
+    },
+    "CHECK 3 (Valid INR salary rows == 33,116)": {
+      "status": "PASS",
+      "valid_sal_rows": 33116,
+      "expected": 33116
+    },
+    "CHECK 4 (No USD rows in salary analyses)": {
+      "status": "PASS",
+      "usd_salary_rows": 0
+    },
+    "CHECK 5 (No negative salary values)": {
+      "status": "PASS",
+      "negative_salary_count": 0
+    },
+    "CHECK 6 (No salary where min > max)": {
+      "status": "PASS",
+      "min_gt_max_count": 0
+    },
+    "CHECK 7 (No duplicate job_id + skill pairs)": {
+      "status": "PASS",
+      "duplicate_pairs_count": 0
+    },
+    "CHECK 8 (All job_skills job_ids exist in job_postings)": {
+      "status": "PASS",
+      "orphan_job_skills_count": 0
+    },
+    "CHECK 9 (All salary analyses retain N sample size)": {
+      "status": "PASS",
+      "columns_verified": [
+        "salary_by_experience.num_postings_with_salary",
+        "salary_by_role.num_postings_with_salary",
+        "salary_by_city_analyst.num_postings_with_salary"
+      ]
+    },
+    "CHECK 10 (Raw Excel row count preserved == 97,929)": {
+      "status": "PASS",
+      "cleaned_master_rows": 97929,
+      "expected": 97929
+    }
+  },
+  "all_sql_passed": true,
+  "all_checks_passed": true
+}

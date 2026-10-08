@@ -1,0 +1,132 @@
+<thinking>
+Excellent! The browser audit has confirmed several critical bugs. Now let me compile all findings and create the complete adversarial audit report. 
+
+Key confirmed findings from both source code analysis and live browser audit:
+
+**CONFIRMED BUGS:**
+
+1. **BUG-P0-001 (India Skills - Hardcoded Roles/Archetypes/Combos)**: CONFIRMED
+   - Browser audit confirmed: Java, SAP, and React all show EXACTLY the same "Associated Roles": "Backend Developer", "Data Engineer", "Software Engineer"
+   - Same "Market Archetypes": "Python, Cloud Data & Applied AI/ML", "Full Stack & Enterprise Engineering"
+   - Same "Co-occurring Skills": "+ Java", "+ SQL", "+ AWS", "+ Docker"
+
+2. **BUG-P1-001 (Explore Market - Hardcoded KPI tiles)**: CONFIRMED
+   - USA: "Senior (5–8 yrs)", "Python (47.2%)", "Software Engineer"
+   - India: "5.0 Years", "Python (32.8%)", "Full Stack Developer"
+   - NONE of these come from API - they're hardcoded strings in the source code
+
+3. **BUG-P1-002 (Explore Market filters don't cross-filter)**: CONFIRMED
+   - Browser audit: Role filter applied to "Data Engineer" - experience and location charts remain unchanged
+   - KPI tiles also don't update when role filter is applied
+
+4. **BUG-P1-003 (URL Routing - No deep links)**: CONFIRMED
+   - Browser audit: URL stays http://localhost:5173/ regardless of page
+   - Refresh resets to Home
+   - Browser Back doesn't navigate between pages
+
+5. **BUG-P1-004 (India Skill Detail - Formula-computed median/delta)**: CONFIRMED FROM CODE
+   - India skills table shows formula-derived values: prev > 20 → 14.5, prev > 10 → 12.0, else 10.5
+   - All deltas are formula-computed, not from real API data
+
+6. **BUG-P0-002 (Error State on Prediction Failure)**: CONFIRMED FROM CODE
+   - If prediction fails, result stays null and step 7 shows nothing (blank screen)
+
+7. **BUG-P2-001 (Hardcoded Info icon color on India result)**: CONFIRMED FROM CODE
+   - Line 1060: `color: '#38BDF8'` always - should be orange for India
+
+8. **BUG-P2-002 (Step label "STEP X OF 6" vs 7-step progress bar)**: CONFIRMED FROM CODE
+   - Steps say "STEP 1 OF 6" but progress bar shows 7 dots
+
+9. **BUG-P2-003 (USA skills table: hardcoded fallback baseline of $180,413)**: FROM CODE
+   - Line 300: `const delta = s.delta_vs_median ?? (s.median_salary ? s.median_salary - 180413 : 0);`
+   - This hardcodes $180,413 as fallback baseline. If `delta_vs_median` is null and `median_salary` is present, it computes delta against hardcoded 180413.
+
+10. **BUG-P2-004 (India Skill Detail Panel - median with)**: FROM CODE
+    - Initial Python skillDetail has `median_with_lpa: 14.5` hardcoded
+    - When other India skills clicked, `median_with_lpa: prev > 20 ? 14.0 : 11.5` - formula, not real
+
+11. **BUG-P3-001 (Category filters for India skills missing)**: FROM CODE and BROWSER
+    - USA skills page has category filter buttons (AI/ML, Cloud & DevOps, etc.)
+    - India skills page has NO category filter buttons (only search)
+    - For 284 competencies, this is a significant UX issue
+
+12. **BUG-P2-005 (Stale skillDetail state when switching USA→India)**: FROM CODE
+    - When user is on USA skills page and switches to India, the `skillDetail` state isn't reset for India
+    - Actually looking at the code: `useEffect` runs on `[market]` change and calls `loadData()` which sets skillDetail
+    - For India, it hardcodes Python detail. But `activeSkill` is also reset to 'python'. So it should work.
+    - Actually there IS an issue: `setUsaLandscape` and `setIndiaSkills` are both updated in the effect, but they're not cleared first. When switching from USA→India, `usaLandscape` still has USA data while `indiaSkills` loads. Since the render uses `isUSA ? filteredUsaSkills : filteredIndiaSkills`, once loaded this should be correct. Low priority.
+
+13. **BUG-P1-005 (API Error state on prediction = blank result screen)**: 
+    - From code: `} : null}` - if `analyzing === false && result === null`, nothing is shown
+    - No error message displayed
+
+14. **BUG-P2-006 (No min/max cap on Continue button - can proceed without valid role)**:
+    - Looking at Continue button: `onClick={() => setStep((prev) => Math.min(6, prev + 1))}`
+    - No validation! User can click Continue without selecting a role, city, or work mode
+    - The default values are used (ML/AI Engineer, San Francisco, Remote)
+    - This is technically a bug but also a design decision (defaults exist)
+
+15. **BUG-P1-006 (ExploreMarketPage: role filter only filters role chart)**:
+    - When role filter is applied, only the by-role data changes
+    - Experience and Location charts show ALL data still
+    - KPIs don't update
+    - User expects cross-filtering
+
+Let me now also check for some more specific metric accuracy issues.
+
+Looking at the India result from the browser audit:
+- India result showed "₹15.62 LPA" with archetype "Python, Cloud Data & Applied AI/ML"
+- The INR display showed "≈ ₹1,561,605 / annum"
+- Let me verify: ₹15.62 LPA = 15.62 × 100,000 = ₹1,562,000 ≈ ₹1,561,605 (close enough due to exact model value)
+- Currency looks correct (₹ and LPA)
+
+Wait, but the browser subagent selected: Software Engineer, 4 years, Bengaluru, Machine Learning (only), Hybrid
+But the default India skills were: `['skill_python', 'skill_spark', 'skill_sql', 'skill_aws']`
+And the user only searched for and selected "Machine Learning" - so either Machine Learning was ADDED to the default 4 skills, or something else happened.
+
+Actually from the code, when user clicks a skill in the wizard step 5, it toggles it. The defaults are already ['skill_python', 'skill_spark', 'skill_sql', 'skill_aws']. So the user clicked "Machine Learning" which added it, resulting in 5 skills total: Python, Spark, SQL, AWS, Machine Learning.
+
+This is a potential bug: **the wizard defaults to pre-filled skills** without clearly telling the user they're pre-filled. A new user might not realize Python, Spark, SQL, AWS are already selected when they first open step 5.
+
+Actually wait - looking at the code more carefully at line 1011:
+```jsx
+<p style={{ fontSize: '0.88rem', margin: 0 }}>
+  Evaluating experience, location factors, and {activeSkills.length} selected skills against
+  the {market} model.
+</p>
+```
+During the India calculation with the skills the subagent picked, if the result showed ₹15.62 LPA and the archetype was "Python, Cloud Data & Applied AI/ML", that seems reasonable for an India Software Engineer with 4 years in Bengaluru with Python+ML skills.
+
+Let me now think about what else to look for:
+
+16. **BUG-P2-007 (Explore Market median salary fallback values)**:
+    - USA: `moments.median || 180413` - if API returns 0 (unlikely), shows hardcoded 180413
+    - India: `moments.median_lpa || 10.0` - if API returns 0, shows hardcoded 10.0
+    - This is minor since the API should always return valid data
+
+17. **BUG-P3-002 (info icon always blue in India result)**:
+    - Line 1060: `<Info size={15} style={{ color: '#38BDF8' }} />` - hardcoded blue color
+    - Should be `isUSA ? '#38BDF8' : '#F97316'` for proper theme
+
+18. **BUG-P1-007 (SkillsPage India: `indiaSkills` uses `/india/market-summary` top_skills, not `/india/skills`)**:
+    - For India, the skills page calls `api.getIndiaMarketSummary()` and uses `summary.top_skills`
+    - But there's also `api.getIndiaSkills()` endpoint which would return all 284 skills with proper metadata
+    - The current implementation might only show TOP skills (e.g. top 12 by prevalence), not all 284
+    - The badge says "INDIA SKILL TAXONOMY · 284 COMPETENCIES" but may only show a subset
+
+19. **BUG-P0-003 (Skills page India: fake/formula-computed data presented as real observed data)**:
+    This is the most serious issue. The Skills page for India:
+    - Uses formula-computed `obsMed` values (14.5, 12.0, or 10.5) presented as "Observed Median"
+    - Uses formula-computed `delta` (4.5, 2.0, or 0.5) presented as "Observed Salary Diff"
+    - Shows hardcoded "Associated Roles: Backend Developer, Data Engineer, Software Engineer" for ALL skills
+    - Shows hardcoded "Market Archetypes: Python, Cloud Data & Applied AI/ML, Full Stack & Enterprise Engineering" for ALL skills
+    - Shows hardcoded "Co-occurring Skills: Java, SQL, AWS, Docker" for ALL skills
+    
+    This is presenting fake data as if it's real observed salary data from the job market corpus. This is a P0 scientific integrity violation.
+
+Now let me create the bug matrix CSV and adversarial audit markdown, then output the final verdict.
+
+Let me also check the remaining files I haven't looked at yet for more bugs.
+</thinking>
+
+I now have enough evidence to create the complete audit report. Let me also check a few more critical areas before writing.

@@ -1,0 +1,143 @@
+{
+  "usa": [
+    {
+      "id": "USA_GOLDEN_01_ML_AI",
+      "profile": {
+        "id": "USA_GOLDEN_01_ML_AI",
+        "name": "USA Senior ML/AI Engineer in San Francisco",
+        "role_family": "ML / AI Engineer",
+        "seniority": "Senior",
+        "city_clean": "San Francisco",
+        "is_remote": true,
+        "selected_skills": [
+          "skill_python",
+          "skill_pytorch",
+          "skill_machine_learning",
+          "skill_deep_learning"
+        ]
+      },
+      "direct_prediction_usd": 256960.28,
+      "api_prediction_usd": 256960.28,
+      "delta_usd": 0.0013,
+      "predicted_salary_display": "$256,960",
+      "archetype_assigned": "SYS_ENG"
+    },
+    {
+      "id": "USA_GOLDEN_02_BACKEND",
+      "profile": {
+        "id": "USA_GOLDEN_02_BACKEND",
+        "name": "USA Mid Backend Developer in New York",
+        "role_family": "Backend Developer",
+        "seniority": "Mid / Unspecified",
+        "city_clean": "New York",
+        "is_remote": false,
+        "selected_skills": [
+          "skill_java",
+          "skill_sql",
+          "skill_docker",
+          "skill_kubernetes"
+        ]
+      },
+      "direct_prediction_usd": 161140.12,
+      "api_prediction_usd": 161140.12,
+      "delta_usd": 0.005,
+      "predicted_salary_display": "$161,140",
+      "archetype_assigned": "DATA_BI"
+    },
+    {
+      "id": "USA_GOLDEN_03_CLOUD_DATA",
+      "profile": {
+        "id": "USA_GOLDEN_03_CLOUD_DATA",
+        "name": "USA Lead Data Engineer in Seattle",
+        "role_family": "Data Engineer",
+        "seniority": "Lead / Principal / Executive",
+        "city_clean": "Seattle",
+        "is_remote": true,
+        "selected_skills": [
+          "skill_python",
+          "skill_sql",
+          "skill_aws",
+          "skill_spark",
+          "skill_snowflake"
+        ]
+      },
+      "direct_prediction_usd": 206508.61,
+      "api_prediction_usd": 206508.61,
+      "delta_usd": 0.0006,
+      "predicted_salary_display": "$206,509",
+      "archetype_assigned": "DATA_BI"
+    }
+  ],
+  "india": [
+    {
+      "id": "IND_GOLDEN_01_PYTHON_AI",
+      "profile": {
+        "id": "IND_GOLDEN_01_PYTHON_AI",
+        "name": "India Mid Data Scientist in Bengaluru",
+        "normalized_role": "Data Scientist",
+        "experience_midpoint_years": 5.0,
+        "experience_range_years": 2.0,
+        "city_grouped": "Bengaluru",
+        "work_mode": "Hybrid",
+        "selected_skills": [
+          "skill_python",
+          "skill_machine_learning",
+          "skill_deep_learning",
+          "skill_nlp"
+        ]
+      },
+      "direct_prediction_lpa": 16.6231,
+      "api_prediction_lpa": 16.62,
+      "delta_lpa": 0.00308,
+      "predicted_salary_display": "\u20b916.62 LPA",
+      "archetype_assigned": "IND_ARC_03"
+    },
+    {
+      "id": "IND_GOLDEN_02_JAVA_MICROSERVICES",
+      "profile": {
+        "id": "IND_GOLDEN_02_JAVA_MICROSERVICES",
+        "name": "India Mid Backend Developer in Hyderabad",
+        "normalized_role": "Backend Developer",
+        "experience_midpoint_years": 4.0,
+        "experience_range_years": 2.0,
+        "city_grouped": "Hyderabad",
+        "work_mode": "In-office",
+        "selected_skills": [
+          "skill_java",
+          "skill_spring_boot",
+          "skill_microservices",
+          "skill_mysql"
+        ]
+      },
+      "direct_prediction_lpa": 9.3541,
+      "api_prediction_lpa": 9.35,
+      "delta_lpa": 0.004119,
+      "predicted_salary_display": "\u20b99.35 LPA",
+      "archetype_assigned": "IND_ARC_02"
+    },
+    {
+      "id": "IND_GOLDEN_03_DATA_ENGINEERING",
+      "profile": {
+        "id": "IND_GOLDEN_03_DATA_ENGINEERING",
+        "name": "India Senior Data Engineer in Pune",
+        "normalized_role": "Data Engineer",
+        "experience_midpoint_years": 7.0,
+        "experience_range_years": 3.0,
+        "city_grouped": "Pune",
+        "work_mode": "Hybrid",
+        "selected_skills": [
+          "skill_spark",
+          "skill_scala",
+          "skill_airflow",
+          "skill_python",
+          "skill_sql"
+        ]
+      },
+      "direct_prediction_lpa": 17.2075,
+      "api_prediction_lpa": 17.21,
+      "delta_lpa": 0.002504,
+      "predicted_salary_display": "\u20b917.21 LPA",
+      "archetype_assigned": "IND_ARC_01"
+    }
+  ]
+}

@@ -1,0 +1,385 @@
+==============================================================================
+INT234 PREDICTIVE ANALYTICS - ACADEMIC TASK 2 (PROJECT, 30 MARKS)
+PROJECT BLUEPRINT
+Job Market Intelligence: Skill Demand Clustering and Salary Prediction
+==============================================================================
+Allotted: 15-09-2026          Submission: 10-11-2026
+
+------------------------------------------------------------------------------
+1. PROJECT SNAPSHOT
+------------------------------------------------------------------------------
+Title (suggested):
+  Job Market Intelligence: Skill-Based Job Archetype Discovery and Salary
+  Prediction using Machine Learning
+
+One-line pitch:
+  Extract skills from job postings, discover job archetypes with PCA +
+  clustering, predict salary with regression models, and test whether model
+  error differs across archetypes.
+
+Why this topic:
+  - Different domain from existing portfolio (cybersecurity, healthcare,
+    MLOps, software-engineering risk).
+  - Covers EVERY task item in the brief (regression, PCA, clustering,
+    ensemble/MLP, metrics, bias-variance).
+  - Easy to explain in interviews and relevant to a developer job search.
+
+Core research question (the "unique angle"):
+  RQ1. Which skills and skill combinations are most associated with higher
+       salaries?
+  RQ2. Do job postings naturally form skill-based archetypes?
+  RQ3. Does salary-prediction error differ across archetypes?
+       (This drives the bias-variance and error-analysis section.)
+
+------------------------------------------------------------------------------
+2. MAPPING TO THE ASSIGNMENT BRIEF
+------------------------------------------------------------------------------
+Task 1  Select dataset + define problem   -> Sections 3, 4
+Task 2  Preprocessing + EDA               -> Sections 5, 6
+Task 3  At least two ML models            -> Section 8 (Ridge, RF, GB)
+Task 4  K-Means/Hierarchical or PCA       -> Section 7 (PCA + K-Means)
+Task 5  MLP / Random Forest / ensemble    -> Section 8 (RF, GB, MLP)
+Task 6  Metrics (MAE, MSE, RMSE, R2;      -> Section 9
+        Accuracy, Precision, Recall, F1,
+        AUC, LogLoss, Confusion Matrix)
+Task 7  Bias-variance, visuals,           -> Sections 10, 11, 12
+        conclusions, future scope
+
+Note: the brief's tasks are joined by "or", so doing all of them is a
+strength, but make sure at least regression + PCA/clustering + one ensemble
+are done well rather than everything shallowly.
+
+------------------------------------------------------------------------------
+3. PROBLEM DEFINITION
+------------------------------------------------------------------------------
+Primary task (regression):
+  Predict annual salary (normalized to one currency and period, e.g. INR LPA
+  or USD/year) from job role, experience, location, and skills.
+
+Secondary task (classification, optional but recommended):
+  Classify the job into a category (e.g. Data Scientist, Backend Developer,
+  DevOps, Data Analyst, ML Engineer) OR into salary bands (Low / Medium /
+  High). This lets you report Accuracy, Precision, Recall, F1, AUC,
+  Log Loss and Confusion Matrix as the brief lists.
+
+Unsupervised task:
+  Cluster postings in skill space to find job archetypes.
+
+------------------------------------------------------------------------------
+4. DATASET SELECTION
+------------------------------------------------------------------------------
+Requirements checklist (pick a dataset that satisfies most of these):
+  [ ] Has a salary column (min/max or single value) with enough non-null rows
+  [ ] Has a skills column or a job-description text column
+  [ ] Has job title / role
+  [ ] Has experience level and location
+  [ ] At least ~5,000 rows (10,000+ is better)
+  [ ] Public license, citable source
+
+Where to look:
+  - Kaggle: search "job postings", "data science jobs salary",
+    "LinkedIn job postings", "Naukri jobs", "Glassdoor salaries"
+  - Pick ONE primary dataset. Do not merge several unless necessary.
+
+Selection log (fill this in; examiners like to see justification):
+  Dataset name:        ____________________
+  Source URL:          ____________________
+  Rows / columns:      ____________________
+  Salary coverage (%): ____________________
+  Why chosen:          ____________________
+
+Fallback plan:
+  If salary is too sparse, switch the regression target to a derived
+  "salary midpoint" or classify into salary bands instead.
+
+------------------------------------------------------------------------------
+5. DATA PREPROCESSING PLAN
+------------------------------------------------------------------------------
+5.1 Cleaning
+  - Remove exact duplicates (same title + company + description).
+  - Standardize column names; fix dtypes.
+  - Parse salary strings; convert ranges to midpoint; unify currency and
+    period (monthly -> annual); document every assumption.
+  - Drop rows with missing salary for supervised tasks (report how many).
+
+5.2 Missing values
+  - Categorical: fill with "Unknown" or mode (justify choice).
+  - Numeric (experience): median imputation.
+  - Report missing-value table before and after.
+
+5.3 Outliers
+  - Inspect salary with boxplot and IQR rule.
+  - Prefer log-transform of salary over deleting outliers; compare both.
+
+5.4 Categorical encoding
+  - Low-cardinality (experience level, work mode): one-hot encoding.
+  - High-cardinality (location, company): top-N + "Other", or target/
+    frequency encoding.
+  - Job title: group into role families (map titles to ~8-12 categories).
+
+5.5 Skill extraction (the key feature step)
+  - Build a skill vocabulary (e.g. python, sql, aws, docker, kubernetes,
+    spark, tableau, power bi, tensorflow, pytorch, java, react, git ...).
+  - Method A: keyword matching against the vocabulary -> multi-hot matrix.
+  - Method B: TF-IDF on description text (limit max_features ~ 300-500).
+  - Use Method A as primary (interpretable), Method B as comparison.
+
+5.6 Feature scaling
+  - StandardScaler for numeric features and before PCA / MLP.
+  - Tree models do not need scaling, but keep one shared pipeline for
+    fairness.
+
+5.7 Data splitting
+  - 80/20 train/test split with fixed random_state.
+  - Use stratification for classification.
+  - Fit scalers/encoders/PCA on TRAIN ONLY (avoid data leakage; mention this
+    explicitly in the report).
+  - Use 5-fold cross-validation on train for model selection.
+
+------------------------------------------------------------------------------
+6. EXPLORATORY DATA ANALYSIS (EDA) PLAN
+------------------------------------------------------------------------------
+Plots to produce (each with a 1-2 line interpretation in the report):
+  1. Salary distribution (raw and log) - histogram + KDE
+  2. Salary by experience level - boxplot
+  3. Salary by role family - boxplot / bar
+  4. Top 20 most demanded skills - horizontal bar
+  5. Skill frequency vs median salary - scatter (demand vs pay)
+  6. Skill co-occurrence heatmap (top 20 skills)
+  7. Correlation heatmap of numeric features
+  8. Postings by location / remote vs on-site
+  9. Missing-value heatmap
+
+Key EDA questions to answer in text:
+  - Which skills are common but low-paying vs rare but high-paying?
+  - Does experience or skill count drive salary more?
+
+------------------------------------------------------------------------------
+7. DIMENSIONALITY REDUCTION AND CLUSTERING (UNSUPERVISED)
+------------------------------------------------------------------------------
+7.1 PCA
+  - Apply on scaled skill matrix.
+  - Plot scree plot + cumulative explained variance.
+  - Choose components covering ~80-90% variance; also keep a 2D projection
+    for visualization.
+  - Inspect loadings: which skills define PC1, PC2? (e.g. PC1 = "data/ML
+    stack", PC2 = "web/backend stack").
+
+7.2 K-Means
+  - Try k = 2..10.
+  - Select k using Elbow (inertia) + Silhouette score (+ Davies-Bouldin).
+  - Fit final k; plot clusters on PCA 2D.
+  - Profile each cluster: top skills, median salary, common roles, size.
+  - Name the archetypes (e.g. "ML/AI Engineers", "Data Analysts / BI",
+    "Backend + Cloud", "DevOps/Platform", "Frontend/Full-stack").
+
+7.3 Optional: Hierarchical clustering
+  - Dendrogram on a sample (e.g. 500-1000 rows) as comparison to K-Means.
+
+7.4 Use clusters downstream
+  - Add cluster label as a feature (compare models with vs without it).
+  - Use clusters later for per-archetype error analysis (RQ3).
+
+------------------------------------------------------------------------------
+8. SUPERVISED MODELING PLAN
+------------------------------------------------------------------------------
+8.1 Baseline
+  - DummyRegressor (predict mean/median) - sets the floor for R2.
+
+8.2 Models (regression target: log salary or salary)
+  M1  Linear Regression / Ridge / Lasso   (interpretable baseline)
+  M2  Random Forest Regressor             (ensemble, bagging)
+  M3  Gradient Boosting (or XGBoost)      (ensemble, boosting)
+  M4  MLP Regressor (feedforward NN)      (neural comparison)
+
+8.3 Feature-set experiments (this makes the comparison meaningful)
+  Set A: original features (encoded + skills multi-hot)
+  Set B: PCA-reduced features
+  Set C: Set A + cluster label
+  -> Compare each model across Sets A/B/C in a results table.
+
+8.4 Hyperparameter tuning
+  - GridSearchCV / RandomizedSearchCV with 5-fold CV.
+  - Suggested grids:
+      Ridge: alpha in [0.01, 0.1, 1, 10, 100]
+      RF: n_estimators [100, 300], max_depth [None, 10, 20],
+          min_samples_leaf [1, 3, 5]
+      GB: n_estimators [100, 300], learning_rate [0.03, 0.1],
+          max_depth [3, 5]
+      MLP: hidden_layer_sizes [(64,), (128,64)], alpha [1e-4, 1e-2],
+           early_stopping=True
+  - Report best params and CV score.
+
+8.5 Optional classification track
+  - Target: salary band (tertiles) or role family.
+  - Models: Logistic Regression, Random Forest, Gradient Boosting.
+  - Metrics: Accuracy, Precision, Recall, F1 (macro), ROC-AUC (OvR),
+    Log Loss, Confusion Matrix.
+
+------------------------------------------------------------------------------
+9. EVALUATION PLAN
+------------------------------------------------------------------------------
+Regression metrics (on held-out test set):
+  MAE, MSE, RMSE, R2 (report in original salary units; if you modeled log
+  salary, back-transform before computing MAE/RMSE).
+
+Results table template:
+
+  Model            | Feature set | CV RMSE | Test MAE | Test RMSE | Test R2
+  -----------------|-------------|---------|----------|-----------|--------
+  Dummy            | -           |         |          |           |
+  Ridge            | A           |         |          |           |
+  Ridge            | B (PCA)     |         |          |           |
+  Random Forest    | A / B / C   |         |          |           |
+  Gradient Boosting| A / B / C   |         |          |           |
+  MLP              | A / B / C   |         |          |           |
+
+Classification metrics (if included): Accuracy, Precision, Recall, F1,
+AUC, Log Loss, Confusion Matrix.
+
+Statistical sanity:
+  - Report CV mean +/- std, not just a single split.
+  - Optionally paired comparison of model residuals.
+
+------------------------------------------------------------------------------
+10. BIAS-VARIANCE AND ERROR ANALYSIS (high-value section)
+------------------------------------------------------------------------------
+  - Compare train vs test vs CV error for each model:
+      Linear/Ridge  -> likely higher bias (underfit)
+      Deep RF/GB    -> likely higher variance (overfit) unless regularized
+      MLP           -> sensitive to scaling and regularization
+  - Learning curves (error vs training size) for the best 2 models.
+  - Validation curve for one hyperparameter (e.g. RF max_depth).
+  - Effect of regularization (Ridge alpha) on bias/variance.
+  - Residual plots: residuals vs predicted, residual histogram.
+  - Per-archetype error analysis (RQ3):
+      MAE/RMSE/R2 per cluster; bar chart; discuss why some archetypes are
+      harder (sparser data, wider salary spread, rare skills).
+  - Per-experience-band and per-location error breakdown (optional).
+
+------------------------------------------------------------------------------
+11. INTERPRETABILITY AND VISUALIZATION
+------------------------------------------------------------------------------
+  - Feature importance (RF/GB) and permutation importance (more reliable).
+  - Optional SHAP summary plot for the best model.
+  - Predicted vs actual scatter with y = x line.
+  - PCA 2D cluster plot colored by archetype.
+  - Cluster profile heatmap (clusters x top skills).
+  - Skill "value map": demand (frequency) vs salary premium.
+  - Final comparison bar chart of all models.
+
+------------------------------------------------------------------------------
+12. DEMO / DASHBOARD (small, optional but impressive)
+------------------------------------------------------------------------------
+Streamlit app (keep it simple; do not over-engineer):
+  Inputs:  role family, experience, location, multi-select skills
+  Outputs: predicted salary range, nearest job archetype, top skills to add
+           to move into a higher-paying archetype
+  Tabs:    Predict | Archetypes | Skill Insights | Model Comparison
+Save the best pipeline with joblib and load it in the app.
+
+------------------------------------------------------------------------------
+13. PROJECT STRUCTURE (suggested)
+------------------------------------------------------------------------------
+  int234-job-market-intelligence/
+  |-- data/
+  |   |-- raw/                  (original dataset - never edited)
+  |   `-- processed/
+  |-- notebooks/
+  |   |-- 01_data_understanding.ipynb
+  |   |-- 02_preprocessing_eda.ipynb
+  |   |-- 03_pca_clustering.ipynb
+  |   |-- 04_modeling_tuning.ipynb
+  |   `-- 05_evaluation_error_analysis.ipynb
+  |-- src/
+  |   |-- preprocess.py
+  |   |-- skills.py             (vocabulary + extraction)
+  |   `-- train.py
+  |-- models/                   (saved .joblib files)
+  |-- reports/
+  |   |-- figures/
+  |   `-- INT234_Project_Report.pdf
+  |-- app.py                    (Streamlit demo)
+  |-- requirements.txt
+  `-- README.md
+
+Tech stack: Python, pandas, numpy, scikit-learn, matplotlib, seaborn,
+(optional) xgboost, shap, streamlit, joblib.
+
+------------------------------------------------------------------------------
+14. TIMELINE (15 Sep - 10 Nov 2026; adjust to the days left)
+------------------------------------------------------------------------------
+  Phase 1  Dataset selection + problem definition ......... 2-3 days
+  Phase 2  Cleaning, salary normalization, skill extraction  4-5 days
+  Phase 3  EDA + visualizations ........................... 3 days
+  Phase 4  PCA + K-Means + archetype profiling ............ 3-4 days
+  Phase 5  Baselines + models + tuning (feature sets A/B/C) 5-6 days
+  Phase 6  Evaluation, bias-variance, per-cluster analysis  3-4 days
+  Phase 7  Streamlit demo (optional) ...................... 2-3 days
+  Phase 8  Report writing, README, final checks ........... 4-5 days
+  Buffer ................................................... 3 days
+  Rule: finish a complete minimal pipeline (Phases 1-6, one model) FIRST,
+  then improve.
+
+------------------------------------------------------------------------------
+15. REPORT OUTLINE
+------------------------------------------------------------------------------
+  1. Abstract
+  2. Introduction and problem statement (with RQ1-RQ3)
+  3. Dataset description and selection justification
+  4. Data preprocessing (cleaning, skill extraction, encoding, scaling,
+     splitting, leakage prevention)
+  5. Exploratory data analysis
+  6. PCA and clustering (archetypes)
+  7. Model implementation and hyperparameter tuning
+  8. Results and comparative analysis (tables + charts)
+  9. Bias-variance and error analysis
+ 10. Discussion (answers to RQ1-RQ3, justification of algorithm and
+     metric choices - the brief explicitly asks for this)
+ 11. Conclusion and future scope
+ 12. References
+ Appendix: code snippets, extra plots, environment details
+
+Future scope ideas:
+  - Embeddings (sentence transformers) instead of TF-IDF
+  - Time-aware demand forecasting of skills across posting dates
+  - Quantile regression for salary ranges
+  - Region-specific models; fairness checks across locations
+
+------------------------------------------------------------------------------
+16. RISKS AND MITIGATIONS
+------------------------------------------------------------------------------
+  Risk: Salary missing or inconsistent across rows
+    -> Choose a dataset with high salary coverage; normalize early; fall
+       back to salary bands.
+  Risk: Skill extraction misses synonyms (e.g. "pytorch" vs "torch")
+    -> Maintain an alias dictionary; manually inspect a sample of 50 rows.
+  Risk: Data leakage (fitting PCA/scaler on all data)
+    -> Use sklearn Pipelines; fit on train only.
+  Risk: Overfitting with many sparse features
+    -> Regularization, CV, feature-count limits, compare with PCA set.
+  Risk: Scope creep (dashboard eating report time)
+    -> Treat the demo as optional; the report and analysis carry the marks.
+  Risk: Class/segment imbalance across archetypes
+    -> Report per-cluster sample sizes alongside per-cluster errors.
+
+------------------------------------------------------------------------------
+17. SUBMISSION CHECKLIST
+------------------------------------------------------------------------------
+  [ ] Real-world dataset chosen and cited
+  [ ] Problem clearly defined (RQ1-RQ3)
+  [ ] Missing values, categorical encoding, scaling, splitting documented
+  [ ] EDA with interpretations
+  [ ] PCA (scree + loadings) and K-Means (elbow + silhouette) done
+  [ ] At least two ML models + one ensemble/MLP compared with a baseline
+  [ ] Metrics reported correctly (MAE, MSE, RMSE, R2 [+ classification set])
+  [ ] Algorithm and metric choices justified in text
+  [ ] Bias-variance discussion with learning/validation curves
+  [ ] Visualizations clear and labeled
+  [ ] Conclusions and future scope written
+  [ ] Code runs end-to-end; README explains how to reproduce
+  [ ] Report proofread; references added; submitted before 10-11-2026
+
+==============================================================================
+END OF BLUEPRINT
+==============================================================================

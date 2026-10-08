@@ -1,0 +1,659 @@
+35. ERROR PRIORITIZATION
+
+============================================================
+
+
+
+DO NOT give me a generic list.
+
+
+
+Classify every discovered issue:
+
+
+
+P0 — CRITICAL
+
+
+
+Examples:
+
+
+
+wrong salary prediction
+
+wrong country model
+
+currency contamination
+
+crash
+
+data corruption
+
+scientifically false claim
+
+
+
+P1 — HIGH
+
+
+
+Examples:
+
+
+
+broken calculator step
+
+wrong chart
+
+wrong archetype
+
+wrong filter
+
+major mobile issue
+
+wrong API/UI value
+
+
+
+P2 — MEDIUM
+
+
+
+Examples:
+
+
+
+UX confusion
+
+incorrect state persistence
+
+bad error message
+
+minor visual issue
+
+
+
+P3 — LOW
+
+
+
+Examples:
+
+
+
+spacing
+
+small typography
+
+minor animation
+
+cosmetic inconsistency
+
+
+
+============================================================
+
+36. BUG REPORT FORMAT
+
+============================================================
+
+
+
+For EVERY issue provide:
+
+
+
+BUG ID
+
+
+
+Severity
+
+
+
+Page
+
+
+
+URL
+
+
+
+Viewport
+
+
+
+Exact reproduction steps
+
+
+
+Expected behavior
+
+
+
+Actual behavior
+
+
+
+Evidence
+
+
+
+Root cause
+
+
+
+Affected component
+
+
+
+Affected API if any
+
+
+
+Scientific/data impact
+
+
+
+Recommended fix
+
+
+
+Confidence
+
+
+
+Example:
+
+
+
+BUG-007
+
+
+
+Severity:
+
+P1 HIGH
+
+
+
+Page:
+
+Salary Calculator
+
+
+
+Viewport:
+
+1440×900
+
+
+
+Steps:
+
+1. Select India
+
+2. Select Software Engineer
+
+3. Select Bengaluru
+
+4. Select Python
+
+5. Submit
+
+
+
+Expected:
+
+India model prediction displayed in ₹ LPA.
+
+
+
+Actual:
+
+UI displays USD formatting.
+
+
+
+Root cause:
+
+Currency formatter receives stale market state.
+
+
+
+Impact:
+
+User receives materially misleading output.
+
+
+
+============================================================
+
+37. CREATE AN ACTUAL BUG MATRIX
+
+============================================================
+
+
+
+Create:
+
+
+
+reports/website_audit/bug_matrix.csv
+
+
+
+Columns:
+
+
+
+bug_id
+
+severity
+
+page
+
+category
+
+description
+
+reproduction
+
+expected
+
+actual
+
+root_cause
+
+scientific_impact
+
+user_impact
+
+status
+
+confidence
+
+
+
+============================================================
+
+38. CREATE DETAILED AUDIT
+
+============================================================
+
+
+
+Create:
+
+
+
+reports/website_audit/adversarial_audit.md
+
+
+
+Sections:
+
+
+
+1. Executive Summary
+
+2. Environment
+
+3. Browser Tests
+
+4. Calculator Audit
+
+5. API Audit
+
+6. Data Integrity Audit
+
+7. Prediction Audit
+
+8. Archetype Audit
+
+9. Chart Audit
+
+10. Navigation Audit
+
+11. State Management Audit
+
+12. Mobile Audit
+
+13. Desktop Audit
+
+14. Accessibility Audit
+
+15. Console Audit
+
+16. Network Audit
+
+17. Scientific Language Audit
+
+18. Source-of-Truth Audit
+
+19. Hardcoded Data Audit
+
+20. Bug Matrix
+
+21. Severity Summary
+
+22. Recommended Fix Order
+
+23. Final Verdict
+
+
+
+============================================================
+
+39. SCREENSHOT EVIDENCE
+
+============================================================
+
+
+
+For every serious visual bug create a screenshot.
+
+
+
+Store in:
+
+
+
+reports/website_audit/screenshots/
+
+
+
+Use names:
+
+
+
+BUG-P0-001.png
+
+BUG-P1-001.png
+
+BUG-P2-001.png
+
+
+
+Do not create screenshots merely for decoration.
+
+
+
+Screenshots must prove the bug.
+
+
+
+============================================================
+
+40. DO NOT FIX YET
+
+============================================================
+
+
+
+THIS FIRST RUN IS AUDIT ONLY.
+
+
+
+Do not modify production application code.
+
+
+
+You MAY create:
+
+
+
+reports/website_audit/*
+
+scratch/*
+
+test files specifically for reproduction
+
+
+
+But do NOT silently fix the discovered problems.
+
+
+
+At the end tell me:
+
+
+
+"Audit complete. X bugs found."
+
+
+
+============================================================
+
+41. FINAL AUDIT SUMMARY
+
+============================================================
+
+
+
+Produce:
+
+
+
+Critical P0:
+
+X
+
+
+
+High P1:
+
+X
+
+
+
+Medium P2:
+
+X
+
+
+
+Low P3:
+
+X
+
+
+
+False alarms:
+
+X
+
+
+
+Total:
+
+X
+
+
+
+Then:
+
+
+
+Top 10 issues to fix first.
+
+
+
+============================================================
+
+42. MOST IMPORTANT RULE
+
+============================================================
+
+
+
+Do not tell me:
+
+
+
+"Everything passed."
+
+
+
+unless you have genuinely attempted to break it.
+
+
+
+A test suite passing is evidence of test coverage,
+
+NOT proof of product correctness.
+
+
+
+A screenshot existing is evidence that a screenshot was captured,
+
+NOT proof that the UX is correct.
+
+
+
+A build succeeding is evidence that the application compiles,
+
+NOT proof that the application works.
+
+
+
+Your job is to find what the previous audit missed.
+
+
+
+============================================================
+
+43. FINAL OUTPUT
+
+============================================================
+
+
+
+At the end provide exactly:
+
+
+
+------------------------------------------------------------
+
+
+
+JOBINTEL ADVERSARIAL AUDIT
+
+
+
+Overall Product Health:
+
+GREEN / YELLOW / RED
+
+
+
+P0:
+
+X
+
+
+
+P1:
+
+X
+
+
+
+P2:
+
+X
+
+
+
+P3:
+
+X
+
+
+
+Total Bugs:
+
+X
+
+
+
+Most Serious Issue:
+
+...
+
+
+
+Most User-Visible Issue:
+
+...
+
+
+
+Most Scientifically Important Issue:
+
+...
+
+
+
+Most Important Fix:
+
+...
+
+
+
+Can the current application be trusted by a layman?
+
+YES / NO
+
+
+
+Can the current application be demonstrated to an evaluator?
+
+YES / NO
+
+
+
+Should production code be changed?
+
+YES / NO
+
+
+
+Recommended next action:
+
+...
+
+
+
+------------------------------------------------------------
+
+
+
+STOP.
+
+
+
+Do not automatically fix anything unless explicitly instructed
+
+in the next prompt.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-07T22:34:18+05:30.
+
+The user's current state is as follows:
+Active Document: e:\Job Market\reports\phase7_dashboard_feasibility.md (LANGUAGE_MARKDOWN)
+Cursor is on line: 1
+Other open documents:
+- e:\Job Market\reports\role_family_audit.md (LANGUAGE_MARKDOWN)
+- e:\Job Market\scratch\test_all_models_cv.py (LANGUAGE_PYTHON)
+- e:\Job Market\reports\phase4_1_archetype_report.md (LANGUAGE_MARKDOWN)
+- e:\Job Market\reports\phase4_archetype_report.md (LANGUAGE_MARKDOWN)
+- e:\Job Market\reports\phase2_summary.md (LANGUAGE_MARKDOWN)
+Browser State:
+  Page CA57E431823A8F3712EE0AD086C110CC (JOBINTEL — Job Market Intelligence | Skills · Archetypes · Salaries · Machine Learning) - http://localhost:5173/ [ACTIVE]
+    Viewport: 1536x730, Page Height: 3175
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from Gemini 3.8 Flash (High) to Claude Sonnet 4.6 (Thinking). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>

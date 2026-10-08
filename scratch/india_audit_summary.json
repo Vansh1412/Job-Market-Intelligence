@@ -1,0 +1,419 @@
+{
+  "dimensions": {
+    "rows": 97929,
+    "cols": 17
+  },
+  "columns": [
+    "title",
+    "jobId",
+    "currency",
+    "jobUploaded",
+    "companyName",
+    "tagsAndSkills",
+    "experience",
+    "salary",
+    "location",
+    "companyId",
+    "ReviewsCount",
+    "AggregateRating",
+    "jobDescription",
+    "minimumSalary",
+    "maximumSalary",
+    "minimumExperience",
+    "maximumExperience"
+  ],
+  "column_info": {
+    "title": {
+      "dtype": "object",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "non_null_count": 97929,
+      "non_null_pct": 100.0,
+      "unique_count": 55104
+    },
+    "jobId": {
+      "dtype": "int64",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "non_null_count": 97929,
+      "non_null_pct": 100.0,
+      "unique_count": 97679
+    },
+    "currency": {
+      "dtype": "object",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "non_null_count": 97929,
+      "non_null_pct": 100.0,
+      "unique_count": 2
+    },
+    "jobUploaded": {
+      "dtype": "object",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "non_null_count": 97929,
+      "non_null_pct": 100.0,
+      "unique_count": 30
+    },
+    "companyName": {
+      "dtype": "object",
+      "null_count": 4,
+      "null_pct": 0.0,
+      "non_null_count": 97925,
+      "non_null_pct": 100.0,
+      "unique_count": 18668
+    },
+    "tagsAndSkills": {
+      "dtype": "object",
+      "null_count": 571,
+      "null_pct": 0.58,
+      "non_null_count": 97358,
+      "non_null_pct": 99.42,
+      "unique_count": 84307
+    },
+    "experience": {
+      "dtype": "object",
+      "null_count": 2105,
+      "null_pct": 2.15,
+      "non_null_count": 95824,
+      "non_null_pct": 97.85,
+      "unique_count": 287
+    },
+    "salary": {
+      "dtype": "object",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "non_null_count": 97929,
+      "non_null_pct": 100.0,
+      "unique_count": 1339
+    },
+    "location": {
+      "dtype": "object",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "non_null_count": 97929,
+      "non_null_pct": 100.0,
+      "unique_count": 10066
+    },
+    "companyId": {
+      "dtype": "int64",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "non_null_count": 97929,
+      "non_null_pct": 100.0,
+      "unique_count": 18328
+    },
+    "ReviewsCount": {
+      "dtype": "float64",
+      "null_count": 35252,
+      "null_pct": 36.0,
+      "non_null_count": 62677,
+      "non_null_pct": 64.0,
+      "unique_count": 1375
+    },
+    "AggregateRating": {
+      "dtype": "float64",
+      "null_count": 35252,
+      "null_pct": 36.0,
+      "non_null_count": 62677,
+      "non_null_pct": 64.0,
+      "unique_count": 41
+    },
+    "jobDescription": {
+      "dtype": "object",
+      "null_count": 0,
+      "null_pct": 0.0,
+      "non_null_count": 97929,
+      "non_null_pct": 100.0,
+      "unique_count": 80679
+    },
+    "minimumSalary": {
+      "dtype": "float64",
+      "null_count": 571,
+      "null_pct": 0.58,
+      "non_null_count": 97358,
+      "non_null_pct": 99.42,
+      "unique_count": 164
+    },
+    "maximumSalary": {
+      "dtype": "float64",
+      "null_count": 571,
+      "null_pct": 0.58,
+      "non_null_count": 97358,
+      "non_null_pct": 99.42,
+      "unique_count": 204
+    },
+    "minimumExperience": {
+      "dtype": "float64",
+      "null_count": 571,
+      "null_pct": 0.58,
+      "non_null_count": 97358,
+      "non_null_pct": 99.42,
+      "unique_count": 31
+    },
+    "maximumExperience": {
+      "dtype": "float64",
+      "null_count": 571,
+      "null_pct": 0.58,
+      "non_null_count": 97358,
+      "non_null_pct": 99.42,
+      "unique_count": 33
+    }
+  },
+  "duplicates": {
+    "exact_duplicates": 247,
+    "jobId_duplicates": 250,
+    "content_duplicates": 9758
+  },
+  "currency_distribution": {
+    "INR": 97800,
+    "USD": 129
+  },
+  "salary_analysis": {
+    "salary_text_nonnull": 97929,
+    "salary_text_nonnull_pct": 100.0,
+    "both_numeric_present": 97358,
+    "both_numeric_present_pct": 99.42,
+    "only_min_present": 0,
+    "only_max_present": 0,
+    "neither_present": 571,
+    "zero_min": 64129,
+    "zero_max": 64121,
+    "negative_min": 0,
+    "negative_max": 0,
+    "min_greater_than_max": 0,
+    "valid_positive_ranges": 33229,
+    "valid_positive_ranges_pct": 33.93,
+    "min_salary_quantiles": {
+      "min": 786.0,
+      "p1": 50000.0,
+      "p5": 100000.0,
+      "p25": 200000.0,
+      "median": 300000.0,
+      "p75": 600000.0,
+      "p95": 2000000.0,
+      "p99": 3500000.0,
+      "max": 70000000.0,
+      "mean": 581028.2455686298,
+      "std": 842547.8337427751
+    },
+    "max_salary_quantiles": {
+      "min": 786.0,
+      "p25": 360000.0,
+      "median": 550000.0,
+      "p75": 1000000.0,
+      "max": 95000000.0
+    },
+    "midpoint_inr_quantiles": {
+      "min": 786.0,
+      "p25": 287500.0,
+      "median": 425000.0,
+      "p75": 825000.0,
+      "max": 82500000.0,
+      "mean": 757086.5079298203
+    },
+    "midpoint_lpa_quantiles": {
+      "min": 0.00786,
+      "p25": 2.875,
+      "median": 4.25,
+      "p75": 8.25,
+      "max": 825.0,
+      "mean": 7.570865079298204
+    },
+    "under_50k_inr": 37,
+    "under_1_lpa": 456,
+    "over_50_lpa": 218,
+    "over_100_lpa": 18
+  },
+  "top_salary_strings": {
+    "Not disclosed": 64076,
+    "3-5 Lacs PA": 584,
+    "3-6 Lacs PA": 549,
+    "3-4 Lacs PA": 497,
+    "2-3 Lacs PA": 472,
+    "2-4 Lacs PA": 437,
+    "4-6 Lacs PA": 435,
+    "10-20 Lacs PA": 381,
+    "15-25 Lacs PA": 379,
+    "3-4.5 Lacs PA": 374,
+    "2.5-4 Lacs PA": 355,
+    "2.5-3.5 Lacs PA": 338,
+    "Unpaid": 333,
+    "2-3.5 Lacs PA": 290,
+    "3-3.5 Lacs PA": 267,
+    "3-8 Lacs PA": 267,
+    "50,000-3 Lacs PA": 265,
+    "2-5 Lacs PA": 261,
+    "2-2.5 Lacs PA": 261,
+    "4-5 Lacs PA": 252
+  },
+  "experience_analysis": {
+    "text_nonnull": 95824,
+    "text_nonnull_pct": 97.85,
+    "both_numeric_present": 97358,
+    "both_numeric_present_pct": 99.42,
+    "min_gt_max": 0,
+    "valid_exp_count": 97358,
+    "valid_exp_pct": 99.42,
+    "min_exp_distribution": {
+      "min": 0.0,
+      "p25": 1.0,
+      "median": 3.0,
+      "p75": 5.0,
+      "max": 30.0
+    },
+    "max_exp_distribution": {
+      "min": 0.0,
+      "median": 7.0,
+      "max": 35.0
+    },
+    "exp_over_30_yrs": 23
+  },
+  "location_analysis": {
+    "nonnull_count": 97929,
+    "nonnull_pct": 100.0,
+    "unique_locations": 10066,
+    "top_locations": {
+      "Bengaluru": 16823,
+      "Hyderabad": 7669,
+      "Pune": 6112,
+      "Chennai": 4431,
+      "Gurugram": 4233,
+      "Mumbai": 4157,
+      "Noida": 2695,
+      "Remote": 1961,
+      "Ahmedabad": 1726,
+      "Navi Mumbai": 1453,
+      "Kolkata": 1049,
+      "Hyderabad, Chennai, Bengaluru": 1037,
+      "Hybrid - Bengaluru": 946,
+      "Jaipur": 821,
+      "Coimbatore": 618,
+      "Hybrid - Hyderabad": 576,
+      "Vadodara": 528,
+      "Kochi": 528,
+      "Hybrid - Pune": 480,
+      "Thane": 410,
+      "Surat": 408,
+      "Nagpur": 407,
+      "Mumbai Suburban": 380,
+      "Lucknow": 334,
+      "Chandigarh": 298
+    }
+  },
+  "skills_analysis": {
+    "nonnull_count": 97358,
+    "nonnull_pct": 99.42,
+    "total_skill_instances": 755421,
+    "unique_skill_tokens": 44078,
+    "avg_skills_per_job": 7.76,
+    "median_skills_per_job": 8.0,
+    "top_30_skills": {
+      "sales": 9225,
+      "python": 5860,
+      "project management": 5553,
+      "customer service": 5131,
+      "sap": 5056,
+      "management": 4863,
+      "css": 4197,
+      "java": 4097,
+      "sql": 3993,
+      "business development": 3758,
+      "communication skills": 3505,
+      "development": 3317,
+      "javascript": 3017,
+      "c#": 2982,
+      "marketing": 2509,
+      "troubleshooting": 2481,
+      "agile": 2464,
+      "accounting": 2442,
+      "english": 2278,
+      "automation": 2276,
+      "team management": 2272,
+      "analytical": 2170,
+      "oracle": 2142,
+      "networking": 2089,
+      "rest": 2061,
+      "operations": 2053,
+      "software testing": 1993,
+      "c++": 1991,
+      "aws": 1888,
+      "data analysis": 1873
+    }
+  },
+  "title_analysis": {
+    "nonnull_count": 97929,
+    "nonnull_pct": 100.0,
+    "unique_titles": 55104,
+    "top_30_titles": {
+      "Application Developer": 2039,
+      "Application Lead": 1347,
+      "Sales Executive": 576,
+      "Software Development Engineer": 497,
+      "Business Development Executive": 457,
+      "Trust & Safety New Associate": 348,
+      "Data Engineer": 339,
+      "Business Development Manager": 323,
+      "Sales Manager": 319,
+      "Java Full Stack Developer": 283,
+      "Java Developer": 253,
+      "Relationship Manager": 232,
+      "Area Sales Manager": 219,
+      "Application Support Engineer": 217,
+      "Accountant": 215,
+      "Customer Support Executive": 213,
+      "Senior Software Engineer": 207,
+      "Account Executive": 205,
+      "Graphic Designer": 191,
+      "Software Development Lead": 181,
+      "Business Development Associate": 177,
+      "Business Analyst": 172,
+      "Technical Lead - L1": 165,
+      "Software Engineer": 165,
+      "AI / ML Engineer": 153,
+      "Sales Officer Home Loan": 152,
+      "Developer - L3": 143,
+      "Customer Care Executive": 137,
+      "Field Sales Executive": 131,
+      "Project Manager": 124
+    },
+    "tech_keyword_title_count": 39450,
+    "tech_keyword_title_pct": 40.28
+  },
+  "company_analysis": {
+    "nonnull_count": 97925,
+    "nonnull_pct": 100.0,
+    "unique_companies": 18668,
+    "top_20_companies": {
+      "Accenture": 8204,
+      "IDESLABS PRIVATE LIMITED": 2303,
+      "Wipro": 1496,
+      "Krazy Mantra HR Solutions Pvt. Ltd": 1028,
+      "Kotak Mahindra Bank": 987,
+      "PRO Hr Complete Solutions": 982,
+      "Infosys": 938,
+      "Capgemini": 700,
+      "IBM": 687,
+      "PRADEEPIT CONSULTING SERVICES PVT LTD": 618,
+      "Talent21": 613,
+      "HR Innovation Group": 607,
+      "Vision Beyond Resources India Private Limited": 582,
+      "EY": 571,
+      "Gratitude India Manpower Consultants Pvt. Ltd.": 567,
+      "Axis Bank": 547,
+      "ABB": 428,
+      "Essentiallysports": 422,
+      "Purview India Consulting And  Services  Llp": 399,
+      "Tata Capital": 389
+    }
+  },
+  "funnel": {
+    "raw_rows": 97929,
+    "unique_jobid_rows": 97679,
+    "valid_positive_salary": 33136,
+    "inr_currency": 33116,
+    "valid_experience": 33116,
+    "has_skills": 33116,
+    "tech_title_subset": 9117
+  }
+}

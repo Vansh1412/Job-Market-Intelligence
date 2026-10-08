@@ -1,0 +1,26 @@
+{
+  "gates": {
+    "GATE 1: Raw source unchanged": "PASS",
+    "GATE 2: USA assets unchanged": "PASS",
+    "GATE 3: Only INR salary records used": "PASS",
+    "GATE 4: No negative salaries": "PASS",
+    "GATE 5: No min salary > max salary": "PASS",
+    "GATE 6: Salary bounds applied with justification": "PASS",
+    "GATE 7: Final cohort has no target leakage fields": "PASS",
+    "GATE 8: Experience values validated": "PASS",
+    "GATE 9: Role taxonomy validated": "PASS",
+    "GATE 10: City feature strategy validated": "PASS",
+    "GATE 11: Skill frequency threshold explicitly justified": "PASS",
+    "GATE 12: Skill matrix dimensionality computationally reasonable": "PASS",
+    "GATE 13: Content duplicate leakage assessed": "PASS",
+    "GATE 14: Final cohort is reproducible": "PASS",
+    "GATE 15: Feature schema is documented": "PASS",
+    "GATE 16: Target statistics reproduced from saved cohort": "PASS",
+    "GATE 17: Transformation logic deterministic": "PASS",
+    "GATE 18: No ML model trained": "PASS",
+    "GATE 19: No API/frontend modified": "PASS",
+    "GATE 20: All artifacts exist and can be regenerated": "PASS"
+  },
+  "pass_count": 20,
+  "total_gates": 20
+}

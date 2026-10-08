@@ -1,0 +1,22 @@
+{
+  "selected_model": "HistGradientBoosting",
+  "target_formulation": "log",
+  "train_samples": 4686,
+  "holdout_samples": 1173,
+  "holdout_metrics": {
+    "mae_inr": 371472.7103004529,
+    "mae_lpa": 3.714727103004529,
+    "rmse_inr": 621880.9297654408,
+    "rmse_lpa": 6.218809297654407,
+    "r2": 0.5797803673154469,
+    "median_ae_inr": 207703.95660340146,
+    "median_ae_lpa": 2.0770395660340144,
+    "mape": 35.22479274231868
+  },
+  "baseline_improvement": {
+    "dummy_holdout_mae_lpa": 7.72589834259893,
+    "mae_improvement_pct": 51.91850917164766,
+    "dummy_holdout_rmse_lpa": 9.593514431597155,
+    "rmse_improvement_pct": 35.17694331941414
+  }
+}

@@ -1,0 +1,89 @@
+"""
+tests/test_skill_integrity.py
+==============================
+Strict skill integrity verification suite for India market intelligence (BUG #1, #2, #14).
+Validates that:
+1. /api/india/skills returns empirical, non-fabricated metrics for all skills.
+2. Skills like Python, SAP, React, Java, AWS, SQL, and Machine Learning return
+   distinct, specialized profiles (roles, archetypes, co-occurring skills, and salaries).
+3. No synthetic step-function logic (e.g. prev > 20 ? 14.5 : 12.0) exists.
+4. Descriptive statistics use 'observed salary difference' rather than causal claims.
+"""
+
+import pytest
+from fastapi.testclient import TestClient
+from src.backend.main import app
+
+client = TestClient(app)
+
+
+def test_india_skills_list_endpoint():
+    """Verify GET /api/india/skills returns all empirical skills with real metrics."""
+    response = client.get("/api/india/skills")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["country"] == "India"
+    assert data["currency"] == "INR"
+    assert data["total_skills"] == 284
+    skills = data["skills"]
+    assert len(skills) == 284
+
+    # Verify first 10 skills contain required empirical fields
+    for s in skills[:10]:
+        assert "skill" in s
+        assert "display_name" in s
+        assert "posting_count" in s
+        assert "demand_percentage" in s
+        assert "observed_median_salary_lpa" in s
+        assert "observed_salary_difference_lpa" in s
+        assert "associated_roles" in s
+        assert "associated_archetypes" in s
+        assert "cooccurring_skills" in s
+        assert isinstance(s["observed_median_salary_lpa"], (int, float))
+        assert s["observed_median_salary_lpa"] > 0
+
+
+def test_distinct_skill_profiles():
+    """Verify Python, SAP, React, Java, AWS, SQL, and ML have distinct empirical profiles."""
+    test_skills = ["python", "sap", "react", "java", "aws", "sql", "machine_learning"]
+    profiles = {}
+
+    for s_name in test_skills:
+        response = client.get(f"/api/india/skills/{s_name}")
+        assert response.status_code == 200, f"Failed to fetch detail for {s_name}: {response.text}"
+        profiles[s_name] = response.json()
+
+    # 1. Python vs SAP must NOT have identical median salaries or archetypes
+    assert profiles["python"]["observed_median_salary_lpa"] != profiles["sap"]["observed_median_salary_lpa"]
+    assert profiles["python"]["associated_archetypes"] != profiles["sap"]["associated_archetypes"]
+
+    # 2. React vs Java must have different co-occurring skills
+    assert profiles["react"]["cooccurring_skills"] != profiles["java"]["cooccurring_skills"]
+
+    # 3. SAP must be associated with Enterprise/ERP, while Python with AI/Data
+    assert any("ERP" in arc or "Enterprise" in arc for arc in profiles["sap"]["associated_archetypes"])
+    assert any("AI" in arc or "Data" in arc for arc in profiles["python"]["associated_archetypes"])
+
+    # 4. Verify non-trivial postings counts
+    for s_name, prof in profiles.items():
+        assert prof["posting_count"] > 0, f"{s_name} has zero postings"
+        assert prof["demand_percentage"] > 0, f"{s_name} has zero demand percentage"
+
+
+def test_no_synthetic_step_function():
+    """Verify that observed median salaries vary continuously across skills and do not match step functions."""
+    response = client.get("/api/india/skills")
+    skills = response.json()["skills"]
+    
+    # Collect all unique observed median salaries
+    unique_medians = set(s["observed_median_salary_lpa"] for s in skills)
+    
+    # In a synthetic step function, there are only 2 or 3 distinct values (e.g. 14.5, 12.0, 10.5).
+    # Empirical calculation yields dozens of distinct medians.
+    assert len(unique_medians) >= 15, f"Observed medians appear stepped: only {len(unique_medians)} unique values found"
+
+
+def test_unknown_skill_detail():
+    """Verify unknown skill returns 404 or honest not found."""
+    response = client.get("/api/india/skills/nonexistent_xyz_123")
+    assert response.status_code == 404

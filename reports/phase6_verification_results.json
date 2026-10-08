@@ -1,0 +1,264 @@
+{
+  "total_gates": 43,
+  "passed_gates": 43,
+  "gates": [
+    {
+      "id": "G01",
+      "description": "Cryptographic Integrity: India Final Salary Model",
+      "status": "PASS",
+      "details": "(models/india/final_model.pkl)"
+    },
+    {
+      "id": "G02",
+      "description": "Cryptographic Integrity: India Preprocessor",
+      "status": "PASS",
+      "details": "(models/india/final_preprocessor.pkl)"
+    },
+    {
+      "id": "G03",
+      "description": "Cryptographic Integrity: India Modeling Cohort (N=5,859)",
+      "status": "PASS",
+      "details": "(data/processed/india/india_modeling_cohort.parquet)"
+    },
+    {
+      "id": "G04",
+      "description": "Cryptographic Integrity: India 290 Feature Spec",
+      "status": "PASS",
+      "details": "(models/india/final_feature_list.json)"
+    },
+    {
+      "id": "G05",
+      "description": "Cryptographic Integrity: India Model Evaluation Spec",
+      "status": "PASS",
+      "details": "(models/india/final_evaluation.json)"
+    },
+    {
+      "id": "G06",
+      "description": "Cryptographic Integrity: India Model Training Metadata",
+      "status": "PASS",
+      "details": "(models/india/final_model_metadata.json)"
+    },
+    {
+      "id": "G07",
+      "description": "Cryptographic Integrity: India PCA Transformer (15 PCs)",
+      "status": "PASS",
+      "details": "(models/india/india_pca_v1.pkl)"
+    },
+    {
+      "id": "G08",
+      "description": "Cryptographic Integrity: India K-Means Model (k=6)",
+      "status": "PASS",
+      "details": "(models/india/india_kmeans_v1.pkl)"
+    },
+    {
+      "id": "G09",
+      "description": "Cryptographic Integrity: India Holdout Archetype Pipeline",
+      "status": "PASS",
+      "details": "(models/india/india_holdout_archetype_pipeline.pkl)"
+    },
+    {
+      "id": "G10",
+      "description": "Cryptographic Integrity: India Archetype Metadata",
+      "status": "PASS",
+      "details": "(models/india/india_archetype_metadata.json)"
+    },
+    {
+      "id": "G11",
+      "description": "Cryptographic Integrity: India Skill PCA Coordinates",
+      "status": "PASS",
+      "details": "(data/processed/india/india_skill_pca.parquet)"
+    },
+    {
+      "id": "G12",
+      "description": "Cryptographic Integrity: India Archetype Assignments",
+      "status": "PASS",
+      "details": "(data/processed/india/india_archetype_assignments.parquet)"
+    },
+    {
+      "id": "G13",
+      "description": "Cryptographic Integrity: USA XGBoost Salary Model",
+      "status": "PASS",
+      "details": "(models/phase5/best_model.pkl)"
+    },
+    {
+      "id": "G14",
+      "description": "Cryptographic Integrity: USA MetadataTransformer Preprocessor",
+      "status": "PASS",
+      "details": "(models/phase5/best_pipeline.pkl)"
+    },
+    {
+      "id": "G15",
+      "description": "Cryptographic Integrity: USA Feature Metadata (123 feats)",
+      "status": "PASS",
+      "details": "(models/phase5/feature_metadata.json)"
+    },
+    {
+      "id": "G16",
+      "description": "Cryptographic Integrity: USA Archetype Scaler",
+      "status": "PASS",
+      "details": "(models/scaler_phase4_1.pkl)"
+    },
+    {
+      "id": "G17",
+      "description": "Cryptographic Integrity: USA Archetype PCA (15 PCs)",
+      "status": "PASS",
+      "details": "(models/pca_phase4_1.pkl)"
+    },
+    {
+      "id": "G18",
+      "description": "Cryptographic Integrity: USA Archetype K-Means (k=7)",
+      "status": "PASS",
+      "details": "(models/kmeans_phase4_1_k7.pkl)"
+    },
+    {
+      "id": "G19",
+      "description": "Cryptographic Integrity: USA Modeling Cohort (N=34,036)",
+      "status": "PASS",
+      "details": "(data/processed/modeling_dataset.parquet)"
+    },
+    {
+      "id": "G20",
+      "description": "Cryptographic Integrity: USA Skill Matrix (N=335,995)",
+      "status": "PASS",
+      "details": "(data/processed/skill_matrix_technical.parquet)"
+    },
+    {
+      "id": "G21",
+      "description": "Model Registry Startup Verification",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G22",
+      "description": "USA Exact 123-Feature Input Shape",
+      "status": "PASS",
+      "details": "(shape: (1, 123))"
+    },
+    {
+      "id": "G23",
+      "description": "India Exact 290-Feature Input Shape",
+      "status": "PASS",
+      "details": "(shape: (1, 290))"
+    },
+    {
+      "id": "G24",
+      "description": "USA Live Salary Prediction Numerical Parity",
+      "status": "PASS",
+      "details": "(pred: $245,261)"
+    },
+    {
+      "id": "G25",
+      "description": "India Live Salary Prediction Numerical Parity",
+      "status": "PASS",
+      "details": "(pred: \u20b911.47 LPA)"
+    },
+    {
+      "id": "G26",
+      "description": "India Cluster 4 -> IND_ARC_01 (Big Data)",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G27",
+      "description": "India Cluster 2 -> IND_ARC_02 (Enterprise Java)",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G28",
+      "description": "India Cluster 3 -> IND_ARC_03 (Python/AI)",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G29",
+      "description": "India Cluster 5 -> IND_ARC_04 (Full-Stack)",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G30",
+      "description": "India Cluster 0 -> IND_ARC_05 (Baseline Tech)",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G31",
+      "description": "India Cluster 1 -> IND_ARC_06 (Enterprise ERP)",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G32",
+      "description": "USA Zero-Skill Profile Fallback",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G33",
+      "description": "India Zero-Skill Profile Fallback",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G34",
+      "description": "Zero Cross-Market Currency Conversion",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G35",
+      "description": "FastAPI /api/health Endpoint Live",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G36",
+      "description": "FastAPI /api/meta Contract Verification",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G37",
+      "description": "FastAPI /api/cross-market/summary Live",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G38",
+      "description": "PyTest Full Suite 100% Passed",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G39",
+      "description": "Frontend Vite Production Build (dist/)",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G40",
+      "description": "Frontend MarketContext & Switcher Exists",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G41",
+      "description": "Guided Salary Calculator Wizard Page Exists",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G42",
+      "description": "USA vs India Comparison Page Exists",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "id": "G43",
+      "description": "Zero Model Retraining / Fit Calls in Runtime",
+      "status": "PASS",
+      "details": "Frozen Models Loaded Exclusively via JobLib / Pickle Loaders"
+    }
+  ]
+}

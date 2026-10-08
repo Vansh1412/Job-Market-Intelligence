@@ -1,0 +1,113 @@
+{
+  "version": "india_archetypes_v1",
+  "phase": "India-5",
+  "date": "2026-10-07",
+  "cohort": "India Technology Salary Cohort",
+  "n_total_cohort": 5859,
+  "n_skill_bearing": 5323,
+  "n_zero_skill": 536,
+  "n_skills": 284,
+  "pca_method": "Centered Covariance PCA (StandardScaler with_mean=True, with_std=False)",
+  "n_components_retained": 15,
+  "cumulative_variance_explained": 0.37740561289387636,
+  "clustering_algorithm": "KMeans",
+  "k": 6,
+  "random_state": 42,
+  "stability_seeds": [
+    42,
+    7,
+    21,
+    100,
+    123
+  ],
+  "stability_metrics": {
+    "mean_ari": 0.8035000532779802,
+    "median_ari": 0.7219319717961026,
+    "mean_ami": 0.8016281915241482,
+    "median_ami": 0.7486601383502874
+  },
+  "selection_policy": "Multi-criterion evaluation optimizing cluster stability (mean ARI 0.8035), interpretability, absence of sub-2% pathological clusters, and distinct salary stratification.",
+  "feature_exclusions": [
+    "salary_midpoint_inr",
+    "salary_lpa",
+    "normalized_role",
+    "city_grouped",
+    "work_mode",
+    "experience_midpoint_years",
+    "frozen_model_predictions",
+    "residuals"
+  ],
+  "salary_association_test": {
+    "test": "Kruskal-Wallis H Test",
+    "h_statistic": 817.9053545087363,
+    "degrees_of_freedom": 5,
+    "p_value": 1.5472990819702854e-174,
+    "epsilon_squared": 0.15288797338889154,
+    "posthoc_method": "Dunn test with Holm correction"
+  },
+  "rq3_error_heterogeneity_test": {
+    "test": "Kruskal-Wallis H Test on Absolute Errors",
+    "h_statistic": 66.14586686610193,
+    "degrees_of_freedom": 5,
+    "p_value": 6.482231640089417e-13,
+    "epsilon_squared": 0.05752198200009589,
+    "holdout_protocol": "Leakage-safe (fitted strictly on training split skills)",
+    "posthoc_method": "Dunn test with Holm correction"
+  },
+  "archetypes": [
+    {
+      "archetype_id": "IND_ARC_01",
+      "rank": 1,
+      "archetype_name": "Big Data Engineering & Distributed Systems",
+      "definition": "Distributed big data pipelines, large-scale data processing frameworks (Spark, Hadoop, Hive), and workflow orchestration (Airflow, Scala).",
+      "cluster_size": 198,
+      "share_pct_skill_bearing": 3.7197069321811007,
+      "observed_median_salary_lpa": 20.0
+    },
+    {
+      "archetype_id": "IND_ARC_02",
+      "rank": 2,
+      "archetype_name": "Enterprise Java & Microservices Backend",
+      "definition": "Enterprise backend architecture, Java ecosystems, Spring Boot microservices, and distributed service design, frequently extending to enterprise full-stack interfaces.",
+      "cluster_size": 446,
+      "share_pct_skill_bearing": 8.378733796731167,
+      "observed_median_salary_lpa": 18.75
+    },
+    {
+      "archetype_id": "IND_ARC_03",
+      "rank": 3,
+      "archetype_name": "Python, Cloud Data & Applied AI/ML",
+      "definition": "Python-centric stack for analytical computing, machine learning, modern API services (FastAPI/Flask/Django), cloud databases, and generative AI systems.",
+      "cluster_size": 481,
+      "share_pct_skill_bearing": 9.036257749389442,
+      "observed_median_salary_lpa": 17.0
+    },
+    {
+      "archetype_id": "IND_ARC_04",
+      "rank": 4,
+      "archetype_name": "Full-Stack & Modern Application Engineering",
+      "definition": "End-to-end software application lifecycle, modern web technologies (React, JavaScript, .NET), and relational data persistence.",
+      "cluster_size": 547,
+      "share_pct_skill_bearing": 10.276160060116474,
+      "observed_median_salary_lpa": 13.0
+    },
+    {
+      "archetype_id": "IND_ARC_05",
+      "rank": 5,
+      "archetype_name": "Baseline & General Technology Stack",
+      "definition": "Broad, heterogeneous market stratum characterized by diverse baseline technology roles, IT support, QA testing, and low-density or cross-functional skill requirements.",
+      "cluster_size": 3526,
+      "share_pct_skill_bearing": 66.2408416306594,
+      "observed_median_salary_lpa": 7.5
+    },
+    {
+      "archetype_id": "IND_ARC_06",
+      "rank": 6,
+      "archetype_name": "Enterprise ERP & SAP Functional Solutions",
+      "definition": "Enterprise resource planning postings concentrated in SAP modules (FICO, MM), implementation consulting, functional testing, and enterprise certification.",
+      "cluster_size": 125,
+      "share_pct_skill_bearing": 2.3482998309224126,
+      "observed_median_salary_lpa": 3.625
+    }
+  ]
+}
