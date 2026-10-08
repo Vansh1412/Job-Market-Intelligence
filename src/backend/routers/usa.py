@@ -16,12 +16,13 @@ router = APIRouter(prefix="/api/usa", tags=["USA Job Market"])
 
 
 class USAPredictionRequest(BaseModel):
-    role_family: str = Field(..., description="Role family name, e.g., 'ML / AI Engineer'")
-    seniority: str = Field(..., description="Seniority level, e.g., 'Senior' or 'Mid-level'")
-    city_clean: str = Field(..., description="Clean metro name, e.g., 'San Francisco'")
+    role_family: str = Field(..., max_length=120, description="Role family name, e.g., 'ML / AI Engineer'")
+    seniority: str = Field(..., max_length=60, description="Seniority level, e.g., 'Senior' or 'Mid-level'")
+    city_clean: str = Field(..., max_length=120, description="Clean metro name, e.g., 'San Francisco'")
     is_remote: bool = Field(True, description="Whether position allows remote work")
     selected_skills: List[str] = Field(
         default_factory=list,
+        max_length=60,
         description="List of selected technical skill tokens, e.g., ['skill_python', 'skill_pytorch']"
     )
 
@@ -29,6 +30,7 @@ class USAPredictionRequest(BaseModel):
 class USAArchetypeRequest(BaseModel):
     selected_skills: List[str] = Field(
         default_factory=list,
+        max_length=60,
         description="List of selected skills to classify into USA archetype"
     )
 

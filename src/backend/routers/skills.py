@@ -2,12 +2,14 @@
 Skill Explorer API Router — Frequencies, Valuations, Landscape Bubbles, and Co-occurrence
 """
 
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Query, HTTPException
 from src.backend.data_service import (
     get_skill_frequency_df,
     get_skill_salary_association_df,
     get_skill_cooccurrence_df,
+    get_cluster_skill_lift_df,
 )
+from src.backend.services.market_service import MarketService
 
 router = APIRouter(prefix="/api/skills", tags=["Skills"])
 
@@ -141,7 +143,7 @@ def get_skill_detail(skill_name: str):
     row_sal = df_sal[df_sal["Skill"].str.lower() == clean_search]
 
     if len(row_freq) == 0 and len(row_sal) == 0:
-        return {"error": f"Skill '{skill_name}' not found in Taxonomy D"}
+        raise HTTPException(status_code=404, detail=f"Skill '{skill_name}' not found in Taxonomy D")
 
     postings = 0
     if len(row_freq) > 0:
@@ -164,22 +166,71 @@ def get_skill_detail(skill_name: str):
     med_sal = float(row_sal["Median_Salary"].values[0]) if len(row_sal) > 0 and "Median_Salary" in row_sal.columns else 180413.0
     cat = categorize_skill(skill_name)
 
+    # Discover associated roles from USA cohort
+    roles = []
+    cohort_df = MarketService.get_usa_cohort_df()
+    target_skill_col = f"skill_{clean_search.replace(' ', '_').replace('-', '_')}"
+    if target_skill_col not in cohort_df.columns:
+        for col in cohort_df.columns:
+            if col.startswith("skill_") and col.replace("skill_", "").lower() == clean_search.replace(" ", "_"):
+                target_skill_col = col
+                break
+
+    if target_skill_col in cohort_df.columns:
+        matched_cohort = cohort_df[cohort_df[target_skill_col] == 1]
+        if len(matched_cohort) > 0:
+            roles = matched_cohort["role_family"].value_counts().head(4).index.tolist()
+
+    # Discover associated archetypes from Phase 4.1 lift table
+    archetypes = []
+    df_lift = get_cluster_skill_lift_df()
+    arch_labels = {
+        "Cluster_0_FOUND_TECH": "Foundational Tech",
+        "Cluster_1_DEVOPS_PLAT": "DevOps & Platform",
+        "Cluster_2_WEB_FRONT": "Frontend & Web",
+        "Cluster_3_CLOUD_ARCH": "Cloud Architecture",
+        "Cluster_4_DATA_BI": "Data & BI",
+        "Cluster_5_AI_ML": "AI / ML & LLMs",
+        "Cluster_6_SYS_ENG": "Systems & Infrastructure",
+    }
+    match_lift = df_lift[df_lift["Skill"].str.lower() == target_skill_col.lower()]
+    if len(match_lift) == 0:
+        match_lift = df_lift[df_lift["Skill"].str.lower().str.replace("skill_", "") == clean_search.replace(" ", "_")]
+    if len(match_lift) > 0:
+        row = match_lift.iloc[0]
+        arch_scores = [(arch_labels.get(col, col), float(row[col])) for col in arch_labels if col in row and float(row[col]) > 1.0]
+        arch_scores = sorted(arch_scores, key=lambda x: x[1], reverse=True)
+        archetypes = [a[0] for a in arch_scores[:3]]
+
     # Find top companion skills from cooccurrence if present
     companions = []
+    combos = []
     if "Skill" in df_co.columns:
         match_co = df_co[df_co["Skill"].str.lower() == clean_search]
         if len(match_co) > 0:
             row_dict = match_co.iloc[0].drop("Skill").to_dict()
             sorted_comp = sorted(row_dict.items(), key=lambda x: x[1], reverse=True)
             companions = [{"skill": k, "cooccurrences": v} for k, v in sorted_comp[:6] if k.lower() != clean_search]
+            combos = [k for k, _ in sorted_comp[:6] if k.lower() != clean_search]
 
+    delta = med_sal - 180413.0
     return {
         "skill": skill_name,
         "category": cat,
         "color": CATEGORY_COLORS.get(cat, "#64748B"),
         "postings": postings,
         "prevalence_pct": round(prev, 2),
-        "median_salary": med_sal,
-        "delta_vs_cohort": med_sal - 180413.0,
+        "median_salary": round(med_sal, 2),
+        "delta_vs_cohort": round(delta, 2),
+        "roles": roles,
+        "archetypes": archetypes,
         "companions": companions,
+        "combos": combos,
+        # Explicit backward compatibility aliases for existing frontend contracts
+        "median_with": round(med_sal, 2),
+        "prevalence": round(prev, 2),
+        "delta": round(delta, 2),
+        "associated_roles": roles,
+        "associated_archetypes": archetypes,
+        "cooccurring_skills": combos,
     }

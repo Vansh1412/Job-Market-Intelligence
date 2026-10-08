@@ -128,6 +128,14 @@ export const heroSequenceVariants: Variants = {
       delayChildren: 0.05,
     },
   },
+  initial: { opacity: 0 },
+  animate: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.05,
+    },
+  },
 };
 
 export const heroItemVariants: Variants = {
@@ -136,6 +144,18 @@ export const heroItemVariants: Variants = {
     y: 10,
   },
   visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.32,
+      ease: EASING.easeOut,
+    },
+  },
+  initial: {
+    opacity: 0,
+    y: 10,
+  },
+  animate: {
     opacity: 1,
     y: 0,
     transition: {

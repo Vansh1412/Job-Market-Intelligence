@@ -213,6 +213,9 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ activePage, onSelectPage }
           <button
             type="button"
             className="mobile-hamburger"
+            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation-drawer"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             style={{
               background: 'rgba(255, 255, 255, 0.05)',
@@ -232,6 +235,9 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ activePage, onSelectPage }
       {/* Mobile Drawer / Dropdown Menu */}
       {mobileMenuOpen && (
         <div
+          id="mobile-navigation-drawer"
+          role="region"
+          aria-label="Mobile Navigation Menu"
           style={{
             position: 'fixed',
             top: '70px',

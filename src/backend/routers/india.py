@@ -16,13 +16,14 @@ router = APIRouter(prefix="/api/india", tags=["India Job Market"])
 
 
 class IndiaPredictionRequest(BaseModel):
-    normalized_role: str = Field(..., description="Role category, e.g., 'Data Engineer'")
+    normalized_role: str = Field(..., max_length=120, description="Role category, e.g., 'Data Engineer'")
     experience_midpoint_years: float = Field(..., ge=0, le=35, description="Years of experience midpoint, e.g., 5.0")
     experience_range_years: float = Field(2.0, ge=0, le=15, description="Experience span, e.g., 2.0")
-    city_grouped: str = Field(..., description="Grouped city metro name, e.g., 'Bengaluru'")
-    work_mode: str = Field("Hybrid", description="Work mode: 'Hybrid', 'Onsite', or 'Remote'")
+    city_grouped: str = Field(..., max_length=120, description="Grouped city metro name, e.g., 'Bengaluru'")
+    work_mode: str = Field("Hybrid", max_length=60, description="Work mode: 'Hybrid', 'Onsite', or 'Remote'")
     selected_skills: List[str] = Field(
         default_factory=list,
+        max_length=60,
         description="List of selected technical skill tokens, e.g., ['skill_spark', 'skill_scala']"
     )
 
@@ -30,6 +31,7 @@ class IndiaPredictionRequest(BaseModel):
 class IndiaArchetypeRequest(BaseModel):
     selected_skills: List[str] = Field(
         default_factory=list,
+        max_length=60,
         description="List of technical skills to classify into India archetype"
     )
 

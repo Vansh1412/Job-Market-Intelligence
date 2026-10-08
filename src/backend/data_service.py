@@ -20,30 +20,31 @@ TABLES_P5 = "reports/tables/phase5"
 MODELS_P5 = "models/phase5"
 
 
+from src.backend.models.model_registry import get_model_registry
+
 # ── Metadata & Artifacts ────────────────────────────────────────────────────────
 @lru_cache(maxsize=1)
 def get_feature_metadata() -> dict:
-    path = os.path.join(MODELS_P5, "feature_metadata.json")
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+    registry = get_model_registry()
+    return registry.usa_feature_metadata
 
 
 @lru_cache(maxsize=1)
 def get_salary_model():
-    return joblib.load(os.path.join(MODELS_P5, "best_model.pkl"))
+    registry = get_model_registry()
+    return registry.usa_salary_model
 
 
 @lru_cache(maxsize=1)
 def get_metadata_pipeline():
-    return joblib.load(os.path.join(MODELS_P5, "best_pipeline.pkl"))
+    registry = get_model_registry()
+    return registry.usa_preprocessor
 
 
 @lru_cache(maxsize=1)
 def get_archetype_pipeline():
-    scaler = joblib.load("models/scaler_phase4_1.pkl")
-    pca = joblib.load("models/pca_phase4_1.pkl")
-    kmeans = joblib.load("models/kmeans_phase4_1_k7.pkl")
-    return scaler, pca, kmeans
+    registry = get_model_registry()
+    return registry.usa_archetype_scaler, registry.usa_archetype_pca, registry.usa_archetype_kmeans
 
 
 # ── Phase 3: Exploratory & Funnel Tables ───────────────────────────────────────

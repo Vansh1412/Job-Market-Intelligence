@@ -20,6 +20,7 @@ export const MarketSwitcher: React.FC<{ compact?: boolean }> = ({ compact = fals
       {/* USA Button */}
       <button
         type="button"
+        data-market="USA"
         onClick={() => setMarket('USA')}
         style={{
           display: 'flex',
@@ -62,6 +63,7 @@ export const MarketSwitcher: React.FC<{ compact?: boolean }> = ({ compact = fals
       {/* India Button */}
       <button
         type="button"
+        data-market="India"
         onClick={() => setMarket('India')}
         style={{
           display: 'flex',

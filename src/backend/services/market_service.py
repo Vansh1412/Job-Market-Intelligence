@@ -12,9 +12,13 @@ Supports dynamic cross-filtering by role, experience/seniority, and location.
 
 import os
 from functools import lru_cache
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Tuple
 import pandas as pd
 import numpy as np
+
+# EXCLUDED_CORPUS_SKILLS: Non-core software engineering enterprise CRM/vendor tags excluded from
+# top software engineering skill frequency ranking in accordance with Phase 3 Taxonomy D guidelines.
+EXCLUDED_CORPUS_SKILLS = {"skill_salesforce"}
 
 
 class MarketService:
@@ -153,7 +157,7 @@ class MarketService:
         location_items = sorted(location_items, key=lambda x: x["postings"], reverse=True)[:15]
 
         # Top skills
-        skill_cols = [c for c in df.columns if c.startswith("skill_") and c not in ["skill_salesforce"]]
+        skill_cols = [c for c in df.columns if c.startswith("skill_") and c not in EXCLUDED_CORPUS_SKILLS]
         top_skills = []
         if skill_cols:
             skill_sums = df[skill_cols].sum().sort_values(ascending=False).head(20)
@@ -555,6 +559,87 @@ class MarketService:
     # CROSS-MARKET COMPARISON (Zero Currency Conversion)
     # -------------------------------------------------------------------------
     @classmethod
+    def _get_empirical_cross_market_data(cls) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+        """
+        Dynamically computes shared skill prevalence and role demand distributions
+        directly from the certified USA and India modeling cohort datasets.
+        Caches the result to ensure deterministic sub-millisecond response times.
+        """
+        if not hasattr(cls, "_cached_cross_market_analytics"):
+            df_usa = cls.get_usa_cohort_df()
+            df_ind = cls.get_india_cohort_df()
+
+            # 1. Empirical Shared Skills Prevalence
+            tracked_skills_config = [
+                ("Python", "skill_python", "skill_python"),
+                ("SQL", "skill_sql", "skill_sql"),
+                ("AWS", "skill_aws", "skill_aws"),
+                ("Java", "skill_java", "skill_java"),
+                ("React", "skill_react", "skill_react"),
+                ("Docker", "skill_docker", "skill_docker"),
+                ("Kubernetes", "skill_kubernetes", "skill_kubernetes"),
+                ("Machine Learning", "skill_machine_learning", "skill_machine_learning"),
+                ("Spark", "skill_spark", "skill_spark"),
+                ("Spring Boot", "skill_spring", "skill_spring_boot"),
+                ("Azure", "skill_azure", "skill_azure"),
+                ("Microservices", "skill_microservices", "skill_microservices"),
+            ]
+
+            shared_skills = []
+            for label, usa_col, ind_col in tracked_skills_config:
+                u_pct = round(float(df_usa[usa_col].mean() * 100), 1) if usa_col in df_usa.columns else 0.0
+                i_pct = round(float(df_ind[ind_col].mean() * 100), 1) if ind_col in df_ind.columns else 0.0
+                shared_skills.append({
+                    "skill": label,
+                    "usa_pct": u_pct,
+                    "india_pct": i_pct,
+                })
+
+            # 2. Empirical Role Demand Comparison
+            role_mapping = [
+                ("Software / Full Stack Engineer",
+                 ["Software Engineer", "Full-Stack Developer", "Backend Developer", "Frontend Developer"],
+                 ["Software Engineer", "Full Stack Developer", "Frontend Developer"]),
+                ("Data Engineer / Big Data",
+                 ["Data Engineer"],
+                 ["Data Engineer"]),
+                ("DevOps / Cloud Platform",
+                 ["DevOps / Cloud / Platform", "Solutions & Architecture"],
+                 ["Cloud / DevOps"]),
+                ("AI / ML & Data Science",
+                 ["ML / AI Engineer", "Data Scientist"],
+                 ["AI / ML Engineer", "Data Scientist"]),
+                ("QA / SDET / Testing",
+                 ["QA / SDET"],
+                 ["QA / Testing"]),
+                ("Product & Engineering Mgmt",
+                 ["Technical Product & PM", "Engineering Management"],
+                 ["Product / Program Manager"]),
+                ("Data / BI Analyst",
+                 ["Data / BI Analyst"],
+                 ["Data Analyst", "Business Analyst"]),
+                ("Other Tech / Systems / IT",
+                 ["Other Tech", "Embedded & Hardware", "Security Engineer", "Systems & Network Engineer", "Mobile Engineer"],
+                 ["Other Technology", "Cybersecurity", "Database Administrator"]),
+            ]
+
+            total_usa = len(df_usa)
+            total_ind = len(df_ind)
+            role_comparison = []
+            for label, usa_roles, ind_roles in role_mapping:
+                u_share = round(float(df_usa["role_family"].isin(usa_roles).sum() / total_usa * 100), 1)
+                i_share = round(float(df_ind["normalized_role"].isin(ind_roles).sum() / total_ind * 100), 1)
+                role_comparison.append({
+                    "role": label,
+                    "usa_share_pct": u_share,
+                    "india_share_pct": i_share,
+                })
+
+            cls._cached_cross_market_analytics = (shared_skills, role_comparison)
+
+        return cls._cached_cross_market_analytics
+
+    @classmethod
     @lru_cache(maxsize=1)
     def get_cross_market_summary(cls) -> Dict[str, Any]:
         """
@@ -563,32 +648,7 @@ class MarketService:
         """
         usa = cls._get_usa_baseline_summary()
         india = cls._get_india_baseline_summary()
-
-        shared_skills_tracking = [
-            {"skill": "Python", "usa_pct": 39.4, "india_pct": 12.1},
-            {"skill": "SQL", "usa_pct": 47.8, "india_pct": 10.1},
-            {"skill": "AWS", "usa_pct": 28.5, "india_pct": 6.8},
-            {"skill": "Java", "usa_pct": 22.4, "india_pct": 12.5},
-            {"skill": "React", "usa_pct": 18.2, "india_pct": 7.6},
-            {"skill": "Docker", "usa_pct": 20.1, "india_pct": 2.8},
-            {"skill": "Microservices", "usa_pct": 14.2, "india_pct": 6.8},
-            {"skill": "Kubernetes", "usa_pct": 16.5, "india_pct": 2.5},
-            {"skill": "Machine Learning", "usa_pct": 15.3, "india_pct": 2.1},
-            {"skill": "Spark", "usa_pct": 11.2, "india_pct": 5.5},
-            {"skill": "Spring Boot", "usa_pct": 9.8, "india_pct": 5.8},
-            {"skill": "Azure", "usa_pct": 17.6, "india_pct": 2.7},
-        ]
-
-        role_demand_comparison = [
-            {"role": "Software / Full Stack Engineer", "usa_share_pct": 38.2, "india_share_pct": 32.4},
-            {"role": "Data Engineer / Big Data", "usa_share_pct": 14.6, "india_share_pct": 9.5},
-            {"role": "DevOps / Cloud Platform", "usa_share_pct": 11.8, "india_share_pct": 4.9},
-            {"role": "AI / ML & Data Science", "usa_share_pct": 10.4, "india_share_pct": 3.2},
-            {"role": "QA / SDET / Testing", "usa_share_pct": 5.2, "india_share_pct": 9.9},
-            {"role": "Product & Engineering Mgmt", "usa_share_pct": 7.1, "india_share_pct": 2.8},
-            {"role": "Data / BI Analyst", "usa_share_pct": 8.3, "india_share_pct": 4.6},
-            {"role": "Other Tech / ERP / Systems", "usa_share_pct": 4.4, "india_share_pct": 32.7},
-        ]
+        shared_skills_tracking, role_demand_comparison = cls._get_empirical_cross_market_data()
 
         model_comparison = {
             "usa": {

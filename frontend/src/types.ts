@@ -116,6 +116,33 @@ export interface SkillLandscapePoint {
   delta_vs_median: number;
 }
 
+export interface SkillDetail {
+  skill: string;
+  display_name?: string;
+  category?: string;
+  color?: string;
+  postings?: number;
+  posting_count?: number;
+  prevalence_pct?: number;
+  prevalence?: number;
+  demand_percentage?: number;
+  median_salary?: number;
+  median_with?: number;
+  observed_median_salary_lpa?: number;
+  median_with_lpa?: number;
+  delta_vs_cohort?: number;
+  delta?: number;
+  observed_salary_difference_lpa?: number;
+  delta_lpa?: number;
+  roles?: string[];
+  associated_roles?: string[];
+  archetypes?: string[];
+  associated_archetypes?: string[];
+  companions?: ({ skill: string; cooccurrences: number } | string)[];
+  combos?: string[];
+  cooccurring_skills?: string[];
+}
+
 export interface ArchetypeItem {
   id?: number;
   archetype_id?: string;

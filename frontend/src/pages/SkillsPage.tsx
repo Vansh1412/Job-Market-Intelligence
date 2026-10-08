@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { api } from '../services/api';
-import { SkillLandscapePoint } from '../types';
+import { SkillLandscapePoint, SkillDetail } from '../types';
 import { useMarket } from '../context/MarketContext';
 import { ScientificDisclaimer } from '../components/ScientificDisclaimer';
 import { SourceFooter } from '../components/SourceFooter';
@@ -36,7 +36,7 @@ export const SkillsPage: React.FC<SkillsPageProps> = ({ onNavigate }) => {
   const [search, setSearch] = useState<string>('');
   const [selectedCat, setSelectedCat] = useState<string>('All');
   const [activeSkill, setActiveSkill] = useState<string>('python');
-  const [skillDetail, setSkillDetail] = useState<any>(null);
+  const [skillDetail, setSkillDetail] = useState<SkillDetail | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -119,31 +119,41 @@ export const SkillsPage: React.FC<SkillsPageProps> = ({ onNavigate }) => {
     : (skillDetail?.display_name || skillDetail?.skill || '');
 
   const detailObservedMedian = isUSA
-    ? (skillDetail?.median_with ? `$${Math.round(skillDetail.median_with).toLocaleString()}` : '$180,413')
-    : (skillDetail?.observed_median_salary_lpa !== undefined ? `₹${Number(skillDetail.observed_median_salary_lpa).toFixed(1)} LPA` : (skillDetail?.median_with_lpa ? `₹${Number(skillDetail.median_with_lpa).toFixed(1)} LPA` : '₹10.0 LPA'));
+    ? (skillDetail?.median_salary !== undefined
+        ? `$${Math.round(skillDetail.median_salary).toLocaleString()}`
+        : (skillDetail?.median_with ? `$${Math.round(skillDetail.median_with).toLocaleString()}` : '$180,413'))
+    : (skillDetail?.observed_median_salary_lpa !== undefined
+        ? `₹${Number(skillDetail.observed_median_salary_lpa).toFixed(1)} LPA`
+        : (skillDetail?.median_with_lpa ? `₹${Number(skillDetail.median_with_lpa).toFixed(1)} LPA` : '₹10.0 LPA'));
 
   const detailDemandPct = isUSA
-    ? (skillDetail?.prevalence ?? 0)
-    : (skillDetail?.demand_percentage ?? skillDetail?.prevalence ?? 0);
+    ? (skillDetail?.prevalence_pct ?? skillDetail?.prevalence ?? 0)
+    : (skillDetail?.demand_percentage ?? skillDetail?.prevalence_pct ?? skillDetail?.prevalence ?? 0);
 
   const detailPostings = isUSA
     ? (skillDetail?.postings ?? 0)
     : (skillDetail?.posting_count ?? skillDetail?.postings ?? 0);
 
   const detailSalaryDiff = isUSA
-    ? (skillDetail?.delta !== undefined ? (skillDetail.delta >= 0 ? `+$${Math.round(skillDetail.delta).toLocaleString()}` : `-$${Math.round(Math.abs(skillDetail.delta)).toLocaleString()}`) : '+$0')
-    : (skillDetail?.observed_salary_difference_lpa !== undefined ? (skillDetail.observed_salary_difference_lpa >= 0 ? `+₹${Number(skillDetail.observed_salary_difference_lpa).toFixed(1)} LPA` : `-₹${Number(Math.abs(skillDetail.observed_salary_difference_lpa)).toFixed(1)} LPA`) : (skillDetail?.delta_lpa !== undefined ? `+₹${Number(skillDetail.delta_lpa).toFixed(1)} LPA` : '+₹0.0 LPA'));
+    ? (skillDetail?.delta_vs_cohort !== undefined
+        ? (skillDetail.delta_vs_cohort >= 0 ? `+$${Math.round(skillDetail.delta_vs_cohort).toLocaleString()}` : `-$${Math.round(Math.abs(skillDetail.delta_vs_cohort)).toLocaleString()}`)
+        : (skillDetail?.delta !== undefined
+            ? (skillDetail.delta >= 0 ? `+$${Math.round(skillDetail.delta).toLocaleString()}` : `-$${Math.round(Math.abs(skillDetail.delta)).toLocaleString()}`)
+            : '+$0'))
+    : (skillDetail?.observed_salary_difference_lpa !== undefined
+        ? (skillDetail.observed_salary_difference_lpa >= 0 ? `+₹${Number(skillDetail.observed_salary_difference_lpa).toFixed(1)} LPA` : `-₹${Number(Math.abs(skillDetail.observed_salary_difference_lpa)).toFixed(1)} LPA`)
+        : (skillDetail?.delta_lpa !== undefined ? `+₹${Number(skillDetail.delta_lpa).toFixed(1)} LPA` : '+₹0.0 LPA'));
 
   const detailRoles: string[] = isUSA
-    ? (skillDetail?.roles || [])
+    ? (skillDetail?.roles || skillDetail?.associated_roles || [])
     : (skillDetail?.associated_roles || skillDetail?.roles || []);
 
   const detailArchetypes: string[] = isUSA
-    ? (skillDetail?.archetypes || [])
+    ? (skillDetail?.archetypes || skillDetail?.associated_archetypes || [])
     : (skillDetail?.associated_archetypes || skillDetail?.archetypes || []);
 
   const detailCombos: string[] = isUSA
-    ? (skillDetail?.combos || [])
+    ? (skillDetail?.combos || skillDetail?.cooccurring_skills || [])
     : (skillDetail?.cooccurring_skills || skillDetail?.combos || []);
 
   if (loading) {
@@ -160,7 +170,7 @@ export const SkillsPage: React.FC<SkillsPageProps> = ({ onNavigate }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
       {/* Header */}
-      <motion.div variants={heroSequenceVariants} initial="initial" animate="animate">
+      <motion.div variants={heroSequenceVariants} initial="hidden" animate="visible">
         <motion.div
           variants={heroItemVariants}
           style={{

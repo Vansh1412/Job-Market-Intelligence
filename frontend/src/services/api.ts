@@ -8,6 +8,7 @@ import {
   LocationSalary,
   ComparatorResult,
   SkillLandscapePoint,
+  SkillDetail,
   ArchetypeItem,
   PredictionOptions,
   PredictionResult,
@@ -86,7 +87,7 @@ export const api = {
     return fetchJson<any>(`/india/market-summary${query}`);
   },
   getIndiaSkills: () => fetchJson<{ country: string; currency: string; total_skills: number; skills: any[] }>('/india/skills'),
-  getIndiaSkillDetail: (skillName: string) => fetchJson<any>(`/india/skills/${encodeURIComponent(skillName)}`),
+  getIndiaSkillDetail: (skillName: string) => fetchJson<SkillDetail>(`/india/skills/${encodeURIComponent(skillName)}`),
 
 
   // Cross-Market Comparative Analytics
@@ -109,7 +110,7 @@ export const api = {
 
   getSkillFrequency: () => fetchJson<any[]>('/skills/frequency'),
   getSkillLandscape: () => fetchJson<SkillLandscapePoint[]>('/skills/landscape'),
-  getSkillDetail: (skillName: string) => fetchJson<any>(`/skills/detail/${encodeURIComponent(skillName)}`),
+  getSkillDetail: (skillName: string) => fetchJson<SkillDetail>(`/skills/detail/${encodeURIComponent(skillName)}`),
 
   getArchetypesList: () => fetchJson<ArchetypeItem[]>('/archetypes/list'),
   getArchetypeRoleProfile: (clusterId: number) => fetchJson<any[]>(`/archetypes/role-profiles/${clusterId}`),

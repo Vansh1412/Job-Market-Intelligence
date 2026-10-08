@@ -35,10 +35,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy source code and frozen models
+# Copy source code, frozen models, reports, and certified processed datasets
 COPY src/ /app/src/
 COPY models/ /app/models/
 COPY reports/ /app/reports/
+COPY data/processed/ /app/data/processed/
 
 # Copy compiled frontend assets
 COPY --from=frontend-builder /app/frontend/dist /app/frontend/dist

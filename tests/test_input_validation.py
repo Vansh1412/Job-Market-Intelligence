@@ -178,3 +178,44 @@ def test_india_unsupported_city_fallback():
     assert res.status_code == 200
     data = res.json()
     assert data["predicted_salary_lpa"] > 2.0
+
+
+def test_usa_oversized_skills_rejected():
+    """Verify that requests with excessive skills list (>60 items) are rejected with HTTP 422."""
+    res = client.post("/api/usa/predict", json={
+        "role_family": "Software Engineer",
+        "seniority": "Senior",
+        "city_clean": "San Francisco",
+        "is_remote": True,
+        "selected_skills": [f"skill_{i}" for i in range(100)]
+    })
+    assert res.status_code == 422, f"Expected 422 for oversized skills list, got {res.status_code}"
+
+
+def test_india_oversized_skills_rejected():
+    """Verify that India requests with excessive skills list (>60 items) are rejected with HTTP 422."""
+    res = client.post("/api/india/predict", json={
+        "normalized_role": "Data Engineer",
+        "experience_midpoint_years": 4.0,
+        "experience_range_years": 2.0,
+        "city_grouped": "Bengaluru",
+        "work_mode": "Hybrid",
+        "selected_skills": [f"skill_{i}" for i in range(100)]
+    })
+    assert res.status_code == 422, f"Expected 422 for oversized skills list, got {res.status_code}"
+
+
+def test_cors_preflight_credentials_policy():
+    """Verify CORS preflight headers enforce standard credentials policy."""
+    res = client.options("/api/health", headers={
+        "Origin": "http://localhost:5173",
+        "Access-Control-Request-Method": "GET"
+    })
+    assert res.status_code == 200
+    assert "access-control-allow-origin" in res.headers
+    # If explicit origin allowed, credentials should be true; if wildcard, must be omitted or false
+    origin = res.headers.get("access-control-allow-origin")
+    creds = res.headers.get("access-control-allow-credentials")
+    if origin == "*":
+        assert creds != "true", "Wildcard origin MUST NOT allow credentials"
+

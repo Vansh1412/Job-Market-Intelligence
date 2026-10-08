@@ -84,7 +84,7 @@ export const ArchetypesPage: React.FC<ArchetypesPageProps> = ({ onNavigate }) =>
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
       {/* Header */}
-      <motion.div variants={heroSequenceVariants} initial="initial" animate="animate">
+      <motion.div variants={heroSequenceVariants} initial="hidden" animate="visible">
         <motion.div
           variants={heroItemVariants}
           style={{

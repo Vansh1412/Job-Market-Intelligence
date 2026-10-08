@@ -27,8 +27,8 @@ export const PageHero: React.FC<PageHeroProps> = ({
   return (
     <motion.div
       variants={heroSequenceVariants}
-      initial="initial"
-      animate="animate"
+      initial="hidden"
+      animate="visible"
       style={{
         marginBottom: '28px',
         paddingBottom: '22px',
