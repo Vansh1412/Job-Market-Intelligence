@@ -103,6 +103,10 @@ def sync_and_verify_artifacts(
 
     for key, spec in artifacts.items():
         rel_path = spec["path"]
+        if not os.path.exists(rel_path) and key == "india_skill_analytics":
+            alt_path = "reports/tables/india/india_skill_analytics.json"
+            if os.path.exists(alt_path):
+                rel_path = alt_path
         s3_key = spec.get("s3_key", rel_path)
         expected_sha = spec["sha256"]
         is_required = spec.get("required", True)

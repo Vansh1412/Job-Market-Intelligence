@@ -28,27 +28,35 @@ class MarketService:
     """
 
     @classmethod
-    def get_usa_cohort_df(cls) -> pd.DataFrame:
-        """Cached accessor for USA modeling cohort."""
+    def get_usa_cohort_df(cls) -> Optional[pd.DataFrame]:
+        """Cached accessor for USA modeling cohort (returns None if unmounted in production)."""
         if not hasattr(cls, "_usa_cohort_df"):
-            cls._usa_cohort_df = pd.read_parquet("data/processed/modeling_dataset.parquet")
+            path = "data/processed/modeling_dataset.parquet"
+            if os.path.exists(path):
+                cls._usa_cohort_df = pd.read_parquet(path)
+            else:
+                cls._usa_cohort_df = None
         return cls._usa_cohort_df
 
     @classmethod
-    def get_india_cohort_df(cls) -> pd.DataFrame:
-        """Cached accessor for India modeling cohort."""
+    def get_india_cohort_df(cls) -> Optional[pd.DataFrame]:
+        """Cached accessor for India modeling cohort (returns None if unmounted in production)."""
         if not hasattr(cls, "_india_cohort_df"):
-            df = pd.read_parquet("data/processed/india/india_modeling_cohort.parquet")
-            def get_exp_band(yrs):
-                if yrs <= 2.5:
-                    return "0-2 Yrs (Entry)"
-                if yrs <= 5.5:
-                    return "3-5 Yrs (Mid)"
-                if yrs <= 10.5:
-                    return "6-10 Yrs (Senior)"
-                return "11+ Yrs (Lead / Principal)"
-            df["experience_band"] = df["experience_midpoint_years"].apply(get_exp_band)
-            cls._india_cohort_df = df
+            path = "data/processed/india/india_modeling_cohort.parquet"
+            if os.path.exists(path):
+                df = pd.read_parquet(path)
+                def get_exp_band(yrs):
+                    if yrs <= 2.5:
+                        return "0-2 Yrs (Entry)"
+                    if yrs <= 5.5:
+                        return "3-5 Yrs (Mid)"
+                    if yrs <= 10.5:
+                        return "6-10 Yrs (Senior)"
+                    return "11+ Yrs (Lead / Principal)"
+                df["experience_band"] = df["experience_midpoint_years"].apply(get_exp_band)
+                cls._india_cohort_df = df
+            else:
+                cls._india_cohort_df = None
         return cls._india_cohort_df
 
     # -------------------------------------------------------------------------
@@ -71,8 +79,37 @@ class MarketService:
         if not has_filters:
             return cls._get_usa_baseline_summary()
 
+        cohort_df = cls.get_usa_cohort_df()
+        if cohort_df is None:
+            return {
+                "country": "USA",
+                "currency": "USD",
+                "currency_symbol": "$",
+                "cohort_size": 0,
+                "total_job_pool": 335995,
+                "disclosed_salary_pct": 10.13,
+                "moments": {
+                    "median": 0.0, "mean": 0.0, "p10": 0.0, "p25": 0.0,
+                    "p75": 0.0, "p90": 0.0, "iqr": 0.0,
+                },
+                "by_role": [],
+                "by_seniority": [],
+                "by_location": [],
+                "top_skills": [],
+                "kpis": {
+                    "median_salary_formatted": "N/A",
+                    "typical_experience": "No matching postings",
+                    "most_common_skill": "None",
+                    "largest_role_group": "None",
+                    "sample_count": 0,
+                },
+                "empty_state": True,
+                "filter_unsupported": True,
+                "message": "Dynamic cross-filtering requires the private modeling dataset (unmounted in public production deployment for license compliance). Please view baseline market distributions or use live salary prediction.",
+            }
+
         # Dynamic cross-filtering
-        df = cls.get_usa_cohort_df().copy()
+        df = cohort_df.copy()
         if role and role != "All":
             df = df[df["role_family"] == role]
         if seniority and seniority != "All":
@@ -316,8 +353,37 @@ class MarketService:
         if not has_filters:
             return cls._get_india_baseline_summary()
 
+        cohort_df = cls.get_india_cohort_df()
+        if cohort_df is None:
+            return {
+                "country": "India",
+                "currency": "INR",
+                "currency_symbol": "₹",
+                "cohort_size": 0,
+                "total_job_pool": 97318,
+                "disclosed_salary_pct": 34.78,
+                "moments": {
+                    "median_lpa": 0.0, "mean_lpa": 0.0, "median_inr": 0.0, "mean_inr": 0.0,
+                    "p10_lpa": 0.0, "p25_lpa": 0.0, "p75_lpa": 0.0, "p90_lpa": 0.0, "iqr_lpa": 0.0,
+                },
+                "by_role": [],
+                "by_experience": [],
+                "by_location": [],
+                "top_skills": [],
+                "kpis": {
+                    "median_salary_formatted": "N/A",
+                    "typical_experience": "No matching postings",
+                    "most_common_skill": "None",
+                    "largest_role_group": "None",
+                    "sample_count": 0,
+                },
+                "empty_state": True,
+                "filter_unsupported": True,
+                "message": "Dynamic cross-filtering requires the private modeling dataset (unmounted in public production deployment for license compliance). Please view baseline market distributions or use live salary prediction.",
+            }
+
         # Dynamic cross-filtering
-        df = cls.get_india_cohort_df().copy()
+        df = cohort_df.copy()
         if role and role != "All":
             df = df[df["normalized_role"] == role]
         if experience and experience != "All":
@@ -529,17 +595,28 @@ class MarketService:
                     "mean_salary_lpa": float(sals.mean()),
                 })
 
-        # Cities (computed empirically from audited cohort)
+        # Cities (computed from certified table or cohort)
         city_items = []
-        for c_name, group in cohort_df.groupby("city_grouped"):
-            city_items.append({
-                "city": c_name,
-                "postings": len(group),
-                "pct_of_total": round((len(group) / len(cohort_df)) * 100, 1),
-                "median_salary_lpa": round(float(group["salary_lpa"].median()), 2),
-                "mean_salary_lpa": round(float(group["salary_lpa"].mean()), 2),
-            })
-        city_items = sorted(city_items, key=lambda x: x["postings"], reverse=True)[:15]
+        if cohort_df is not None:
+            for c_name, group in cohort_df.groupby("city_grouped"):
+                city_items.append({
+                    "city": c_name,
+                    "postings": len(group),
+                    "pct_of_total": round((len(group) / len(cohort_df)) * 100, 1),
+                    "median_salary_lpa": round(float(group["salary_lpa"].median()), 2),
+                    "mean_salary_lpa": round(float(group["salary_lpa"].mean()), 2),
+                })
+            city_items = sorted(city_items, key=lambda x: x["postings"], reverse=True)[:15]
+        elif os.path.exists(city_csv):
+            df_city = pd.read_csv(city_csv)
+            for _, r in df_city.head(15).iterrows():
+                city_items.append({
+                    "city": str(r.get("city", "")),
+                    "postings": int(r.get("total_postings", 0)),
+                    "pct_of_total": float(r.get("pct_of_total", 0.0)),
+                    "median_salary_lpa": 0.0,
+                    "mean_salary_lpa": 0.0,
+                })
 
         # Skills
         skill_items = []
@@ -610,73 +687,101 @@ class MarketService:
             df_usa = cls.get_usa_cohort_df()
             df_ind = cls.get_india_cohort_df()
 
-            # 1. Empirical Shared Skills Prevalence
-            tracked_skills_config = [
-                ("Python", "skill_python", "skill_python"),
-                ("SQL", "skill_sql", "skill_sql"),
-                ("AWS", "skill_aws", "skill_aws"),
-                ("Java", "skill_java", "skill_java"),
-                ("React", "skill_react", "skill_react"),
-                ("Docker", "skill_docker", "skill_docker"),
-                ("Kubernetes", "skill_kubernetes", "skill_kubernetes"),
-                ("Machine Learning", "skill_machine_learning", "skill_machine_learning"),
-                ("Spark", "skill_spark", "skill_spark"),
-                ("Spring Boot", "skill_spring", "skill_spring_boot"),
-                ("Azure", "skill_azure", "skill_azure"),
-                ("Microservices", "skill_microservices", "skill_microservices"),
-            ]
+            if df_usa is not None and df_ind is not None:
+                # 1. Empirical Shared Skills Prevalence
+                tracked_skills_config = [
+                    ("Python", "skill_python", "skill_python"),
+                    ("SQL", "skill_sql", "skill_sql"),
+                    ("AWS", "skill_aws", "skill_aws"),
+                    ("Java", "skill_java", "skill_java"),
+                    ("React", "skill_react", "skill_react"),
+                    ("Docker", "skill_docker", "skill_docker"),
+                    ("Kubernetes", "skill_kubernetes", "skill_kubernetes"),
+                    ("Machine Learning", "skill_machine_learning", "skill_machine_learning"),
+                    ("Spark", "skill_spark", "skill_spark"),
+                    ("Spring Boot", "skill_spring", "skill_spring_boot"),
+                    ("Azure", "skill_azure", "skill_azure"),
+                    ("Microservices", "skill_microservices", "skill_microservices"),
+                ]
 
-            shared_skills = []
-            for label, usa_col, ind_col in tracked_skills_config:
-                u_pct = round(float(df_usa[usa_col].mean() * 100), 1) if usa_col in df_usa.columns else 0.0
-                i_pct = round(float(df_ind[ind_col].mean() * 100), 1) if ind_col in df_ind.columns else 0.0
-                shared_skills.append({
-                    "skill": label,
-                    "usa_pct": u_pct,
-                    "india_pct": i_pct,
-                })
+                shared_skills = []
+                for label, usa_col, ind_col in tracked_skills_config:
+                    u_pct = round(float(df_usa[usa_col].mean() * 100), 1) if usa_col in df_usa.columns else 0.0
+                    i_pct = round(float(df_ind[ind_col].mean() * 100), 1) if ind_col in df_ind.columns else 0.0
+                    shared_skills.append({
+                        "skill": label,
+                        "usa_pct": u_pct,
+                        "india_pct": i_pct,
+                    })
 
-            # 2. Empirical Role Demand Comparison
-            role_mapping = [
-                ("Software / Full Stack Engineer",
-                 ["Software Engineer", "Full-Stack Developer", "Backend Developer", "Frontend Developer"],
-                 ["Software Engineer", "Full Stack Developer", "Frontend Developer"]),
-                ("Data Engineer / Big Data",
-                 ["Data Engineer"],
-                 ["Data Engineer"]),
-                ("DevOps / Cloud Platform",
-                 ["DevOps / Cloud / Platform", "Solutions & Architecture"],
-                 ["Cloud / DevOps"]),
-                ("AI / ML & Data Science",
-                 ["ML / AI Engineer", "Data Scientist"],
-                 ["AI / ML Engineer", "Data Scientist"]),
-                ("QA / SDET / Testing",
-                 ["QA / SDET"],
-                 ["QA / Testing"]),
-                ("Product & Engineering Mgmt",
-                 ["Technical Product & PM", "Engineering Management"],
-                 ["Product / Program Manager"]),
-                ("Data / BI Analyst",
-                 ["Data / BI Analyst"],
-                 ["Data Analyst", "Business Analyst"]),
-                ("Other Tech / Systems / IT",
-                 ["Other Tech", "Embedded & Hardware", "Security Engineer", "Systems & Network Engineer", "Mobile Engineer"],
-                 ["Other Technology", "Cybersecurity", "Database Administrator"]),
-            ]
+                # 2. Empirical Role Demand Comparison
+                role_mapping = [
+                    ("Software / Full Stack Engineer",
+                     ["Software Engineer", "Full-Stack Developer", "Backend Developer", "Frontend Developer"],
+                     ["Software Engineer", "Full Stack Developer", "Frontend Developer"]),
+                    ("Data Engineer / Big Data",
+                     ["Data Engineer"],
+                     ["Data Engineer"]),
+                    ("DevOps / Cloud Platform",
+                     ["DevOps / Cloud / Platform", "Solutions & Architecture"],
+                     ["Cloud / DevOps"]),
+                    ("AI / ML & Data Science",
+                     ["ML / AI Engineer", "Data Scientist"],
+                     ["AI / ML Engineer", "Data Scientist"]),
+                    ("QA / SDET / Testing",
+                     ["QA / SDET"],
+                     ["QA / Testing"]),
+                    ("Product & Engineering Mgmt",
+                     ["Technical Product & PM", "Engineering Management"],
+                     ["Product / Program Manager"]),
+                    ("Data / BI Analyst",
+                     ["Data / BI Analyst"],
+                     ["Data Analyst", "Business Analyst"]),
+                    ("Other Tech / Systems / IT",
+                     ["Other Tech", "Embedded & Hardware", "Security Engineer", "Systems & Network Engineer", "Mobile Engineer"],
+                     ["Other Technology", "Cybersecurity", "Database Administrator"]),
+                ]
 
-            total_usa = len(df_usa)
-            total_ind = len(df_ind)
-            role_comparison = []
-            for label, usa_roles, ind_roles in role_mapping:
-                u_share = round(float(df_usa["role_family"].isin(usa_roles).sum() / total_usa * 100), 1)
-                i_share = round(float(df_ind["normalized_role"].isin(ind_roles).sum() / total_ind * 100), 1)
-                role_comparison.append({
-                    "role": label,
-                    "usa_share_pct": u_share,
-                    "india_share_pct": i_share,
-                })
+                total_usa = len(df_usa)
+                total_ind = len(df_ind)
+                role_comparison = []
+                for label, usa_roles, ind_roles in role_mapping:
+                    u_share = round(float(df_usa["role_family"].isin(usa_roles).sum() / total_usa * 100), 1)
+                    i_share = round(float(df_ind["normalized_role"].isin(ind_roles).sum() / total_ind * 100), 1)
+                    role_comparison.append({
+                        "role": label,
+                        "usa_share_pct": u_share,
+                        "india_share_pct": i_share,
+                    })
 
-            cls._cached_cross_market_analytics = (shared_skills, role_comparison)
+                cls._cached_cross_market_analytics = (shared_skills, role_comparison)
+            else:
+                # Certified empirical baseline constants computed from the full research cohort
+                certified_skills = [
+                    {'india_pct': 11.0, 'skill': 'Python', 'usa_pct': 34.1},
+                    {'india_pct': 9.2, 'skill': 'SQL', 'usa_pct': 19.9},
+                    {'india_pct': 6.2, 'skill': 'AWS', 'usa_pct': 18.2},
+                    {'india_pct': 11.3, 'skill': 'Java', 'usa_pct': 6.9},
+                    {'india_pct': 6.9, 'skill': 'React', 'usa_pct': 8.4},
+                    {'india_pct': 1.8, 'skill': 'Docker', 'usa_pct': 6.8},
+                    {'india_pct': 2.0, 'skill': 'Kubernetes', 'usa_pct': 11.3},
+                    {'india_pct': 2.1, 'skill': 'Machine Learning', 'usa_pct': 18.4},
+                    {'india_pct': 5.0, 'skill': 'Spark', 'usa_pct': 5.9},
+                    {'india_pct': 5.3, 'skill': 'Spring Boot', 'usa_pct': 2.6},
+                    {'india_pct': 2.8, 'skill': 'Azure', 'usa_pct': 8.9},
+                    {'india_pct': 6.2, 'skill': 'Microservices', 'usa_pct': 3.1},
+                ]
+                certified_roles = [
+                    {'india_share_pct': 22.4, 'role': 'Software / Full Stack Engineer', 'usa_share_pct': 25.0},
+                    {'india_share_pct': 6.0, 'role': 'Data Engineer / Big Data', 'usa_share_pct': 4.8},
+                    {'india_share_pct': 3.1, 'role': 'DevOps / Cloud Platform', 'usa_share_pct': 7.5},
+                    {'india_share_pct': 2.0, 'role': 'AI / ML & Data Science', 'usa_share_pct': 23.3},
+                    {'india_share_pct': 6.3, 'role': 'QA / SDET / Testing', 'usa_share_pct': 1.5},
+                    {'india_share_pct': 1.0, 'role': 'Product & Engineering Mgmt', 'usa_share_pct': 9.8},
+                    {'india_share_pct': 2.9, 'role': 'Data / BI Analyst', 'usa_share_pct': 0.6},
+                    {'india_share_pct': 56.3, 'role': 'Other Tech / Systems / IT', 'usa_share_pct': 27.6},
+                ]
+                cls._cached_cross_market_analytics = (certified_skills, certified_roles)
 
         return cls._cached_cross_market_analytics
 

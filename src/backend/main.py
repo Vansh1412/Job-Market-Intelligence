@@ -68,7 +68,7 @@ import os
 # Configurable CORS origins for development and production deployments
 raw_origins = os.getenv(
     "CORS_ORIGINS",
-    "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173,http://localhost:8000"
+    "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173,http://localhost:8000,https://jobintel.vercel.app,https://job-market-intelligence.vercel.app"
 )
 allowed_origins = [o.strip() for o in raw_origins.split(",") if o.strip()]
 is_wildcard = "*" in allowed_origins
@@ -129,7 +129,9 @@ def readiness_check():
     from fastapi.responses import JSONResponse
     registry = get_model_registry()
     status = registry.get_status_report()
-    is_ready = status["status"] == "GREEN" and status["artifacts_verified_count"] == 10
+    is_ready = status["status"] == "GREEN" and (
+        status["artifacts_verified_count"] == 10 or status.get("mandatory_verified_count", 0) >= 9
+    )
     if is_ready:
         return {
             "status": "ready",

@@ -1,0 +1,124 @@
+Feature,Importance,Rank
+seniority_Lead / Principal / Executive,0.12598398,1
+city_clean_San Francisco,0.08358007,2
+role_family_Other Tech,0.048290584,3
+seniority_Junior / Entry,0.030788679,4
+skill_machine_learning,0.025865203,5
+seniority_Senior,0.019953396,6
+skill_gis,0.017886007,7
+skill_rust,0.017747654,8
+skill_pytorch,0.016184159,9
+skill_power_bi,0.015813284,10
+skill_tableau,0.014505891,11
+role_family_Data / BI Analyst,0.014219896,12
+skill_qa_testing,0.013649689,13
+role_family_Engineering Management,0.01264038,14
+city_clean_New York City,0.011975205,15
+skill_deep_learning,0.011548436,16
+city_clean_Toronto,0.011187653,17
+role_family_QA / SDET,0.010997548,18
+role_family_Technical Product & PM,0.010343666,19
+city_clean_Mountain View,0.009855104,20
+skill_spring,0.00969543,21
+city_clean_Hawthorne,0.009512092,22
+skill_git,0.009009897,23
+skill_typescript,0.008240847,24
+skill_html_css,0.008070257,25
+role_family_Solutions & Architecture,0.0077461153,26
+role_family_Security Engineer,0.0074981544,27
+skill_sql,0.007411772,28
+role_family_Data Scientist,0.0073949504,29
+city_clean_San Jose,0.0072468123,30
+skill_node_js,0.0072099394,31
+role_family_Software Engineer,0.0067566712,32
+skill_docker,0.006744811,33
+city_clean_Denver,0.0067038443,34
+skill_llm,0.0066673537,35
+seniority_Mid / Unspecified,0.006635745,36
+num_skills,0.0065934937,37
+skill_microservices,0.0065189404,38
+skill_c++,0.0064904685,39
+skill_databricks,0.0063546025,40
+is_remote,0.0062632253,41
+city_clean_Other,0.0062439567,42
+skill_php,0.0059913523,43
+skill_computer_vision,0.0059550726,44
+skill_blockchain,0.0058943075,45
+skill_kubernetes,0.005862067,46
+skill_data_engineering,0.0058366912,47
+city_clean_New York,0.005772883,48
+role_family_Mobile Engineer,0.0056174765,49
+skill_rabbitmq,0.0054307366,50
+skill_statistics,0.005424248,51
+skill_robotics,0.0053617326,52
+skill_serverless,0.005344642,53
+skill_looker,0.005208588,54
+skill_spark,0.005173148,55
+skill_flutter,0.0051606516,56
+skill_react,0.005092398,57
+skill_javascript,0.005020457,58
+city_clean_Los Angeles,0.005012471,59
+skill_python,0.0049722944,60
+skill_etl,0.0049680085,61
+skill_scikit_learn,0.004950551,62
+role_family_Data Engineer,0.004920895,63
+city_clean_Chicago,0.004891725,64
+skill_pandas,0.0048324736,65
+skill_security,0.004818411,66
+skill_ios,0.004734409,67
+skill_redis,0.0046812613,68
+skill_hardware,0.0045785797,69
+skill_nlp,0.0044397176,70
+skill_linux,0.004420171,71
+city_clean_Costa Mesa,0.0044180383,72
+skill_data_science,0.0044020195,73
+seniority_Intern,0.0044018244,74
+role_family_Frontend Developer,0.00438336,75
+city_clean_Long Beach,0.00419786,76
+skill_next_js,0.0041837487,77
+skill_scala,0.004160869,78
+skill_aws,0.0041364776,79
+role_family_ML / AI Engineer,0.0041051814,80
+skill_go,0.004063961,81
+skill_kafka,0.004042744,82
+skill_kotlin,0.0037492905,83
+skill_ci_cd,0.003744167,84
+skill_ruby,0.0036984424,85
+skill_azure,0.0035710256,86
+city_clean_Seattle,0.0035661985,87
+skill_embedded,0.0035502985,88
+skill_java,0.003546104,89
+city_clean_Boston,0.0034862577,90
+skill_nosql,0.0034483096,91
+skill_snowflake,0.0034284191,92
+skill_gcp,0.0033942787,93
+skill_rest_api,0.0033712012,94
+skill_airflow,0.003364343,95
+skill_dbt,0.0033182548,96
+skill_bigquery,0.00325467,97
+role_family_Backend Developer,0.0032476913,98
+skill_react_native,0.0031664064,99
+skill_tensorflow,0.0031223688,100
+skill_vue,0.0031005107,101
+skill_elasticsearch,0.0029774306,102
+skill_redshift,0.0029625152,103
+skill_numpy,0.002952062,104
+skill_swift,0.0029278225,105
+skill_ansible,0.002884963,106
+skill_devops,0.002857719,107
+skill_c#,0.0027542135,108
+role_family_Systems & Network Engineer,0.0026832006,109
+skill_grpc,0.0026210705,110
+skill_hadoop,0.0025929387,111
+role_family_Full-Stack Developer,0.0025731612,112
+skill_android,0.002476094,113
+role_family_DevOps / Cloud / Platform,0.002438227,114
+skill_angular,0.0023420292,115
+skill_django,0.0023224736,116
+skill_terraform,0.0022755766,117
+skill_fastapi,0.0022680261,118
+skill_flask,0.0020868406,119
+skill_graphql,0.0019570328,120
+skill_unity,0.0019048651,121
+role_family_Embedded & Hardware,0.0017676128,122
+city_clean_Washington,0.0013565647,123

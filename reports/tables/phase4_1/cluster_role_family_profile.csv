@@ -1,0 +1,36 @@
+Cluster_ID,Archetype_Name,Rank,Role_Family,Share_Within_Cluster_%
+0,Foundational & Broad Technical Roles,1,Other Tech,44.11
+0,Foundational & Broad Technical Roles,2,Software Engineer,13.03
+0,Foundational & Broad Technical Roles,3,ML / AI Engineer,8.35
+0,Foundational & Broad Technical Roles,4,Data Scientist,6.77
+0,Foundational & Broad Technical Roles,5,Data Engineer,5.72
+1,DevOps & Cloud Infrastructure Engineering,1,DevOps / Cloud / Platform,36.96
+1,DevOps & Cloud Infrastructure Engineering,2,Software Engineer,20.05
+1,DevOps & Cloud Infrastructure Engineering,3,ML / AI Engineer,9.3
+1,DevOps & Cloud Infrastructure Engineering,4,Backend Developer,8.71
+1,DevOps & Cloud Infrastructure Engineering,5,Data Engineer,7.95
+2,Frontend & Modern Web Application Engineering,1,Software Engineer,25.01
+2,Frontend & Modern Web Application Engineering,2,Frontend Developer,22.38
+2,Frontend & Modern Web Application Engineering,3,Full-Stack Developer,20.2
+2,Frontend & Modern Web Application Engineering,4,ML / AI Engineer,6.91
+2,Frontend & Modern Web Application Engineering,5,DevOps / Cloud / Platform,5.76
+3,Multi-Cloud & Enterprise Cloud Architecture,1,ML / AI Engineer,19.29
+3,Multi-Cloud & Enterprise Cloud Architecture,2,Software Engineer,17.15
+3,Multi-Cloud & Enterprise Cloud Architecture,3,DevOps / Cloud / Platform,12.14
+3,Multi-Cloud & Enterprise Cloud Architecture,4,Other Tech,11.67
+3,Multi-Cloud & Enterprise Cloud Architecture,5,Data Engineer,10.59
+4,Data Engineering & Business Analytics,1,Other Tech,23.75
+4,Data Engineering & Business Analytics,2,Software Engineer,17.21
+4,Data Engineering & Business Analytics,3,Data Engineer,12.66
+4,Data Engineering & Business Analytics,4,Data Scientist,12.49
+4,Data Engineering & Business Analytics,5,ML / AI Engineer,9.66
+5,AI / Machine Learning & LLM Engineering,1,ML / AI Engineer,69.59
+5,AI / Machine Learning & LLM Engineering,2,Technical Product & PM,7.52
+5,AI / Machine Learning & LLM Engineering,3,Software Engineer,6.58
+5,AI / Machine Learning & LLM Engineering,4,Solutions & Architecture,3.53
+5,AI / Machine Learning & LLM Engineering,5,Data Scientist,3.21
+6,Systems & Core Backend Engineering,1,Software Engineer,47.38
+6,Systems & Core Backend Engineering,2,ML / AI Engineer,16.16
+6,Systems & Core Backend Engineering,3,Data Scientist,5.19
+6,Systems & Core Backend Engineering,4,DevOps / Cloud / Platform,5.18
+6,Systems & Core Backend Engineering,5,QA / SDET,4.59

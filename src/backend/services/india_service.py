@@ -152,10 +152,13 @@ class IndiaService:
     def get_skills_analytics() -> Dict[str, Any]:
         """Return empirical skill metrics, demand percentages, salaries, and associations."""
         import os, json
-        path = "data/processed/india/india_skill_analytics.json"
-        if os.path.exists(path):
-            with open(path, "r", encoding="utf-8") as f:
-                return json.load(f)
+        for path in [
+            "reports/tables/india/india_skill_analytics.json",
+            "data/processed/india/india_skill_analytics.json",
+        ]:
+            if os.path.exists(path):
+                with open(path, "r", encoding="utf-8") as f:
+                    return json.load(f)
         return {"country": "India", "currency": "INR", "skills": []}
 
     @staticmethod

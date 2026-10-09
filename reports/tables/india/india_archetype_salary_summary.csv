@@ -1,0 +1,7 @@
+archetype_id,archetype_name,N,median_salary_lpa,mean_salary_lpa,q25_salary_lpa,q75_salary_lpa,iqr_salary_lpa,std_salary_lpa,min_salary_lpa,max_salary_lpa,salary_rank,delta_vs_cohort_median_lpa
+IND_ARC_01,Big Data Engineering & Distributed Systems,198,20.0,18.75378787878788,18.125,20.0,1.875,3.073538627116687,6.5,30.0,1,9.0
+IND_ARC_02,Enterprise Java & Microservices Backend,446,18.75,18.5734865470852,14.5,23.5,9.0,6.825186983660348,1.275,50.0,2,7.75
+IND_ARC_03,"Python, Cloud Data & Applied AI/ML",481,17.0,18.03612266112266,11.0,23.75,12.75,9.827562305079226,1.625,55.0,3,6.0
+IND_ARC_04,Full-Stack & Modern Application Engineering,547,13.0,13.53662705667276,6.5,18.0,11.5,8.619897839322972,1.375,75.0,4,2.0
+IND_ARC_05,Baseline & General Technology Stack,3526,7.5,11.171552750992628,4.0,16.0,12.0,9.74978493405179,1.2,80.0,5,-3.5
+IND_ARC_06,Enterprise ERP & SAP Functional Solutions,125,3.625,4.822360000000001,3.625,3.625,0.0,4.401064670099726,1.25,32.5,6,-7.375

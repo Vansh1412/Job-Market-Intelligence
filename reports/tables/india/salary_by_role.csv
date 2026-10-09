@@ -1,0 +1,16 @@
+role_category,num_postings_with_salary,avg_salary_lpa,min_salary_lpa,max_salary_lpa,median_salary_lpa
+Product / Program Manager,61,20.34,1.5,80.0,17.5
+AI / ML Engineer,74,19.88,0.75,52.5,20.0
+Data Scientist,47,19.01,6.0,55.0,16.5
+Data Engineer,354,17.96,0.6,57.5,19.25
+Cloud / DevOps,183,16.8,1.75,50.0,15.0
+Software Engineer,806,16.0,0.65,80.0,15.0
+Full Stack Developer,409,15.64,0.5,37.5,16.5
+Cybersecurity,71,14.6,1.18,87.0,11.0
+Database Administrator,63,13.63,1.1,32.5,13.0
+Frontend Developer,112,13.22,1.38,37.5,11.0
+Business Analyst,99,12.22,0.5,37.5,11.0
+QA / Testing,371,10.26,0.5,55.0,8.0
+Data Analyst,72,10.22,0.8,32.5,7.5
+Other Technology,3223,9.94,0.01,87.5,5.5
+Non-Tech,27171,6.53,0.01,825.0,3.88

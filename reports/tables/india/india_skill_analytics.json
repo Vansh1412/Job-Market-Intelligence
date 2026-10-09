@@ -1,0 +1,6659 @@
+{
+  "country": "India",
+  "currency": "INR",
+  "total_skills": 284,
+  "skills": [
+    {
+      "skill": "skill_development",
+      "display_name": "Development",
+      "posting_count": 723,
+      "demand_percentage": 13.6,
+      "observed_median_salary_lpa": 14.0,
+      "observed_salary_difference_lpa": 4.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Full-Stack & Modern Application Engineering",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "SQL",
+        "Spring Boot",
+        "React",
+        "Microservices"
+      ]
+    },
+    {
+      "skill": "skill_java",
+      "display_name": "Java",
+      "posting_count": 663,
+      "demand_percentage": 12.5,
+      "observed_median_salary_lpa": 17.5,
+      "observed_salary_difference_lpa": 7.5,
+      "associated_roles": [
+        "Software Engineer",
+        "Full Stack Developer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Microservices",
+        "Spring Boot",
+        "Development",
+        "React",
+        "Angular"
+      ]
+    },
+    {
+      "skill": "skill_python",
+      "display_name": "Python",
+      "posting_count": 644,
+      "demand_percentage": 12.1,
+      "observed_median_salary_lpa": 19.0,
+      "observed_salary_difference_lpa": 9.0,
+      "associated_roles": [
+        "Data Engineer",
+        "Software Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Big Data Engineering & Distributed Systems"
+      ],
+      "cooccurring_skills": [
+        "Spark",
+        "SQL",
+        "AIrflow",
+        "Scala",
+        "HADOOP"
+      ]
+    },
+    {
+      "skill": "skill_sql",
+      "display_name": "SQL",
+      "posting_count": 538,
+      "demand_percentage": 10.1,
+      "observed_median_salary_lpa": 15.25,
+      "observed_salary_difference_lpa": 5.25,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Data Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "Java",
+        "Development",
+        "Microservices",
+        "Angular"
+      ]
+    },
+    {
+      "skill": "skill_react",
+      "display_name": "React",
+      "posting_count": 406,
+      "demand_percentage": 7.6,
+      "observed_median_salary_lpa": 16.25,
+      "observed_salary_difference_lpa": 6.25,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Javascript",
+        "Angular",
+        "Node Js",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_aws",
+      "display_name": "AWS",
+      "posting_count": 363,
+      "demand_percentage": 6.8,
+      "observed_median_salary_lpa": 20.0,
+      "observed_salary_difference_lpa": 10.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "SQL",
+        "Data",
+        "Spark",
+        "Java"
+      ]
+    },
+    {
+      "skill": "skill_microservices",
+      "display_name": "Microservices",
+      "posting_count": 361,
+      "demand_percentage": 6.8,
+      "observed_median_salary_lpa": 18.75,
+      "observed_salary_difference_lpa": 8.75,
+      "associated_roles": [
+        "Software Engineer",
+        "Full Stack Developer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Spring Boot",
+        "Angular",
+        "React",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_sap",
+      "display_name": "SAP",
+      "posting_count": 309,
+      "demand_percentage": 5.8,
+      "observed_median_salary_lpa": 10.0,
+      "observed_salary_difference_lpa": 0.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise ERP & SAP Functional Solutions"
+      ],
+      "cooccurring_skills": [
+        "Consulting",
+        "SAP FICO",
+        "FICO",
+        "Mm",
+        "SAP Mm"
+      ]
+    },
+    {
+      "skill": "skill_spring_boot",
+      "display_name": "Spring Boot",
+      "posting_count": 309,
+      "demand_percentage": 5.8,
+      "observed_median_salary_lpa": 18.75,
+      "observed_salary_difference_lpa": 8.75,
+      "associated_roles": [
+        "Software Engineer",
+        "Full Stack Developer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Microservices",
+        "Development",
+        "Spring",
+        "Angular"
+      ]
+    },
+    {
+      "skill": "skill_javascript",
+      "display_name": "Javascript",
+      "posting_count": 307,
+      "demand_percentage": 5.8,
+      "observed_median_salary_lpa": 13.0,
+      "observed_salary_difference_lpa": 3.0,
+      "associated_roles": [
+        "Other Technology",
+        "Full Stack Developer",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "React",
+        "Typescript",
+        "Node Js",
+        "Development",
+        "Html"
+      ]
+    },
+    {
+      "skill": "skill_spark",
+      "display_name": "Spark",
+      "posting_count": 292,
+      "demand_percentage": 5.5,
+      "observed_median_salary_lpa": 20.0,
+      "observed_salary_difference_lpa": 10.0,
+      "associated_roles": [
+        "Data Engineer",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Big Data Engineering & Distributed Systems",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Scala",
+        "Python",
+        "HADOOP",
+        "AIrflow",
+        "Data"
+      ]
+    },
+    {
+      "skill": "skill_angular",
+      "display_name": "Angular",
+      "posting_count": 290,
+      "demand_percentage": 5.4,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Software Engineer",
+        "Frontend Developer"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "React",
+        "Java",
+        "Microservices",
+        "Spring Boot",
+        "SQL"
+      ]
+    },
+    {
+      "skill": "skill_data",
+      "display_name": "Data",
+      "posting_count": 219,
+      "demand_percentage": 4.1,
+      "observed_median_salary_lpa": 20.0,
+      "observed_salary_difference_lpa": 10.0,
+      "associated_roles": [
+        "Data Engineer",
+        "Other Technology",
+        "Data Scientist"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Big Data Engineering & Distributed Systems"
+      ],
+      "cooccurring_skills": [
+        "Spark",
+        "AWS",
+        "HADOOP",
+        "BIg Data",
+        "Python"
+      ]
+    },
+    {
+      "skill": "skill_api",
+      "display_name": "API",
+      "posting_count": 210,
+      "demand_percentage": 3.9,
+      "observed_median_salary_lpa": 17.62,
+      "observed_salary_difference_lpa": 7.62,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Microservices",
+        "Database",
+        "Core Banking",
+        "Encryption"
+      ]
+    },
+    {
+      "skill": "skill_node_js",
+      "display_name": "Node Js",
+      "posting_count": 196,
+      "demand_percentage": 3.7,
+      "observed_median_salary_lpa": 14.5,
+      "observed_salary_difference_lpa": 4.5,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "React",
+        "Javascript",
+        "Angular",
+        "Microservices",
+        "Typescript"
+      ]
+    },
+    {
+      "skill": "skill_scala",
+      "display_name": "Scala",
+      "posting_count": 193,
+      "demand_percentage": 3.6,
+      "observed_median_salary_lpa": 20.0,
+      "observed_salary_difference_lpa": 10.0,
+      "associated_roles": [
+        "Data Engineer",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Big Data Engineering & Distributed Systems",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Spark",
+        "HADOOP",
+        "Python",
+        "AIrflow",
+        "Jenkins"
+      ]
+    },
+    {
+      "skill": "skill_architecture",
+      "display_name": "Architecture",
+      "posting_count": 184,
+      "demand_percentage": 3.5,
+      "observed_median_salary_lpa": 25.0,
+      "observed_salary_difference_lpa": 15.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Cloud / DevOps"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Microservices",
+        "API",
+        "Encryption",
+        "Database"
+      ]
+    },
+    {
+      "skill": "skill_consulting",
+      "display_name": "Consulting",
+      "posting_count": 180,
+      "demand_percentage": 3.4,
+      "observed_median_salary_lpa": 3.62,
+      "observed_salary_difference_lpa": -6.38,
+      "associated_roles": [
+        "Other Technology",
+        "Cloud / DevOps",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Enterprise ERP & SAP Functional Solutions",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "SAP",
+        "SAP FICO",
+        "FICO",
+        "Mm",
+        "SAP Mm"
+      ]
+    },
+    {
+      "skill": "skill_c_",
+      "display_name": "C ",
+      "posting_count": 178,
+      "demand_percentage": 3.3,
+      "observed_median_salary_lpa": 14.5,
+      "observed_salary_difference_lpa": 4.5,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Net Core",
+        "Net",
+        "Angular",
+        " Net",
+        "SQL"
+      ]
+    },
+    {
+      "skill": "skill_ci_cd",
+      "display_name": "CI CD",
+      "posting_count": 177,
+      "demand_percentage": 3.3,
+      "observed_median_salary_lpa": 18.75,
+      "observed_salary_difference_lpa": 8.75,
+      "associated_roles": [
+        "Cloud / DevOps",
+        "Data Engineer",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Big Data Engineering & Distributed Systems"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "Devops",
+        "Spark",
+        "Scala",
+        "AIrflow"
+      ]
+    },
+    {
+      "skill": "skill_gcp",
+      "display_name": "GCP",
+      "posting_count": 175,
+      "demand_percentage": 3.3,
+      "observed_median_salary_lpa": 17.5,
+      "observed_salary_difference_lpa": 7.5,
+      "associated_roles": [
+        "Software Engineer",
+        "Cloud / DevOps",
+        "Data Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "SQL",
+        "AWS",
+        "Python",
+        "Data Architecture",
+        "Nosql"
+      ]
+    },
+    {
+      "skill": "skill_english",
+      "display_name": "English",
+      "posting_count": 174,
+      "demand_percentage": 3.3,
+      "observed_median_salary_lpa": 3.3,
+      "observed_salary_difference_lpa": -6.7,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Hindi",
+        "Communication Skills",
+        "Good English Communication",
+        "Backend",
+        "Office"
+      ]
+    },
+    {
+      "skill": "skill_hadoop",
+      "display_name": "HADOOP",
+      "posting_count": 172,
+      "demand_percentage": 3.2,
+      "observed_median_salary_lpa": 20.0,
+      "observed_salary_difference_lpa": 10.0,
+      "associated_roles": [
+        "Data Engineer",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Big Data Engineering & Distributed Systems",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Spark",
+        "Scala",
+        "Python",
+        "Hive",
+        "AIrflow"
+      ]
+    },
+    {
+      "skill": "skill_autocad",
+      "display_name": "Autocad",
+      "posting_count": 166,
+      "demand_percentage": 3.1,
+      "observed_median_salary_lpa": 4.5,
+      "observed_salary_difference_lpa": -5.5,
+      "associated_roles": [
+        "Other Technology",
+        "Data Analyst",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Solid Works",
+        "Sketchup",
+        "Design",
+        "Architectural Design",
+        "Revit"
+      ]
+    },
+    {
+      "skill": "skill_azure",
+      "display_name": "Azure",
+      "posting_count": 164,
+      "demand_percentage": 3.1,
+      "observed_median_salary_lpa": 18.75,
+      "observed_salary_difference_lpa": 8.75,
+      "associated_roles": [
+        "Other Technology",
+        "Cloud / DevOps",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "AWS",
+        "C ",
+        "SQL",
+        "Python",
+        "Net Core"
+      ]
+    },
+    {
+      "skill": "skill_full_stack",
+      "display_name": "Full Stack",
+      "posting_count": 158,
+      "demand_percentage": 3.0,
+      "observed_median_salary_lpa": 16.5,
+      "observed_salary_difference_lpa": 6.5,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Software Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "React",
+        "Java",
+        "Development",
+        "Angular",
+        "Spring Boot"
+      ]
+    },
+    {
+      "skill": "skill_jenkins",
+      "display_name": "Jenkins",
+      "posting_count": 157,
+      "demand_percentage": 2.9,
+      "observed_median_salary_lpa": 19.25,
+      "observed_salary_difference_lpa": 9.25,
+      "associated_roles": [
+        "Data Engineer",
+        "Cloud / DevOps",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Big Data Engineering & Distributed Systems",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "Spark",
+        "Scala",
+        "AIrflow",
+        "Hive"
+      ]
+    },
+    {
+      "skill": "skill_sap_fico",
+      "display_name": "SAP FICO",
+      "posting_count": 156,
+      "demand_percentage": 2.9,
+      "observed_median_salary_lpa": 3.62,
+      "observed_salary_difference_lpa": -6.38,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Enterprise ERP & SAP Functional Solutions",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "SAP",
+        "FICO",
+        "Consulting",
+        "Mm",
+        "SAP Testing"
+      ]
+    },
+    {
+      "skill": "skill_automation",
+      "display_name": "Automation",
+      "posting_count": 151,
+      "demand_percentage": 2.8,
+      "observed_median_salary_lpa": 11.0,
+      "observed_salary_difference_lpa": 1.0,
+      "associated_roles": [
+        "QA / Testing",
+        "Other Technology",
+        "Cloud / DevOps"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Automation Testing",
+        "Software Testing",
+        "Selenium",
+        "Java",
+        "API"
+      ]
+    },
+    {
+      "skill": "skill_fico",
+      "display_name": "FICO",
+      "posting_count": 141,
+      "demand_percentage": 2.6,
+      "observed_median_salary_lpa": 3.62,
+      "observed_salary_difference_lpa": -6.38,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Enterprise ERP & SAP Functional Solutions",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "SAP FICO",
+        "SAP",
+        "Consulting",
+        "Mm",
+        "SAP Testing"
+      ]
+    },
+    {
+      "skill": "skill_sap_mm",
+      "display_name": "SAP Mm",
+      "posting_count": 137,
+      "demand_percentage": 2.6,
+      "observed_median_salary_lpa": 3.62,
+      "observed_salary_difference_lpa": -6.38,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Enterprise ERP & SAP Functional Solutions",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Mm",
+        "SAP",
+        "Consulting",
+        "SAP FICO",
+        "FICO"
+      ]
+    },
+    {
+      "skill": "skill_airflow",
+      "display_name": "AIrflow",
+      "posting_count": 135,
+      "demand_percentage": 2.5,
+      "observed_median_salary_lpa": 19.25,
+      "observed_salary_difference_lpa": 9.25,
+      "associated_roles": [
+        "Data Engineer",
+        "AI / ML Engineer",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Big Data Engineering & Distributed Systems",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "Spark",
+        "Scala",
+        "Jenkins",
+        "HADOOP"
+      ]
+    },
+    {
+      "skill": "skill_mm",
+      "display_name": "Mm",
+      "posting_count": 135,
+      "demand_percentage": 2.5,
+      "observed_median_salary_lpa": 3.62,
+      "observed_salary_difference_lpa": -6.38,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Enterprise ERP & SAP Functional Solutions",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "SAP Mm",
+        "SAP",
+        "Consulting",
+        "FICO",
+        "SAP FICO"
+      ]
+    },
+    {
+      "skill": "skill_net",
+      "display_name": "Net",
+      "posting_count": 134,
+      "demand_percentage": 2.5,
+      "observed_median_salary_lpa": 13.0,
+      "observed_salary_difference_lpa": 3.0,
+      "associated_roles": [
+        "Other Technology",
+        "Full Stack Developer",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "C ",
+        "Development",
+        "Angular",
+        "Net Core",
+        " Net"
+      ]
+    },
+    {
+      "skill": "skill_certified",
+      "display_name": "Certified",
+      "posting_count": 132,
+      "demand_percentage": 2.5,
+      "observed_median_salary_lpa": 3.62,
+      "observed_salary_difference_lpa": -6.38,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing",
+        "Business Analyst"
+      ],
+      "associated_archetypes": [
+        "Enterprise ERP & SAP Functional Solutions",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "SAP",
+        "Mm",
+        "FICO",
+        "SAP Testing",
+        "SAP FICO"
+      ]
+    },
+    {
+      "skill": "skill_engineering",
+      "display_name": "Engineering",
+      "posting_count": 131,
+      "demand_percentage": 2.5,
+      "observed_median_salary_lpa": 5.25,
+      "observed_salary_difference_lpa": -4.75,
+      "associated_roles": [
+        "Other Technology",
+        "Data Engineer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Data Engineering",
+        "Data",
+        "Python",
+        "Sales",
+        "Sales Engineering"
+      ]
+    },
+    {
+      "skill": "skill_spring",
+      "display_name": "Spring",
+      "posting_count": 131,
+      "demand_percentage": 2.5,
+      "observed_median_salary_lpa": 18.75,
+      "observed_salary_difference_lpa": 8.75,
+      "associated_roles": [
+        "Software Engineer",
+        "Full Stack Developer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Spring Boot",
+        "Microservices",
+        "Boot",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_net_core",
+      "display_name": "Net Core",
+      "posting_count": 126,
+      "demand_percentage": 2.4,
+      "observed_median_salary_lpa": 13.65,
+      "observed_salary_difference_lpa": 3.65,
+      "associated_roles": [
+        "Other Technology",
+        "Full Stack Developer",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "C ",
+        "Web API",
+        "Net",
+        "Angular",
+        "SQL"
+      ]
+    },
+    {
+      "skill": "skill_css",
+      "display_name": "Css",
+      "posting_count": 124,
+      "demand_percentage": 2.3,
+      "observed_median_salary_lpa": 11.0,
+      "observed_salary_difference_lpa": 1.0,
+      "associated_roles": [
+        "Frontend Developer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Html",
+        "Javascript",
+        "React",
+        "Typescript",
+        "Angular"
+      ]
+    },
+    {
+      "skill": "skill_machine_learning",
+      "display_name": "Machine Learning",
+      "posting_count": 123,
+      "demand_percentage": 2.3,
+      "observed_median_salary_lpa": 18.75,
+      "observed_salary_difference_lpa": 8.75,
+      "associated_roles": [
+        "AI / ML Engineer",
+        "Other Technology",
+        "Data Scientist"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "AI",
+        "Machine",
+        "NLP",
+        "Generative AI"
+      ]
+    },
+    {
+      "skill": "skill_postgresql",
+      "display_name": "Postgresql",
+      "posting_count": 123,
+      "demand_percentage": 2.3,
+      "observed_median_salary_lpa": 16.5,
+      "observed_salary_difference_lpa": 6.5,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Software Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Microservices",
+        "Node Js",
+        "Java",
+        "Angular",
+        "React"
+      ]
+    },
+    {
+      "skill": "skill_software",
+      "display_name": "Software",
+      "posting_count": 123,
+      "demand_percentage": 2.3,
+      "observed_median_salary_lpa": 9.0,
+      "observed_salary_difference_lpa": -1.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Development",
+        "Software Development",
+        "Python",
+        "Java",
+        "Javascript"
+      ]
+    },
+    {
+      "skill": "skill_devops",
+      "display_name": "Devops",
+      "posting_count": 122,
+      "demand_percentage": 2.3,
+      "observed_median_salary_lpa": 15.25,
+      "observed_salary_difference_lpa": 5.25,
+      "associated_roles": [
+        "Cloud / DevOps",
+        "Software Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "CI CD",
+        "Kubernetes",
+        "Terraform",
+        "AWS",
+        "SQL"
+      ]
+    },
+    {
+      "skill": "skill_troubleshooting",
+      "display_name": "Troubleshooting",
+      "posting_count": 122,
+      "demand_percentage": 2.3,
+      "observed_median_salary_lpa": 3.75,
+      "observed_salary_difference_lpa": -6.25,
+      "associated_roles": [
+        "Other Technology",
+        "Cloud / DevOps",
+        "Cybersecurity"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Technical Support",
+        "Maintenance",
+        "Configuration",
+        "L1 Support",
+        "Networking"
+      ]
+    },
+    {
+      "skill": "skill_rest_api",
+      "display_name": "Rest API",
+      "posting_count": 119,
+      "demand_percentage": 2.2,
+      "observed_median_salary_lpa": 14.5,
+      "observed_salary_difference_lpa": 4.5,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "API",
+        "Spring Boot",
+        "Microservices",
+        "React"
+      ]
+    },
+    {
+      "skill": "skill_design",
+      "display_name": "Design",
+      "posting_count": 116,
+      "demand_percentage": 2.2,
+      "observed_median_salary_lpa": 5.33,
+      "observed_salary_difference_lpa": -4.67,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Business Analyst"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Autocad",
+        "Architecture",
+        "Design Engineering",
+        "Development",
+        "Solid Works"
+      ]
+    },
+    {
+      "skill": "skill_html",
+      "display_name": "Html",
+      "posting_count": 115,
+      "demand_percentage": 2.2,
+      "observed_median_salary_lpa": 11.0,
+      "observed_salary_difference_lpa": 1.0,
+      "associated_roles": [
+        "Other Technology",
+        "Frontend Developer",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Css",
+        "Javascript",
+        "React",
+        "Angular",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_kubernetes",
+      "display_name": "Kubernetes",
+      "posting_count": 115,
+      "demand_percentage": 2.2,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Cloud / DevOps",
+        "Software Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Docker",
+        "Devops",
+        "Python",
+        "Terraform",
+        "GCP"
+      ]
+    },
+    {
+      "skill": "skill_typescript",
+      "display_name": "Typescript",
+      "posting_count": 115,
+      "demand_percentage": 2.2,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Other Technology",
+        "Frontend Developer",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Javascript",
+        "React",
+        "Node Js",
+        "Angular",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_ai",
+      "display_name": "AI",
+      "posting_count": 114,
+      "demand_percentage": 2.1,
+      "observed_median_salary_lpa": 19.75,
+      "observed_salary_difference_lpa": 9.75,
+      "associated_roles": [
+        "Other Technology",
+        "AI / ML Engineer",
+        "Data Scientist"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "Machine Learning",
+        "Generative AI",
+        "NLP",
+        "Machine"
+      ]
+    },
+    {
+      "skill": "skill_sap_testing",
+      "display_name": "SAP Testing",
+      "posting_count": 114,
+      "demand_percentage": 2.1,
+      "observed_median_salary_lpa": 3.62,
+      "observed_salary_difference_lpa": -6.38,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Enterprise ERP & SAP Functional Solutions",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "SAP",
+        "SAP FICO",
+        "FICO",
+        "Mm",
+        "SAP Mm"
+      ]
+    },
+    {
+      "skill": "skill_software_testing",
+      "display_name": "Software Testing",
+      "posting_count": 113,
+      "demand_percentage": 2.1,
+      "observed_median_salary_lpa": 10.5,
+      "observed_salary_difference_lpa": 0.5,
+      "associated_roles": [
+        "QA / Testing",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Automation",
+        "Automation Testing",
+        "Selenium",
+        "API",
+        "API Testing"
+      ]
+    },
+    {
+      "skill": "skill_git",
+      "display_name": "Git",
+      "posting_count": 112,
+      "demand_percentage": 2.1,
+      "observed_median_salary_lpa": 14.5,
+      "observed_salary_difference_lpa": 4.5,
+      "associated_roles": [
+        "Other Technology",
+        "Full Stack Developer",
+        "Data Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "CI CD",
+        "Java",
+        "Jenkins",
+        "Postgresql",
+        "Python"
+      ]
+    },
+    {
+      "skill": "skill_docker",
+      "display_name": "Docker",
+      "posting_count": 108,
+      "demand_percentage": 2.0,
+      "observed_median_salary_lpa": 17.0,
+      "observed_salary_difference_lpa": 7.0,
+      "associated_roles": [
+        "Cloud / DevOps",
+        "Software Engineer",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Kubernetes",
+        "Jenkins",
+        "AWS",
+        "CI CD",
+        "Python"
+      ]
+    },
+    {
+      "skill": "skill_communication_skills",
+      "display_name": "Communication Skills",
+      "posting_count": 107,
+      "demand_percentage": 2.0,
+      "observed_median_salary_lpa": 2.88,
+      "observed_salary_difference_lpa": -7.12,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "English",
+        "Backend",
+        "Good English Communication",
+        "Office",
+        "Excel"
+      ]
+    },
+    {
+      "skill": "skill_kafka",
+      "display_name": "Kafka",
+      "posting_count": 104,
+      "demand_percentage": 2.0,
+      "observed_median_salary_lpa": 19.5,
+      "observed_salary_difference_lpa": 9.5,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Data Engineer"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Spring Boot",
+        "Microservices",
+        "Development",
+        "AWS"
+      ]
+    },
+    {
+      "skill": "skill_quality_assurance",
+      "display_name": "Quality Assurance",
+      "posting_count": 102,
+      "demand_percentage": 1.9,
+      "observed_median_salary_lpa": 6.0,
+      "observed_salary_difference_lpa": -4.0,
+      "associated_roles": [
+        "QA / Testing",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Quality",
+        "Automation Testing",
+        "Automation",
+        "Selenium",
+        "Quality Control"
+      ]
+    },
+    {
+      "skill": "skill_backend",
+      "display_name": "Backend",
+      "posting_count": 101,
+      "demand_percentage": 1.9,
+      "observed_median_salary_lpa": 5.75,
+      "observed_salary_difference_lpa": -4.25,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "AI / ML Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Communication Skills",
+        "Good English Communication",
+        "English",
+        "Java",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_automation_testing",
+      "display_name": "Automation Testing",
+      "posting_count": 99,
+      "demand_percentage": 1.9,
+      "observed_median_salary_lpa": 11.75,
+      "observed_salary_difference_lpa": 1.75,
+      "associated_roles": [
+        "QA / Testing",
+        "Other Technology",
+        "Data Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Automation",
+        "Software Testing",
+        "Selenium",
+        "API Testing",
+        "Java"
+      ]
+    },
+    {
+      "skill": "skill_technical_support",
+      "display_name": "Technical Support",
+      "posting_count": 99,
+      "demand_percentage": 1.9,
+      "observed_median_salary_lpa": 3.88,
+      "observed_salary_difference_lpa": -6.12,
+      "associated_roles": [
+        "Other Technology",
+        "Cloud / DevOps",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Technical",
+        "Troubleshooting",
+        "International Technical Support",
+        "Technical Voice Process",
+        "Customer Support"
+      ]
+    },
+    {
+      "skill": "skill_senior",
+      "display_name": "Senior",
+      "posting_count": 96,
+      "demand_percentage": 1.8,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Development",
+        "Java",
+        "Python",
+        "AWS",
+        "SQL"
+      ]
+    },
+    {
+      "skill": "skill_linux",
+      "display_name": "Linux",
+      "posting_count": 95,
+      "demand_percentage": 1.8,
+      "observed_median_salary_lpa": 15.5,
+      "observed_salary_difference_lpa": 5.5,
+      "associated_roles": [
+        "Data Engineer",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Big Data Engineering & Distributed Systems"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "HADOOP",
+        "Spark",
+        "Jenkins",
+        "Hive"
+      ]
+    },
+    {
+      "skill": "skill_sales",
+      "display_name": "Sales",
+      "posting_count": 95,
+      "demand_percentage": 1.8,
+      "observed_median_salary_lpa": 4.5,
+      "observed_salary_difference_lpa": -5.5,
+      "associated_roles": [
+        "Other Technology",
+        "Cybersecurity",
+        "Product / Program Manager"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Sales Engineering",
+        "Industrial Sales",
+        "Business Development",
+        "Technical Sales",
+        "B2B Sales"
+      ]
+    },
+    {
+      "skill": "skill_hive",
+      "display_name": "Hive",
+      "posting_count": 93,
+      "demand_percentage": 1.7,
+      "observed_median_salary_lpa": 19.25,
+      "observed_salary_difference_lpa": 9.25,
+      "associated_roles": [
+        "Data Engineer",
+        "Other Technology",
+        "Data Analyst"
+      ],
+      "associated_archetypes": [
+        "Big Data Engineering & Distributed Systems",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Spark",
+        "HADOOP",
+        "Scala",
+        "Python",
+        "AIrflow"
+      ]
+    },
+    {
+      "skill": "skill_core",
+      "display_name": "Core",
+      "posting_count": 92,
+      "demand_percentage": 1.7,
+      "observed_median_salary_lpa": 20.88,
+      "observed_salary_difference_lpa": 10.88,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "API",
+        "Java",
+        "Microservices",
+        "Net Core",
+        "Core Banking"
+      ]
+    },
+    {
+      "skill": "skill_data_engineering",
+      "display_name": "Data Engineering",
+      "posting_count": 92,
+      "demand_percentage": 1.7,
+      "observed_median_salary_lpa": 17.0,
+      "observed_salary_difference_lpa": 7.0,
+      "associated_roles": [
+        "Data Engineer",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "SQL",
+        "Python",
+        "Spark",
+        "Data",
+        "GCP"
+      ]
+    },
+    {
+      "skill": "skill_mongodb",
+      "display_name": "Mongodb",
+      "posting_count": 91,
+      "demand_percentage": 1.7,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Software Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Node Js",
+        "React",
+        "Development",
+        "Java",
+        "Postgresql"
+      ]
+    },
+    {
+      "skill": "skill_etl",
+      "display_name": "ETL",
+      "posting_count": 90,
+      "demand_percentage": 1.7,
+      "observed_median_salary_lpa": 14.75,
+      "observed_salary_difference_lpa": 4.75,
+      "associated_roles": [
+        "Data Engineer",
+        "Other Technology",
+        "Data Analyst"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "SQL",
+        "Data Engineering",
+        "Python",
+        "GCP",
+        "Data"
+      ]
+    },
+    {
+      "skill": "skill_power_bi",
+      "display_name": "Power BI",
+      "posting_count": 89,
+      "demand_percentage": 1.7,
+      "observed_median_salary_lpa": 13.0,
+      "observed_salary_difference_lpa": 3.0,
+      "associated_roles": [
+        "Other Technology",
+        "Data Analyst",
+        "Business Analyst"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "SQL",
+        "Tableau",
+        "BI",
+        "Python",
+        "Data Analysis"
+      ]
+    },
+    {
+      "skill": "skill_cloud",
+      "display_name": "Cloud",
+      "posting_count": 86,
+      "demand_percentage": 1.6,
+      "observed_median_salary_lpa": 18.25,
+      "observed_salary_difference_lpa": 8.25,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Cloud / DevOps"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "AWS",
+        "Development",
+        "Devops",
+        "GCP",
+        "Java"
+      ]
+    },
+    {
+      "skill": "skill_github",
+      "display_name": "Github",
+      "posting_count": 86,
+      "demand_percentage": 1.6,
+      "observed_median_salary_lpa": 19.5,
+      "observed_salary_difference_lpa": 9.5,
+      "associated_roles": [
+        "Data Engineer",
+        "Cloud / DevOps",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Big Data Engineering & Distributed Systems"
+      ],
+      "cooccurring_skills": [
+        "Jenkins",
+        "Python",
+        "AIrflow",
+        "Spark",
+        "Hive"
+      ]
+    },
+    {
+      "skill": "skill_big_data",
+      "display_name": "BIg Data",
+      "posting_count": 83,
+      "demand_percentage": 1.6,
+      "observed_median_salary_lpa": 20.0,
+      "observed_salary_difference_lpa": 10.0,
+      "associated_roles": [
+        "Data Engineer",
+        "Other Technology",
+        "Data Analyst"
+      ],
+      "associated_archetypes": [
+        "Big Data Engineering & Distributed Systems",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "HADOOP",
+        "Spark",
+        "Data",
+        "Scala",
+        "AWS"
+      ]
+    },
+    {
+      "skill": "skill_selenium",
+      "display_name": "Selenium",
+      "posting_count": 82,
+      "demand_percentage": 1.5,
+      "observed_median_salary_lpa": 12.75,
+      "observed_salary_difference_lpa": 2.75,
+      "associated_roles": [
+        "QA / Testing",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Automation",
+        "Automation Testing",
+        "Java",
+        "Software Testing",
+        "Python"
+      ]
+    },
+    {
+      "skill": "skill_stack",
+      "display_name": "Stack",
+      "posting_count": 82,
+      "demand_percentage": 1.5,
+      "observed_median_salary_lpa": 15.5,
+      "observed_salary_difference_lpa": 5.5,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Full Stack",
+        "Development",
+        "React",
+        "Angular"
+      ]
+    },
+    {
+      "skill": "skill_mysql",
+      "display_name": "Mysql",
+      "posting_count": 81,
+      "demand_percentage": 1.5,
+      "observed_median_salary_lpa": 9.0,
+      "observed_salary_difference_lpa": -1.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Javascript",
+        "PHP",
+        "Mongodb",
+        "Postgresql",
+        "Laravel"
+      ]
+    },
+    {
+      "skill": "skill_technical",
+      "display_name": "Technical",
+      "posting_count": 80,
+      "demand_percentage": 1.5,
+      "observed_median_salary_lpa": 5.44,
+      "observed_salary_difference_lpa": -4.56,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Product / Program Manager"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Technical Support",
+        "Troubleshooting",
+        "SAP",
+        "API",
+        "Sales"
+      ]
+    },
+    {
+      "skill": "skill_boot",
+      "display_name": "Boot",
+      "posting_count": 79,
+      "demand_percentage": 1.5,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Spring Boot",
+        "Java",
+        "Development",
+        "Spring",
+        "Microservices"
+      ]
+    },
+    {
+      "skill": "skill_data_modeling",
+      "display_name": "Data Modeling",
+      "posting_count": 79,
+      "demand_percentage": 1.5,
+      "observed_median_salary_lpa": 25.0,
+      "observed_salary_difference_lpa": 15.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Data Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "SQL",
+        "Data Architecture",
+        "AWS",
+        "Nosql",
+        "Erwin"
+      ]
+    },
+    {
+      "skill": "skill_terraform",
+      "display_name": "Terraform",
+      "posting_count": 77,
+      "demand_percentage": 1.4,
+      "observed_median_salary_lpa": 18.75,
+      "observed_salary_difference_lpa": 8.75,
+      "associated_roles": [
+        "Cloud / DevOps",
+        "Software Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Devops",
+        "Kubernetes",
+        "CI CD",
+        "GCP",
+        "Python"
+      ]
+    },
+    {
+      "skill": "skill_sap_hana",
+      "display_name": "SAP Hana",
+      "posting_count": 76,
+      "demand_percentage": 1.4,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Other Technology",
+        "Data Engineer",
+        "Database Administrator"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise ERP & SAP Functional Solutions"
+      ],
+      "cooccurring_skills": [
+        "SAP",
+        "Consulting",
+        "SAP S Hana",
+        "SAP FICO",
+        "SAPs"
+      ]
+    },
+    {
+      "skill": "skill_quality",
+      "display_name": "Quality",
+      "posting_count": 75,
+      "demand_percentage": 1.4,
+      "observed_median_salary_lpa": 4.25,
+      "observed_salary_difference_lpa": -5.75,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Quality Assurance",
+        "Quality Engineering",
+        "Engineering",
+        "Quality Control",
+        "Documentation"
+      ]
+    },
+    {
+      "skill": "skill_hindi",
+      "display_name": "Hindi",
+      "posting_count": 73,
+      "demand_percentage": 1.4,
+      "observed_median_salary_lpa": 4.38,
+      "observed_salary_difference_lpa": -5.62,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "English",
+        "Autocad",
+        "Sales",
+        "Sales Engineering",
+        "Solid Works"
+      ]
+    },
+    {
+      "skill": "skill_maintenance",
+      "display_name": "Maintenance",
+      "posting_count": 73,
+      "demand_percentage": 1.4,
+      "observed_median_salary_lpa": 4.0,
+      "observed_salary_difference_lpa": -6.0,
+      "associated_roles": [
+        "Other Technology",
+        "Product / Program Manager",
+        "AI / ML Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Troubleshooting",
+        "Maintenance Engineering",
+        "Electrical Maintenance",
+        "Breakdown Maintenance",
+        "Servicing"
+      ]
+    },
+    {
+      "skill": "skill_integration",
+      "display_name": "Integration",
+      "posting_count": 72,
+      "demand_percentage": 1.4,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Development",
+        "SAP",
+        "Servicenow",
+        "Servicenow Development",
+        "Itsm"
+      ]
+    },
+    {
+      "skill": "skill_django",
+      "display_name": "Django",
+      "posting_count": 71,
+      "demand_percentage": 1.3,
+      "observed_median_salary_lpa": 17.0,
+      "observed_salary_difference_lpa": 7.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Full Stack Developer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "Flask",
+        "AWS",
+        "Fast API",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_solid_works",
+      "display_name": "Solid Works",
+      "posting_count": 71,
+      "demand_percentage": 1.3,
+      "observed_median_salary_lpa": 4.25,
+      "observed_salary_difference_lpa": -5.75,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Autocad",
+        "3D Modeling",
+        "Autocad 2D",
+        "Design",
+        "3D"
+      ]
+    },
+    {
+      "skill": "skill_azure_cloud",
+      "display_name": "Azure Cloud",
+      "posting_count": 70,
+      "demand_percentage": 1.3,
+      "observed_median_salary_lpa": 17.0,
+      "observed_salary_difference_lpa": 7.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Cloud / DevOps"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Azure",
+        "AWS",
+        "Python",
+        "SQL",
+        "Javascript"
+      ]
+    },
+    {
+      "skill": "skill_oracle",
+      "display_name": "Oracle",
+      "posting_count": 68,
+      "demand_percentage": 1.3,
+      "observed_median_salary_lpa": 16.5,
+      "observed_salary_difference_lpa": 6.5,
+      "associated_roles": [
+        "Other Technology",
+        "Database Administrator",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Microservices",
+        "Postgresql",
+        "Git",
+        "Devops Tools"
+      ]
+    },
+    {
+      "skill": "skill_management",
+      "display_name": "Management",
+      "posting_count": 66,
+      "demand_percentage": 1.2,
+      "observed_median_salary_lpa": 13.0,
+      "observed_salary_difference_lpa": 3.0,
+      "associated_roles": [
+        "Other Technology",
+        "Product / Program Manager",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Development",
+        "Product Management",
+        "SAP",
+        "Data",
+        "Project Management"
+      ]
+    },
+    {
+      "skill": "skill_java_development",
+      "display_name": "Java Development",
+      "posting_count": 65,
+      "demand_percentage": 1.2,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Full Stack Developer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Spring Boot",
+        "Development",
+        "Microservices",
+        "Spring"
+      ]
+    },
+    {
+      "skill": "skill_networking",
+      "display_name": "Networking",
+      "posting_count": 61,
+      "demand_percentage": 1.1,
+      "observed_median_salary_lpa": 4.0,
+      "observed_salary_difference_lpa": -6.0,
+      "associated_roles": [
+        "Other Technology",
+        "Cloud / DevOps",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Ccna",
+        "Troubleshooting",
+        "Network Engineering",
+        "Configuration",
+        "Os Installation"
+      ]
+    },
+    {
+      "skill": "skill__net",
+      "display_name": " Net",
+      "posting_count": 60,
+      "demand_percentage": 1.1,
+      "observed_median_salary_lpa": 10.5,
+      "observed_salary_difference_lpa": 0.5,
+      "associated_roles": [
+        "Other Technology",
+        "Full Stack Developer",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "C ",
+        "Net",
+        "Net Core",
+        "Angular",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_plc",
+      "display_name": "Plc",
+      "posting_count": 60,
+      "demand_percentage": 1.1,
+      "observed_median_salary_lpa": 4.5,
+      "observed_salary_difference_lpa": -5.5,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Industrial Automation",
+        "Hydraulics",
+        "Maintenance",
+        "Automation",
+        "Programming"
+      ]
+    },
+    {
+      "skill": "skill_database",
+      "display_name": "Database",
+      "posting_count": 59,
+      "demand_percentage": 1.1,
+      "observed_median_salary_lpa": 25.0,
+      "observed_salary_difference_lpa": 15.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "API",
+        "Java",
+        "Core Banking",
+        "Microservices",
+        "Encryption"
+      ]
+    },
+    {
+      "skill": "skill_nosql",
+      "display_name": "Nosql",
+      "posting_count": 59,
+      "demand_percentage": 1.1,
+      "observed_median_salary_lpa": 25.0,
+      "observed_salary_difference_lpa": 15.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "SQL",
+        "AWS",
+        "Data Modeling",
+        "GCP",
+        "Er Studio"
+      ]
+    },
+    {
+      "skill": "skill_c__",
+      "display_name": "C  ",
+      "posting_count": 58,
+      "demand_percentage": 1.1,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Development",
+        "C",
+        "Python",
+        "Linux",
+        "Java"
+      ]
+    },
+    {
+      "skill": "skill_excel",
+      "display_name": "Excel",
+      "posting_count": 58,
+      "demand_percentage": 1.1,
+      "observed_median_salary_lpa": 3.94,
+      "observed_salary_difference_lpa": -6.06,
+      "associated_roles": [
+        "Data Analyst",
+        "Software Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Advanced Excel",
+        "Communication Skills",
+        "Backend",
+        "English",
+        "Good English Communication"
+      ]
+    },
+    {
+      "skill": "skill_oops",
+      "display_name": "Oops",
+      "posting_count": 58,
+      "demand_percentage": 1.1,
+      "observed_median_salary_lpa": 14.5,
+      "observed_salary_difference_lpa": 4.5,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Spring Boot",
+        "Angular",
+        "Microservices",
+        "React"
+      ]
+    },
+    {
+      "skill": "skill_sales_engineering",
+      "display_name": "Sales Engineering",
+      "posting_count": 58,
+      "demand_percentage": 1.1,
+      "observed_median_salary_lpa": 4.5,
+      "observed_salary_difference_lpa": -5.5,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Sales",
+        "Industrial Sales",
+        "Technical Sales",
+        "Engineering",
+        "Business Development"
+      ]
+    },
+    {
+      "skill": "skill_hibernate",
+      "display_name": "Hibernate",
+      "posting_count": 57,
+      "demand_percentage": 1.1,
+      "observed_median_salary_lpa": 12.0,
+      "observed_salary_difference_lpa": 2.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Full Stack Developer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Spring Boot",
+        "Microservices",
+        "Spring",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_tableau",
+      "display_name": "Tableau",
+      "posting_count": 57,
+      "demand_percentage": 1.1,
+      "observed_median_salary_lpa": 9.5,
+      "observed_salary_difference_lpa": -0.5,
+      "associated_roles": [
+        "Data Analyst",
+        "Other Technology",
+        "Business Analyst"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Power BI",
+        "SQL",
+        "Python",
+        "Development",
+        "Excel"
+      ]
+    },
+    {
+      "skill": "skill_api_testing",
+      "display_name": "API Testing",
+      "posting_count": 56,
+      "demand_percentage": 1.1,
+      "observed_median_salary_lpa": 11.0,
+      "observed_salary_difference_lpa": 1.0,
+      "associated_roles": [
+        "QA / Testing",
+        "Other Technology",
+        "Cybersecurity"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Automation Testing",
+        "API",
+        "Automation",
+        "Software Testing",
+        "Selenium"
+      ]
+    },
+    {
+      "skill": "skill_snowflake",
+      "display_name": "Snowflake",
+      "posting_count": 56,
+      "demand_percentage": 1.1,
+      "observed_median_salary_lpa": 18.0,
+      "observed_salary_difference_lpa": 8.0,
+      "associated_roles": [
+        "Data Engineer",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "SQL",
+        "Python",
+        "ETL",
+        "Data",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_data_architecture",
+      "display_name": "Data Architecture",
+      "posting_count": 55,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 25.0,
+      "observed_salary_difference_lpa": 15.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Data Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Big Data Engineering & Distributed Systems"
+      ],
+      "cooccurring_skills": [
+        "Data Modeling",
+        "SQL",
+        "AWS",
+        "GCP",
+        "Er Studio"
+      ]
+    },
+    {
+      "skill": "skill_generative_ai",
+      "display_name": "Generative AI",
+      "posting_count": 55,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 22.5,
+      "observed_salary_difference_lpa": 12.5,
+      "associated_roles": [
+        "AI / ML Engineer",
+        "Data Scientist",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "Machine Learning",
+        "AI",
+        "NLP",
+        "Tensorflow"
+      ]
+    },
+    {
+      "skill": "skill_php",
+      "display_name": "PHP",
+      "posting_count": 55,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 5.75,
+      "observed_salary_difference_lpa": -4.25,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Frontend Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Laravel",
+        "Javascript",
+        "Mysql",
+        "Development",
+        "Css"
+      ]
+    },
+    {
+      "skill": "skill_core_banking",
+      "display_name": "Core Banking",
+      "posting_count": 54,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 25.0,
+      "observed_salary_difference_lpa": 15.0,
+      "associated_roles": [
+        "Software Engineer",
+        "QA / Testing",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Database",
+        "API",
+        "Java",
+        "Encryption",
+        "Microservices"
+      ]
+    },
+    {
+      "skill": "skill_fabrication",
+      "display_name": "Fabrication",
+      "posting_count": 54,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 5.0,
+      "observed_salary_difference_lpa": -5.0,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Heavy Fabrication",
+        "Welding",
+        "Sheet Metal",
+        "Iso",
+        "Iatf"
+      ]
+    },
+    {
+      "skill": "skill_agile",
+      "display_name": "Agile",
+      "posting_count": 53,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 13.5,
+      "observed_salary_difference_lpa": 3.5,
+      "associated_roles": [
+        "Product / Program Manager",
+        "Software Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "SQL",
+        "Java",
+        "Business Analysis",
+        "React",
+        "Jira"
+      ]
+    },
+    {
+      "skill": "skill_java_fullstack",
+      "display_name": "Java Fullstack",
+      "posting_count": 53,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Software Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Spring Boot",
+        "Full Stack",
+        "React",
+        "Angular"
+      ]
+    },
+    {
+      "skill": "skill_web_api",
+      "display_name": "Web API",
+      "posting_count": 53,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 11.5,
+      "observed_salary_difference_lpa": 1.5,
+      "associated_roles": [
+        "Other Technology",
+        "Full Stack Developer",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Net Core",
+        "C ",
+        "Angular",
+        "Net",
+        " Net"
+      ]
+    },
+    {
+      "skill": "skill_architectural_design",
+      "display_name": "Architectural Design",
+      "posting_count": 52,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 6.0,
+      "observed_salary_difference_lpa": -4.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Architecture",
+        "Autocad",
+        "Sketchup",
+        "Design",
+        "Revit"
+      ]
+    },
+    {
+      "skill": "skill_dbms",
+      "display_name": "Dbms",
+      "posting_count": 52,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 25.0,
+      "observed_salary_difference_lpa": 15.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Database Administrator"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Database",
+        "Java",
+        "Microservices",
+        "API",
+        "Core Banking"
+      ]
+    },
+    {
+      "skill": "skill_desktop_support",
+      "display_name": "Desktop Support",
+      "posting_count": 52,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 2.75,
+      "observed_salary_difference_lpa": -7.25,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Desktop",
+        "Outlook Configuration",
+        "Troubleshooting",
+        "Os Installation",
+        "Technical Support"
+      ]
+    },
+    {
+      "skill": "skill_encryption",
+      "display_name": "Encryption",
+      "posting_count": 52,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 25.0,
+      "observed_salary_difference_lpa": 15.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Database Administrator"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Database",
+        "Microservices",
+        "Java",
+        "API",
+        "Core Banking"
+      ]
+    },
+    {
+      "skill": "skill_industrial_sales",
+      "display_name": "Industrial Sales",
+      "posting_count": 52,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 4.38,
+      "observed_salary_difference_lpa": -5.62,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Sales Engineering",
+        "Sales",
+        "Technical Sales",
+        "B2B Sales",
+        "Business Development"
+      ]
+    },
+    {
+      "skill": "skill_big_data_engineer",
+      "display_name": "BIg Data Engineer",
+      "posting_count": 51,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 20.0,
+      "observed_salary_difference_lpa": 10.0,
+      "associated_roles": [
+        "Data Engineer"
+      ],
+      "associated_archetypes": [
+        "Big Data Engineering & Distributed Systems"
+      ],
+      "cooccurring_skills": [
+        "AWS",
+        "Data",
+        "Spark",
+        "HADOOP",
+        "Scala"
+      ]
+    },
+    {
+      "skill": "skill_iso",
+      "display_name": "Iso",
+      "posting_count": 51,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 5.0,
+      "observed_salary_difference_lpa": -5.0,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing",
+        "Cybersecurity"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Qms",
+        "Iatf",
+        "Fabrication",
+        "Heavy Fabrication",
+        "Machining"
+      ]
+    },
+    {
+      "skill": "skill_python_development",
+      "display_name": "Python Development",
+      "posting_count": 51,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 14.0,
+      "observed_salary_difference_lpa": 4.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "Development",
+        "Django",
+        "AWS",
+        "Postgresql"
+      ]
+    },
+    {
+      "skill": "skill_servicenow",
+      "display_name": "Servicenow",
+      "posting_count": 51,
+      "demand_percentage": 1.0,
+      "observed_median_salary_lpa": 17.0,
+      "observed_salary_difference_lpa": 7.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Itsm",
+        "Servicenow Development",
+        "Development",
+        "Javascript",
+        "Integration"
+      ]
+    },
+    {
+      "skill": "skill_sql_server",
+      "display_name": "SQL Server",
+      "posting_count": 50,
+      "demand_percentage": 0.9,
+      "observed_median_salary_lpa": 12.0,
+      "observed_salary_difference_lpa": 2.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Database Administrator"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "C ",
+        "Net Core",
+        "SQL",
+        "Angular",
+        "Web API"
+      ]
+    },
+    {
+      "skill": "skill_business_analysis",
+      "display_name": "Business Analysis",
+      "posting_count": 49,
+      "demand_percentage": 0.9,
+      "observed_median_salary_lpa": 11.5,
+      "observed_salary_difference_lpa": 1.5,
+      "associated_roles": [
+        "Business Analyst",
+        "Other Technology",
+        "Product / Program Manager"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Analysis",
+        "SQL",
+        "Agile",
+        "Python",
+        "Excel"
+      ]
+    },
+    {
+      "skill": "skill_machine",
+      "display_name": "Machine",
+      "posting_count": 49,
+      "demand_percentage": 0.9,
+      "observed_median_salary_lpa": 14.5,
+      "observed_salary_difference_lpa": 4.5,
+      "associated_roles": [
+        "Other Technology",
+        "AI / ML Engineer",
+        "Data Scientist"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Machine Learning",
+        "Python",
+        "AI",
+        "Data",
+        "AIml"
+      ]
+    },
+    {
+      "skill": "skill_manual_testing",
+      "display_name": "Manual Testing",
+      "posting_count": 49,
+      "demand_percentage": 0.9,
+      "observed_median_salary_lpa": 8.0,
+      "observed_salary_difference_lpa": -2.0,
+      "associated_roles": [
+        "QA / Testing",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Automation Testing",
+        "Manual",
+        "Software Testing",
+        "Automation",
+        "API Testing"
+      ]
+    },
+    {
+      "skill": "skill_application",
+      "display_name": "Application",
+      "posting_count": 47,
+      "demand_percentage": 0.9,
+      "observed_median_salary_lpa": 10.0,
+      "observed_salary_difference_lpa": 0.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Development",
+        "Application Development",
+        "React",
+        "Android",
+        "Javascript"
+      ]
+    },
+    {
+      "skill": "skill_aws_cloud",
+      "display_name": "AWS Cloud",
+      "posting_count": 47,
+      "demand_percentage": 0.9,
+      "observed_median_salary_lpa": 20.0,
+      "observed_salary_difference_lpa": 10.0,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Software Engineer",
+        "Cloud / DevOps"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Python",
+        "Powershell",
+        "GCP Cloud",
+        "React"
+      ]
+    },
+    {
+      "skill": "skill_frontend_development",
+      "display_name": "Frontend Development",
+      "posting_count": 47,
+      "demand_percentage": 0.9,
+      "observed_median_salary_lpa": 12.0,
+      "observed_salary_difference_lpa": 2.0,
+      "associated_roles": [
+        "Frontend Developer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Javascript",
+        "React",
+        "Angular",
+        "Css",
+        "Front End"
+      ]
+    },
+    {
+      "skill": "skill_salesforce",
+      "display_name": "Salesforce",
+      "posting_count": 47,
+      "demand_percentage": 0.9,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Business Analyst"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Development",
+        "API",
+        "Cloud",
+        "Integration",
+        "Sales"
+      ]
+    },
+    {
+      "skill": "skill_sheet_metal",
+      "display_name": "Sheet Metal",
+      "posting_count": 47,
+      "demand_percentage": 0.9,
+      "observed_median_salary_lpa": 4.88,
+      "observed_salary_difference_lpa": -5.12,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Fabrication",
+        "Heavy Fabrication",
+        "Auto",
+        "Automotive",
+        "Autocad"
+      ]
+    },
+    {
+      "skill": "skill_data_analysis",
+      "display_name": "Data Analysis",
+      "posting_count": 46,
+      "demand_percentage": 0.9,
+      "observed_median_salary_lpa": 8.5,
+      "observed_salary_difference_lpa": -1.5,
+      "associated_roles": [
+        "Data Analyst",
+        "Business Analyst",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "SQL",
+        "Power BI",
+        "Python",
+        "Excel",
+        "Data"
+      ]
+    },
+    {
+      "skill": "skill_system",
+      "display_name": "System",
+      "posting_count": 45,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 7.5,
+      "observed_salary_difference_lpa": -2.5,
+      "associated_roles": [
+        "Other Technology",
+        "Cybersecurity",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Development",
+        "Design",
+        "Embedded Systems",
+        "C  ",
+        "Administration"
+      ]
+    },
+    {
+      "skill": "skill_azure_data_factory",
+      "display_name": "Azure Data Factory",
+      "posting_count": 44,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 18.12,
+      "observed_salary_difference_lpa": 8.12,
+      "associated_roles": [
+        "Data Engineer",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Azure Databricks",
+        "Spark",
+        "SQL",
+        "Azure",
+        "Python"
+      ]
+    },
+    {
+      "skill": "skill_redux",
+      "display_name": "Redux",
+      "posting_count": 44,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 14.25,
+      "observed_salary_difference_lpa": 4.25,
+      "associated_roles": [
+        "Other Technology",
+        "Frontend Developer",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "React",
+        "Javascript",
+        "Typescript",
+        "Css",
+        "Html"
+      ]
+    },
+    {
+      "skill": "skill_azure_devops",
+      "display_name": "Azure Devops",
+      "posting_count": 43,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 18.0,
+      "observed_salary_difference_lpa": 8.0,
+      "associated_roles": [
+        "Cloud / DevOps",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Devops",
+        "Azure",
+        "Terraform",
+        "Kubernetes",
+        "CI CD"
+      ]
+    },
+    {
+      "skill": "skill_configuration",
+      "display_name": "Configuration",
+      "posting_count": 43,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 3.5,
+      "observed_salary_difference_lpa": -6.5,
+      "associated_roles": [
+        "Other Technology",
+        "Database Administrator",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Troubleshooting",
+        "Networking",
+        "Ccna",
+        "Os Installation",
+        "Installation"
+      ]
+    },
+    {
+      "skill": "skill_documentation",
+      "display_name": "Documentation",
+      "posting_count": 43,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 4.5,
+      "observed_salary_difference_lpa": -5.5,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing",
+        "Data Scientist"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Quality Assurance",
+        "Qms",
+        "Quality",
+        "Maintenance",
+        "Iatf"
+      ]
+    },
+    {
+      "skill": "skill_erp",
+      "display_name": "ERP",
+      "posting_count": 43,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 6.0,
+      "observed_salary_difference_lpa": -4.0,
+      "associated_roles": [
+        "Other Technology",
+        "Business Analyst",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Oracle",
+        "Procurement",
+        "SAP",
+        "Consulting",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_programming",
+      "display_name": "Programming",
+      "posting_count": 43,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 5.4,
+      "observed_salary_difference_lpa": -4.6,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Product / Program Manager"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Program",
+        "Development",
+        "Plc",
+        "C  ",
+        "Software"
+      ]
+    },
+    {
+      "skill": "skill_fast_api",
+      "display_name": "Fast API",
+      "posting_count": 42,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 13.75,
+      "observed_salary_difference_lpa": 3.75,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "API",
+        "Django",
+        "Development",
+        "Python Development"
+      ]
+    },
+    {
+      "skill": "skill_golang",
+      "display_name": "Golang",
+      "posting_count": 42,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 22.5,
+      "observed_salary_difference_lpa": 12.5,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "Microservices",
+        "Java",
+        "Development",
+        "AWS"
+      ]
+    },
+    {
+      "skill": "skill_jquery",
+      "display_name": "Jquery",
+      "posting_count": 42,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 19.62,
+      "observed_salary_difference_lpa": 9.62,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "React",
+        "Angular",
+        "Node Js",
+        "Postgresql",
+        "Microservices"
+      ]
+    },
+    {
+      "skill": "skill_process",
+      "display_name": "Process",
+      "posting_count": 42,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 5.12,
+      "observed_salary_difference_lpa": -4.88,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "AI / ML Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Engineering",
+        "Technical",
+        "Technical Support",
+        "Technical Voice Process",
+        "SAP"
+      ]
+    },
+    {
+      "skill": "skill_advanced_excel",
+      "display_name": "Advanced Excel",
+      "posting_count": 41,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 4.38,
+      "observed_salary_difference_lpa": -5.62,
+      "associated_roles": [
+        "Data Analyst",
+        "Software Engineer",
+        "Business Analyst"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Excel",
+        "English",
+        "Communication Skills",
+        "Good English Communication",
+        "Backend"
+      ]
+    },
+    {
+      "skill": "skill_bootstrap",
+      "display_name": "Bootstrap",
+      "posting_count": 41,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 18.75,
+      "observed_salary_difference_lpa": 8.75,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Software Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Spring Boot",
+        "Java",
+        "Spring",
+        "React",
+        "Microservices"
+      ]
+    },
+    {
+      "skill": "skill_nlp",
+      "display_name": "NLP",
+      "posting_count": 41,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 22.5,
+      "observed_salary_difference_lpa": 12.5,
+      "associated_roles": [
+        "Data Scientist",
+        "AI / ML Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Machine Learning",
+        "Python",
+        "AI",
+        "Deep Learning",
+        "Generative AI"
+      ]
+    },
+    {
+      "skill": "skill_sap_abap",
+      "display_name": "SAP ABAP",
+      "posting_count": 41,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "SAP",
+        "ABAP",
+        "SAP Hana",
+        "Development",
+        "S4 Hana"
+      ]
+    },
+    {
+      "skill": "skill_android",
+      "display_name": "Android",
+      "posting_count": 40,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 6.5,
+      "observed_salary_difference_lpa": -3.5,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Android Application Development",
+        "Kotlin",
+        "Development",
+        "Java",
+        "Flutter"
+      ]
+    },
+    {
+      "skill": "skill_coding",
+      "display_name": "Coding",
+      "posting_count": 40,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 3.25,
+      "observed_salary_difference_lpa": -6.75,
+      "associated_roles": [
+        "QA / Testing",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Medical Coding",
+        "Hcc Coding",
+        "Medical",
+        "Python",
+        "Certified"
+      ]
+    },
+    {
+      "skill": "skill_design_engineering",
+      "display_name": "Design Engineering",
+      "posting_count": 40,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 5.0,
+      "observed_salary_difference_lpa": -5.0,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Design",
+        "Autocad",
+        "Solid Works",
+        "Engineering",
+        "Hydraulics"
+      ]
+    },
+    {
+      "skill": "skill_hiring",
+      "display_name": "Hiring",
+      "posting_count": 40,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 13.0,
+      "observed_salary_difference_lpa": 3.0,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Development",
+        "Hcc Coding",
+        "Java",
+        "Medical Coding",
+        "Medical"
+      ]
+    },
+    {
+      "skill": "skill_saps",
+      "display_name": "SAPs",
+      "posting_count": 40,
+      "demand_percentage": 0.8,
+      "observed_median_salary_lpa": 13.62,
+      "observed_salary_difference_lpa": 3.62,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise ERP & SAP Functional Solutions"
+      ],
+      "cooccurring_skills": [
+        "SAP",
+        "SAP S Hana",
+        "SAP Hana",
+        "S4 Hana",
+        "SAP Sd"
+      ]
+    },
+    {
+      "skill": "skill_administration",
+      "display_name": "Administration",
+      "posting_count": 39,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 10.5,
+      "observed_salary_difference_lpa": 0.5,
+      "associated_roles": [
+        "Other Technology",
+        "Database Administrator",
+        "Cloud / DevOps"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Dbms",
+        "System",
+        "Mongodb",
+        "Development",
+        "Oracle"
+      ]
+    },
+    {
+      "skill": "skill_business_development",
+      "display_name": "Business Development",
+      "posting_count": 39,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 5.1,
+      "observed_salary_difference_lpa": -4.9,
+      "associated_roles": [
+        "Other Technology",
+        "Cybersecurity",
+        "Business Analyst"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Sales",
+        "B2B Sales",
+        "Sales Engineering",
+        "Industrial Sales",
+        "Technical Sales"
+      ]
+    },
+    {
+      "skill": "skill_ci_cd_pipeline",
+      "display_name": "CI CD Pipeline",
+      "posting_count": 39,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 16.0,
+      "observed_salary_difference_lpa": 6.0,
+      "associated_roles": [
+        "Cloud / DevOps",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Devops",
+        "Jenkins",
+        "CI CD",
+        "Azure Devops"
+      ]
+    },
+    {
+      "skill": "skill_installation",
+      "display_name": "Installation",
+      "posting_count": 39,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 3.25,
+      "observed_salary_difference_lpa": -6.75,
+      "associated_roles": [
+        "Other Technology",
+        "Database Administrator"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Troubleshooting",
+        "Field Service",
+        "Configuration",
+        "Maintenance",
+        "Service Engineering"
+      ]
+    },
+    {
+      "skill": "skill_jira",
+      "display_name": "Jira",
+      "posting_count": 39,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 8.5,
+      "observed_salary_difference_lpa": -1.5,
+      "associated_roles": [
+        "QA / Testing",
+        "Product / Program Manager",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Manual Testing",
+        "Software Testing",
+        "Agile",
+        "SQL",
+        "API Testing"
+      ]
+    },
+    {
+      "skill": "skill_qms",
+      "display_name": "Qms",
+      "posting_count": 39,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 5.0,
+      "observed_salary_difference_lpa": -5.0,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Iso",
+        "Iatf",
+        "Documentation",
+        "Quality Assurance",
+        "Quality"
+      ]
+    },
+    {
+      "skill": "skill_web_technologies",
+      "display_name": "Web Technologies",
+      "posting_count": 39,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 9.6,
+      "observed_salary_difference_lpa": -0.4,
+      "associated_roles": [
+        "Other Technology",
+        "Frontend Developer",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Development",
+        "Net Core",
+        "Web API",
+        "Core",
+        "React"
+      ]
+    },
+    {
+      "skill": "skill_er_studio",
+      "display_name": "Er Studio",
+      "posting_count": 38,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 25.0,
+      "observed_salary_difference_lpa": 15.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Data Modeling",
+        "Erwin",
+        "Nosql",
+        "Data Architecture",
+        "SQL"
+      ]
+    },
+    {
+      "skill": "skill_erwin",
+      "display_name": "Erwin",
+      "posting_count": 38,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 25.0,
+      "observed_salary_difference_lpa": 15.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Data Modeling",
+        "Er Studio",
+        "Nosql",
+        "Data Architecture",
+        "SQL"
+      ]
+    },
+    {
+      "skill": "skill_fullstack_development",
+      "display_name": "Fullstack Development",
+      "posting_count": 38,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 13.25,
+      "observed_salary_difference_lpa": 3.25,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Software Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "React",
+        "Node Js",
+        "Full Stack",
+        "Angular",
+        "Javascript"
+      ]
+    },
+    {
+      "skill": "skill_quality_engineering",
+      "display_name": "Quality Engineering",
+      "posting_count": 38,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 3.06,
+      "observed_salary_difference_lpa": -6.94,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Quality",
+        "Engineering",
+        "Quality Control",
+        "Quality Assurance",
+        "Software Testing"
+      ]
+    },
+    {
+      "skill": "skill_react_native",
+      "display_name": "React Native",
+      "posting_count": 38,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 7.62,
+      "observed_salary_difference_lpa": -2.38,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "React",
+        "Javascript",
+        "Node Js",
+        "Mobile Application Development",
+        "Flutter"
+      ]
+    },
+    {
+      "skill": "skill_service_engineering",
+      "display_name": "Service Engineering",
+      "posting_count": 38,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 2.88,
+      "observed_salary_difference_lpa": -7.12,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Field Service",
+        "Servicing",
+        "Engineering",
+        "Technical",
+        "Maintenance"
+      ]
+    },
+    {
+      "skill": "skill_software_development",
+      "display_name": "Software Development",
+      "posting_count": 38,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 12.88,
+      "observed_salary_difference_lpa": 2.88,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Cloud / DevOps"
+      ],
+      "associated_archetypes": [
+        "Full-Stack & Modern Application Engineering",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Software",
+        "Development",
+        "Java",
+        "Python",
+        "Net"
+      ]
+    },
+    {
+      "skill": "skill_flutter",
+      "display_name": "Flutter",
+      "posting_count": 37,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 6.0,
+      "observed_salary_difference_lpa": -4.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Frontend Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Development",
+        "Mobile Application Development",
+        "Android",
+        "React",
+        "React Native"
+      ]
+    },
+    {
+      "skill": "skill_iatf",
+      "display_name": "Iatf",
+      "posting_count": 37,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 5.0,
+      "observed_salary_difference_lpa": -5.0,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Iso",
+        "Qms",
+        "Machining",
+        "Fabrication",
+        "Heavy Fabrication"
+      ]
+    },
+    {
+      "skill": "skill_machining",
+      "display_name": "Machining",
+      "posting_count": 37,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 4.5,
+      "observed_salary_difference_lpa": -5.5,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing",
+        "Product / Program Manager"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Welding",
+        "Vmc",
+        "Iso",
+        "Iatf",
+        "Npd"
+      ]
+    },
+    {
+      "skill": "skill_mvc",
+      "display_name": "Mvc",
+      "posting_count": 37,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 11.0,
+      "observed_salary_difference_lpa": 1.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "C ",
+        "Net",
+        "Net Core",
+        " Net",
+        "Angular"
+      ]
+    },
+    {
+      "skill": "skill_npd",
+      "display_name": "Npd",
+      "posting_count": 37,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 4.5,
+      "observed_salary_difference_lpa": -5.5,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Autocad",
+        "Machining",
+        "Sheet Metal",
+        "Automotive",
+        "Solid Works"
+      ]
+    },
+    {
+      "skill": "skill_api_integration",
+      "display_name": "API Integration",
+      "posting_count": 36,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 10.75,
+      "observed_salary_difference_lpa": 0.75,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Frontend Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Javascript",
+        "React",
+        "API",
+        "Python",
+        "Typescript"
+      ]
+    },
+    {
+      "skill": "skill_framework",
+      "display_name": "Framework",
+      "posting_count": 36,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 13.0,
+      "observed_salary_difference_lpa": 3.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Full-Stack & Modern Application Engineering",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Development",
+        "Python",
+        "Automation",
+        "Angular",
+        "Golang"
+      ]
+    },
+    {
+      "skill": "skill_itsm",
+      "display_name": "Itsm",
+      "posting_count": 36,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 17.0,
+      "observed_salary_difference_lpa": 7.0,
+      "associated_roles": [
+        "Other Technology",
+        "Cloud / DevOps"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Servicenow",
+        "Servicenow Development",
+        "Integration",
+        "Development",
+        "Javascript"
+      ]
+    },
+    {
+      "skill": "skill_pl_sql",
+      "display_name": "Pl SQL",
+      "posting_count": 36,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 13.5,
+      "observed_salary_difference_lpa": 3.5,
+      "associated_roles": [
+        "Other Technology",
+        "Database Administrator",
+        "Data Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "SQL",
+        "Development",
+        "Oracle",
+        "ETL",
+        "Java"
+      ]
+    },
+    {
+      "skill": "skill_problem_solving",
+      "display_name": "Problem Solving",
+      "posting_count": 36,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 4.56,
+      "observed_salary_difference_lpa": -5.44,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Business Analyst"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Communication Skills",
+        "Development",
+        "Css",
+        "Technical Support",
+        "Python"
+      ]
+    },
+    {
+      "skill": "skill_project_management",
+      "display_name": "Project Management",
+      "posting_count": 36,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 11.5,
+      "observed_salary_difference_lpa": 1.5,
+      "associated_roles": [
+        "Other Technology",
+        "Business Analyst",
+        "Product / Program Manager"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Project",
+        "Architectural Design",
+        "Management",
+        "SQL",
+        "Autocad"
+      ]
+    },
+    {
+      "skill": "skill_sketchup",
+      "display_name": "Sketchup",
+      "posting_count": 36,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 5.0,
+      "observed_salary_difference_lpa": -5.0,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Autocad",
+        "Architectural Design",
+        "Architecture",
+        "Revit",
+        "Design"
+      ]
+    },
+    {
+      "skill": "skill_tensorflow",
+      "display_name": "Tensorflow",
+      "posting_count": 36,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 24.0,
+      "observed_salary_difference_lpa": 14.0,
+      "associated_roles": [
+        "AI / ML Engineer",
+        "Other Technology",
+        "Data Scientist"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "Pytorch",
+        "Machine Learning",
+        "AI",
+        "Generative AI"
+      ]
+    },
+    {
+      "skill": "skill_analysis",
+      "display_name": "Analysis",
+      "posting_count": 35,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 6.5,
+      "observed_salary_difference_lpa": -3.5,
+      "associated_roles": [
+        "Business Analyst",
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Business Analysis",
+        "Data Analysis",
+        "Quality",
+        "Agile",
+        "Python"
+      ]
+    },
+    {
+      "skill": "skill_data_bricks",
+      "display_name": "Data Bricks",
+      "posting_count": 35,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 16.0,
+      "observed_salary_difference_lpa": 6.0,
+      "associated_roles": [
+        "Data Engineer",
+        "Other Technology",
+        "Cloud / DevOps"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Spark",
+        "Python",
+        "SQL",
+        "Data",
+        "Azure Databricks"
+      ]
+    },
+    {
+      "skill": "skill_flask",
+      "display_name": "Flask",
+      "posting_count": 35,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 19.5,
+      "observed_salary_difference_lpa": 9.5,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "Django",
+        "Fast API",
+        "Python Development",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_good_english_communication",
+      "display_name": "Good English Communication",
+      "posting_count": 35,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 2.0,
+      "observed_salary_difference_lpa": -8.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Backend",
+        "Communication Skills",
+        "English",
+        "Office",
+        "Advanced Excel"
+      ]
+    },
+    {
+      "skill": "skill_l1_support",
+      "display_name": "L1 Support",
+      "posting_count": 35,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 4.12,
+      "observed_salary_difference_lpa": -5.88,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Troubleshooting",
+        "Technical Support",
+        "It Helpdesk",
+        "International Technical Support",
+        "Service Desk"
+      ]
+    },
+    {
+      "skill": "skill_laravel",
+      "display_name": "Laravel",
+      "posting_count": 35,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 4.0,
+      "observed_salary_difference_lpa": -6.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "PHP",
+        "Mysql",
+        "React",
+        "Development",
+        "Core"
+      ]
+    },
+    {
+      "skill": "skill_project",
+      "display_name": "Project",
+      "posting_count": 35,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 6.75,
+      "observed_salary_difference_lpa": -3.25,
+      "associated_roles": [
+        "Other Technology",
+        "Business Analyst",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Project Management",
+        "Management",
+        "Drawing",
+        "Development",
+        "Engineering"
+      ]
+    },
+    {
+      "skill": "skill_welding",
+      "display_name": "Welding",
+      "posting_count": 35,
+      "demand_percentage": 0.7,
+      "observed_median_salary_lpa": 5.0,
+      "observed_salary_difference_lpa": -5.0,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Fabrication",
+        "Heavy Fabrication",
+        "Machining",
+        "Sheet Metal",
+        "Auto"
+      ]
+    },
+    {
+      "skill": "skill_hardware",
+      "display_name": "Hardware",
+      "posting_count": 34,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 3.19,
+      "observed_salary_difference_lpa": -6.81,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Software",
+        "Networking",
+        "Troubleshooting",
+        "Design",
+        "Desktop Support"
+      ]
+    },
+    {
+      "skill": "skill_heavy_fabrication",
+      "display_name": "Heavy Fabrication",
+      "posting_count": 34,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 5.0,
+      "observed_salary_difference_lpa": -5.0,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Fabrication",
+        "Welding",
+        "Sheet Metal",
+        "Iso",
+        "Autocad"
+      ]
+    },
+    {
+      "skill": "skill_quality_control",
+      "display_name": "Quality Control",
+      "posting_count": 34,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 4.0,
+      "observed_salary_difference_lpa": -6.0,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Quality Assurance",
+        "Control",
+        "Quality",
+        "Quality Engineering",
+        "Quality Audit"
+      ]
+    },
+    {
+      "skill": "skill_bigquery",
+      "display_name": "BIgquery",
+      "posting_count": 33,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 14.0,
+      "observed_salary_difference_lpa": 4.0,
+      "associated_roles": [
+        "Data Engineer",
+        "AI / ML Engineer",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "GCP",
+        "SQL",
+        "ETL",
+        "Data Engineering",
+        "Java"
+      ]
+    },
+    {
+      "skill": "skill_cd",
+      "display_name": "Cd",
+      "posting_count": 33,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 20.0,
+      "observed_salary_difference_lpa": 10.0,
+      "associated_roles": [
+        "Cloud / DevOps",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "CI CD",
+        "Devops",
+        "Kubernetes",
+        "AWS",
+        "Docker"
+      ]
+    },
+    {
+      "skill": "skill_devops_tools",
+      "display_name": "Devops Tools",
+      "posting_count": 33,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 11.5,
+      "observed_salary_difference_lpa": 1.5,
+      "associated_roles": [
+        "Cloud / DevOps",
+        "Full Stack Developer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Jenkins",
+        "Maven",
+        "Git",
+        "GCP",
+        "Docker"
+      ]
+    },
+    {
+      "skill": "skill_electrical_maintenance",
+      "display_name": "Electrical Maintenance",
+      "posting_count": 33,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 3.9,
+      "observed_salary_difference_lpa": -6.1,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Maintenance",
+        "Breakdown Maintenance",
+        "Maintenance Engineering",
+        "Plc",
+        "Installation"
+      ]
+    },
+    {
+      "skill": "skill_powershell",
+      "display_name": "Powershell",
+      "posting_count": 33,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 20.0,
+      "observed_salary_difference_lpa": 10.0,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Cloud / DevOps",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "AWS Cloud",
+        "GCP Cloud",
+        "Java",
+        "Azure Devops"
+      ]
+    },
+    {
+      "skill": "skill_sap_s_hana",
+      "display_name": "SAP S Hana",
+      "posting_count": 33,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Other Technology",
+        "Business Analyst"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "SAP",
+        "SAP Hana",
+        "SAPs",
+        "S4 Hana",
+        "SAP FICO"
+      ]
+    },
+    {
+      "skill": "skill_technical_sales",
+      "display_name": "Technical Sales",
+      "posting_count": 33,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 4.0,
+      "observed_salary_difference_lpa": -6.0,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Sales",
+        "Industrial Sales",
+        "Sales Engineering",
+        "Business Development",
+        "B2B Sales"
+      ]
+    },
+    {
+      "skill": "skill_aiml",
+      "display_name": "AIml",
+      "posting_count": 32,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 22.5,
+      "observed_salary_difference_lpa": 12.5,
+      "associated_roles": [
+        "Other Technology",
+        "AI / ML Engineer",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "Machine Learning",
+        "AI",
+        "Pytorch",
+        "Generative AI"
+      ]
+    },
+    {
+      "skill": "skill_b2b_sales",
+      "display_name": "B2B Sales",
+      "posting_count": 32,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 4.88,
+      "observed_salary_difference_lpa": -5.12,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Sales",
+        "Industrial Sales",
+        "Business Development",
+        "Sales Engineering",
+        "Technical Sales"
+      ]
+    },
+    {
+      "skill": "skill_boq_preparation",
+      "display_name": "Boq Preparation",
+      "posting_count": 32,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 4.2,
+      "observed_salary_difference_lpa": -5.8,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Cost Estimation",
+        "Sub Contractor BIlling",
+        "Estimation",
+        "English",
+        "Autocad"
+      ]
+    },
+    {
+      "skill": "skill_breakdown_maintenance",
+      "display_name": "Breakdown Maintenance",
+      "posting_count": 32,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 3.69,
+      "observed_salary_difference_lpa": -6.31,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Electrical Maintenance",
+        "Maintenance",
+        "Maintenance Engineering",
+        "Troubleshooting",
+        "Servicing"
+      ]
+    },
+    {
+      "skill": "skill_llm",
+      "display_name": "Llm",
+      "posting_count": 32,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 27.5,
+      "observed_salary_difference_lpa": 17.5,
+      "associated_roles": [
+        "AI / ML Engineer",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "Machine Learning",
+        "AI",
+        "Generative AI",
+        "Tensorflow"
+      ]
+    },
+    {
+      "skill": "skill_planning",
+      "display_name": "Planning",
+      "posting_count": 32,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 5.75,
+      "observed_salary_difference_lpa": -4.25,
+      "associated_roles": [
+        "Other Technology",
+        "Product / Program Manager",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Production",
+        "Autocad",
+        "SAP",
+        "Control",
+        "Engineering"
+      ]
+    },
+    {
+      "skill": "skill_program",
+      "display_name": "Program",
+      "posting_count": 32,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 6.55,
+      "observed_salary_difference_lpa": -3.45,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Programming",
+        "SQL",
+        "Java",
+        "C  ",
+        "Plc"
+      ]
+    },
+    {
+      "skill": "skill_reporting",
+      "display_name": "Reporting",
+      "posting_count": 32,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 9.5,
+      "observed_salary_difference_lpa": -0.5,
+      "associated_roles": [
+        "Other Technology",
+        "Data Analyst",
+        "Business Analyst"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "SQL",
+        "Tableau",
+        "Power BI",
+        "Excel",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_servicing",
+      "display_name": "Servicing",
+      "posting_count": 32,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 2.56,
+      "observed_salary_difference_lpa": -7.44,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Service Engineering",
+        "Field Service",
+        "Troubleshooting",
+        "Maintenance",
+        "Sales"
+      ]
+    },
+    {
+      "skill": "skill_3d_modeling",
+      "display_name": "3D Modeling",
+      "posting_count": 31,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 3.25,
+      "observed_salary_difference_lpa": -6.75,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Solid Works",
+        "Autocad 2D",
+        "Autocad",
+        "3D",
+        "Typescript"
+      ]
+    },
+    {
+      "skill": "skill_abap",
+      "display_name": "ABAP",
+      "posting_count": 31,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "SAP",
+        "SAP ABAP",
+        "SAP Hana",
+        "Consulting",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_it_helpdesk",
+      "display_name": "It Helpdesk",
+      "posting_count": 31,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 4.12,
+      "observed_salary_difference_lpa": -5.88,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Technical Support",
+        "L1 Support",
+        "Service Desk",
+        "Troubleshooting",
+        "International Technical Support"
+      ]
+    },
+    {
+      "skill": "skill_kotlin",
+      "display_name": "Kotlin",
+      "posting_count": 31,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 6.0,
+      "observed_salary_difference_lpa": -4.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Android",
+        "Android Application Development",
+        "Java",
+        "Development",
+        "Flutter"
+      ]
+    },
+    {
+      "skill": "skill_maven",
+      "display_name": "Maven",
+      "posting_count": 31,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 16.5,
+      "observed_salary_difference_lpa": 6.5,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Software Engineer",
+        "Cloud / DevOps"
+      ],
+      "associated_archetypes": [
+        "Enterprise Java & Microservices Backend",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Microservices",
+        "Jenkins",
+        "Git",
+        "Devops Tools"
+      ]
+    },
+    {
+      "skill": "skill_operations",
+      "display_name": "Operations",
+      "posting_count": 31,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 4.25,
+      "observed_salary_difference_lpa": -5.75,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Maintenance",
+        "Technical",
+        "Process",
+        "English",
+        "Backend"
+      ]
+    },
+    {
+      "skill": "skill_os_installation",
+      "display_name": "Os Installation",
+      "posting_count": 31,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 2.75,
+      "observed_salary_difference_lpa": -7.25,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Desktop Support",
+        "Outlook Configuration",
+        "Troubleshooting",
+        "Configuration",
+        "Networking"
+      ]
+    },
+    {
+      "skill": "skill_product_management",
+      "display_name": "Product Management",
+      "posting_count": 31,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 17.5,
+      "observed_salary_difference_lpa": 7.5,
+      "associated_roles": [
+        "Product / Program Manager",
+        "Other Technology",
+        "Business Analyst"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Management",
+        "Jira",
+        "Development",
+        "Agile",
+        "GCP"
+      ]
+    },
+    {
+      "skill": "skill_production",
+      "display_name": "Production",
+      "posting_count": 31,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 4.25,
+      "observed_salary_difference_lpa": -5.75,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing",
+        "Cloud / DevOps"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Planning",
+        "Quality",
+        "Java",
+        "Engineering",
+        "Maintenance"
+      ]
+    },
+    {
+      "skill": "skill_reacts_js",
+      "display_name": "Reacts Js",
+      "posting_count": 31,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "React",
+        "Javascript",
+        "Java",
+        "Full Stack",
+        "Java Fullstack"
+      ]
+    },
+    {
+      "skill": "skill_sql_queries",
+      "display_name": "SQL Queries",
+      "posting_count": 31,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 14.0,
+      "observed_salary_difference_lpa": 4.0,
+      "associated_roles": [
+        "Data Engineer",
+        "Database Administrator",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "SQL",
+        "Java",
+        "ETL",
+        "GCP",
+        "Data Engineering"
+      ]
+    },
+    {
+      "skill": "skill_sr",
+      "display_name": "Sr",
+      "posting_count": 31,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 10.0,
+      "observed_salary_difference_lpa": 0.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Development",
+        "Engineering",
+        "Microservices",
+        "Spring Boot",
+        "Python"
+      ]
+    },
+    {
+      "skill": "skill_tools",
+      "display_name": "Tools",
+      "posting_count": 31,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 4.25,
+      "observed_salary_difference_lpa": -5.75,
+      "associated_roles": [
+        "Other Technology",
+        "Data Engineer",
+        "Cybersecurity"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Development",
+        "Python",
+        "Design",
+        "AWS",
+        "Hindi"
+      ]
+    },
+    {
+      "skill": "skill_bi",
+      "display_name": "BI",
+      "posting_count": 30,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 12.25,
+      "observed_salary_difference_lpa": 2.25,
+      "associated_roles": [
+        "Other Technology",
+        "Data Analyst",
+        "Business Analyst"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Power BI",
+        "SQL",
+        "Tableau",
+        "Development",
+        "Python"
+      ]
+    },
+    {
+      "skill": "skill_field_service",
+      "display_name": "Field Service",
+      "posting_count": 30,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 2.69,
+      "observed_salary_difference_lpa": -7.31,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Service Engineering",
+        "Servicing",
+        "Installation",
+        "Troubleshooting",
+        "Maintenance"
+      ]
+    },
+    {
+      "skill": "skill_gcp_cloud",
+      "display_name": "GCP Cloud",
+      "posting_count": 30,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 20.0,
+      "observed_salary_difference_lpa": 10.0,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Other Technology",
+        "Data Engineer"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "Java",
+        "AWS Cloud",
+        "Powershell",
+        "GCP"
+      ]
+    },
+    {
+      "skill": "skill_hydraulics",
+      "display_name": "Hydraulics",
+      "posting_count": 30,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 5.0,
+      "observed_salary_difference_lpa": -5.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Plc",
+        "Design",
+        "Automation",
+        "Maintenance",
+        "Design Engineering"
+      ]
+    },
+    {
+      "skill": "skill_medical_coding",
+      "display_name": "Medical Coding",
+      "posting_count": 30,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 3.25,
+      "observed_salary_difference_lpa": -6.75,
+      "associated_roles": [
+        "QA / Testing",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Hcc Coding",
+        "Medical",
+        "Coding",
+        "Quality Assurance",
+        "Certified"
+      ]
+    },
+    {
+      "skill": "skill_servicenow_development",
+      "display_name": "Servicenow Development",
+      "posting_count": 30,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 17.0,
+      "observed_salary_difference_lpa": 7.0,
+      "associated_roles": [
+        "Other Technology",
+        "Business Analyst"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Servicenow",
+        "Itsm",
+        "Development",
+        "Integration",
+        "Javascript"
+      ]
+    },
+    {
+      "skill": "skill_technical_voice_process",
+      "display_name": "Technical Voice Process",
+      "posting_count": 30,
+      "demand_percentage": 0.6,
+      "observed_median_salary_lpa": 3.19,
+      "observed_salary_difference_lpa": -6.81,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Technical Support",
+        "International Technical Support",
+        "Troubleshooting",
+        "Voice Process",
+        "L1 Support"
+      ]
+    },
+    {
+      "skill": "skill_application_development",
+      "display_name": "Application Development",
+      "posting_count": 29,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 7.5,
+      "observed_salary_difference_lpa": -2.5,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Frontend Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Application",
+        "Development",
+        "Mobile Application Development",
+        "Java",
+        "Android Application Development"
+      ]
+    },
+    {
+      "skill": "skill_autocad_2d",
+      "display_name": "Autocad 2D",
+      "posting_count": 29,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 3.25,
+      "observed_salary_difference_lpa": -6.75,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Solid Works",
+        "3D Modeling",
+        "Autocad",
+        "3D",
+        "Typescript"
+      ]
+    },
+    {
+      "skill": "skill_c",
+      "display_name": "C",
+      "posting_count": 29,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 12.0,
+      "observed_salary_difference_lpa": 2.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "C  ",
+        "Linux",
+        "Embedded Systems",
+        "Development",
+        "Python"
+      ]
+    },
+    {
+      "skill": "skill_cost_estimation",
+      "display_name": "Cost Estimation",
+      "posting_count": 29,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 4.0,
+      "observed_salary_difference_lpa": -6.0,
+      "associated_roles": [
+        "Other Technology",
+        "Business Analyst"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Boq Preparation",
+        "Estimation",
+        "English",
+        "Sub Contractor BIlling",
+        "Hindi"
+      ]
+    },
+    {
+      "skill": "skill_desktop",
+      "display_name": "Desktop",
+      "posting_count": 29,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 2.88,
+      "observed_salary_difference_lpa": -7.12,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Desktop Support",
+        "Troubleshooting",
+        "Outlook Configuration",
+        "Configuration",
+        "Network Support"
+      ]
+    },
+    {
+      "skill": "skill_front_end",
+      "display_name": "Front End",
+      "posting_count": 29,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 11.5,
+      "observed_salary_difference_lpa": 1.5,
+      "associated_roles": [
+        "Frontend Developer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "React",
+        "Frontend Development",
+        "Javascript",
+        "Development",
+        "Node Js"
+      ]
+    },
+    {
+      "skill": "skill_implementation",
+      "display_name": "Implementation",
+      "posting_count": 29,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 20.0,
+      "observed_salary_difference_lpa": 10.0,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "SAP",
+        "SAP Sd",
+        "SAP Hana",
+        "ABAP",
+        "S4 Hana"
+      ]
+    },
+    {
+      "skill": "skill_pytorch",
+      "display_name": "Pytorch",
+      "posting_count": 29,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 27.5,
+      "observed_salary_difference_lpa": 17.5,
+      "associated_roles": [
+        "AI / ML Engineer",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Tensorflow",
+        "Python",
+        "Machine Learning",
+        "AIml",
+        "AI"
+      ]
+    },
+    {
+      "skill": "skill_shell_scripting",
+      "display_name": "Shell Scripting",
+      "posting_count": 29,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 11.5,
+      "observed_salary_difference_lpa": 1.5,
+      "associated_roles": [
+        "Cloud / DevOps",
+        "Other Technology",
+        "Database Administrator"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Docker",
+        "Jenkins",
+        "Kubernetes",
+        "GCP",
+        "Devops Tools"
+      ]
+    },
+    {
+      "skill": "skill_test",
+      "display_name": "Test",
+      "posting_count": 29,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 20.0,
+      "observed_salary_difference_lpa": 10.0,
+      "associated_roles": [
+        "Data Engineer"
+      ],
+      "associated_archetypes": [
+        "Big Data Engineering & Distributed Systems"
+      ],
+      "cooccurring_skills": [
+        "Scala",
+        "Jenkins",
+        "Spark",
+        "AIrflow",
+        "CI CD"
+      ]
+    },
+    {
+      "skill": "skill_asp_net_core",
+      "display_name": "Asp Net Core",
+      "posting_count": 28,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 12.88,
+      "observed_salary_difference_lpa": 2.88,
+      "associated_roles": [
+        "Other Technology",
+        "Full Stack Developer",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Net Core",
+        "C ",
+        "Angular",
+        "Web API",
+        "Core"
+      ]
+    },
+    {
+      "skill": "skill_auto",
+      "display_name": "Auto",
+      "posting_count": 28,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 4.5,
+      "observed_salary_difference_lpa": -5.5,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Sheet Metal",
+        "Welding",
+        "Automotive",
+        "Npd",
+        "Qms"
+      ]
+    },
+    {
+      "skill": "skill_azure_databricks",
+      "display_name": "Azure Databricks",
+      "posting_count": 28,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 17.75,
+      "observed_salary_difference_lpa": 7.75,
+      "associated_roles": [
+        "Data Engineer",
+        "Other Technology",
+        "AI / ML Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Azure Data Factory",
+        "Spark",
+        "Data Bricks",
+        "Azure",
+        "Python"
+      ]
+    },
+    {
+      "skill": "skill_control",
+      "display_name": "Control",
+      "posting_count": 28,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 4.38,
+      "observed_salary_difference_lpa": -5.62,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Quality Control",
+        "Quality",
+        "Quality Assurance",
+        "Planning",
+        "Production"
+      ]
+    },
+    {
+      "skill": "skill_drawing",
+      "display_name": "Drawing",
+      "posting_count": 28,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 4.32,
+      "observed_salary_difference_lpa": -5.68,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Autocad",
+        "Solid Works",
+        "Design",
+        "Architecture",
+        "Architectural Design"
+      ]
+    },
+    {
+      "skill": "skill_estimation",
+      "display_name": "Estimation",
+      "posting_count": 28,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 4.22,
+      "observed_salary_difference_lpa": -5.78,
+      "associated_roles": [
+        "Other Technology",
+        "Business Analyst"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Cost Estimation",
+        "Boq Preparation",
+        "Engineering",
+        "Sub Contractor BIlling",
+        "Autocad"
+      ]
+    },
+    {
+      "skill": "skill_graphql",
+      "display_name": "Graphql",
+      "posting_count": 28,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 19.62,
+      "observed_salary_difference_lpa": 9.62,
+      "associated_roles": [
+        "Other Technology",
+        "Full Stack Developer",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Node Js",
+        "React",
+        "Javascript",
+        "AWS",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_international_technical_support",
+      "display_name": "International Technical Support",
+      "posting_count": 28,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 3.5,
+      "observed_salary_difference_lpa": -6.5,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Technical Support",
+        "Troubleshooting",
+        "Technical Voice Process",
+        "L1 Support",
+        "It Helpdesk"
+      ]
+    },
+    {
+      "skill": "skill_manual",
+      "display_name": "Manual",
+      "posting_count": 28,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 8.5,
+      "observed_salary_difference_lpa": -1.5,
+      "associated_roles": [
+        "QA / Testing",
+        "Other Technology",
+        "Cloud / DevOps"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Manual Testing",
+        "Automation",
+        "Automation Testing",
+        "Software Testing",
+        "Selenium"
+      ]
+    },
+    {
+      "skill": "skill_office",
+      "display_name": "Office",
+      "posting_count": 28,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 2.0,
+      "observed_salary_difference_lpa": -8.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Backend",
+        "Communication Skills",
+        "English",
+        "Good English Communication",
+        "Autocad"
+      ]
+    },
+    {
+      "skill": "skill_outlook_configuration",
+      "display_name": "Outlook Configuration",
+      "posting_count": 28,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 2.69,
+      "observed_salary_difference_lpa": -7.31,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Desktop Support",
+        "Os Installation",
+        "Troubleshooting",
+        "L1 Support",
+        "Configuration"
+      ]
+    },
+    {
+      "skill": "skill_pandas",
+      "display_name": "Pandas",
+      "posting_count": 28,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 14.5,
+      "observed_salary_difference_lpa": 4.5,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Data Scientist"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Python",
+        "Development",
+        "SQL",
+        "Machine Learning",
+        "Django"
+      ]
+    },
+    {
+      "skill": "skill_android_application_development",
+      "display_name": "Android Application Development",
+      "posting_count": 27,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 6.5,
+      "observed_salary_difference_lpa": -3.5,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Android",
+        "Kotlin",
+        "Java",
+        "Development",
+        "Flutter"
+      ]
+    },
+    {
+      "skill": "skill_data_science",
+      "display_name": "Data Science",
+      "posting_count": 27,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 15.5,
+      "observed_salary_difference_lpa": 5.5,
+      "associated_roles": [
+        "Data Scientist",
+        "Other Technology",
+        "AI / ML Engineer"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Machine Learning",
+        "Python",
+        "AI",
+        "Data",
+        "NLP"
+      ]
+    },
+    {
+      "skill": "skill_embedded_systems",
+      "display_name": "Embedded Systems",
+      "posting_count": 27,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 7.5,
+      "observed_salary_difference_lpa": -2.5,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "C  ",
+        "Linux",
+        "System",
+        "C",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_express",
+      "display_name": "Express",
+      "posting_count": 27,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 17.0,
+      "observed_salary_difference_lpa": 7.0,
+      "associated_roles": [
+        "Full Stack Developer",
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Node Js",
+        "Typescript",
+        "Javascript",
+        "React",
+        "Mongodb"
+      ]
+    },
+    {
+      "skill": "skill_maintenance_engineering",
+      "display_name": "Maintenance Engineering",
+      "posting_count": 27,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 3.88,
+      "observed_salary_difference_lpa": -6.12,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Maintenance",
+        "Breakdown Maintenance",
+        "Electrical Maintenance",
+        "Machine",
+        "Engineering"
+      ]
+    },
+    {
+      "skill": "skill_medical",
+      "display_name": "Medical",
+      "posting_count": 27,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 3.25,
+      "observed_salary_difference_lpa": -6.75,
+      "associated_roles": [
+        "QA / Testing",
+        "Other Technology",
+        "Data Analyst"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Medical Coding",
+        "Hcc Coding",
+        "Coding",
+        "Quality Assurance",
+        "Certified"
+      ]
+    },
+    {
+      "skill": "skill_mobile_application_development",
+      "display_name": "Mobile Application Development",
+      "posting_count": 27,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 6.0,
+      "observed_salary_difference_lpa": -4.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Cloud / DevOps"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Flutter",
+        "Application Development",
+        "React Native",
+        "Android",
+        "Development"
+      ]
+    },
+    {
+      "skill": "skill_network_engineering",
+      "display_name": "Network Engineering",
+      "posting_count": 27,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 5.25,
+      "observed_salary_difference_lpa": -4.75,
+      "associated_roles": [
+        "Other Technology",
+        "Cloud / DevOps",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Networking",
+        "Ccna",
+        "Engineering",
+        "Network Support",
+        "Troubleshooting"
+      ]
+    },
+    {
+      "skill": "skill_procurement",
+      "display_name": "Procurement",
+      "posting_count": 27,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 4.75,
+      "observed_salary_difference_lpa": -5.25,
+      "associated_roles": [
+        "Other Technology",
+        "Product / Program Manager"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Fabrication",
+        "ERP",
+        "Heavy Fabrication",
+        "Machining",
+        "Iso"
+      ]
+    },
+    {
+      "skill": "skill_service_desk",
+      "display_name": "Service Desk",
+      "posting_count": 27,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 3.12,
+      "observed_salary_difference_lpa": -6.88,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Technical Support",
+        "It Helpdesk",
+        "Troubleshooting",
+        "L1 Support",
+        "Desktop Support"
+      ]
+    },
+    {
+      "skill": "skill_ui_ux",
+      "display_name": "UI UX",
+      "posting_count": 27,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 6.5,
+      "observed_salary_difference_lpa": -3.5,
+      "associated_roles": [
+        "Other Technology",
+        "Frontend Developer",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Javascript",
+        "Css",
+        "React",
+        "Development",
+        "Html"
+      ]
+    },
+    {
+      "skill": "skill_3d",
+      "display_name": "3D",
+      "posting_count": 26,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 3.69,
+      "observed_salary_difference_lpa": -6.31,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Solid Works",
+        "Autocad",
+        "3D Modeling",
+        "Autocad 2D",
+        "Design"
+      ]
+    },
+    {
+      "skill": "skill_analytics",
+      "display_name": "Analytics",
+      "posting_count": 26,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 12.5,
+      "observed_salary_difference_lpa": 2.5,
+      "associated_roles": [
+        "Other Technology",
+        "Business Analyst",
+        "Product / Program Manager"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "SQL",
+        "Power BI",
+        "Data",
+        "Reporting",
+        "Tableau"
+      ]
+    },
+    {
+      "skill": "skill_customer_support",
+      "display_name": "Customer Support",
+      "posting_count": 26,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 3.69,
+      "observed_salary_difference_lpa": -6.31,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Technical Support",
+        "Voice Process",
+        "Technical Voice Process",
+        "International Technical Support",
+        "Service Desk"
+      ]
+    },
+    {
+      "skill": "skill_data_warehousing",
+      "display_name": "Data Warehousing",
+      "posting_count": 26,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Data Engineer",
+        "Data Analyst",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Data Modeling",
+        "ETL",
+        "SQL",
+        "Data",
+        "Azure Databricks"
+      ]
+    },
+    {
+      "skill": "skill_deep_learning",
+      "display_name": "Deep Learning",
+      "posting_count": 26,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 16.75,
+      "observed_salary_difference_lpa": 6.75,
+      "associated_roles": [
+        "AI / ML Engineer",
+        "Data Scientist",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Python, Cloud Data & Applied AI/ML",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Machine Learning",
+        "Python",
+        "NLP",
+        "Generative AI",
+        "AI"
+      ]
+    },
+    {
+      "skill": "skill_end",
+      "display_name": "End",
+      "posting_count": 26,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 14.5,
+      "observed_salary_difference_lpa": 4.5,
+      "associated_roles": [
+        "Software Engineer",
+        "Frontend Developer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Development",
+        "Backend",
+        "Java",
+        "Spring Boot",
+        "React"
+      ]
+    },
+    {
+      "skill": "skill_json",
+      "display_name": "Json",
+      "posting_count": 26,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 8.75,
+      "observed_salary_difference_lpa": -1.25,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Rest API",
+        "Development",
+        "Oops",
+        "Python"
+      ]
+    },
+    {
+      "skill": "skill_network_support",
+      "display_name": "Network Support",
+      "posting_count": 26,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 3.69,
+      "observed_salary_difference_lpa": -6.31,
+      "associated_roles": [
+        "Other Technology",
+        "Cloud / DevOps"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Network Engineering",
+        "Desktop Support",
+        "Troubleshooting",
+        "Configuration",
+        "Networking"
+      ]
+    },
+    {
+      "skill": "skill_restfull_api",
+      "display_name": "Restfull API",
+      "posting_count": 26,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 13.0,
+      "observed_salary_difference_lpa": 3.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Full Stack Developer",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "API",
+        "Javascript",
+        "Python",
+        "React"
+      ]
+    },
+    {
+      "skill": "skill_sub_contractor_billing",
+      "display_name": "Sub Contractor BIlling",
+      "posting_count": 26,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 5.06,
+      "observed_salary_difference_lpa": -4.94,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Boq Preparation",
+        "Estimation",
+        "Cost Estimation",
+        "Hindi",
+        "English"
+      ]
+    },
+    {
+      "skill": "skill_wordpress",
+      "display_name": "Wordpress",
+      "posting_count": 26,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 2.73,
+      "observed_salary_difference_lpa": -7.27,
+      "associated_roles": [
+        "Other Technology",
+        "Frontend Developer",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Development",
+        "PHP",
+        "Css",
+        "Javascript",
+        "English"
+      ]
+    },
+    {
+      "skill": "skill_automotive",
+      "display_name": "Automotive",
+      "posting_count": 25,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 6.0,
+      "observed_salary_difference_lpa": -4.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Sheet Metal",
+        "Auto",
+        "Npd",
+        "Fabrication",
+        "Vmc"
+      ]
+    },
+    {
+      "skill": "skill_ccna",
+      "display_name": "Ccna",
+      "posting_count": 25,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 3.5,
+      "observed_salary_difference_lpa": -6.5,
+      "associated_roles": [
+        "Other Technology",
+        "Cybersecurity"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Networking",
+        "Troubleshooting",
+        "Configuration",
+        "Network Engineering",
+        "Os Installation"
+      ]
+    },
+    {
+      "skill": "skill_design_patterns",
+      "display_name": "Design Patterns",
+      "posting_count": 25,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 17.0,
+      "observed_salary_difference_lpa": 7.0,
+      "associated_roles": [
+        "Software Engineer",
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Enterprise Java & Microservices Backend"
+      ],
+      "cooccurring_skills": [
+        "Java",
+        "Microservices",
+        "Spring Boot",
+        "Net Core",
+        "SQL"
+      ]
+    },
+    {
+      "skill": "skill_dot",
+      "display_name": "Dot",
+      "posting_count": 25,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Other Technology",
+        "Full Stack Developer"
+      ],
+      "associated_archetypes": [
+        "Full-Stack & Modern Application Engineering",
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Net",
+        "Development",
+        "Angular",
+        "C ",
+        " Net"
+      ]
+    },
+    {
+      "skill": "skill_electronics",
+      "display_name": "Electronics",
+      "posting_count": 25,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 3.0,
+      "observed_salary_difference_lpa": -7.0,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "Software Testing",
+        "Plc",
+        "Networking",
+        "C  ",
+        "Servicing"
+      ]
+    },
+    {
+      "skill": "skill_hcc_coding",
+      "display_name": "Hcc Coding",
+      "posting_count": 25,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 3.25,
+      "observed_salary_difference_lpa": -6.75,
+      "associated_roles": [
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Medical Coding",
+        "Medical",
+        "Coding",
+        "Quality Assurance",
+        "Certified"
+      ]
+    },
+    {
+      "skill": "skill_industrial_automation",
+      "display_name": "Industrial Automation",
+      "posting_count": 25,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 4.88,
+      "observed_salary_difference_lpa": -5.12,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Plc",
+        "Automation",
+        "Technical Sales",
+        "Business Development",
+        "Sales Engineering"
+      ]
+    },
+    {
+      "skill": "skill_qa",
+      "display_name": "Qa",
+      "posting_count": 25,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 5.25,
+      "observed_salary_difference_lpa": -4.75,
+      "associated_roles": [
+        "QA / Testing",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Python, Cloud Data & Applied AI/ML"
+      ],
+      "cooccurring_skills": [
+        "Quality Assurance",
+        "Automation Testing",
+        "Machining",
+        "Quality",
+        "Documentation"
+      ]
+    },
+    {
+      "skill": "skill_quality_audit",
+      "display_name": "Quality Audit",
+      "posting_count": 25,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 5.5,
+      "observed_salary_difference_lpa": -4.5,
+      "associated_roles": [
+        "QA / Testing",
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Quality Assurance",
+        "Iso",
+        "Iatf",
+        "Qms",
+        "Quality Control"
+      ]
+    },
+    {
+      "skill": "skill_revit",
+      "display_name": "Revit",
+      "posting_count": 25,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 4.5,
+      "observed_salary_difference_lpa": -5.5,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Autocad",
+        "Architectural Design",
+        "Sketchup",
+        "Architecture",
+        "3D"
+      ]
+    },
+    {
+      "skill": "skill_s4_hana",
+      "display_name": "S4 Hana",
+      "posting_count": 25,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 16.0,
+      "observed_salary_difference_lpa": 6.0,
+      "associated_roles": [
+        "Other Technology",
+        "Data Engineer"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "SAPs",
+        "SAP",
+        "SAP S Hana",
+        "Mm",
+        "SAP Hana"
+      ]
+    },
+    {
+      "skill": "skill_sap_sd",
+      "display_name": "SAP Sd",
+      "posting_count": 25,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 20.5,
+      "observed_salary_difference_lpa": 10.5,
+      "associated_roles": [
+        "Other Technology"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "SAPs",
+        "SAP",
+        "Implementation",
+        "SAP Hana",
+        "SAP Mm"
+      ]
+    },
+    {
+      "skill": "skill_scripting",
+      "display_name": "Scripting",
+      "posting_count": 25,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 15.0,
+      "observed_salary_difference_lpa": 5.0,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "Cloud / DevOps"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack",
+        "Full-Stack & Modern Application Engineering"
+      ],
+      "cooccurring_skills": [
+        "SQL",
+        "Automation",
+        "Javascript",
+        "Development",
+        "Itsm"
+      ]
+    },
+    {
+      "skill": "skill_vmc",
+      "display_name": "Vmc",
+      "posting_count": 25,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 4.5,
+      "observed_salary_difference_lpa": -5.5,
+      "associated_roles": [
+        "Other Technology",
+        "QA / Testing",
+        "Product / Program Manager"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Machining",
+        "Programming",
+        "Iatf",
+        "Npd",
+        "Automotive"
+      ]
+    },
+    {
+      "skill": "skill_voice_process",
+      "display_name": "Voice Process",
+      "posting_count": 25,
+      "demand_percentage": 0.5,
+      "observed_median_salary_lpa": 3.38,
+      "observed_salary_difference_lpa": -6.62,
+      "associated_roles": [
+        "Other Technology",
+        "Software Engineer",
+        "QA / Testing"
+      ],
+      "associated_archetypes": [
+        "Baseline & General Technology Stack"
+      ],
+      "cooccurring_skills": [
+        "Technical Support",
+        "Customer Support",
+        "International Technical Support",
+        "Technical Voice Process",
+        "Technical"
+      ]
+    }
+  ]
+}

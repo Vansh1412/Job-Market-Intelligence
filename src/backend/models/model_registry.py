@@ -31,52 +31,62 @@ EXPECTED_HASHES = {
         "path": "models/india/final_model.pkl",
         "sha256": "7a3490d7a36a128eea5a70e80bb3550c504da69648ac368a891f8729282a8310",
         "description": "India HistGradientBoostingRegressor Salary Model (v1)",
+        "required": True,
     },
     "india_preprocessor": {
         "path": "models/india/final_preprocessor.pkl",
         "sha256": "0ee1dabf3130a19c8bbc80a31ab93d8e97affa4d4a688249d59ee336f7ab4ead",
         "description": "India ColumnTransformer Feature Preprocessor",
+        "required": True,
     },
     "india_cohort": {
         "path": "data/processed/india/india_modeling_cohort.parquet",
         "sha256": "d4e32be45d84b159804e1a019f44dd5da6682346e38f39635e8edcaac3a200ec",
         "description": "India Modeling Cohort (5,859 Rows, 299 Columns)",
+        "required": False,  # Private research cohort, not required for production inference
     },
     "india_pca": {
         "path": "models/india/india_pca_v1.pkl",
         "sha256": "8591e3d3f713e35b27307e0c5810b35bb80ee33fd97bc909487985624e390897",
         "description": "India 15-Component Centered Covariance PCA",
+        "required": True,
     },
     "india_kmeans": {
         "path": "models/india/india_kmeans_v1.pkl",
         "sha256": "4465a3d8c3b7ab92e668cab2b502bdc3ba832d8458545f00cc5121d9c73da40a",
         "description": "India 6-Cluster K-Means Model",
+        "required": True,
     },
     # USA Salary Artifacts
     "usa_salary_model": {
         "path": "models/phase5/best_model.pkl",
         "sha256": "55c1b7fd87d2a04c9761a1941fcc4f6d3174ed80a10ce0802b0c07fc644bfadd",
         "description": "USA XGBoost Regressor Salary Model",
+        "required": True,
     },
     "usa_preprocessor": {
         "path": "models/phase5/best_pipeline.pkl",
         "sha256": "815fd9a3d88f2ebae82cebce86c6438d0455835de8de1bb8d66802f12a77be19",
         "description": "USA MetadataTransformer Preprocessor",
+        "required": True,
     },
     "usa_scaler": {
         "path": "models/scaler_phase4_1.pkl",
         "sha256": "2d969acd5b175979ac65a9ae5bf94f73ddd1bb7e3618528ab76706f16b00577c",
         "description": "USA Archetype Mean-Centering Scaler",
+        "required": True,
     },
     "usa_pca": {
         "path": "models/pca_phase4_1.pkl",
         "sha256": "ef4ef56bdc4b9471b1ec636fb9c689744832992b13f9733549271a19e3ce83c0",
         "description": "USA 15-Component PCA Transformer",
+        "required": True,
     },
     "usa_kmeans": {
         "path": "models/kmeans_phase4_1_k7.pkl",
         "sha256": "4d6d2509f04502fdf088604151b66d2272a8b4de106ce9fa2f745f97806c0106",
         "description": "USA 7-Cluster K-Means Model",
+        "required": True,
     },
 }
 
@@ -132,27 +142,46 @@ class ModelRegistry:
                 hasher.update(chunk)
         return hasher.hexdigest()
 
-    def verify_all_artifacts(self) -> Dict[str, Dict[str, Any]]:
+    def verify_all_artifacts(self, strict_research_mode: Optional[bool] = None) -> Dict[str, Dict[str, Any]]:
         """Verify that every frozen artifact exists and matches its expected SHA-256 hash."""
+        is_strict = (
+            strict_research_mode
+            if strict_research_mode is not None
+            else os.getenv("JOBINTEL_STRICT_RESEARCH", "0").lower() in ("1", "true")
+        )
         results = {}
         for key, spec in EXPECTED_HASHES.items():
             path = spec["path"]
             expected = spec["sha256"]
+            is_required = spec.get("required", True)
+
+            if not os.path.exists(path):
+                if is_strict or is_required:
+                    raise FileNotFoundError(f"Artifact not found on disk: {path}")
+                results[key] = {
+                    "path": path,
+                    "verified": False,
+                    "sha256": None,
+                    "description": spec["description"],
+                    "status": "UNMOUNTED_RESEARCH_COHORT",
+                }
+                continue
+
             actual = self.compute_sha256(path)
-            
             if actual != expected:
                 err_msg = (
                     f"CRITICAL MODEL INTEGRITY FAILURE: Artifact '{key}' at '{path}' "
                     f"has SHA-256 '{actual}', expected '{expected}'."
                 )
                 raise ModelIntegrityError(err_msg)
-                
+
             results[key] = {
                 "path": path,
                 "verified": True,
                 "sha256": actual,
                 "description": spec["description"],
                 "size_bytes": os.path.getsize(path),
+                "status": "VERIFIED",
             }
         self._verification_results = results
         return results
@@ -168,7 +197,8 @@ class ModelRegistry:
 
         # 1. Cryptographic validation
         self.verify_all_artifacts()
-        print(f"Verified {len(self._verification_results)}/{len(EXPECTED_HASHES)} frozen artifacts bitwise intact.")
+        verified_count = sum(1 for v in self._verification_results.values() if v.get("verified"))
+        print(f"Verified {verified_count}/{len(EXPECTED_HASHES)} frozen artifacts bitwise intact.")
 
         # 2. Load USA models
         self.usa_salary_model = joblib.load(EXPECTED_HASHES["usa_salary_model"]["path"])
@@ -206,9 +236,18 @@ class ModelRegistry:
 
     def get_status_report(self) -> Dict[str, Any]:
         """Return structured verification report for health/meta endpoints."""
+        verified_count = sum(1 for v in self._verification_results.values() if v.get("verified"))
+        mandatory_verified = all(
+            v.get("verified") for k, v in self._verification_results.items()
+            if EXPECTED_HASHES.get(k, {}).get("required", True)
+        )
         return {
-            "status": "GREEN" if self._artifacts_loaded else "UNINITIALIZED",
-            "artifacts_verified_count": len(self._verification_results),
+            "status": "GREEN" if (self._artifacts_loaded and mandatory_verified) else "UNINITIALIZED",
+            "artifacts_verified_count": verified_count,
+            "mandatory_verified_count": sum(
+                1 for k, v in self._verification_results.items()
+                if EXPECTED_HASHES.get(k, {}).get("required", True) and v.get("verified")
+            ),
             "artifacts": self._verification_results,
             "models_loaded": {
                 "usa_salary_model": type(self.usa_salary_model).__name__,

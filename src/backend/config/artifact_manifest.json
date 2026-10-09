@@ -91,8 +91,8 @@
       "s3_key": "data/processed/india/india_modeling_cohort.parquet",
       "sha256": "d4e32be45d84b159804e1a019f44dd5da6682346e38f39635e8edcaac3a200ec",
       "size_bytes": 654351,
-      "type": "runtime_dataset",
-      "required": true,
+      "type": "optional_research_cohort",
+      "required": false,
       "description": "India Modeling Cohort (5,859 Rows, 299 Columns)"
     },
     "usa_cohort": {
@@ -100,8 +100,8 @@
       "s3_key": "data/processed/modeling_dataset.parquet",
       "sha256": "68895e3823cca91ffbfea76b8986198700b4eb8bb02905bacc9a04985156a21b",
       "size_bytes": 1669405,
-      "type": "runtime_dataset",
-      "required": true,
+      "type": "optional_research_cohort",
+      "required": false,
       "description": "USA Modeling Dataset (34,036 Rows, 128 Columns)"
     },
     "skill_matrix_technical": {
@@ -109,8 +109,8 @@
       "s3_key": "data/processed/skill_matrix_technical.parquet",
       "sha256": "91abf1d836de7e50e5bcdc64aa68dfcba0850af0550ce53f907ef547f391b406",
       "size_bytes": 5334250,
-      "type": "runtime_dataset",
-      "required": true,
+      "type": "optional_research_cohort",
+      "required": false,
       "description": "Technical Skill Co-occurrence and Prevalence Matrix"
     },
     "job_archetype_assignments": {
@@ -118,8 +118,8 @@
       "s3_key": "data/processed/job_archetype_assignments.parquet",
       "sha256": "c4f2fb9353837087d198bb936c469875aab84361ecbce69bed4d3c19b639147c",
       "size_bytes": 2725548,
-      "type": "runtime_dataset",
-      "required": true,
+      "type": "optional_research_cohort",
+      "required": false,
       "description": "USA Job Archetype Cluster Assignments"
     },
     "india_skill_analytics": {

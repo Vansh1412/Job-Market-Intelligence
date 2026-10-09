@@ -1,0 +1,8 @@
+archetype_id,archetype_name,cluster_size,share_pct_skill_bearing,share_pct_full_cohort
+IND_ARC_01,Big Data Engineering & Distributed Systems,198,3.7197069321811007,3.3794162826420893
+IND_ARC_02,Enterprise Java & Microservices Backend,446,8.378733796731167,7.612220515446322
+IND_ARC_03,"Python, Cloud Data & Applied AI/ML",481,9.036257749389442,8.209592080559823
+IND_ARC_04,Full-Stack & Modern Application Engineering,547,10.276160060116474,9.336064174773853
+IND_ARC_05,Baseline & General Technology Stack,3526,66.2408416306594,60.18091824543438
+IND_ARC_06,Enterprise ERP & SAP Functional Solutions,125,2.3482998309224126,2.133469875405359
+IND_ARC_UNASSIGNED,Unassigned (Zero Selected Skills),536,0.0,9.14831882573818

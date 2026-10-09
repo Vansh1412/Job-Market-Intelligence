@@ -1,0 +1,8 @@
+Cluster_ID,Archetype_Name,Short_Code,Postings_Count,Primary_Share_%
+0,Foundational & Broad Technical Roles,FOUND_TECH,57791,49.47
+1,DevOps & Cloud Infrastructure Engineering,DEVOPS_PLAT,8365,7.16
+2,Frontend & Modern Web Application Engineering,WEB_FRONT,6149,5.26
+3,Multi-Cloud & Enterprise Cloud Architecture,CLOUD_ARCH,7704,6.59
+4,Data Engineering & Business Analytics,DATA_BI,14971,12.81
+5,AI / Machine Learning & LLM Engineering,AI_ML,10171,8.71
+6,Systems & Core Backend Engineering,SYS_ENG,11679,10.0

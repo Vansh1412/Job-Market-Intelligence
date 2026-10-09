@@ -17,14 +17,4 @@ services:
       - key: JOBINTEL_ENV
         value: production
       - key: CORS_ORIGINS
-        value: "*"
-      - key: S3_BUCKET_NAME
-        sync: false
-      - key: S3_ENDPOINT_URL
-        sync: false
-      - key: AWS_ACCESS_KEY_ID
-        sync: false
-      - key: AWS_SECRET_ACCESS_KEY
-        sync: false
-      - key: AWS_REGION
-        value: auto
+        value: "http://localhost:5173,http://localhost:3000,https://jobintel.vercel.app,https://job-market-intelligence.vercel.app"
