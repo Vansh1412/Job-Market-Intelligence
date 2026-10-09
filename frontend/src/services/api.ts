@@ -19,10 +19,15 @@ import {
   CrossMarketSummary,
 } from '../types';
 
-const API_BASE = '/api';
+const envApiUrl = import.meta.env.VITE_API_BASE_URL;
+const API_BASE = (typeof envApiUrl === 'string' && envApiUrl.trim() !== '')
+  ? envApiUrl.trim().replace(/\/+$/, '')
+  : '/api';
 
 async function fetchJson<T>(url: string, options?: RequestInit): Promise<T> {
-  const res = await fetch(`${API_BASE}${url}`, options);
+  const normalizedUrl = url.startsWith('/') ? url : `/${url}`;
+  const fullUrl = `${API_BASE}${normalizedUrl}`;
+  const res = await fetch(fullUrl, options);
   if (!res.ok) {
     const errorText = await res.text();
     throw new Error(`API error (${res.status}): ${errorText || res.statusText}`);

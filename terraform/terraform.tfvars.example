@@ -1,0 +1,44 @@
+# =============================================================================
+# Terraform Variables Example (terraform.tfvars.example)
+# =============================================================================
+# Copy this file to terraform.tfvars and fill in your values.
+# DO NOT commit terraform.tfvars containing personal account details to Git.
+# =============================================================================
+
+# AWS Deployment Region
+aws_region = "us-east-1"
+
+# Environment Identifier
+environment = "production"
+
+# Base Project Name
+project_name = "jobintel"
+
+# Globally Unique S3 Bucket Name for Private Models and Processed Datasets
+s3_bucket_name = "jobintel-frozen-artifacts-2026-prod"
+
+# Amazon ECR Repository Name
+ecr_repository_name = "jobintel-backend"
+
+# Task Compute Resources
+ecs_cpu    = 512   # 0.5 vCPU
+ecs_memory = 1024  # 1.0 GB RAM
+app_count  = 1     # Desired container task instances
+
+# GitHub Repository Details for OIDC Role Assumption
+github_org         = "Vansh1412"
+github_repo        = "Job-Market-Intelligence"
+github_branch      = "master"
+github_environment = "production"
+
+# Allowed Frontend Origins for CORS (e.g., your Vercel deployment URL)
+frontend_cors_origin = "https://your-jobintel-app.vercel.app,http://localhost:5173"
+
+# Optional Custom Domain and ACM TLS Certificate
+# If left empty, the ALB will terminate HTTP traffic and provide an aws alb DNS name.
+# Once ACM certificate is created in AWS Certificate Manager, paste its ARN here:
+domain_name     = ""
+certificate_arn = ""
+
+# CloudWatch Logs Retention
+log_retention_days = 14

@@ -8,14 +8,14 @@ on:
 
 jobs:
   backend-code-quality:
-    name: Backend Code Quality & Contract CI
+    name: Backend Code Quality, Schema & Cloud Contracts (Ubuntu)
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -30,19 +30,19 @@ jobs:
         run: |
           python -m compileall src/
 
-      - name: Run Code-Only Contract Tests
+      - name: Run Code-Only & Cloud Contract Tests
         run: |
-          python -m pytest tests/test_routing_contracts.py tests/test_schema_contracts.py -v
+          python -m pytest tests/test_routing_contracts.py tests/test_schema_contracts.py tests/test_cloud_contracts.py -v
 
   frontend-build-and-lint:
-    name: Frontend Build, Lint & Vitest Suite
+    name: Frontend Build, Lint & Vitest Suite (Ubuntu)
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Set up Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -64,3 +64,56 @@ jobs:
       - name: Run Production Bundle Build & Typecheck
         working-directory: frontend
         run: npm run build
+
+  docker-build-verification:
+    name: Docker Image Build Validation (Ubuntu)
+    runs-on: ubuntu-latest
+    needs: [backend-code-quality, frontend-build-and-lint]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: actions/setup-buildx-action@v3
+
+      - name: Build Production Container Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          tags: jobintel-backend:ci-test
+
+  security-and-governance-audit:
+    name: Security, Leakage & Secret Scanning (Ubuntu)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify No Secrets or Private Datasets Committed
+        run: |
+          echo "Auditing Git tracked files for proprietary data leakage or secrets..."
+          # Check that no parquet files are tracked in git
+          if git ls-files '*.parquet' | grep -q .; then
+            echo "ERROR: Parquet files are tracked in git!"
+            git ls-files '*.parquet'
+            exit 1
+          fi
+          # Check that no raw or processed data files are tracked
+          if git ls-files 'data/' | grep -q .; then
+            echo "ERROR: Files under data/ are tracked in git!"
+            git ls-files 'data/'
+            exit 1
+          fi
+          # Check that no .env files are tracked
+          if git ls-files '.env*' | grep -v '\.env\.example' | grep -q .; then
+            echo "ERROR: Private .env files tracked in git!"
+            git ls-files '.env*'
+            exit 1
+          fi
+          echo "PASS: Zero private datasets or environment secret files tracked."

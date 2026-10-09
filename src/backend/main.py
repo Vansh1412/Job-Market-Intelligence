@@ -10,6 +10,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.backend.models.model_registry import get_model_registry
+from src.backend.utils.s3_sync import sync_and_verify_artifacts
 from src.backend.routers import (
     usa,
     india,
@@ -35,8 +36,20 @@ logger = logging.getLogger("jobintel.api")
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Verify cryptographic signatures and warm up model artifacts on server boot."""
+    """Synchronize cloud artifacts, verify cryptographic signatures, and warm up model artifacts on server boot."""
     logger.info("Starting JobIntel Unified API Server...")
+    try:
+        sync_report = sync_and_verify_artifacts(enforce_all=False)
+        logger.info(
+            "Cloud Artifact Sync Report: Status %s (Verified: %d/%d, Synced: %d)",
+            sync_report["status"],
+            sync_report["verified_count"],
+            sync_report["total_artifacts"],
+            sync_report["synced_count"],
+        )
+    except Exception as e:
+        logger.error("Cloud Artifact Sync encountered an error: %s", str(e))
+
     registry = get_model_registry()
     status = registry.get_status_report()
     logger.info("Model Registry Status: %s (Artifacts Verified: %d/10)", status["status"], status["artifacts_verified_count"])

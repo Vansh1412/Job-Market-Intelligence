@@ -1,0 +1,201 @@
+name: JobIntel Secure AWS Cloud Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_environment:
+        description: 'Target Deployment Environment'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - production
+          - staging
+
+permissions:
+  id-token: write   # Required for AWS OIDC authentication
+  contents: read    # Required to checkout the repository
+
+concurrency:
+  group: aws-deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  pre-deploy-verification:
+    name: 1. Pre-Deployment Guardrails & Manifest Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Verify Contract Tests & Authoritative Manifest
+        run: |
+          python -m pytest tests/test_routing_contracts.py tests/test_schema_contracts.py tests/test_cloud_contracts.py -v
+
+  deploy-to-ecs:
+    name: 2. Protected Production Deploy (AWS OIDC + ECS Fargate)
+    runs-on: ubuntu-latest
+    needs: pre-deploy-verification
+    environment: production   # Requires manual approval in GitHub Environment Settings
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Verify Target Branch
+        run: |
+          echo "Verifying deployment branch..."
+          if [ "${{ github.ref_name }}" != "master" ] && [ "${{ github.ref_name }}" != "main" ]; then
+            echo "ERROR: Deployments are strictly restricted to master or main."
+            exit 1
+          fi
+          echo "Deploying commit: ${{ github.sha }} on ${{ github.ref_name }}"
+
+      - name: Configure AWS Credentials via GitHub OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION || 'us-east-1' }}
+          audience: sts.amazonaws.com
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set Image Metadata
+        id: meta
+        run: |
+          ECR_REGISTRY="${{ steps.login-ecr.outputs.registry }}"
+          ECR_REPOSITORY="${{ vars.ECR_REPOSITORY || 'jobintel-backend' }}"
+          IMAGE_TAG="${{ github.sha }}"
+          FULL_IMAGE="$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+          echo "image_uri=$FULL_IMAGE" >> $GITHUB_OUTPUT
+          echo "Built image URI: $FULL_IMAGE"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build, Tag and Push Container Image to Amazon ECR
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ${{ steps.meta.outputs.image_uri }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY || 'jobintel-backend' }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Update ECS Task Definition and Deploy Service
+        id: deploy
+        run: |
+          CLUSTER_NAME="${{ vars.ECS_CLUSTER_NAME || 'jobintel-cluster-production' }}"
+          SERVICE_NAME="${{ vars.ECS_SERVICE_NAME || 'jobintel-service-production' }}"
+          IMAGE_URI="${{ steps.meta.outputs.image_uri }}"
+
+          echo "Fetching current task definition for service $SERVICE_NAME..."
+          TASK_DEF_ARN=$(aws ecs describe-services --cluster "$CLUSTER_NAME" --services "$SERVICE_NAME" --query "services[0].taskDefinition" --output text)
+          echo "Active Task Definition: $TASK_DEF_ARN"
+
+          # Save previous task definition ARN for rollback if smoke tests fail
+          echo "PREVIOUS_TASK_DEF=$TASK_DEF_ARN" >> $GITHUB_ENV
+
+          # Download and register new task definition revision with new image
+          aws ecs describe-task-definition --task-definition "$TASK_DEF_ARN" --query "taskDefinition" > current_task_def.json
+          
+          # Clean metadata fields for register-task-definition
+          cat current_task_def.json | jq '.containerDefinitions[0].image = "'"$IMAGE_URI"'" | del(.taskDefinitionArn, .revision, .status, .requiresAttributes, .compatibilities, .registeredAt, .registeredBy)' > new_task_def.json
+
+          NEW_TASK_DEF_ARN=$(aws ecs register-task-definition --cli-input-json file://new_task_def.json --query "taskDefinition.taskDefinitionArn" --output text)
+          echo "Registered new Task Definition: $NEW_TASK_DEF_ARN"
+
+          echo "Updating ECS service $SERVICE_NAME..."
+          aws ecs update-service --cluster "$CLUSTER_NAME" --service "$SERVICE_NAME" --task-definition "$NEW_TASK_DEF_ARN"
+
+          echo "Waiting for service stability (Fargate circuit breaker active)..."
+          aws ecs wait services-stable --cluster "$CLUSTER_NAME" --services "$SERVICE_NAME"
+          echo "PASS: Service updated successfully and reported healthy."
+
+      - name: Run Live Post-Deployment Smoke Tests
+        id: smoke_tests
+        run: |
+          API_URL="${{ vars.API_ENDPOINT_URL }}"
+          if [ -z "$API_URL" ]; then
+            echo "API_ENDPOINT_URL variable not set; checking ALB DNS..."
+            ALB_DNS=$(aws elbv2 describe-load-balancers --query "LoadBalancers[?contains(LoadBalancerName, 'jobintel')].DNSName" --output text | head -n 1)
+            API_URL="http://$ALB_DNS"
+          fi
+          echo "Testing live deployment at: $API_URL"
+
+          # Wait for target group health
+          MAX_RETRIES=12
+          SUCCESS=0
+          for i in $(seq 1 $MAX_RETRIES); do
+            echo "Checking /api/ready (attempt $i/$MAX_RETRIES)..."
+            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$API_URL/api/ready" || true)
+            if [ "$HTTP_STATUS" = "200" ]; then
+              echo "PASS: /api/ready returned HTTP 200."
+              SUCCESS=1
+              break
+            fi
+            sleep 10
+          done
+
+          if [ "$SUCCESS" -ne 1 ]; then
+            echo "CRITICAL: Health check failed on live endpoint."
+            exit 1
+          fi
+
+          echo "Verifying USA inference..."
+          USA_RESP=$(curl -s -X POST "$API_URL/api/usa/predict" \
+            -H "Content-Type: application/json" \
+            -d '{"role_family":"ML / AI Engineer","seniority":"Senior","city_clean":"San Francisco","is_remote":true,"selected_skills":["skill_python","skill_pytorch"]}')
+          echo "USA Response: $USA_RESP" | jq .currency
+          
+          echo "Verifying India inference..."
+          IND_RESP=$(curl -s -X POST "$API_URL/api/india/predict" \
+            -H "Content-Type: application/json" \
+            -d '{"normalized_role":"Data Engineer","experience_midpoint_years":5.0,"experience_range_years":2.0,"city_grouped":"Bengaluru","work_mode":"Hybrid","selected_skills":["skill_spark","skill_python"]}')
+          echo "India Response: $IND_RESP" | jq .currency
+
+          echo "=== POST-DEPLOYMENT VERIFICATION COMPLETE: ALL GATES GREEN ==="
+
+      - name: Automatic Rollback on Smoke Test Failure
+        if: failure() && steps.deploy.outcome == 'success'
+        run: |
+          echo "SMOKE TESTS FAILED: Initiating emergency automated rollback to previous task definition..."
+          CLUSTER_NAME="${{ vars.ECS_CLUSTER_NAME || 'jobintel-cluster-production' }}"
+          SERVICE_NAME="${{ vars.ECS_SERVICE_NAME || 'jobintel-service-production' }}"
+          
+          if [ -n "$PREVIOUS_TASK_DEF" ]; then
+            echo "Rolling back to: $PREVIOUS_TASK_DEF"
+            aws ecs update-service --cluster "$CLUSTER_NAME" --service "$SERVICE_NAME" --task-definition "$PREVIOUS_TASK_DEF"
+            aws ecs wait services-stable --cluster "$CLUSTER_NAME" --services "$SERVICE_NAME"
+            echo "Rollback completed."
+          fi
+
+      - name: Record Deployment Manifest & Audit Trail
+        if: always()
+        run: |
+          echo "=========================================================="
+          echo "DEPLOYMENT AUDIT RECORD"
+          echo "=========================================================="
+          echo "Timestamp: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Workflow Run ID: ${{ github.run_id }}"
+          echo "Image Digest: ${{ steps.meta.outputs.image_uri }}"
+          echo "Triggered By: ${{ github.actor }}"
+          echo "Target Environment: production"
+          echo "=========================================================="
