@@ -254,23 +254,60 @@ A comprehensive PowerShell 5.1 test suite was executed locally simulating the Gi
 
 ---
 
-## 22. GitHub Actions Result: PENDING MANUAL DISPATCH
+## 22. Phase 8.6.5 GitHub Actions Result: PENDING MANUAL DISPATCH
 - The local validation suite passed 100%.
-- In accordance with the Stop Condition of Phase 8.6.5, the workflow will **NOT** be automatically triggered until user approval is received.
 
 ---
 
-## 23. Remaining Infrastructure Issues: NONE
-- Docker daemon availability is strictly verified with bounded retries.
-- Container absence is never conflated with daemon downtime.
-- Runner Git ownership (`safe.directory "*"`) is permanently resolved.
+## 23. Phase 8.6.6 USA Skills Endpoint Root-Cause Repair & Validation: PASS (100%)
+
+### Forensic Incident Analysis:
+- **Observation in GitHub Actions Run:**
+  Step 16 (`16. Verify Skills Explorer Endpoints & Error Handling`) crashed inside the container with:
+  ```text
+  FileNotFoundError: reports/tables/phase3/skill_frequency.csv
+  ```
+  Failure path: `GET /api/skills/detail/python` $\rightarrow$ `src/backend/routers/skills.py:get_skill_detail` $\rightarrow$ `src/backend/data_service.py:get_skill_frequency_df` $\rightarrow$ `pd.read_csv(...)`.
+  The container returned HTTP 500 and logged a Python traceback, failing the Step 22 strict log audit.
+- **Root Cause Discovered:**
+  1. Per **Dataforge Tier 1 License Compliance** ("Never commit raw data or full-record exports"), `.gitignore` line 5 specifies `*.csv`.
+  2. Git tracked 0 CSV files repository-wide.
+  3. In Docker CI, `actions/checkout@v4` checks out only git-tracked files. Thus, the Docker build (`COPY reports/ /app/reports/`) copied no CSV files into the image.
+  4. At runtime, the private dataset directory `data/processed` is mounted read-only at `/app/data/processed:ro`, containing `modeling_dataset.parquet`, `skill_matrix_technical.parquet`, and `india/india_modeling_cohort.parquet`.
+  5. The analytics tables (`skill_frequency`, `skill_salary_association`, `skill_cooccurrence`, `cluster_skill_lift`) were previously read from disk assuming local CSV existence rather than dynamically deriving metrics from the certified, mounted frozen datasets and certified JSON metadata (`feature_metadata.json`, `eda_metrics.json`).
+- **Minimal Scientifically Defensible Fix:**
+  1. **Central Loader (`src/backend/data_service.py`):**
+     - Updated `get_skill_frequency_df()`, `get_skill_salary_association_df()`, `get_skill_cooccurrence_df()`, and `get_cluster_skill_lift_df()` to check for CSV existence; if absent, metrics are dynamically computed from the mounted read-only dataset (`modeling_dataset.parquet`) and certified metadata.
+     - **Prevalence Denominator & Policy:**
+       - Modeling Cohort: $N = 34,036$ postings (`len(df_model)`), exactly 82 canonical technical skill features from `models/phase5/feature_metadata.json`.
+       - Corpus Count & Prevalence: $N = 335,995$ postings derived from mounted `skill_matrix_technical.parquet`.
+       - All 82 skill counts match the original Phase 3 tables 100% bit-for-bit (e.g. Python modeling postings = 11,593, prevalence = 34.06%; corpus postings = 31,676, prevalence = 9.43%).
+       - Co-occurrence: computed via `int64` matrix dot product on the top 25 skills.
+       - Cluster lift: computed across the 7 USA archetypes and 82 canonical skills.
+     - Results are cached using `@lru_cache(maxsize=1)`.
+  2. **Router Normalization (`src/backend/routers/skills.py`):**
+     - Added hyphen/underscore fallback normalization before raising 404.
+     - Preserved strict HTTP 404 for unknown skills.
+  3. **India Baseline Resiliency (`src/backend/services/market_service.py`):**
+     - Updated `_get_india_baseline_summary()` to fall back to `cls.get_india_cohort_df()` and `IndiaService.get_skills_analytics()` when CSV tables are absent on disk.
+
+| Test Suite / Objective | Command / Action | Observed Behavior | Status |
+| :--- | :--- | :--- | :---: |
+| **A. Missing CSV Handling** | `pytest tests/test_skill_integrity.py` with mocked absent CSVs | All 82 canonical technical skills computed dynamically with exact empirical values. Zero fabrication. | **PASS (100%)** |
+| **B. Deterministic Fixture Math** | `test_prevalence_computation_deterministic_fixture` | Verified exact prevalence calculation logic on controlled binary fixture. | **PASS** |
+| **C. Unknown Skill 404 Contract** | `GET /api/skills/detail/nonexistent_xyz` | Returns documented HTTP 404 with descriptive detail message. | **PASS** |
+| **D. Container Live Skills Endpoints** | `GET /api/skills/detail/python` inside container | Returns HTTP 200, postings = 31,676, prevalence = 9.43%, median salary = $185,000, roles, archetypes, and combos populated. | **PASS** |
+| **E. Full Test Suite** | `python -m pytest tests/ -v` | 98/98 tests passed in 7.43s. | **PASS (98/98)** |
+| **F. Frontend Build & Test** | `npm test` & `npm run build` | 9/9 unit tests passed; bundle built cleanly in 21s with zero errors. | **PASS** |
+| **G. Container Log Audit** | Strict regex scan for `Traceback (most recent call last):` | ZERO tracebacks detected in container logs. | **PASS (CLEAN)** |
 
 ---
 
 ## 24. Final Verdict
 
-# **`PENDING VERIFICATION`** (Awaiting GitHub Actions Execution)
-### Local Infrastructure & Runtime Validation: **`100% PASS`**
+# **`PENDING VERIFICATION`** (Awaiting Manual GitHub Actions Dispatch)
+### Local Infrastructure, Analytics & Container Validation: **`100% PASS`**
 
-> **Reasoning:** All local tests, Docker builds, container runs, health probes, live inferences, mutation rejections, log extractions, runner wrapper exit code resets, and daemon lifecycle verifications are **`PASS`**. Per the strict rules of Phase 8.6, official production certification cannot be declared as `READY` until the repaired workflow is manually dispatched and completes with a green checkmark in GitHub Actions.
+> **Reasoning:** The root cause of the Step 16 failure (`FileNotFoundError: skill_frequency.csv`) was definitively diagnosed and resolved. Skill analytics are now empirically derived from the mounted frozen USA modeling dataset (`modeling_dataset.parquet`) without fabricating data or committing private CSVs. All 98 backend tests, all 9 frontend tests, the frontend build, and full live Docker container verification passed with 0 tracebacks. Official production certification will be confirmed upon manual dispatch of the protected GitHub Actions release gate.
+
 

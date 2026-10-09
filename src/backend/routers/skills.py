@@ -143,6 +143,11 @@ def get_skill_detail(skill_name: str):
     row_sal = df_sal[df_sal["Skill"].str.lower() == clean_search]
 
     if len(row_freq) == 0 and len(row_sal) == 0:
+        alt_search = clean_search.replace("_", "-") if "_" in clean_search else clean_search.replace("-", "_")
+        row_freq = df_freq[df_freq["Skill"].str.lower() == alt_search]
+        row_sal = df_sal[df_sal["Skill"].str.lower() == alt_search]
+
+    if len(row_freq) == 0 and len(row_sal) == 0:
         raise HTTPException(status_code=404, detail=f"Skill '{skill_name}' not found in Taxonomy D")
 
     postings = 0
@@ -207,6 +212,9 @@ def get_skill_detail(skill_name: str):
     combos = []
     if "Skill" in df_co.columns:
         match_co = df_co[df_co["Skill"].str.lower() == clean_search]
+        if len(match_co) == 0:
+            alt_search = clean_search.replace("_", "-") if "_" in clean_search else clean_search.replace("-", "_")
+            match_co = df_co[df_co["Skill"].str.lower() == alt_search]
         if len(match_co) > 0:
             row_dict = match_co.iloc[0].drop("Skill").to_dict()
             sorted_comp = sorted(row_dict.items(), key=lambda x: x[1], reverse=True)

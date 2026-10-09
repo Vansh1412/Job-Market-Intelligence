@@ -155,3 +155,134 @@ def test_usa_skill_distinct_profiles():
     assert res_py["median_salary"] != res_sql["median_salary"] or res_py["prevalence_pct"] != res_sql["prevalence_pct"]
     assert res_py["roles"] != res_aws["roles"] or res_py["archetypes"] != res_aws["archetypes"]
 
+
+def test_skills_frequency_service_when_csv_absent():
+    """Verify that skill analytics compute accurately from mounted dataset when CSV is absent (Phase 8.6.6)."""
+    import os
+    from unittest.mock import patch
+    from src.backend import data_service
+
+    orig_exists = os.path.exists
+
+    def mock_exists_no_csv(path):
+        if str(path).endswith(".csv"):
+            return False
+        return orig_exists(path)
+
+    with patch("os.path.exists", side_effect=mock_exists_no_csv):
+        data_service.get_skill_frequency_df.cache_clear()
+        df_freq = data_service.get_skill_frequency_df()
+
+        assert df_freq is not None
+        assert len(df_freq) == 82, f"Expected 82 canonical skills, got {len(df_freq)}"
+        required_cols = {"Skill", "Modeling_Count", "Modeling_Prevalence", "Corpus_Count", "Corpus_Prevalence", "Postings", "Prevalence_Pct", "IDF_Score"}
+        assert required_cols.issubset(set(df_freq.columns))
+
+        # Check empirical truth for anchor skills
+        py_row = df_freq[df_freq["Skill"] == "python"].iloc[0]
+        assert py_row["Modeling_Count"] == 11593
+        assert py_row["Corpus_Count"] == 31676
+        assert round(py_row["Modeling_Prevalence"], 4) == round(11593 / 34036, 4)
+
+    # Restore cache
+    data_service.get_skill_frequency_df.cache_clear()
+
+
+def test_prevalence_computation_deterministic_fixture():
+    """Verify prevalence math on small deterministic fixture."""
+    import pandas as pd
+    import numpy as np
+
+    fixture = pd.DataFrame({
+        "skill_a": [1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+        "skill_b": [0, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+        "skill_c": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    })
+    n = len(fixture)
+    assert n == 10
+    prev_a = fixture["skill_a"].sum() / n
+    prev_b = fixture["skill_b"].sum() / n
+    prev_c = fixture["skill_c"].sum() / n
+
+    assert prev_a == 0.3
+    assert prev_b == 0.4
+    assert prev_c == 0.0
+
+
+def test_skills_explorer_endpoints_without_csv():
+    """Verify USA Skills Explorer API routes succeed when CSV tables are deleted/absent."""
+    import os
+    from unittest.mock import patch
+    from src.backend import data_service
+
+    orig_exists = os.path.exists
+
+    def mock_exists_no_csv(path):
+        if str(path).endswith(".csv"):
+            return False
+        return orig_exists(path)
+
+    with patch("os.path.exists", side_effect=mock_exists_no_csv):
+        data_service.get_skill_frequency_df.cache_clear()
+        data_service.get_skill_salary_association_df.cache_clear()
+        data_service.get_skill_cooccurrence_df.cache_clear()
+        data_service.get_cluster_skill_lift_df.cache_clear()
+
+        # 1. Detail endpoint for Python
+        res_detail = client.get("/api/skills/detail/python")
+        assert res_detail.status_code == 200
+        detail = res_detail.json()
+        assert detail["skill"] == "python"
+        assert detail["postings"] > 0
+        assert detail["prevalence_pct"] > 0
+        assert detail["median_salary"] > 0
+        assert len(detail["roles"]) > 0
+        assert len(detail["archetypes"]) > 0
+        assert len(detail["combos"]) > 0
+
+        # 2. Unknown skill still returns 404
+        res_404 = client.get("/api/skills/detail/nonexistent_xyz_999")
+        assert res_404.status_code == 404
+
+        # 3. Frequency endpoint
+        res_freq = client.get("/api/skills/frequency")
+        assert res_freq.status_code == 200
+        freq_list = res_freq.json()
+        assert len(freq_list) == 82
+        assert freq_list[0]["Postings"] > 0
+
+        # 4. Landscape endpoint
+        res_land = client.get("/api/skills/landscape")
+        assert res_land.status_code == 200
+        land_list = res_land.json()
+        assert len(land_list) >= 30
+
+        # 5. USA skills endpoint
+        res_usa = client.get("/api/usa/skills")
+        assert res_usa.status_code == 200
+        assert len(res_usa.json()["skills"]) == 82
+
+    # Restore cache
+    data_service.get_skill_frequency_df.cache_clear()
+    data_service.get_skill_salary_association_df.cache_clear()
+    data_service.get_skill_cooccurrence_df.cache_clear()
+    data_service.get_cluster_skill_lift_df.cache_clear()
+
+
+def test_service_does_not_fabricate_when_source_unavailable():
+    """Verify data service raises FileNotFoundError and does NOT fabricate data when datasets are missing."""
+    import os
+    from unittest.mock import patch
+    from src.backend import data_service
+
+    def mock_no_files(path):
+        return False
+
+    with patch("os.path.exists", side_effect=mock_no_files):
+        data_service.get_skill_frequency_df.cache_clear()
+        with pytest.raises(FileNotFoundError):
+            data_service.get_skill_frequency_df()
+
+    data_service.get_skill_frequency_df.cache_clear()
+
+

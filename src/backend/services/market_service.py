@@ -460,47 +460,76 @@ class MarketService:
     @classmethod
     @lru_cache(maxsize=1)
     def _get_india_baseline_summary(cls) -> Dict[str, Any]:
-        """Aggregate India empirical baseline distributions from certified tables."""
+        """Aggregate India empirical baseline distributions from certified tables or cohort."""
         role_csv = "reports/tables/india/salary_by_role.csv"
         exp_csv = "reports/tables/india/salary_by_experience.csv"
         city_csv = "reports/tables/india/postings_by_city.csv"
         skills_csv = "reports/tables/india/india_skill_prevalence.csv"
 
+        cohort_df = cls.get_india_cohort_df()
+
         # Roles
-        df_roles = pd.read_csv(role_csv)
         role_items = []
-        for _, r in df_roles.iterrows():
-            r_cat = str(r.get("role_category", ""))
-            if r_cat == "Non-Tech":
-                continue
-            role_items.append({
-                "role": r_cat,
-                "postings": int(r.get("num_postings_with_salary", 0)),
-                "median_salary_lpa": float(r.get("median_salary_lpa", 0)),
-                "mean_salary_lpa": float(r.get("avg_salary_lpa", 0)),
-                "median_salary_inr": float(r.get("median_salary_lpa", 0)) * 100000.0,
-                "mean_salary_inr": float(r.get("avg_salary_lpa", 0)) * 100000.0,
-                "min_salary_lpa": float(r.get("min_salary_lpa", 0)),
-                "max_salary_lpa": float(r.get("max_salary_lpa", 0)),
-            })
+        if os.path.exists(role_csv):
+            df_roles = pd.read_csv(role_csv)
+            for _, r in df_roles.iterrows():
+                r_cat = str(r.get("role_category", ""))
+                if r_cat == "Non-Tech":
+                    continue
+                role_items.append({
+                    "role": r_cat,
+                    "postings": int(r.get("num_postings_with_salary", 0)),
+                    "median_salary_lpa": float(r.get("median_salary_lpa", 0)),
+                    "mean_salary_lpa": float(r.get("avg_salary_lpa", 0)),
+                    "median_salary_inr": float(r.get("median_salary_lpa", 0)) * 100000.0,
+                    "mean_salary_inr": float(r.get("avg_salary_lpa", 0)) * 100000.0,
+                    "min_salary_lpa": float(r.get("min_salary_lpa", 0)),
+                    "max_salary_lpa": float(r.get("max_salary_lpa", 0)),
+                })
+        else:
+            for r_name, group in cohort_df.groupby("normalized_role"):
+                sals = group["salary_lpa"]
+                med_lpa = float(sals.median())
+                avg_lpa = float(sals.mean())
+                role_items.append({
+                    "role": r_name,
+                    "postings": len(group),
+                    "median_salary_lpa": med_lpa,
+                    "mean_salary_lpa": avg_lpa,
+                    "median_salary_inr": med_lpa * 100000.0,
+                    "mean_salary_inr": avg_lpa * 100000.0,
+                    "min_salary_lpa": float(sals.min()),
+                    "max_salary_lpa": float(sals.max()),
+                })
         role_items = sorted(role_items, key=lambda x: x["median_salary_lpa"], reverse=True)
 
         # Experience
-        df_exp = pd.read_csv(exp_csv)
         exp_items = []
-        for _, r in df_exp.iterrows():
-            b_name = str(r.get("experience_band", ""))
-            exp_items.append({
-                "experience_band": b_name,
-                "band": b_name,
-                "seniority": b_name,
-                "postings": int(r.get("num_postings_with_salary", 0)),
-                "median_salary_lpa": float(r.get("median_salary_lpa", 0)),
-                "mean_salary_lpa": float(r.get("avg_salary_lpa", 0)),
-            })
+        if os.path.exists(exp_csv):
+            df_exp = pd.read_csv(exp_csv)
+            for _, r in df_exp.iterrows():
+                b_name = str(r.get("experience_band", ""))
+                exp_items.append({
+                    "experience_band": b_name,
+                    "band": b_name,
+                    "seniority": b_name,
+                    "postings": int(r.get("num_postings_with_salary", 0)),
+                    "median_salary_lpa": float(r.get("median_salary_lpa", 0)),
+                    "mean_salary_lpa": float(r.get("avg_salary_lpa", 0)),
+                })
+        else:
+            for b_name, group in cohort_df.groupby("experience_band"):
+                sals = group["salary_lpa"]
+                exp_items.append({
+                    "experience_band": b_name,
+                    "band": b_name,
+                    "seniority": b_name,
+                    "postings": len(group),
+                    "median_salary_lpa": float(sals.median()),
+                    "mean_salary_lpa": float(sals.mean()),
+                })
 
         # Cities (computed empirically from audited cohort)
-        cohort_df = cls.get_india_cohort_df()
         city_items = []
         for c_name, group in cohort_df.groupby("city_grouped"):
             city_items.append({
@@ -513,15 +542,27 @@ class MarketService:
         city_items = sorted(city_items, key=lambda x: x["postings"], reverse=True)[:15]
 
         # Skills
-        df_skills = pd.read_csv(skills_csv)
         skill_items = []
-        for _, r in df_skills.head(25).iterrows():
-            skill_items.append({
-                "skill": str(r.get("skill_name", "")),
-                "raw_key": str(r.get("skill_column", "")),
-                "postings": int(r.get("frequency_count", 0)),
-                "prevalence_pct": round(float(r.get("prevalence_pct", 0)), 1),
-            })
+        if os.path.exists(skills_csv):
+            df_skills = pd.read_csv(skills_csv)
+            for _, r in df_skills.head(25).iterrows():
+                skill_items.append({
+                    "skill": str(r.get("skill_name", "")),
+                    "raw_key": str(r.get("skill_column", "")),
+                    "postings": int(r.get("frequency_count", 0)),
+                    "prevalence_pct": round(float(r.get("prevalence_pct", 0)), 1),
+                })
+        else:
+            from src.backend.services.india_service import IndiaService
+            analytics = IndiaService.get_skills_analytics()
+            raw_skills = analytics.get("skills", [])
+            for s in raw_skills[:25]:
+                skill_items.append({
+                    "skill": str(s.get("display_name", s.get("skill", ""))),
+                    "raw_key": str(s.get("skill", "")),
+                    "postings": int(s.get("posting_count", 0)),
+                    "prevalence_pct": round(float(s.get("demand_percentage", 0)), 1),
+                })
 
         return {
             "country": "India",
