@@ -1,4 +1,4 @@
-name: JobIntel Phase 8.6.7 Protected Docker Release Gate
+name: JobIntel Phase 8.6.8 Protected Docker Release Gate
 
 on:
   workflow_dispatch:
@@ -95,20 +95,32 @@ jobs:
       - name: 6. Verify Exact Host Data Paths & Required Parquets
         run: |
           Write-Host "=== 3 & 4. VERIFYING HOST DATA PATHS AND FROZEN PARQUETS ==="
-          $hostDataPath = "E:/Job Market/data/processed"
-          if (-not (Test-Path "$hostDataPath/modeling_dataset.parquet")) {
-              $found = Get-ChildItem -Path "E:\" -Filter "modeling_dataset.parquet" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
-              if ($found) {
-                  $hostDataPath = $found.Directory.FullName -replace '\\', '/'
+          
+          # 1. Resolve host data path from environment or discovery
+          $hostDataPath = $env:HOST_DATA_PATH
+          if (-not $hostDataPath -or -not (Test-Path "$hostDataPath/modeling_dataset.parquet")) {
+              if ($env:JOBINTEL_DATA_PATH -and (Test-Path "$env:JOBINTEL_DATA_PATH/modeling_dataset.parquet")) {
+                  $hostDataPath = $env:JOBINTEL_DATA_PATH
+              } elseif ($env:PRIVATE_DATA_PATH -and (Test-Path "$env:PRIVATE_DATA_PATH/modeling_dataset.parquet")) {
+                  $hostDataPath = $env:PRIVATE_DATA_PATH
+              } elseif (Test-Path "E:/Job Market/data/processed/modeling_dataset.parquet") {
+                  $hostDataPath = "E:/Job Market/data/processed"
               } else {
-                  Write-Error "CRITICAL: modeling_dataset.parquet not found on host E: drive!"
-                  exit 1
+                  $found = Get-ChildItem -Path "E:\", "D:\", "C:\" -Filter "modeling_dataset.parquet" -Recurse -Depth 4 -ErrorAction SilentlyContinue | Select-Object -First 1
+                  if ($found) {
+                      $hostDataPath = $found.Directory.FullName
+                  } else {
+                      Write-Error "CRITICAL: Private dataset modeling_dataset.parquet not found on host!"
+                      exit 1
+                  }
               }
           }
+          $hostDataPath = ($hostDataPath -replace '\\', '/').TrimEnd('/')
           Write-Host "Discovered Host Data Path: $hostDataPath"
           
           $usaParquet = "$hostDataPath/modeling_dataset.parquet"
           $indiaParquet = "$hostDataPath/india/india_modeling_cohort.parquet"
+          $skillParquet = "$hostDataPath/skill_matrix_technical.parquet"
           
           if (-not (Test-Path $usaParquet)) {
               Write-Error "Missing USA modeling dataset: $usaParquet"
@@ -119,8 +131,68 @@ jobs:
               exit 1
           }
           
-          Write-Host "PASS: Both required private Parquet files verified on host."
+          # Verify files are readable and non-empty
+          $usaLen = (Get-Item $usaParquet).Length
+          $indiaLen = (Get-Item $indiaParquet).Length
+          if ($usaLen -le 0 -or $indiaLen -le 0) {
+              Write-Error "CRITICAL: Private dataset files are empty or corrupt."
+              exit 1
+          }
+          Write-Host "PASS: Both required private Parquet files verified on host (USA: $usaLen bytes, India: $indiaLen bytes)."
+          if (Test-Path $skillParquet) {
+              $skillLen = (Get-Item $skillParquet).Length
+              Write-Host "PASS: Verified skill matrix Parquet on host ($skillLen bytes)."
+          }
+
           "HOST_DATA_PATH=$hostDataPath" | Out-File -FilePath $env:GITHUB_ENV -Append
+          $env:HOST_DATA_PATH = $hostDataPath
+
+          # 2. Pre-runtime cryptographic verification of all 10 frozen artifacts on host
+          Write-Host "Verifying 10/10 frozen artifact hashes on host before runtime..."
+          python -c "
+          import hashlib, os, sys
+
+          host_data = os.environ.get('HOST_DATA_PATH', '').replace('\\\\', '/').rstrip('/')
+
+          EXPECTED = {
+              'models/india/final_model.pkl': '7a3490d7a36a128eea5a70e80bb3550c504da69648ac368a891f8729282a8310',
+              'models/india/final_preprocessor.pkl': '0ee1dabf3130a19c8bbc80a31ab93d8e97affa4d4a688249d59ee336f7ab4ead',
+              'data/processed/india/india_modeling_cohort.parquet': 'd4e32be45d84b159804e1a019f44dd5da6682346e38f39635e8edcaac3a200ec',
+              'models/india/india_pca_v1.pkl': '8591e3d3f713e35b27307e0c5810b35bb80ee33fd97bc909487985624e390897',
+              'models/india/india_kmeans_v1.pkl': '4465a3d8c3b7ab92e668cab2b502bdc3ba832d8458545f00cc5121d9c73da40a',
+              'models/phase5/best_model.pkl': '55c1b7fd87d2a04c9761a1941fcc4f6d3174ed80a10ce0802b0c07fc644bfadd',
+              'models/phase5/best_pipeline.pkl': '815fd9a3d88f2ebae82cebce86c6438d0455835de8de1bb8d66802f12a77be19',
+              'data/processed/modeling_dataset.parquet': '68895e3823cca91ffbfea76b8986198700b4eb8bb02905bacc9a04985156a21b',
+              'models/pca_phase4_1.pkl': 'ef4ef56bdc4b9471b1ec636fb9c689744832992b13f9733549271a19e3ce83c0',
+              'models/kmeans_phase4_1_k7.pkl': '4d6d2509f04502fdf088604151b66d2272a8b4de106ce9fa2f745f97806c0106',
+          }
+
+          mismatches = []
+          for relpath, expected_hash in EXPECTED.items():
+              if relpath.startswith('data/processed/'):
+                  sub = relpath[len('data/processed/'):]
+                  fullpath = f'{host_data}/{sub}' if host_data else relpath
+              else:
+                  fullpath = relpath
+
+              try:
+                  with open(fullpath, 'rb') as f:
+                      actual_hash = hashlib.sha256(f.read()).hexdigest()
+                  if actual_hash != expected_hash:
+                      mismatches.append(f'{relpath} ({fullpath}): expected {expected_hash}, got {actual_hash}')
+                  else:
+                      print(f'MATCH (100%): {relpath} -> {fullpath}')
+              except Exception as e:
+                  mismatches.append(f'{relpath} ({fullpath}): ERROR {e}')
+
+          if mismatches:
+              print('FAILURE: Pre-runtime hash mismatches on host:')
+              for m in mismatches:
+                  print(f'  {m}')
+              sys.exit(1)
+          print('PASS: All 10 frozen artifacts verified on host before runtime.')
+          "
+          if ($LASTEXITCODE -ne 0) { Write-Error "Pre-runtime hash verification failed"; exit 1 }
 
       - name: 7. Verify Dockerfile Does Not COPY data/processed
         run: |
@@ -465,7 +537,21 @@ jobs:
           # 1. Resolve and validate actual private host data directory
           $sourceDataPath = $env:HOST_DATA_PATH
           if (-not $sourceDataPath -or -not (Test-Path -LiteralPath $sourceDataPath)) {
-              $sourceDataPath = "E:/Job Market/data/processed"
+              if ($env:JOBINTEL_DATA_PATH -and (Test-Path -LiteralPath $env:JOBINTEL_DATA_PATH)) {
+                  $sourceDataPath = $env:JOBINTEL_DATA_PATH
+              } elseif ($env:PRIVATE_DATA_PATH -and (Test-Path -LiteralPath $env:PRIVATE_DATA_PATH)) {
+                  $sourceDataPath = $env:PRIVATE_DATA_PATH
+              } elseif (Test-Path "E:/Job Market/data/processed/modeling_dataset.parquet") {
+                  $sourceDataPath = "E:/Job Market/data/processed"
+              } else {
+                  $found = Get-ChildItem -Path "E:\", "D:\", "C:\" -Filter "modeling_dataset.parquet" -Recurse -Depth 4 -ErrorAction SilentlyContinue | Select-Object -First 1
+                  if ($found) {
+                      $sourceDataPath = $found.Directory.FullName
+                  } else {
+                      Write-Error "CRITICAL: Private source data directory not found!"
+                      exit 1
+                  }
+              }
           }
           $sourceDataPath = ($sourceDataPath -replace '/', '\').TrimEnd('\')
 
@@ -730,9 +816,35 @@ jobs:
       - name: 23. Post-Runtime Frozen Hash Verification (10/10)
         run: |
           Write-Host "=== 29. POST-RUNTIME FROZEN HASH VERIFICATION ON HOST ==="
+          
+          # Resolve host data path from environment or discovery
+          $hostDataPath = $env:HOST_DATA_PATH
+          if (-not $hostDataPath -or -not (Test-Path "$hostDataPath/modeling_dataset.parquet")) {
+              if ($env:JOBINTEL_DATA_PATH -and (Test-Path "$env:JOBINTEL_DATA_PATH/modeling_dataset.parquet")) {
+                  $hostDataPath = $env:JOBINTEL_DATA_PATH
+              } elseif ($env:PRIVATE_DATA_PATH -and (Test-Path "$env:PRIVATE_DATA_PATH/modeling_dataset.parquet")) {
+                  $hostDataPath = $env:PRIVATE_DATA_PATH
+              } elseif (Test-Path "E:/Job Market/data/processed/modeling_dataset.parquet") {
+                  $hostDataPath = "E:/Job Market/data/processed"
+              } else {
+                  $found = Get-ChildItem -Path "E:\", "D:\", "C:\" -Filter "modeling_dataset.parquet" -Recurse -Depth 4 -ErrorAction SilentlyContinue | Select-Object -First 1
+                  if ($found) {
+                      $hostDataPath = $found.Directory.FullName
+                  } else {
+                      Write-Error "CRITICAL: Private dataset modeling_dataset.parquet not found on host!"
+                      exit 1
+                  }
+              }
+          }
+          $hostDataPath = ($hostDataPath -replace '\\', '/').TrimEnd('/')
+          $env:HOST_DATA_PATH = $hostDataPath
+
           python -c "
-          import hashlib, sys
-          ARTIFACTS = {
+          import hashlib, os, sys
+
+          host_data = os.environ.get('HOST_DATA_PATH', '').replace('\\\\', '/').rstrip('/')
+
+          EXPECTED = {
               'models/india/final_model.pkl': '7a3490d7a36a128eea5a70e80bb3550c504da69648ac368a891f8729282a8310',
               'models/india/final_preprocessor.pkl': '0ee1dabf3130a19c8bbc80a31ab93d8e97affa4d4a688249d59ee336f7ab4ead',
               'data/processed/india/india_modeling_cohort.parquet': 'd4e32be45d84b159804e1a019f44dd5da6682346e38f39635e8edcaac3a200ec',
@@ -744,9 +856,30 @@ jobs:
               'models/pca_phase4_1.pkl': 'ef4ef56bdc4b9471b1ec636fb9c689744832992b13f9733549271a19e3ce83c0',
               'models/kmeans_phase4_1_k7.pkl': '4d6d2509f04502fdf088604151b66d2272a8b4de106ce9fa2f745f97806c0106',
           }
-          for p, expected in ARTIFACTS.items():
-              actual = hashlib.sha256(open(p, 'rb').read()).hexdigest()
-              assert actual == expected, f'Post-run hash mismatch for {p}: expected {expected}, got {actual}'
+
+          mismatches = []
+          for relpath, expected_hash in EXPECTED.items():
+              if relpath.startswith('data/processed/'):
+                  sub = relpath[len('data/processed/'):]
+                  fullpath = f'{host_data}/{sub}' if host_data else relpath
+              else:
+                  fullpath = relpath
+
+              try:
+                  with open(fullpath, 'rb') as f:
+                      actual_hash = hashlib.sha256(f.read()).hexdigest()
+                  if actual_hash != expected_hash:
+                      mismatches.append(f'{relpath} ({fullpath}): expected {expected_hash}, got {actual_hash}')
+                  else:
+                      print(f'MATCH (100%): {relpath} -> {fullpath}')
+              except Exception as e:
+                  mismatches.append(f'{relpath} ({fullpath}): ERROR {e}')
+
+          if mismatches:
+              print('FAILURE: Post-runtime hash mismatches on host:')
+              for m in mismatches:
+                  print(f'  {m}')
+              sys.exit(1)
           print('PASS: All 10 frozen artifacts remain 100% bit-for-bit unchanged after runtime.')
           "
           if ($LASTEXITCODE -ne 0) { Write-Error "Post-runtime hash check failed"; exit 1 }

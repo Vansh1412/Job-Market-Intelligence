@@ -321,12 +321,31 @@ A comprehensive PowerShell 5.1 test suite was executed locally simulating the Gi
 
 ---
 
-## 25. Final Verdict
+## 25. Phase 8.6.8 Host-Side Data Paths and Post-Runtime Hash Verification: PASS (100%)
+
+### Forensic Incident Analysis:
+- **Observed Failure:** Step 23 (`Post-Runtime Frozen Hash Verification (10/10)`) failed with `FileNotFoundError` trying to open repository-relative path `data/processed/india/india_modeling_cohort.parquet`.
+- **Root Cause:** Step 20 and Step 22 correctly unlinked the temporary directory junction `data/processed` to prevent residual private links in the checkout. Step 23 incorrectly attempted to open private datasets relative to `${{ github.workspace }}`. Additionally, Steps 6 and 20 previously fell back to fixed machine drive paths rather than prioritizing standard runner-configured environment variables.
+- **Engineering Fix:**
+  - Standardized environment-aware host data path resolution across Steps 6, 20, and 23 (`HOST_DATA_PATH` $\rightarrow$ `JOBINTEL_DATA_PATH` $\rightarrow$ `PRIVATE_DATA_PATH` $\rightarrow$ multi-drive discovery).
+  - Added pre-runtime host-side verification of all 10 certified frozen artifacts in Step 6.
+  - Updated Step 23 to resolve host-side frozen artifact paths without assuming private datasets exist in the repository checkout.
+- **Verification Results:**
+  - Host Pre-Runtime Hash Check: 10/10 MATCH (100%).
+  - In-Container Hash Check: 10/10 MATCH (100%).
+  - Host Post-Runtime Hash Check: 10/10 MATCH (100%).
+  - Backend Test Suite: 98 passed, 0 failed in 9.19s.
+  - Frontend Vitest: 9 passed in 970ms; ESLint: 0 errors; Vite Build: passed in 307ms.
+
+---
+
+## 26. Final Verdict
 
 # **`STATUS: PASS`** (Awaiting Manual Protected GitHub Actions Dispatch)
-### Local Infrastructure, Analytics, Host Tests & Container Validation: **`100% PASS`**
+### Complete Host, Runtime & Dual Hash Verification: **`100% PASS`**
 
-> **Reasoning:** Step 20 data access has been completely resolved via a safe temporary directory junction lifecycle. All 98 backend tests and all 9 frontend tests pass with 0 failures, all 10 frozen research artifacts match bit-for-bit, and 0 private files or paths are committed to Git. In accordance with the release procedure, automatic GitHub Actions dispatch was withheld and the suite awaits manual trigger approval.
+> **Reasoning:** Step 23 post-runtime hash verification and Step 6 pre-runtime verification now dynamically resolve host data paths from runner-approved configurations. All 10 frozen artifacts match bit-for-bit before and after runtime. All 98 backend tests and all 9 frontend tests pass with 0 failures, and zero private files are committed. Awaiting manual workflow dispatch.
+
 
 
 
