@@ -206,16 +206,116 @@ def test_india_oversized_skills_rejected():
 
 
 def test_cors_preflight_credentials_policy():
-    """Verify CORS preflight headers enforce standard credentials policy."""
+    """Verify CORS preflight headers enforce standard credentials policy on localhost."""
     res = client.options("/api/health", headers={
         "Origin": "http://localhost:5173",
         "Access-Control-Request-Method": "GET"
     })
     assert res.status_code == 200
     assert "access-control-allow-origin" in res.headers
-    # If explicit origin allowed, credentials should be true; if wildcard, must be omitted or false
-    origin = res.headers.get("access-control-allow-origin")
-    creds = res.headers.get("access-control-allow-credentials")
-    if origin == "*":
-        assert creds != "true", "Wildcard origin MUST NOT allow credentials"
+    assert res.headers.get("access-control-allow-origin") == "http://localhost:5173"
+    assert res.headers.get("access-control-allow-credentials") == "true"
+
+
+def test_cors_allowed_vercel_origin_header():
+    """Verify exact production Vercel origin receives correct Access-Control-Allow-Origin header."""
+    vercel_origin = "https://job-market-intelligence-dusky.vercel.app"
+    for endpoint in ["/health", "/meta", "/india/options", "/api/india/options"]:
+        res = client.get(endpoint, headers={"Origin": vercel_origin})
+        assert res.status_code == 200, f"Expected 200 on {endpoint}, got {res.status_code}"
+        assert res.headers.get("access-control-allow-origin") == vercel_origin, (
+            f"Missing or incorrect ACAO header on {endpoint}: {res.headers.get('access-control-allow-origin')}"
+        )
+        assert res.headers.get("access-control-allow-credentials") == "true"
+
+
+def test_cors_preflight_get_india_options_succeeds():
+    """Verify GET /india/options and /api/india/options CORS preflight succeeds for Vercel origin."""
+    vercel_origin = "https://job-market-intelligence-dusky.vercel.app"
+    for path in ["/india/options", "/api/india/options"]:
+        res = client.options(path, headers={
+            "Origin": vercel_origin,
+            "Access-Control-Request-Method": "GET",
+            "Access-Control-Request-Headers": "content-type"
+        })
+        assert res.status_code == 200, f"Preflight OPTIONS failed on {path} with status {res.status_code}"
+        assert res.headers.get("access-control-allow-origin") == vercel_origin
+        assert res.headers.get("access-control-allow-credentials") == "true"
+        allow_methods = res.headers.get("access-control-allow-methods", "")
+        assert "GET" in allow_methods or "*" in allow_methods
+
+
+def test_cors_preflight_post_india_predict_succeeds():
+    """Verify POST /india/predict and /api/india/predict CORS preflight succeeds for Vercel origin."""
+    vercel_origin = "https://job-market-intelligence-dusky.vercel.app"
+    for path in ["/india/predict", "/api/india/predict"]:
+        res = client.options(path, headers={
+            "Origin": vercel_origin,
+            "Access-Control-Request-Method": "POST",
+            "Access-Control-Request-Headers": "content-type"
+        })
+        assert res.status_code == 200, f"Preflight OPTIONS failed on {path} with status {res.status_code}"
+        assert res.headers.get("access-control-allow-origin") == vercel_origin
+        assert res.headers.get("access-control-allow-credentials") == "true"
+        allow_methods = res.headers.get("access-control-allow-methods", "")
+        assert "POST" in allow_methods or "*" in allow_methods
+
+
+def test_cors_unapproved_origin_rejected():
+    """Verify an unapproved origin is strictly rejected without CORS headers."""
+    unapproved_origin = "https://malicious-unapproved-site.com"
+    # Preflight rejected with 400 Disallowed CORS origin
+    res_preflight = client.options("/india/options", headers={
+        "Origin": unapproved_origin,
+        "Access-Control-Request-Method": "GET",
+        "Access-Control-Request-Headers": "content-type"
+    })
+    assert res_preflight.status_code == 400
+    assert "access-control-allow-origin" not in res_preflight.headers
+
+    # Simple request does not receive CORS allow header
+    res_get = client.get("/india/options", headers={"Origin": unapproved_origin})
+    assert res_get.status_code == 200
+    assert "access-control-allow-origin" not in res_get.headers
+
+
+def test_cors_existing_localhost_origins_continue_passing():
+    """Verify existing localhost and canonical origins continue passing CORS preflights."""
+    allowed_test_origins = [
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "http://127.0.0.1:5173",
+        "http://localhost:8000",
+        "https://job-market-intelligence.vercel.app",
+        "https://jobintel.vercel.app",
+    ]
+    for origin in allowed_test_origins:
+        res = client.options("/india/options", headers={
+            "Origin": origin,
+            "Access-Control-Request-Method": "GET"
+        })
+        assert res.status_code == 200, f"Expected 200 for allowed origin {origin}, got {res.status_code}"
+        assert res.headers.get("access-control-allow-origin") == origin
+        assert res.headers.get("access-control-allow-credentials") == "true"
+
+
+def test_cors_error_responses_preserve_cors_headers():
+    """Verify CORS headers are preserved even on 422 and 404 error responses for allowed origins."""
+    vercel_origin = "https://job-market-intelligence-dusky.vercel.app"
+
+    # 422 Unprocessable Entity
+    res_422 = client.post("/india/predict", json={}, headers={"Origin": vercel_origin})
+    assert res_422.status_code == 422
+    assert res_422.headers.get("access-control-allow-origin") == vercel_origin
+
+    # 404 Not Found
+    res_404 = client.get("/nonexistent-endpoint-xyz", headers={"Origin": vercel_origin})
+    assert res_404.status_code == 404
+    assert res_404.headers.get("access-control-allow-origin") == vercel_origin
+
+
+def test_cors_no_wildcard_origin():
+    """Verify wildcard '*' is never used as an allowed origin."""
+    from src.backend.main import allowed_origins
+    assert "*" not in allowed_origins, "Wildcard '*' origin is strictly forbidden in production!"
 

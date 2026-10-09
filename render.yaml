@@ -17,4 +17,4 @@ services:
       - key: JOBINTEL_ENV
         value: production
       - key: CORS_ORIGINS
-        value: "http://localhost:5173,http://localhost:3000,https://jobintel.vercel.app,https://job-market-intelligence.vercel.app"
+        value: "http://localhost:5173,http://localhost:3000,https://job-market-intelligence-dusky.vercel.app,https://job-market-intelligence.vercel.app,https://jobintel.vercel.app"

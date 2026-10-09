@@ -64,19 +64,34 @@ app = FastAPI(
 )
 
 import os
+from fastapi.routing import APIRoute
+
+# Standard default CORS origins for local development and production deployments
+DEFAULT_CORS_ORIGINS = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:5173",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "https://job-market-intelligence-dusky.vercel.app",
+    "https://job-market-intelligence.vercel.app",
+    "https://jobintel.vercel.app",
+]
 
 # Configurable CORS origins for development and production deployments
-raw_origins = os.getenv(
-    "CORS_ORIGINS",
-    "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173,http://localhost:8000,https://jobintel.vercel.app,https://job-market-intelligence.vercel.app"
-)
-allowed_origins = [o.strip() for o in raw_origins.split(",") if o.strip()]
-is_wildcard = "*" in allowed_origins
+raw_origins = os.getenv("CORS_ORIGINS", "")
+env_origins = [o.strip() for o in raw_origins.split(",") if o.strip()]
+
+# Merge while preserving order, ensuring uniqueness, and strictly forbidding wildcards
+allowed_origins: list[str] = []
+for orig in DEFAULT_CORS_ORIGINS + env_origins:
+    if orig and orig != "*" and orig not in allowed_origins:
+        allowed_origins.append(orig)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins if allowed_origins else ["*"],
-    allow_credentials=not is_wildcard,
+    allow_origins=allowed_origins,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -150,6 +165,7 @@ def readiness_check():
     )
 
 
+@app.get("/meta")
 @app.get("/api/meta")
 def get_metadata():
     """Returns comprehensive metadata, research parameters, and cohort metrics."""
@@ -192,3 +208,33 @@ def get_metadata():
             "archetype_clusters": 6,
         },
     }
+
+
+# Replicate all /api/* routes to root /* so clients requesting either scheme succeed seamlessly
+existing_endpoints = {
+    (r.path, tuple(sorted(r.methods or [])))
+    for r in app.routes
+    if hasattr(r, "path")
+}
+
+for route in list(app.routes):
+    if isinstance(route, APIRoute) and route.path.startswith("/api/"):
+        root_path = route.path[len("/api"):]
+        methods_key = tuple(sorted(route.methods or []))
+        if (root_path, methods_key) not in existing_endpoints:
+            app.add_api_route(
+                root_path,
+                route.endpoint,
+                methods=route.methods,
+                response_model=route.response_model,
+                status_code=route.status_code,
+                tags=route.tags,
+                dependencies=route.dependencies,
+                summary=route.summary,
+                description=route.description,
+                response_description=route.response_description,
+                responses=route.responses,
+                deprecated=route.deprecated,
+                operation_id=f"{route.unique_id}_root",
+            )
+            existing_endpoints.add((root_path, methods_key))
