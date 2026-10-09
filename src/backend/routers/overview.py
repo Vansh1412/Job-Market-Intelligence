@@ -5,7 +5,7 @@ Overview API Router — Corpus KPIs, Funnel Attrition, and Research Questions
 from fastapi import APIRouter
 from src.backend.data_service import get_funnel_df
 
-router = APIRouter(prefix="/api/overview", tags=["Overview"])
+router = APIRouter(prefix="/overview", tags=["Overview"])
 
 
 @router.get("/kpis")

@@ -12,7 +12,7 @@ from src.backend.services.india_service import IndiaService
 from src.backend.services.archetype_service import ArchetypeService
 from src.backend.services.market_service import MarketService
 
-router = APIRouter(prefix="/api/india", tags=["India Job Market"])
+router = APIRouter(prefix="/india", tags=["India Job Market"])
 
 
 class IndiaPredictionRequest(BaseModel):

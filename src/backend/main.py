@@ -64,7 +64,6 @@ app = FastAPI(
 )
 
 import os
-from fastapi.routing import APIRoute
 
 # Standard default CORS origins for local development and production deployments
 DEFAULT_CORS_ORIGINS = [
@@ -96,20 +95,25 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Mount Unified Cross-Market Routers (Phase 6 Architecture)
-app.include_router(usa.router)
-app.include_router(india.router)
-app.include_router(cross_market.router)
+# Mount Unified & Domain Routers under both /api and root /
+# Guarantees seamless backward compatibility for frontends configured with or without an /api base URL.
+api_routers = [
+    usa.router,
+    india.router,
+    cross_market.router,
+    overview.router,
+    salary.router,
+    skills.router,
+    archetypes.router,
+    predict.router,
+    models.router,
+    error_analysis.router,
+    methodology.router,
+]
 
-# Mount Legacy Domain Routers (Preserving full backward compatibility)
-app.include_router(overview.router)
-app.include_router(salary.router)
-app.include_router(skills.router)
-app.include_router(archetypes.router)
-app.include_router(predict.router)
-app.include_router(models.router)
-app.include_router(error_analysis.router)
-app.include_router(methodology.router)
+for r in api_routers:
+    app.include_router(r, prefix="/api")
+    app.include_router(r)
 
 
 @app.get("/")
@@ -208,33 +212,3 @@ def get_metadata():
             "archetype_clusters": 6,
         },
     }
-
-
-# Replicate all /api/* routes to root /* so clients requesting either scheme succeed seamlessly
-existing_endpoints = {
-    (r.path, tuple(sorted(r.methods or [])))
-    for r in app.routes
-    if hasattr(r, "path")
-}
-
-for route in list(app.routes):
-    if isinstance(route, APIRoute) and route.path.startswith("/api/"):
-        root_path = route.path[len("/api"):]
-        methods_key = tuple(sorted(route.methods or []))
-        if (root_path, methods_key) not in existing_endpoints:
-            app.add_api_route(
-                root_path,
-                route.endpoint,
-                methods=route.methods,
-                response_model=route.response_model,
-                status_code=route.status_code,
-                tags=route.tags,
-                dependencies=route.dependencies,
-                summary=route.summary,
-                description=route.description,
-                response_description=route.response_description,
-                responses=route.responses,
-                deprecated=route.deprecated,
-                operation_id=f"{route.unique_id}_root",
-            )
-            existing_endpoints.add((root_path, methods_key))

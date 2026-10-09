@@ -12,7 +12,7 @@ from src.backend.services.usa_service import USAService
 from src.backend.services.archetype_service import ArchetypeService
 from src.backend.services.market_service import MarketService
 
-router = APIRouter(prefix="/api/usa", tags=["USA Job Market"])
+router = APIRouter(prefix="/usa", tags=["USA Job Market"])
 
 
 class USAPredictionRequest(BaseModel):

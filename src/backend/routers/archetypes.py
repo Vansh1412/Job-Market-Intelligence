@@ -14,7 +14,7 @@ from src.backend.data_service import (
 )
 from src.backend.inference_service import ARCHETYPE_LOOKUP
 
-router = APIRouter(prefix="/api/archetypes", tags=["Archetypes"])
+router = APIRouter(prefix="/archetypes", tags=["Archetypes"])
 
 
 @router.get("/list")

@@ -15,7 +15,7 @@ from src.backend.data_service import (
 )
 from src.backend.inference_service import predict_job_profile
 
-router = APIRouter(prefix="/api/predict", tags=["Prediction"])
+router = APIRouter(prefix="/predict", tags=["Prediction"])
 
 
 class PredictionRequest(BaseModel):

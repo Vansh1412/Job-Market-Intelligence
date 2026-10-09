@@ -4,7 +4,7 @@ Methodology API Router — Reproducibility Pipeline, Leakage Controls, and Core 
 
 from fastapi import APIRouter
 
-router = APIRouter(prefix="/api/methodology", tags=["Methodology"])
+router = APIRouter(prefix="/methodology", tags=["Methodology"])
 
 
 @router.get("/pipeline-stages")

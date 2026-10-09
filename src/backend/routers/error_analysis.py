@@ -6,7 +6,7 @@ from fastapi import APIRouter
 from src.backend.data_service import get_archetype_errors_df
 from src.backend.inference_service import ARCHETYPE_LOOKUP
 
-router = APIRouter(prefix="/api/error-analysis", tags=["Error Analysis"])
+router = APIRouter(prefix="/error-analysis", tags=["Error Analysis"])
 
 
 @router.get("/archetype-breakdown")

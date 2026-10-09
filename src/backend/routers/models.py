@@ -10,7 +10,7 @@ from src.backend.data_service import (
     get_permutation_importance_df,
 )
 
-router = APIRouter(prefix="/api/models", tags=["Model Performance"])
+router = APIRouter(prefix="/models", tags=["Model Performance"])
 
 
 @router.get("/benchmarks")

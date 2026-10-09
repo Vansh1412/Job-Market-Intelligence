@@ -11,7 +11,7 @@ from src.backend.data_service import (
 )
 from src.backend.services.market_service import MarketService
 
-router = APIRouter(prefix="/api/skills", tags=["Skills"])
+router = APIRouter(prefix="/skills", tags=["Skills"])
 
 # Skill category mappings for rich visualization
 SKILL_CATEGORIES = {

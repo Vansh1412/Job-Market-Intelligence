@@ -10,7 +10,7 @@ from src.backend.data_service import (
     get_salary_by_location_df,
 )
 
-router = APIRouter(prefix="/api/salary", tags=["Salary Intelligence"])
+router = APIRouter(prefix="/salary", tags=["Salary Intelligence"])
 
 
 @router.get("/summary")

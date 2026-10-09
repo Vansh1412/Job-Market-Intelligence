@@ -8,7 +8,7 @@ Strictly preserves separate currency presentations without FX conversion.
 from fastapi import APIRouter, HTTPException
 from src.backend.services.market_service import MarketService
 
-router = APIRouter(prefix="/api/cross-market", tags=["Cross-Market Intelligence"])
+router = APIRouter(prefix="/cross-market", tags=["Cross-Market Intelligence"])
 
 
 @router.get("/summary")
