@@ -2,96 +2,43 @@
 
 **Platform:** Job Market Intelligence (JobIntel)  
 **Document:** `docs/deployment/cost-estimate.md`  
-**Pricing Region:** AWS US East (N. Virginia `us-east-1`)  
-**Pricing Basis:** Official AWS On-Demand Pricing (October 2026)  
+**Active Production Architecture:** **Vercel Hobby + Render Free Tier ($0/Month)**  
+**Status:** Certified Zero-Cost Architecture  
 
 ---
 
-## 1. Detailed AWS Cost Breakdown (24/7 Operational Availability)
+## 1. Active Architecture: Genuinely Free Tier ($0.00 / Month)
 
-The following estimate models continuous 24/7/365 production operation:
+The approved production deployment architecture requires **$0.00 / month**, with no paid upgrades, no credit card billing risk, and no paid resource provisioning:
 
-### 1.1 AWS ECS Fargate Compute
-- **Sizing:** 1 Container Task: 0.5 vCPU (512 units), 1.0 GB RAM (1024 MB).
-- **Hours per Month:** 730 hours.
-- **vCPU Rate:** $0.04048 per vCPU-hour.
-  - Cost: `0.5 vCPU * 730 hours * $0.04048 = $14.78 / month`.
-- **Memory Rate:** $0.004445 per GB-hour.
-  - Cost: `1.0 GB * 730 hours * $0.004445 = $3.24 / month`.
-- **Subtotal Fargate Compute:** **$18.02 / month**.
+| Service / Resource | Provider & Tier | Quota / Allocation | Measured Usage | Actual Monthly Cost |
+|---|---|---|---|:---:|
+| **Frontend SPA Hosting** | Vercel Hobby | Unlimited builds, Global Edge CDN, Custom Domain, TLS | ~1.5 MB build bundle | **$0.00** |
+| **Backend API Service** | Render Free Web Service | 0.1 CPU, 512 MB RAM, 750 free hrs/mo, 100 GB bandwidth | 309.80 MB Peak RAM | **$0.00** |
+| **Private Datasets Storage** | Cloudflare R2 Free Tier *(or AWS S3 Free)* | 10 GB storage free, 10M read ops/mo, $0 egress fees | 10.56 MB storage, ~50 reads/mo | **$0.00** |
+| **CI/CD Build Automation** | GitHub Actions (Hosted Ubuntu) | 2,000 free minutes/month for standard pipelines | ~2 min per push | **$0.00** |
+| **Domain & SSL/TLS** | Vercel & Render Automatic SSL | Automated Let's Encrypt certificates | Managed automatically | **$0.00** |
+| **TOTAL RUNNING COST** | | | | **$0.00 / month** |
 
-### 1.2 AWS Application Load Balancer (ALB)
-- **ALB Base Rate:** $0.0225 per hour.
-  - Base Cost: `730 hours * $0.0225 = $16.43 / month`.
-- **Load Balancer Capacity Units (LCU):** 1 LCU assumed for low-to-medium traffic (new connections, active connections, bandwidth).
-  - Rate: $0.008 per LCU-hour.
-  - LCU Cost: `730 hours * $0.008 = $5.84 / month` (maximum baseline).
-- **Subtotal Application Load Balancer:** **$16.43 – $22.27 / month**.
-
-### 1.3 Amazon S3 Storage & API Requests
-- **Storage Volume:** ~20 MB (frozen models + runtime Parquet datasets).
-  - Rate: $0.023 per GB-month.
-  - Cost: `0.02 GB * $0.023 = $0.00046 / month` (negligible).
-- **Requests:** ~100 GET requests on container restarts.
-  - Rate: $0.0004 per 1,000 GET requests.
-  - Cost: `< $0.01 / month`.
-- **Subtotal Amazon S3:** **< $0.05 / month**.
-
-### 1.4 Amazon Elastic Container Registry (ECR)
-- **Storage Volume:** 1 active compressed Docker image (~600 MB). Lifecycle policy expires old images past 5 revisions.
-- **Rate:** $0.10 per GB-month.
-- **Subtotal Amazon ECR:** **~$0.06 – $0.10 / month**.
-
-### 1.5 AWS CloudWatch Logs & Monitoring
-- **Ingestion:** ~2 GB log events per month (FastAPI request logs, health probes).
-  - Rate: $0.50 per GB ingested = $1.00 / month.
-- **Storage:** 14-day retention (~1 GB average stored).
-  - Rate: $0.03 per GB-month = $0.03 / month.
-- **Subtotal CloudWatch:** **~$1.03 / month**.
-
-### 1.6 Network Data Transfer Out
-- **AWS Data Transfer Out to Internet:** First 100 GB per month is free under AWS Free Tier / standard allowance. Beyond 100 GB: $0.09/GB.
-- **Subtotal Data Transfer:** **$0.00 / month**.
-
-### 1.7 Frontend Hosting (Vercel)
-- **Tier:** Vercel Hobby Plan (Personal/Project tier).
-- **Includes:** Global Edge Network, automated SSL/TLS certificates, Git deployments, analytics.
-- **Subtotal Vercel:** **$0.00 / month**.
+### Free-Tier Operating Characteristics
+1. **Cold Starts:** When inactive for > 15 minutes, Render Free spins down the container. The first inbound request takes approximately 50 seconds to boot. Subsequent requests respond in sub-100ms.
+2. **Memory Ceiling:** Render enforces a 512 MB RAM limit. The single-worker ASGI configuration (`--workers 1`) maintains peak memory at **309.80 MB**, leaving **202 MB of safety headroom**.
+3. **Storage Quota:** The 5 certified private runtime datasets require only **10.56 MB** out of Cloudflare R2's 10,000 MB free allocation (>99.9% free buffer).
 
 ---
 
-## 2. Summary Monthly Cost Estimate
-
-| Resource Category | Minimum Monthly | Expected Monthly | Maximum Baseline |
-|---|---|---|---|
-| **ECS Fargate Compute** | $18.02 | $18.02 | $18.02 |
-| **Application Load Balancer** | $16.43 | $18.50 | $22.27 |
-| **Amazon S3 Storage** | $0.01 | $0.02 | $0.05 |
-| **Amazon ECR Storage** | $0.05 | $0.08 | $0.10 |
-| **CloudWatch Logs** | $0.50 | $1.03 | $2.00 |
-| **Data Transfer** | $0.00 | $0.00 | $0.50 |
-| **Vercel Frontend** | $0.00 | $0.00 | $0.00 |
-| **TOTAL ESTIMATED MONTHLY COST** | **$35.01** | **$37.65** | **$42.94** |
-
----
-
-## 3. Cost Control & Spending Guardrails
-
-### 3.1 AWS Budget Alert Setup
-To prevent surprise charges or billing spikes:
-1. Open the **AWS Billing and Cost Management Console**.
-2. Go to **Budgets** > **Create budget**.
-3. Choose **Cost budget** and name it `JobIntel-Monthly-Budget`.
-4. Set the budget amount to **$45.00 / month**.
-5. Configure alerts:
-   - Alert 1: When forecasted spend exceeds **80% ($36.00)**.
-   - Alert 2: When actual spend exceeds **100% ($45.00)**.
-   - Add your email address to receive immediate notifications.
+## 2. Archived / Optional Future Enterprise Path (Paid AWS Infrastructure)
 
 > [!NOTE]
-> A budget alert notifies you via email. AWS does not provide a native hard kill-switch by default, so immediate manual inspection is recommended if an alert triggers.
+> The paid AWS Fargate / ALB infrastructure detailed below was evaluated during Phase 0 and archived as an optional future enterprise path. It is **NOT** provisioned or active.
 
-### 3.2 Optional Cost-Reduction Architectures
-If the ~$37/month ALB baseline is higher than desired:
-1. **Fargate Spot:** Switching the ECS capacity provider to Fargate Spot reduces the Fargate compute cost by up to 70% (from $18.02 down to ~$5.40/month), reducing total cost to ~$23/month.
-2. **API Gateway HTTP API + Cloud Map:** Replacing the ALB with an Amazon API Gateway HTTP API ($1.00 per million requests, zero hourly base fee) and VPC Private Link would reduce the fixed cost to ~$19/month total.
+For reference, if an enterprise deployment requiring zero cold starts and dedicated cloud VPC isolation is desired in the future:
+
+| Resource | Sizing & Allocation | Basis | Estimated Cost |
+|---|---|---|---|
+| **ECS Fargate Compute** | 1 Task: 0.5 vCPU, 1.0 GB RAM (24/7) | $0.04048/vCPU-hr + $0.004445/GB-hr | $18.02 / month |
+| **Application Load Balancer** | 1 ALB (24/7) + 1 LCU | $0.0225/ALB-hr + $0.008/LCU-hr | $16.43 – $22.27 / month |
+| **Amazon S3 Storage** | ~20 MB storage + ~100 requests | $0.023/GB-mo | < $0.05 / month |
+| **Amazon ECR** | ~1 GB stored compressed image | $0.10/GB-mo | < $0.10 / month |
+| **CloudWatch Logs** | ~2 GB ingestion/month | $0.50/GB ingested | ~$1.03 / month |
+| **Total Enterprise AWS Baseline** | | | **~$35.65 – $41.50 / month** |

@@ -118,34 +118,24 @@ graph TD
 
 ## 7. AWS Cost Categories & Sizing Estimates
 
-Based on official AWS US East (N. Virginia `us-east-1`) pricing for continuous 24/7 availability:
+### 7.1 Active Approved Target: $0.00 / Month Genuinely Free Tier
 
-| Resource | Sizing / Allocation | Pricing Basis | Estimated Monthly Cost |
-|---|---|---|---|
-| **ECS Fargate Compute** | 1 Task: 0.5 vCPU, 1.0 GB RAM (24/7) | $0.04048/vCPU-hr + $0.004445/GB-hr | **$18.15** |
-| **Application Load Balancer** | 1 ALB (24/7 active) + ~1 LCU | $0.0225/ALB-hr + $0.008/LCU-hr | **$16.43 - $22.25** |
-| **Amazon S3 Storage** | ~20 MB storage + ~1,000 GETs/mo | $0.023/GB-mo + $0.0004/10k GETs | **$0.01** |
-| **Amazon ECR Storage** | 1 Image (~600 MB compressed) | $0.10/GB-mo | **$0.06** |
-| **AWS CloudWatch Logs** | ~2 GB ingestion/mo, 14-day retention | $0.50/GB ingested | **$1.00** |
-| **AWS Data Transfer Out** | ~5 GB/mo | $0.09/GB (first 100 GB/mo free) | **$0.00** |
-| **Vercel Frontend** | Hobby Tier (Custom Domain, Global CDN) | Free Tier eligible | **$0.00** |
-| **TOTAL ESTIMATED MONTHLY COST** | | | **~$35.65 – $41.50 / month** |
+| Component | Provider & Tier | Specifications & Quotas | Measured Peak | Monthly Cost |
+|---|---|---|---|:---:|
+| **Frontend** | Vercel Hobby | Global Edge CDN, Custom Domain, TLS, SPA Rewrites | ~1.5 MB bundle | **$0.00** |
+| **Backend** | Render Free Web Service | 0.1 CPU, 512 MB RAM, 750 free hrs/mo, 100 GB Bandwidth | 309.80 MB RAM | **$0.00** |
+| **Private Datasets** | Cloudflare R2 Free Tier | 10 GB storage, 10M read ops/mo, $0 egress fees | 10.56 MB | **$0.00** |
+| **Automated CI** | GitHub Actions (Ubuntu) | 2,000 free minutes/mo | ~2 min/build | **$0.00** |
+| **TOTAL RUNNING COST** | | | | **$0.00 / month** |
 
-*Cost Management Guardrail:* Set up AWS CloudWatch Billing Alarm & AWS Budgets threshold at **$45.00/month** with automated email notifications.
+### 7.2 Archived Optional Enterprise Evaluation (Paid AWS Infrastructure)
+For historical reference, the paid AWS architecture evaluated during Phase 0 (Fargate 0.5 vCPU/1GB RAM + ALB + ECR + CloudWatch) was estimated at ~$35.65 – $41.50/month. In accordance with user governance instructions, this paid path has been **archived without provisioning**.
 
 ---
 
-## 8. Staged Execution Plan
+## 8. Approved $0 Execution Plan
 
-1. **Phase 1: Frontend Decoupling & API Base Configuration**  
-   Configure `frontend/src/services/api.ts` to support `VITE_API_BASE_URL`. Verify build and tests.
-2. **Phase 2: Cloud Runtime S3 Ingestion & Verification Hook**  
-   Build `src/backend/utils/s3_sync.py` with automatic S3 artifact downloading, SHA-256 verification against certified manifest, and fail-closed semantics.
-3. **Phase 3: Infrastructure-as-Code (Terraform)**  
-   Create complete Terraform configuration (`terraform/`) for S3, ECR, ECS Fargate, ALB, IAM OIDC, and CloudWatch.
-4. **Phase 4: GitHub Actions Workflows**  
-   Create public-safe `.github/workflows/ci.yml` and protected `.github/workflows/deploy-aws.yml`.
-5. **Phase 5: Cloud Deployment Runbooks & Cost Documentation**  
-   Document setup, secrets, rollback procedures, and cost controls in `docs/deployment/`.
-6. **Phase 6: Verification & User Approval Gate**  
-   Halt before cloud provisioning; request explicit user sign-off.
+1. **Frontend (Vercel):** Connect GitHub repo, configure root directory `frontend`, build command `npm run build`, output `dist`, and set `VITE_API_BASE_URL` to the Render backend URL.
+2. **Backend (Render Free):** Connect GitHub repo via `render.yaml` or Render dashboard, runtime Python 3, single worker ASGI command `uvicorn src.backend.main:app --host 0.0.0.0 --port $PORT --workers 1`.
+3. **Private Data (Cloudflare R2 / S3 Free):** Host the 10.56 MB certified private runtime datasets in private storage, fetched on cold boot via `src/backend/utils/s3_sync.py` and cryptographically verified bitwise intact (10/10).
+4. **Automation:** Zero local machine dependencies; automatic deploys on `git push origin master`.

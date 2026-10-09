@@ -1,0 +1,30 @@
+# Render Infrastructure-as-Code Blueprint (Free Tier Web Service)
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: jobintel-backend
+    runtime: python
+    plan: free
+    region: oregon
+    branch: master
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+    startCommand: "uvicorn src.backend.main:app --host 0.0.0.0 --port $PORT --workers 1"
+    healthCheckPath: /api/ready
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: JOBINTEL_ENV
+        value: production
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: S3_BUCKET_NAME
+        sync: false
+      - key: S3_ENDPOINT_URL
+        sync: false
+      - key: AWS_ACCESS_KEY_ID
+        sync: false
+      - key: AWS_SECRET_ACCESS_KEY
+        sync: false
+      - key: AWS_REGION
+        value: auto

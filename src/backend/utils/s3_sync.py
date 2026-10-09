@@ -74,14 +74,26 @@ def sync_and_verify_artifacts(
 
     s3_client = None
     if bucket:
-        logger.info("Initializing S3 client for bucket '%s' in region '%s' via ECS Task Role...", bucket, region)
+        endpoint_url = os.getenv("S3_ENDPOINT_URL")
+        access_key = os.getenv("AWS_ACCESS_KEY_ID")
+        secret_key = os.getenv("AWS_SECRET_ACCESS_KEY")
+        logger.info(
+            "Initializing S3 client for bucket '%s' (endpoint: %s, region: %s)...",
+            bucket, endpoint_url or "standard-aws", region
+        )
         try:
             import boto3
-            s3_client = boto3.client("s3", region_name=region)
+            client_kwargs: Dict[str, Any] = {"region_name": region}
+            if endpoint_url:
+                client_kwargs["endpoint_url"] = endpoint_url
+            if access_key and secret_key:
+                client_kwargs["aws_access_key_id"] = access_key
+                client_kwargs["aws_secret_access_key"] = secret_key
+            s3_client = boto3.client("s3", **client_kwargs)
         except ImportError:
             logger.warning("boto3 package not installed. S3 sync skipped; checking local disk artifacts only.")
         except Exception as e:
-            logger.error("Failed to initialize AWS S3 client: %s", str(e))
+            logger.error("Failed to initialize S3 storage client: %s", str(e))
             if enforce_all:
                 raise ModelIntegrityError(f"Cloud storage unavailable: {e}")
 
