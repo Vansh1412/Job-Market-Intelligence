@@ -1,4 +1,4 @@
-name: JobIntel Phase 8.6.4 Protected Docker Release Gate
+name: JobIntel Phase 8.6.5 Protected Docker Release Gate
 
 on:
   workflow_dispatch:
@@ -37,13 +37,60 @@ jobs:
           Write-Host "Workspace: ${{ github.workspace }}"
           Write-Host "PowerShell Version: $($PSVersionTable.PSVersion)"
 
-      - name: 5. Verify Docker Availability
+      - name: 5. Verify Docker Availability & Daemon Readiness
         run: |
-          Write-Host "=== 2. VERIFYING DOCKER AVAILABILITY ==="
-          docker --version
-          if ($LASTEXITCODE -ne 0) { Write-Error "Docker CLI not found"; exit 1 }
-          docker info
-          if ($LASTEXITCODE -ne 0) { Write-Error "Docker daemon not running"; exit 1 }
+          Write-Host "=== 2. VERIFYING DOCKER AVAILABILITY & DAEMON READINESS ==="
+          
+          # Verify Docker CLI is installed and accessible
+          $prevEAP = $ErrorActionPreference
+          $ErrorActionPreference = "Continue"
+          $dockerVer = & docker --version 2>&1
+          $cliExit = $LASTEXITCODE
+          $ErrorActionPreference = $prevEAP
+
+          if ($cliExit -ne 0) {
+              Write-Error "INFRASTRUCTURE FAILURE: Docker CLI not found or not functional: $dockerVer"
+              exit 1
+          }
+          Write-Host "Docker CLI: $dockerVer"
+
+          # Verify Docker context uses desktop-linux / expected Linux engine
+          $contextOut = & docker context show 2>&1
+          Write-Host "Active Docker Context: $contextOut"
+
+          # Bounded retries for Docker daemon readiness
+          $maxRetries = 6
+          $retryInterval = 5
+          $daemonReady = $false
+          $lastError = ""
+
+          for ($i = 1; $i -le $maxRetries; $i++) {
+              Write-Host "Checking Docker daemon connectivity (attempt $i/$maxRetries)..."
+              $prevEAP = $ErrorActionPreference
+              $ErrorActionPreference = "Continue"
+              $serverVer = & docker info --format '{{.ServerVersion}}' 2>&1
+              $infoExit = $LASTEXITCODE
+              $ErrorActionPreference = $prevEAP
+
+              if ($infoExit -eq 0) {
+                  Write-Host "PASS: Docker daemon is online and responsive (Server Version: $serverVer)."
+                  $daemonReady = $true
+                  $LASTEXITCODE = 0
+                  break
+              } else {
+                  $lastError = $serverVer -join " "
+                  Write-Warning "Docker daemon not reachable (attempt $i): $lastError"
+                  if ($i -lt $maxRetries) {
+                      Start-Sleep -Seconds $retryInterval
+                  }
+              }
+          }
+
+          if (-not $daemonReady) {
+              Write-Error "INFRASTRUCTURE FAILURE: Docker daemon is unavailable after $maxRetries attempts.`nEndpoint: npipe:////./pipe/dockerDesktopLinuxEngine`nError: $lastError`nOperational Requirement: Docker Desktop must remain open and running on the self-hosted runner host with the 'desktop-linux' context."
+              exit 1
+          }
+          $LASTEXITCODE = 0
 
       - name: 6. Verify Exact Host Data Paths & Required Parquets
         run: |
@@ -96,22 +143,41 @@ jobs:
           Write-Host "=== 7. STARTING CONTAINER WITH READ-ONLY DATA MOUNT ==="
           $containerName = "jobintel-phase8-6-certification"
 
-          $existing = docker ps -a --filter "name=^$containerName$" --format "{{.Names}}" 2>$null
+          # Verify daemon connectivity before pre-cleanup
+          $prevEAP = $ErrorActionPreference
+          $ErrorActionPreference = "Continue"
+          $pingDaemon = & docker info --format '{{.ServerVersion}}' 2>&1
+          $pingExit = $LASTEXITCODE
+          $ErrorActionPreference = $prevEAP
 
-          if ($existing -contains $containerName) {
-              Write-Host "Existing certification container found. Stopping..."
-              $prevEAP = $ErrorActionPreference
-              $ErrorActionPreference = "Continue"
-              docker stop $containerName 2>$null
-              if ($LASTEXITCODE -ne 0) {
-                  Write-Warning "Container stop returned non-zero; continuing to removal."
-              }
+          if ($pingExit -ne 0) {
+              Write-Error "INFRASTRUCTURE FAILURE: Docker daemon is not responding before container start.`nError: $pingDaemon"
+              exit 1
+          }
 
-              docker rm $containerName 2>$null
-              if ($LASTEXITCODE -ne 0) {
-                  Write-Warning "Container removal returned non-zero."
+          # Query existing container with exit-code verification
+          $prevEAP = $ErrorActionPreference
+          $ErrorActionPreference = "Continue"
+          $existingOut = & docker ps -a --filter "name=^$containerName$" --format "{{.Names}}" 2>&1
+          $existingExit = $LASTEXITCODE
+          $ErrorActionPreference = $prevEAP
+
+          if ($existingExit -ne 0) {
+              Write-Error "DOCKER COMMAND FAILURE: Failed to query existing containers: $existingOut"
+              exit 1
+          }
+
+          $containerExists = ($existingOut -split "`r?`n") -contains $containerName
+
+          if ($containerExists) {
+              $statusOut = (& docker inspect --format "{{.State.Status}}" $containerName 2>&1)
+              Write-Host "Existing certification container found (Status: $statusOut)."
+              if ($statusOut -eq "running") {
+                  Write-Host "Stopping running container..."
+                  $null = & docker stop $containerName 2>&1
               }
-              $ErrorActionPreference = $prevEAP
+              Write-Host "Removing existing container..."
+              $null = & docker rm $containerName 2>&1
           }
           else {
               Write-Host "No existing certification container found. Continuing."
@@ -422,10 +488,65 @@ jobs:
           Write-Host "=== 27 & 28. CONTAINER LOG AUDIT & CLEANUP ==="
           $containerName = "jobintel-phase8-6-certification"
 
-          $existing = docker ps -a --filter "name=^$containerName$" --format "{{.Names}}" 2>$null
+          # 1. Bounded retries for Docker daemon readiness at cleanup
+          $maxRetries = 6
+          $retryInterval = 5
+          $daemonReady = $false
+          $daemonError = ""
 
-          if ($existing -contains $containerName) {
-              Write-Host "Collecting container logs..."
+          for ($i = 1; $i -le $maxRetries; $i++) {
+              Write-Host "Checking Docker daemon connectivity for cleanup (attempt $i/$maxRetries)..."
+              $prevEAP = $ErrorActionPreference
+              $ErrorActionPreference = "Continue"
+              $serverVer = & docker info --format '{{.ServerVersion}}' 2>&1
+              $infoExit = $LASTEXITCODE
+              $ErrorActionPreference = $prevEAP
+
+              if ($infoExit -eq 0) {
+                  $daemonReady = $true
+                  $LASTEXITCODE = 0
+                  break
+              } else {
+                  $daemonError = $serverVer -join " "
+                  Write-Warning "Docker daemon not reachable for cleanup (attempt $i): $daemonError"
+                  if ($i -lt $maxRetries) {
+                      Start-Sleep -Seconds $retryInterval
+                  }
+              }
+          }
+
+          # Clean workspace junction regardless of daemon state to prevent disk leaks
+          if (Test-Path "${{ github.workspace }}/data/processed") {
+              cmd.exe /c "rmdir `"${{ github.workspace }}\data\processed`"" 2>$null
+          }
+
+          # 2. If daemon is unavailable, DO NOT treat as successful cleanup; fail with precise diagnostic
+          if (-not $daemonReady) {
+              Write-Error "INFRASTRUCTURE FAILURE: Docker daemon is unavailable during cleanup after $maxRetries attempts.`nEndpoint: npipe:////./pipe/dockerDesktopLinuxEngine`nError: $daemonError`nCannot verify container lifecycle, audit logs, or clean container $containerName."
+              exit 1
+          }
+
+          # 3. Daemon is confirmed online; perform existence-aware container check
+          $prevEAP = $ErrorActionPreference
+          $ErrorActionPreference = "Continue"
+          $existingOut = & docker ps -a --filter "name=^$containerName$" --format "{{.Names}}" 2>&1
+          $existingExit = $LASTEXITCODE
+          $ErrorActionPreference = $prevEAP
+
+          if ($existingExit -ne 0) {
+              Write-Error "DOCKER COMMAND FAILURE: Failed to list containers during cleanup: $existingOut"
+              exit 1
+          }
+
+          $containerExists = ($existingOut -split "`r?`n") -contains $containerName
+
+          if ($containerExists) {
+              # Distinguish running vs stopped state
+              $statusOut = (& docker inspect --format "{{.State.Status}}" $containerName 2>&1)
+              Write-Host "Found container $containerName in state: $statusOut"
+
+              # 4. Preserve container logs and failure evidence before modifying or removing container
+              Write-Host "Collecting container logs to container.log..."
               $logExit = 0
               try {
                   $prevEAP = $ErrorActionPreference
@@ -438,47 +559,55 @@ jobs:
               }
 
               if ($logExit -ne 0) {
-                  Write-Error "Failed to retrieve logs for container $containerName (exit code $logExit)!"
+                  Write-Error "DOCKER COMMAND FAILURE: Failed to retrieve logs for container $containerName (exit code $logExit)!"
                   exit 1
               }
 
-              Write-Host "Stopping container..."
+              # Stop container if currently running
+              if ($statusOut -eq "running") {
+                  Write-Host "Stopping container $containerName..."
+                  $prevEAP = $ErrorActionPreference
+                  $ErrorActionPreference = "Continue"
+                  $stopOut = & docker stop $containerName 2>&1
+                  $stopExit = $LASTEXITCODE
+                  $ErrorActionPreference = $prevEAP
+                  if ($stopExit -ne 0) {
+                      Write-Warning "Container stop returned non-zero ($stopExit): $stopOut"
+                  }
+              } else {
+                  Write-Host "Container $containerName is already stopped (State: $statusOut)."
+              }
+
+              # Remove container
+              Write-Host "Removing container $containerName..."
               $prevEAP = $ErrorActionPreference
               $ErrorActionPreference = "Continue"
-              docker stop $containerName 2>$null
-              if ($LASTEXITCODE -ne 0) {
-                  Write-Warning "Container stop returned non-zero."
-              }
-
-              Write-Host "Removing container..."
-              docker rm $containerName 2>$null
-              if ($LASTEXITCODE -ne 0) {
-                  Write-Warning "Container removal returned non-zero."
-              }
+              $rmOut = & docker rm $containerName 2>&1
+              $rmExit = $LASTEXITCODE
               $ErrorActionPreference = $prevEAP
+              if ($rmExit -ne 0) {
+                  Write-Warning "Container removal returned non-zero ($rmExit): $rmOut"
+              }
 
+              # 5. Audit logs for fatal errors and print tail to CI output
               if (Test-Path container.log) {
+                  Write-Host "--- Container Log Tail (Last 30 lines) ---"
                   Get-Content container.log | Select-Object -Last 30
                   $logContent = Get-Content container.log -Raw
                   if ($logContent -match "Traceback \(most recent call last\)") {
-                      Write-Error "Fatal traceback detected in container log!"
+                      Write-Error "FATAL LOG AUDIT: Traceback detected in container log!"
                       exit 1
                   }
                   if ($logContent -match "ModuleNotFoundError") {
-                      Write-Error "ModuleNotFoundError detected in container log!"
+                      Write-Error "FATAL LOG AUDIT: ModuleNotFoundError detected in container log!"
                       exit 1
                   }
                   Write-Host "PASS: Zero fatal errors in container log."
               }
-          }
-          else {
-              Write-Host "Container does not exist; cleanup not required."
+          } else {
+              Write-Host "Container $containerName is absent; no container cleanup required."
           }
 
-          # Clean workspace junction if created
-          if (Test-Path "${{ github.workspace }}/data/processed") {
-              cmd.exe /c "rmdir `"${{ github.workspace }}\data\processed`"" 2>$null
-          }
           $LASTEXITCODE = 0
 
       - name: 23. Post-Runtime Frozen Hash Verification (10/10)
