@@ -186,20 +186,58 @@ A comprehensive PowerShell 5.1 test suite was executed locally simulating the Gi
 
 ---
 
-## 20. GitHub Actions Result: PENDING MANUAL DISPATCH
+## 20. Phase 8.6.4 Runner Script Wrapper & $LASTEXITCODE Resolution: PASS (100%)
+
+### Forensic Incident Analysis:
+- **Observation in GitHub Actions Run:**
+  Step 10 (`10. Verify Container Filesystem & Read-Only Mount`) output:
+  - `PASS: Both private parquet files exist inside container.`
+  - `PASS: Read-only mount correctly rejected mutation attempt.`
+  - Followed immediately by: `Process completed with exit code 1.`
+- **Root Cause Discovered:**
+  In Step 10, the negative existence check is performed via:
+  ```powershell
+  $null = & docker exec $containerName sh -c "test -e /app/data/processed/test_mutation.txt" 2>&1
+  $fileCheckExit = $LASTEXITCODE
+  ```
+  Because the mutation was rejected and the file does *not* exist, POSIX `test -e` returns exit code `1`.
+  PowerShell records this in `$LASTEXITCODE = 1`.
+  The GitHub Actions runner executes PowerShell steps via a dot-sourced wrapper template:
+  ```powershell
+  $ErrorActionPreference = 'stop'
+  . '<step_script>.ps1'
+  if ((Test-Path -LiteralPath variable:\LASTEXITCODE)) { exit $LASTEXITCODE }
+  ```
+  Because Step 10 concluded after the `Write-Host "PASS: ..."` statement without executing any further native commands, `$LASTEXITCODE` remained `1`. The runner wrapper executed `exit $LASTEXITCODE`, terminating the step with exit code 1 despite all security assertions passing.
+- **Minimal Surgical Fix:**
+  1. Appended `$LASTEXITCODE = 0` at the end of Step 10 immediately following `Write-Host "PASS: Read-only mount correctly rejected mutation attempt."`.
+  2. Appended `$LASTEXITCODE = 0` at the end of Step 22 (cleanup) to guarantee a clean state regardless of native cleanup tool exits.
+  3. Preserved all negative assertions: any genuine failure (e.g., successful write, presence of mutation file, missing parquet files) triggers `Write-Error` and explicit `exit 1`.
+
+| Test Suite / Objective | Command / Action | Observed Behavior | Status |
+| :--- | :--- | :--- | :---: |
+| **A. Runner Wrapper Simulation (Without Reset)** | Mock Step 10 ending with `LASTEXITCODE = 1` | Runner wrapper evaluates `exit $LASTEXITCODE` $\rightarrow$ Process exits with code 1. Exact reproduction. | **PASS (REPRODUCED)** |
+| **B. Runner Wrapper Simulation (With Reset)** | Mock Step 10 ending with `LASTEXITCODE = 0` | Runner wrapper evaluates `exit $LASTEXITCODE` $\rightarrow$ Process exits with code 0 cleanly. | **PASS (VERIFIED)** |
+| **C. Negative Assertion Integrity** | Simulated mutation success ($mutationExitCode=0$) / File exists ($fileCheckExit=0$) | Triggers `Write-Error` and immediate fatal `exit 1` before reset line. Genuine failures are never masked. | **PASS** |
+| **D. Frozen Cryptographic Hashes** | 10/10 SHA-256 verification | Bit-for-bit exact match on all 10 model/data artifacts. | **PASS (10/10)** |
+
+---
+
+## 21. GitHub Actions Result: PENDING MANUAL DISPATCH
 - The local validation suite passed 100%.
-- In accordance with the Stop Condition of Phase 8.6.3, the workflow will **NOT** be automatically triggered until user approval is received.
+- In accordance with the Stop Condition of Phase 8.6.4, the workflow will **NOT** be automatically triggered until user approval is received.
 
 ---
 
-## 21. Remaining Infrastructure Issues: NONE
-- All PowerShell 5.1 native-command exit-code edge cases (unconditional cleanup, expected-fail mutations, and log redirection) are hardened with robust native-safe patterns.
+## 22. Remaining Infrastructure Issues: NONE
+- All PowerShell 5.1 native-command exit-code edge cases (unconditional cleanup, expected-fail mutations, runner dot-sourced wrapper exit code handling, and log redirection) are hardened with robust native-safe patterns.
 
 ---
 
-## 22. Final Verdict
+## 23. Final Verdict
 
 # **`PENDING VERIFICATION`** (Awaiting GitHub Actions Execution)
 ### Local Infrastructure & Runtime Validation: **`100% PASS`**
 
-> **Reasoning:** All local tests, Docker builds, container runs, health probes, live inferences, mutation rejections, log extractions, and hash checks are **`PASS`**. Per the strict rules of Phase 8.6, official production certification cannot be declared as `READY` until the repaired workflow is manually dispatched and completes with a green checkmark in GitHub Actions.
+> **Reasoning:** All local tests, Docker builds, container runs, health probes, live inferences, mutation rejections, log extractions, runner wrapper exit code resets, and hash checks are **`PASS`**. Per the strict rules of Phase 8.6, official production certification cannot be declared as `READY` until the repaired workflow is manually dispatched and completes with a green checkmark in GitHub Actions.
+

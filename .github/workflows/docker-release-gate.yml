@@ -1,4 +1,4 @@
-name: JobIntel Phase 8.6.3 Protected Docker Release Gate
+name: JobIntel Phase 8.6.4 Protected Docker Release Gate
 
 on:
   workflow_dispatch:
@@ -185,6 +185,7 @@ jobs:
           }
 
           Write-Host "PASS: Read-only mount correctly rejected mutation attempt."
+          $LASTEXITCODE = 0
 
       - name: 11. In-Container Cryptographic Hash Verification (10/10)
         run: |
@@ -478,6 +479,7 @@ jobs:
           if (Test-Path "${{ github.workspace }}/data/processed") {
               cmd.exe /c "rmdir `"${{ github.workspace }}\data\processed`"" 2>$null
           }
+          $LASTEXITCODE = 0
 
       - name: 23. Post-Runtime Frozen Hash Verification (10/10)
         run: |
