@@ -1,4 +1,4 @@
-name: JobIntel Phase 8.6.5 Protected Docker Release Gate
+name: JobIntel Phase 8.6.7 Protected Docker Release Gate
 
 on:
   workflow_dispatch:
@@ -460,13 +460,121 @@ jobs:
 
       - name: 20. Host-Side Backend Tests with Linked Private Data
         run: |
-          Write-Host "=== RUNNING HOST-SIDE BACKEND TEST SUITE ==="
-          if (-not (Test-Path "${{ github.workspace }}/data/processed")) {
-              cmd.exe /c "mklink /J `"${{ github.workspace }}\data\processed`" `"${env:HOST_DATA_PATH}`""
+          Write-Host "=== RUNNING HOST-SIDE BACKEND TEST SUITE WITH LINKED PRIVATE DATA ==="
+
+          # 1. Resolve and validate actual private host data directory
+          $sourceDataPath = $env:HOST_DATA_PATH
+          if (-not $sourceDataPath -or -not (Test-Path -LiteralPath $sourceDataPath)) {
+              $sourceDataPath = "E:/Job Market/data/processed"
           }
-          python -m pip install -r requirements.txt
-          python -m pytest tests/ -v
-          if ($LASTEXITCODE -ne 0) { Write-Error "Host-side pytest suite failed"; exit 1 }
+          $sourceDataPath = ($sourceDataPath -replace '/', '\').TrimEnd('\')
+
+          if (-not (Test-Path -LiteralPath $sourceDataPath)) {
+              Write-Error "CRITICAL: Private source data directory not found: $sourceDataPath"
+              exit 1
+          }
+
+          $usaSourceParquet = Join-Path $sourceDataPath "modeling_dataset.parquet"
+          $indiaSourceParquet = Join-Path $sourceDataPath "india\india_modeling_cohort.parquet"
+
+          if (-not (Test-Path -LiteralPath $usaSourceParquet)) {
+              Write-Error "CRITICAL: USA modeling dataset missing in source: $usaSourceParquet"
+              exit 1
+          }
+          if (-not (Test-Path -LiteralPath $indiaSourceParquet)) {
+              Write-Error "CRITICAL: India modeling cohort missing in source: $indiaSourceParquet"
+              exit 1
+          }
+
+          # Verify private files are readable and non-empty
+          try {
+              $usaLen = (Get-Item -LiteralPath $usaSourceParquet).Length
+              $indiaLen = (Get-Item -LiteralPath $indiaSourceParquet).Length
+              if ($usaLen -le 0 -or $indiaLen -le 0) {
+                  Write-Error "CRITICAL: Private datasets are empty or corrupt."
+                  exit 1
+              }
+          } catch {
+              Write-Error "CRITICAL: Failed to read private source files: $_"
+              exit 1
+          }
+
+          # 2. Establish temporary Windows directory junction in workspace
+          $wsDataDir = Join-Path "${{ github.workspace }}" "data"
+          $wsProcessedDir = Join-Path $wsDataDir "processed"
+          $junctionCreatedByStep = $false
+
+          if (Test-Path -LiteralPath $wsProcessedDir) {
+              $item = Get-Item -LiteralPath $wsProcessedDir -Force
+              $isJunction = ($item.Attributes -band [System.IO.FileAttributes]::ReparsePoint) -ne 0
+              if ($isJunction) {
+                  Write-Host "Reusing existing directory junction at $wsProcessedDir"
+              } else {
+                  Write-Error "CRITICAL: Target $wsProcessedDir already exists as a non-junction directory. Will not overwrite."
+                  exit 1
+              }
+          } else {
+              # Ensure parent data directory exists so junction creation succeeds
+              if (-not (Test-Path -LiteralPath $wsDataDir)) {
+                  New-Item -ItemType Directory -Path $wsDataDir -Force | Out-Null
+              }
+              Write-Host "Creating temporary directory junction: $wsProcessedDir -> $sourceDataPath"
+              $null = New-Item -ItemType Junction -Path $wsProcessedDir -Target $sourceDataPath
+              if (-not (Test-Path -LiteralPath $wsProcessedDir)) {
+                  Write-Error "CRITICAL: Failed to establish directory junction at $wsProcessedDir"
+                  exit 1
+              }
+              $junctionCreatedByStep = $true
+          }
+
+          # 3. Print concise data-access diagnostic
+          Write-Host "--- DATA ACCESS DIAGNOSTIC ---"
+          $usaTarget = Join-Path $wsProcessedDir "modeling_dataset.parquet"
+          $indiaTarget = Join-Path $wsProcessedDir "india\india_modeling_cohort.parquet"
+          $usaTargetLen = (Get-Item -LiteralPath $usaTarget).Length
+          $usaTargetReadable = Test-Path -LiteralPath $usaTarget
+          $indiaTargetLen = (Get-Item -LiteralPath $indiaTarget).Length
+          $indiaTargetReadable = Test-Path -LiteralPath $indiaTarget
+          Write-Host "USA Cohort ($usaTarget): $usaTargetLen bytes (Readable: $usaTargetReadable)"
+          Write-Host "India Cohort ($indiaTarget): $indiaTargetLen bytes (Readable: $indiaTargetReadable)"
+          Write-Host "------------------------------"
+
+          # 4. Execute test suite with safe cleanup preserving exit code
+          $pytestExit = 0
+          try {
+              python -m pip install -r requirements.txt
+              if ($LASTEXITCODE -ne 0) {
+                  throw "pip install failed with exit code $LASTEXITCODE"
+              }
+              python -m pytest tests/ -v
+              $pytestExit = $LASTEXITCODE
+          } catch {
+              Write-Error "Host-side backend execution error: $_"
+              if ($pytestExit -eq 0) { $pytestExit = 1 }
+          } finally {
+              # Safe cleanup: only remove junction, never delete source files
+              if ($junctionCreatedByStep -and (Test-Path -LiteralPath $wsProcessedDir)) {
+                  try {
+                      $checkItem = Get-Item -LiteralPath $wsProcessedDir -Force -ErrorAction SilentlyContinue
+                      if ($checkItem -and ($checkItem.Attributes -band [System.IO.FileAttributes]::ReparsePoint)) {
+                          Write-Host "Cleaning up temporary directory junction at $wsProcessedDir..."
+                          cmd.exe /c "rmdir `"$wsProcessedDir`""
+                      }
+                      # If parent data dir is empty, remove it
+                      if ((Test-Path -LiteralPath $wsDataDir) -and (Get-ChildItem -LiteralPath $wsDataDir -Force | Measure-Object).Count -eq 0) {
+                          Remove-Item -LiteralPath $wsDataDir -Force -ErrorAction SilentlyContinue
+                      }
+                  } catch {
+                      Write-Warning "Junction cleanup encountered warning: $_"
+                  }
+              }
+          }
+
+          if ($pytestExit -ne 0) {
+              Write-Error "Host-side pytest suite failed with exit code $pytestExit"
+              exit $pytestExit
+          }
+          Write-Host "PASS: Host-side backend tests completed successfully."
 
       - name: 21. Host-Side Frontend Tests, Lint & Build
         run: |
@@ -516,8 +624,17 @@ jobs:
           }
 
           # Clean workspace junction regardless of daemon state to prevent disk leaks
-          if (Test-Path "${{ github.workspace }}/data/processed") {
-              cmd.exe /c "rmdir `"${{ github.workspace }}\data\processed`"" 2>$null
+          $wsProcessedDir = Join-Path "${{ github.workspace }}" "data\processed"
+          $wsDataDir = Join-Path "${{ github.workspace }}" "data"
+          if (Test-Path -LiteralPath $wsProcessedDir) {
+              $checkItem = Get-Item -LiteralPath $wsProcessedDir -Force -ErrorAction SilentlyContinue
+              if ($checkItem -and ($checkItem.Attributes -band [System.IO.FileAttributes]::ReparsePoint)) {
+                  Write-Host "Removing residual workspace junction at $wsProcessedDir..."
+                  cmd.exe /c "rmdir `"$wsProcessedDir`""
+              }
+          }
+          if ((Test-Path -LiteralPath $wsDataDir) -and (Get-ChildItem -LiteralPath $wsDataDir -Force | Measure-Object).Count -eq 0) {
+              Remove-Item -LiteralPath $wsDataDir -Force -ErrorAction SilentlyContinue
           }
 
           # 2. If daemon is unavailable, DO NOT treat as successful cleanup; fail with precise diagnostic
