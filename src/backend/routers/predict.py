@@ -71,6 +71,8 @@ def get_prediction_options():
 @router.post("/estimate")
 def estimate_salary(req: PredictionRequest):
     try:
+        from src.backend.governance.service import record_inference_governance
+        record_inference_governance(market="USA", model_id="salary_usa_xgb_model")
         result = predict_job_profile(
             role_family=req.role_family,
             seniority=req.seniority,

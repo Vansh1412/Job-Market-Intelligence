@@ -189,6 +189,17 @@ def evaluate_cv(model_factory, X_df, y_raw, groups, feature_cols, target_type="r
 
 def run_all_experiments():
     """Main execution orchestrating all Phase India-4 experiments."""
+    from src.backend.governance.training_governance import TrainingGovernanceGate
+    gate = TrainingGovernanceGate()
+    gov_eval = gate.evaluate_training_request(
+        source_id="in.jobintel.market-data",
+        dataset_sha256="0000000000000000000000000000000000000000000000000000000000000000",
+    )
+    if not gov_eval.allowed:
+        raise PermissionError(
+            f"Training halted by Governance Gate: [{gov_eval.reason_code}] {' '.join(gov_eval.caveats)}"
+        )
+
     os.makedirs(MODELS_DIR, exist_ok=True)
     os.makedirs(TABLES_DIR, exist_ok=True)
     os.makedirs(FIGURES_DIR, exist_ok=True)

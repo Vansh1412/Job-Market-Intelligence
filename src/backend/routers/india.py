@@ -49,6 +49,8 @@ def get_india_options():
 def predict_india_salary(req: IndiaPredictionRequest):
     """Execute live India salary prediction using frozen HistGradientBoostingRegressor model."""
     try:
+        from src.backend.governance.service import record_inference_governance
+        record_inference_governance(market="India", model_id="salary_india_hgb_model")
         result = IndiaService.predict(
             normalized_role=req.normalized_role,
             experience_midpoint_years=req.experience_midpoint_years,

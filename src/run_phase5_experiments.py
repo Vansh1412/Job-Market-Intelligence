@@ -72,6 +72,20 @@ def main():
     log("=" * 70)
 
     # -------------------------------------------------------------
+    # STAGE 0: TRAINING GOVERNANCE GATE EVALUATION
+    # -------------------------------------------------------------
+    from src.backend.governance.training_governance import TrainingGovernanceGate
+    gate = TrainingGovernanceGate()
+    gov_eval = gate.evaluate_training_request(
+        source_id="us.jobintel.market-data",
+        dataset_sha256="0000000000000000000000000000000000000000000000000000000000000000",
+    )
+    if not gov_eval.allowed:
+        raise PermissionError(
+            f"Training halted by Governance Gate: [{gov_eval.reason_code}] {' '.join(gov_eval.caveats)}"
+        )
+
+    # -------------------------------------------------------------
     # STAGES 1 & 2: DATA AUDIT & VALIDATION
     # -------------------------------------------------------------
     log("STAGE 1 & 2: Loading dataset and auditing schema integrity...")

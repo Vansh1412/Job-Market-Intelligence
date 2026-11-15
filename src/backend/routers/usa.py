@@ -48,6 +48,8 @@ def get_usa_options():
 def predict_usa_salary(req: USAPredictionRequest):
     """Execute live USA salary prediction using frozen XGBoost model."""
     try:
+        from src.backend.governance.service import record_inference_governance
+        record_inference_governance(market="USA", model_id="salary_usa_xgb_model")
         result = USAService.predict(
             role_family=req.role_family,
             seniority=req.seniority,
