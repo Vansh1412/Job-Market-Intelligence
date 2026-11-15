@@ -198,7 +198,20 @@ class ModelRegistry:
         # 1. Cryptographic validation
         self.verify_all_artifacts()
         verified_count = sum(1 for v in self._verification_results.values() if v.get("verified"))
-        print(f"Verified {verified_count}/{len(EXPECTED_HASHES)} frozen artifacts bitwise intact.")
+        mandatory_count = sum(1 for k, spec in EXPECTED_HASHES.items() if spec.get("required", True))
+        mandatory_verified = sum(
+            1 for k, v in self._verification_results.items()
+            if EXPECTED_HASHES.get(k, {}).get("required", True) and v.get("verified")
+        )
+        optional_count = sum(1 for k, spec in EXPECTED_HASHES.items() if not spec.get("required", True))
+        optional_verified = sum(
+            1 for k, v in self._verification_results.items()
+            if not EXPECTED_HASHES.get(k, {}).get("required", True) and v.get("verified")
+        )
+        print(
+            f"Verified {mandatory_verified}/{mandatory_count} mandatory models bitwise intact; "
+            f"{optional_verified}/{optional_count} optional cohorts mounted."
+        )
 
         # 2. Load USA models
         self.usa_salary_model = joblib.load(EXPECTED_HASHES["usa_salary_model"]["path"])
@@ -237,17 +250,24 @@ class ModelRegistry:
     def get_status_report(self) -> Dict[str, Any]:
         """Return structured verification report for health/meta endpoints."""
         verified_count = sum(1 for v in self._verification_results.values() if v.get("verified"))
-        mandatory_verified = all(
-            v.get("verified") for k, v in self._verification_results.items()
-            if EXPECTED_HASHES.get(k, {}).get("required", True)
+        mandatory_count = sum(1 for k, spec in EXPECTED_HASHES.items() if spec.get("required", True))
+        mandatory_verified_count = sum(
+            1 for k, v in self._verification_results.items()
+            if EXPECTED_HASHES.get(k, {}).get("required", True) and v.get("verified")
         )
+        optional_count = sum(1 for k, spec in EXPECTED_HASHES.items() if not spec.get("required", True))
+        optional_verified_count = sum(
+            1 for k, v in self._verification_results.items()
+            if not EXPECTED_HASHES.get(k, {}).get("required", True) and v.get("verified")
+        )
+        mandatory_verified = (mandatory_verified_count == mandatory_count)
         return {
             "status": "GREEN" if (self._artifacts_loaded and mandatory_verified) else "UNINITIALIZED",
             "artifacts_verified_count": verified_count,
-            "mandatory_verified_count": sum(
-                1 for k, v in self._verification_results.items()
-                if EXPECTED_HASHES.get(k, {}).get("required", True) and v.get("verified")
-            ),
+            "mandatory_verified_count": mandatory_verified_count,
+            "mandatory_total_count": mandatory_count,
+            "optional_verified_count": optional_verified_count,
+            "optional_total_count": optional_count,
             "artifacts": self._verification_results,
             "models_loaded": {
                 "usa_salary_model": type(self.usa_salary_model).__name__,

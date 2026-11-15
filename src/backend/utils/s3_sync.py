@@ -187,9 +187,31 @@ def sync_and_verify_artifacts(
                 )
             results[key] = {"path": rel_path, "status": "MISSING"}
 
+    mandatory_models = [k for k, spec in artifacts.items() if spec.get("type") == "model_artifact"]
+    metadata_artifacts = [k for k, spec in artifacts.items() if spec.get("type") in ("metadata", "runtime_dataset")]
+    optional_datasets = [k for k, spec in artifacts.items() if spec.get("type") == "optional_research_cohort" or not spec.get("required", True)]
+
+    mandatory_models_verified = sum(1 for k in mandatory_models if results.get(k, {}).get("status") in ("VERIFIED_LOCAL", "SYNCED_AND_VERIFIED"))
+    metadata_verified = sum(1 for k in metadata_artifacts if results.get(k, {}).get("status") in ("VERIFIED_LOCAL", "SYNCED_AND_VERIFIED"))
+    optional_available = sum(1 for k in optional_datasets if results.get(k, {}).get("status") in ("VERIFIED_LOCAL", "SYNCED_AND_VERIFIED"))
+
+    mandatory_models_status = "VERIFIED_LOCAL" if mandatory_models_verified == len(mandatory_models) else "DEGRADED"
+    metadata_status = "VERIFIED_LOCAL" if metadata_verified == len(metadata_artifacts) else "DEGRADED"
+    optional_datasets_status = "ALL_AVAILABLE" if optional_available == len(optional_datasets) else (
+        "PARTIALLY_UNMOUNTED" if optional_available > 0 else "ALL_UNMOUNTED"
+    )
+
+    sync_completeness = "COMPLETE" if verified_count == len(artifacts) else (
+        "PARTIAL_MANDATORY_VERIFIED" if (mandatory_models_verified == len(mandatory_models) and metadata_verified == len(metadata_artifacts))
+        else "INCOMPLETE"
+    )
+
     logger.info(
-        "Artifact Sync Summary: %d verified (%d freshly downloaded) out of %d artifacts.",
-        verified_count, synced_count, len(artifacts)
+        "Artifact Sync Summary: %d/%d mandatory models, %d/%d metadata files, %d/%d optional datasets available (total verified: %d/%d).",
+        mandatory_models_verified, len(mandatory_models),
+        metadata_verified, len(metadata_artifacts),
+        optional_available, len(optional_datasets),
+        verified_count, len(artifacts),
     )
 
     return {
@@ -197,6 +219,13 @@ def sync_and_verify_artifacts(
         "total_artifacts": len(artifacts),
         "verified_count": verified_count,
         "synced_count": synced_count,
+        "mandatory_models_verified": f"{mandatory_models_verified}/{len(mandatory_models)}",
+        "mandatory_models_status": mandatory_models_status,
+        "metadata_verified": f"{metadata_verified}/{len(metadata_artifacts)}",
+        "metadata_status": metadata_status,
+        "optional_datasets_available": f"{optional_available}/{len(optional_datasets)}",
+        "optional_datasets_status": optional_datasets_status,
+        "sync_completeness": sync_completeness,
         "artifacts": results,
     }
 

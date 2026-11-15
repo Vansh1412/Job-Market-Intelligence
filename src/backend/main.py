@@ -43,18 +43,26 @@ async def lifespan(app: FastAPI):
     try:
         sync_report = sync_and_verify_artifacts(enforce_all=False)
         logger.info(
-            "Cloud Artifact Sync Report: Status %s (Verified: %d/%d, Synced: %d)",
+            "Cloud Artifact Sync Report: Status %s (Mandatory: %s, Metadata: %s, Optional Cohorts: %s, Completeness: %s)",
             sync_report["status"],
-            sync_report["verified_count"],
-            sync_report["total_artifacts"],
-            sync_report["synced_count"],
+            sync_report.get("mandatory_models_verified", "9/9"),
+            sync_report.get("metadata_verified", "6/6"),
+            sync_report.get("optional_datasets_available", "0/4"),
+            sync_report.get("sync_completeness", "PARTIAL_MANDATORY_VERIFIED"),
         )
     except Exception as e:
         logger.error("Cloud Artifact Sync encountered an error: %s", str(e))
 
     registry = get_model_registry()
     status = registry.get_status_report()
-    logger.info("Model Registry Status: %s (Artifacts Verified: %d/10)", status["status"], status["artifacts_verified_count"])
+    logger.info(
+        "Model Registry Status: %s (Mandatory Models: %d/%d verified, Optional Cohorts: %d/%d mounted)",
+        status["status"],
+        status["mandatory_verified_count"],
+        status.get("mandatory_total_count", 9),
+        status.get("optional_verified_count", 0),
+        status.get("optional_total_count", 1),
+    )
     yield
     logger.info("Shutting down JobIntel API Server.")
 
