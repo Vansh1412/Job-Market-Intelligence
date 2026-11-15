@@ -261,6 +261,21 @@ def test_cors_preflight_post_india_predict_succeeds():
         assert "POST" in allow_methods or "*" in allow_methods
 
 
+def test_cors_staging_origin_accepted():
+    """Verify GET and POST CORS preflight succeeds for staging Vercel origin."""
+    staging_origin = "https://jobintel-staging.vercel.app"
+    for path in ["/india/options", "/api/india/options", "/api/usa/predict"]:
+        method = "POST" if "predict" in path else "GET"
+        res = client.options(path, headers={
+            "Origin": staging_origin,
+            "Access-Control-Request-Method": method,
+            "Access-Control-Request-Headers": "content-type"
+        })
+        assert res.status_code == 200, f"Preflight OPTIONS failed on {path} with status {res.status_code}"
+        assert res.headers.get("access-control-allow-origin") == staging_origin
+        assert res.headers.get("access-control-allow-credentials") == "true"
+
+
 def test_cors_unapproved_origin_rejected():
     """Verify an unapproved origin is strictly rejected without CORS headers."""
     unapproved_origin = "https://malicious-unapproved-site.com"

@@ -85,6 +85,7 @@ DEFAULT_CORS_ORIGINS = [
     "https://job-market-intelligence-dusky.vercel.app",
     "https://job-market-intelligence.vercel.app",
     "https://jobintel.vercel.app",
+    "https://jobintel-staging.vercel.app",
 ]
 
 # Configurable CORS origins for development and production deployments
