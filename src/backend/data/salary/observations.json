@@ -339,17 +339,17 @@
     "period_type": "ANNUAL",
     "mean": 125500.0,
     "percentiles": {
-      "p10": 78000.0,
+      "p10": null,
       "p25": 96200.0,
       "p50": 121500.0,
       "p75": 152000.0,
-      "p90": 185000.0
+      "p90": null
     },
     "sample_size": 68500,
     "standard_error": 1.8,
     "is_suppressed": false,
-    "quality_flag": "OFFICIAL_STATISTICAL_RELEASE",
-    "notes": "ABS EEH 6306.0 annualized gross ordinary time earnings for full-time adult employees."
+    "quality_flag": "OFFICIALLY_DERIVED",
+    "notes": "ABS EEH Cat. 6306.0 annualized gross ordinary time cash earnings (weekly x 52) for full-time non-managerial adult employees. P10 and P90 are not published at the detailed 6-digit OSCA level."
   },
   {
     "observation_id": "sal_obs_au_224411_2023",
@@ -361,17 +361,17 @@
     "period_type": "ANNUAL",
     "mean": 122800.0,
     "percentiles": {
-      "p10": 75000.0,
+      "p10": null,
       "p25": 92000.0,
       "p50": 118000.0,
       "p75": 148000.0,
-      "p90": 178000.0
+      "p90": null
     },
     "sample_size": 24200,
     "standard_error": 2.4,
     "is_suppressed": false,
-    "quality_flag": "OFFICIAL_STATISTICAL_RELEASE",
-    "notes": "ABS EEH and JSA Labour Market Insights unit group estimate for data scientists and mathematical modelers."
+    "quality_flag": "OFFICIALLY_DERIVED",
+    "notes": "ABS EEH and JSA unit group annualized ordinary time earnings (weekly x 52). P10 and P90 are not published at the detailed 6-digit OSCA level."
   },
   {
     "observation_id": "sal_obs_au_262112_2023",
@@ -383,17 +383,17 @@
     "period_type": "ANNUAL",
     "mean": 128400.0,
     "percentiles": {
-      "p10": 80000.0,
+      "p10": null,
       "p25": 98500.0,
       "p50": 124000.0,
       "p75": 155000.0,
-      "p90": 188000.0
+      "p90": null
     },
     "sample_size": 18900,
     "standard_error": 2.5,
     "is_suppressed": false,
-    "quality_flag": "OFFICIAL_STATISTICAL_RELEASE",
-    "notes": "ABS EEH ordinary time annual cash earnings for cybersecurity specialists in Australia."
+    "quality_flag": "OFFICIALLY_DERIVED",
+    "notes": "ABS EEH ordinary time annual cash earnings (weekly x 52) for full-time adult employees. P10 and P90 are not published at the detailed 6-digit OSCA level."
   },
   {
     "observation_id": "sal_obs_au_261314_2023",
@@ -405,17 +405,17 @@
     "period_type": "ANNUAL",
     "mean": 104200.0,
     "percentiles": {
-      "p10": 66000.0,
+      "p10": null,
       "p25": 80500.0,
       "p50": 100000.0,
       "p75": 124500.0,
-      "p90": 148000.0
+      "p90": null
     },
     "sample_size": 14700,
     "standard_error": 2.7,
     "is_suppressed": false,
-    "quality_flag": "OFFICIAL_STATISTICAL_RELEASE",
-    "notes": "ABS EEH ordinary time earnings for software testers and quality assurance analysts."
+    "quality_flag": "OFFICIALLY_DERIVED",
+    "notes": "ABS EEH ordinary time annual cash earnings (weekly x 52) for software testers. P10 and P90 are not published at the detailed 6-digit OSCA level."
   },
   {
     "observation_id": "sal_obs_sg_25121_2023",
@@ -425,19 +425,19 @@
     "source_id": "SG_MOM_OWS_2023",
     "currency": "SGD",
     "period_type": "ANNUAL",
-    "mean": 105300.0,
+    "mean": 97200.0,
     "percentiles": {
-      "p10": 54600.0,
-      "p25": 72800.0,
-      "p50": 97500.0,
-      "p75": 132600.0,
-      "p90": 175500.0
+      "p10": null,
+      "p25": 67200.0,
+      "p50": 90000.0,
+      "p75": 122400.0,
+      "p90": null
     },
     "sample_size": 36500,
     "standard_error": 2.0,
     "is_suppressed": false,
-    "quality_flag": "OFFICIAL_STATISTICAL_RELEASE",
-    "notes": "MOM OWS gross monthly wage annualized (including 13th month Annual Wage Supplement AWS)."
+    "quality_flag": "OFFICIALLY_DERIVED",
+    "notes": "MOM OWS 2023 gross monthly wage annualized (monthly gross x 12). Excludes employer CPF, bonuses, and AWS. P10 and P90 are not published by MOM OWS."
   },
   {
     "observation_id": "sal_obs_sg_25131_2023",
@@ -447,19 +447,19 @@
     "source_id": "SG_MOM_OWS_2023",
     "currency": "SGD",
     "period_type": "ANNUAL",
-    "mean": 116350.0,
+    "mean": 107400.0,
     "percentiles": {
-      "p10": 62400.0,
-      "p25": 80600.0,
-      "p50": 106600.0,
-      "p75": 149500.0,
-      "p90": 195000.0
+      "p10": null,
+      "p25": 74400.0,
+      "p50": 98400.0,
+      "p75": 138000.0,
+      "p90": null
     },
     "sample_size": 8200,
     "standard_error": 3.1,
     "is_suppressed": false,
-    "quality_flag": "OFFICIAL_STATISTICAL_RELEASE",
-    "notes": "MOM OWS annualized gross wage including AWS for AI/ML engineering practitioners."
+    "quality_flag": "OFFICIALLY_DERIVED",
+    "notes": "MOM OWS 2023 gross monthly wage annualized (monthly gross x 12). Excludes employer CPF, bonuses, and AWS. P10 and P90 are not published by MOM OWS."
   },
   {
     "observation_id": "sal_obs_sg_25132_2023",
@@ -469,19 +469,19 @@
     "source_id": "SG_MOM_OWS_2023",
     "currency": "SGD",
     "period_type": "ANNUAL",
-    "mean": 113100.0,
+    "mean": 104400.0,
     "percentiles": {
-      "p10": 58500.0,
-      "p25": 78000.0,
-      "p50": 104000.0,
-      "p75": 143000.0,
-      "p90": 188500.0
+      "p10": null,
+      "p25": 72000.0,
+      "p50": 96000.0,
+      "p75": 132000.0,
+      "p90": null
     },
     "sample_size": 9400,
     "standard_error": 2.9,
     "is_suppressed": false,
-    "quality_flag": "OFFICIAL_STATISTICAL_RELEASE",
-    "notes": "MOM OWS annualized gross wage including AWS for data science specialists."
+    "quality_flag": "OFFICIALLY_DERIVED",
+    "notes": "MOM OWS 2023 gross monthly wage annualized (monthly gross x 12). Excludes employer CPF, bonuses, and AWS. P10 and P90 are not published by MOM OWS."
   },
   {
     "observation_id": "sal_obs_sg_25124_2023",
@@ -491,19 +491,19 @@
     "source_id": "SG_MOM_OWS_2023",
     "currency": "SGD",
     "period_type": "ANNUAL",
-    "mean": 127400.0,
+    "mean": 117600.0,
     "percentiles": {
-      "p10": 70200.0,
-      "p25": 91000.0,
-      "p50": 117000.0,
-      "p75": 162500.0,
-      "p90": 208000.0
+      "p10": null,
+      "p25": 84000.0,
+      "p50": 108000.0,
+      "p75": 150000.0,
+      "p90": null
     },
     "sample_size": 6100,
     "standard_error": 3.3,
     "is_suppressed": false,
-    "quality_flag": "OFFICIAL_STATISTICAL_RELEASE",
-    "notes": "MOM OWS annualized gross wage including AWS for enterprise cloud architects."
+    "quality_flag": "OFFICIALLY_DERIVED",
+    "notes": "MOM OWS 2023 gross monthly wage annualized (monthly gross x 12). Excludes employer CPF, bonuses, and AWS. P10 and P90 are not published by MOM OWS."
   },
   {
     "observation_id": "sal_obs_sg_25125_2023",
@@ -513,19 +513,19 @@
     "source_id": "SG_MOM_OWS_2023",
     "currency": "SGD",
     "period_type": "ANNUAL",
-    "mean": 109200.0,
+    "mean": 100800.0,
     "percentiles": {
-      "p10": 58500.0,
-      "p25": 75400.0,
-      "p50": 101400.0,
-      "p75": 140400.0,
-      "p90": 182000.0
+      "p10": null,
+      "p25": 69600.0,
+      "p50": 93600.0,
+      "p75": 129600.0,
+      "p90": null
     },
     "sample_size": 7900,
     "standard_error": 3.0,
     "is_suppressed": false,
-    "quality_flag": "OFFICIAL_STATISTICAL_RELEASE",
-    "notes": "MOM OWS annualized gross wage including AWS for DevOps and site reliability engineers."
+    "quality_flag": "OFFICIALLY_DERIVED",
+    "notes": "MOM OWS 2023 gross monthly wage annualized (monthly gross x 12). Excludes employer CPF, bonuses, and AWS. P10 and P90 are not published by MOM OWS."
   },
   {
     "observation_id": "sal_obs_sg_25211_2023",
@@ -535,19 +535,19 @@
     "source_id": "SG_MOM_OWS_2023",
     "currency": "SGD",
     "period_type": "ANNUAL",
-    "mean": 111150.0,
+    "mean": 102600.0,
     "percentiles": {
-      "p10": 59800.0,
-      "p25": 76700.0,
-      "p50": 102700.0,
-      "p75": 143000.0,
-      "p90": 184600.0
+      "p10": null,
+      "p25": 70800.0,
+      "p50": 94800.0,
+      "p75": 132000.0,
+      "p90": null
     },
     "sample_size": 11200,
     "standard_error": 2.7,
     "is_suppressed": false,
-    "quality_flag": "OFFICIAL_STATISTICAL_RELEASE",
-    "notes": "MOM OWS annualized gross wage including AWS for cybersecurity engineers and analysts."
+    "quality_flag": "OFFICIALLY_DERIVED",
+    "notes": "MOM OWS 2023 gross monthly wage annualized (monthly gross x 12). Excludes employer CPF, bonuses, and AWS. P10 and P90 are not published by MOM OWS."
   },
   {
     "observation_id": "sal_obs_in_251201_2024",
@@ -569,7 +569,7 @@
     "standard_error": 2.2,
     "is_suppressed": false,
     "quality_flag": "MODEL_PREDICTION",
-    "notes": "Annual Cost to Company (CTC) in INR (12.00 LPA median). Synthesized from Indian tech hubs and model predictions."
+    "notes": "Annual Cost to Company (CTC) in INR (12.00 LPA median). Calibrated predictive model estimate across Indian tech metros (Bengaluru, Hyderabad, Pune, NCR) including basic pay, allowances, employer PF (12%), and gratuity provision (4.81%). Not an official MOSPI PLFS government survey."
   },
   {
     "observation_id": "sal_obs_in_251101_2024",
@@ -591,7 +591,7 @@
     "standard_error": 2.6,
     "is_suppressed": false,
     "quality_flag": "MODEL_PREDICTION",
-    "notes": "Annual Cost to Company (CTC) in INR (10.50 LPA median) for IT systems analysts and business analysts."
+    "notes": "Annual Cost to Company (CTC) in INR (10.50 LPA median) for IT systems analysts. Calibrated predictive model estimate across Indian tech metros including basic pay, allowances, employer PF (12%), and gratuity (4.81%). Not a MOSPI PLFS survey."
   },
   {
     "observation_id": "sal_obs_in_252101_2024",
@@ -613,6 +613,6 @@
     "standard_error": 2.8,
     "is_suppressed": false,
     "quality_flag": "MODEL_PREDICTION",
-    "notes": "Annual Cost to Company (CTC) in INR (9.80 LPA median) for DBAs in enterprise Indian IT."
+    "notes": "Annual Cost to Company (CTC) in INR (9.80 LPA median) for enterprise DBAs. Calibrated predictive model estimate across Indian tech metros including basic pay, allowances, employer PF (12%), and gratuity (4.81%). Not a MOSPI PLFS survey."
   }
 ]

@@ -988,7 +988,7 @@ export const OccupationsPage: React.FC = () => {
               CRITICAL METHODOLOGICAL SEPARATION: NOMINAL FX vs. PURCHASING POWER PARITY (PPP)
             </div>
             <p style={{ fontSize: '0.84rem', color: '#CBD5E1', lineHeight: '1.6', margin: 0 }}>
-              <strong>Nominal Currency Conversion</strong> uses market foreign exchange spot rates (e.g. $1 USD = ₹83.50 INR) to measure international currency exchange value and cross-border cash transfer worth. In contrast, <strong>Purchasing Power Parity (PPP)</strong> uses World Bank International Comparison Program (ICP) 2024 consumption price level factors (e.g. $1 Int$ = ₹23.80 INR) to reflect local purchasing power and living standards within domestic economies. These metrics serve fundamentally distinct analytical purposes and <em>must never be averaged, blended, or conflated</em>.
+              <strong>Nominal Currency Conversion</strong> uses static 2024 reference annual exchange rates (e.g. $1 USD = ₹83.50 INR) to measure international currency exchange value and cross-border cash transfer worth. In contrast, <strong>Purchasing Power Parity (PPP)</strong> uses World Bank private consumption price level factors (WDI Series PA.NUS.PRVT.PP, 2024 extrapolation, e.g. $1 Int$ = ₹23.80 INR) to reflect local purchasing power and living costs within domestic economies. These metrics serve fundamentally distinct analytical purposes and <em>must never be averaged, blended, or conflated</em>.
             </p>
           </div>
 
@@ -1071,13 +1071,13 @@ export const OccupationsPage: React.FC = () => {
                     ${salaryProfile.nominal_usd_median?.toLocaleString()} USD
                   </div>
                   <div style={{ fontSize: '0.74rem', color: '#93C5FD', marginTop: '4px' }}>
-                    Spot FX Conversion
+                    Static 2024 Benchmark FX Conversion
                   </div>
                 </div>
 
                 <div style={{ background: 'rgba(16, 185, 129, 0.06)', border: '1px solid rgba(16, 185, 129, 0.2)', borderRadius: '10px', padding: '16px' }}>
                   <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#6EE7B7', textTransform: 'uppercase', marginBottom: '4px' }}>
-                    PPP Int$ Median (World Bank ICP 2024)
+                    PPP Int$ Median (World Bank WDI PPP)
                   </div>
                   <div style={{ fontSize: '1.5rem', fontWeight: 900, color: '#34D399' }}>
                     ${salaryProfile.ppp_usd_median?.toLocaleString()} Int$
@@ -1233,7 +1233,7 @@ export const OccupationsPage: React.FC = () => {
                                   ${comp.ppp_usd_median?.toLocaleString()} Int$
                                 </div>
                                 <div style={{ fontSize: '0.72rem', color: '#6EE7B7', marginTop: '2px' }}>
-                                  World Bank ICP 2024
+                                  World Bank WDI PPP
                                 </div>
                               </div>
                             </div>

@@ -265,9 +265,9 @@ class SalaryService:
             ppp_fac = t_rate.ppp_conversion_factor_to_usd if t_rate else 1.0
             caveats.append(
                 f"Currency conversion applied: {target_profile.currency} values converted using "
-                f"Nominal FX (1 USD = {fx_rate} {target_profile.currency}) and "
-                f"World Bank ICP 2024 PPP factor (1 Int$ = {ppp_fac} {target_profile.currency}). "
-                "Nominal reflects global market value; PPP reflects local domestic purchasing power."
+                f"Static 2024 Benchmark FX (1 USD = {fx_rate} {target_profile.currency}) and "
+                f"World Bank WDI PPP factor (Series PA.NUS.PRVT.PP, 1 Int$ = {ppp_fac} {target_profile.currency}). "
+                "Nominal reflects global exchange value; PPP reflects domestic consumption price equivalence."
             )
 
         # 3. Pay concept differences
@@ -288,9 +288,9 @@ class SalaryService:
                 "contributions (PF, gratuity), whereas other markets measure gross cash earnings or straight-time wages."
             )
 
-        if "AWS" in tgt_concept or "13th month" in tgt_concept:
+        if "AWS" in tgt_concept or "AWS" in src_concept:
             caveats.append(
-                "Bonus Structure: Singapore MOM figures include Annual Wage Supplement (AWS / 13th month bonus)."
+                "Bonus & Supplement Treatment: Singapore MOM figures represent 12x monthly gross wage and exclude bonuses and Annual Wage Supplement (AWS)."
             )
 
         if "straight-time" in tgt_concept or "straight-time" in src_concept:
@@ -333,6 +333,15 @@ class SalaryService:
 
         # Determine Verdict
         if (
+            relationship_type == "NO_SUPPORTED_MAPPING"
+            or confidence_score < 0.50
+        ):
+            caveats.append(
+                f"Statistical Non-Comparability: Concordance mapping relationship ({relationship_type}) "
+                f"or confidence score ({confidence_score:.2f}) does not meet the minimum cross-market comparability threshold (0.50)."
+            )
+            verdict = ComparabilityVerdict.NOT_COMPARABLE
+        elif (
             source_profile.quality_flag == "MODEL_PREDICTION"
             or target_profile.quality_flag == "MODEL_PREDICTION"
             or relationship_type in ("BROADER_THAN", "NARROWER_THAN")
@@ -341,7 +350,6 @@ class SalaryService:
             verdict = ComparabilityVerdict.COMPARABLE_WITH_MAJOR_CAVEATS
         elif (
             source_profile.currency != target_profile.currency
-            or "AWS" in tgt_concept
             or src_ref != tgt_ref
         ):
             verdict = ComparabilityVerdict.COMPARABLE_WITH_ADJUSTMENTS
@@ -622,10 +630,10 @@ class SalaryService:
 
         disclaimer = (
             "Cross-market salary comparisons are descriptive benchmarks compiled from official national "
-            "statistical releases and validated models. Nominal conversions use market foreign exchange rates; "
-            "PPP conversions use World Bank International Comparison Program (ICP) 2024 consumption factors. "
-            "Because compensation definitions (CTC vs gross cash pay), tax regimes, and bonus practices differ "
-            "fundamentally across jurisdictions, figures MUST NOT be interpreted as single-currency wage parity."
+            "statistical releases and validated models. Nominal conversions use static 2024 reference annual "
+            "exchange rates; PPP conversions use World Bank private-consumption PPP factors (Series PA.NUS.PRVT.PP, "
+            "2024 extrapolations). Because compensation definitions (CTC vs gross cash pay), tax regimes, and bonus "
+            "practices differ fundamentally across jurisdictions, figures MUST NOT be interpreted as single-currency wage parity."
         )
 
         return CrossMarketSalaryComparisonResult(

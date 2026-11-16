@@ -2,8 +2,8 @@
   "base_currency": "USD",
   "reference_year": "2024",
   "methodology": {
-    "fx_description": "Nominal foreign exchange rates representing annual market spot conversion values to US Dollars (USD). Sourced from central banks and IMF International Financial Statistics (IFS).",
-    "ppp_description": "Purchasing Power Parity (PPP) conversion factor for private consumption from the World Bank International Comparison Program (ICP) 2024 revision (measured in domestic currency per international dollar).",
+    "fx_description": "Static 2024 Reference Annual Average Exchange Rates to US Dollars (USD). Sourced from central banks and IMF International Financial Statistics (IFS).",
+    "ppp_description": "Purchasing Power Parity (PPP) conversion factor for private consumption from World Bank World Development Indicators (Series PA.NUS.PRVT.PP), 2024 observation extrapolated from the latest ICP 2017/2021 benchmark methodology (measured in domestic currency per international dollar). Reflects domestic household consumption cost parity, not occupational labor cost parity.",
     "separation_warning": "CRITICAL METHODOLOGICAL INVARIANT: Nominal FX conversion reflects external financial exchange value and international capital transfer parity. Purchasing Power Parity (PPP) reflects domestic consumption purchasing equivalence within local price structures. These metrics serve fundamentally different economic functions and MUST NEVER be averaged, blended, or used interchangeably."
   },
   "rates": {
@@ -15,7 +15,7 @@
       "ppp_conversion_factor_to_usd": 1.0,
       "ppp_usd_multiplier": 1.0,
       "fx_source": "Federal Reserve Statistical Release H.10 (Base)",
-      "ppp_source": "World Bank ICP 2024 (Numeraire)"
+      "ppp_source": "World Bank WDI (PA.NUS.PRVT.PP) / ICP Numeraire"
     },
     "GBP": {
       "currency": "GBP",
@@ -24,8 +24,8 @@
       "nominal_usd_multiplier": 1.273885,
       "ppp_conversion_factor_to_usd": 0.7100,
       "ppp_usd_multiplier": 1.408451,
-      "fx_source": "Bank of England Daily Spot Rates / IMF IFS 2024",
-      "ppp_source": "World Bank ICP 2024 Revision Table 1.1"
+      "fx_source": "Bank of England 2024 Reference Average / IMF IFS",
+      "ppp_source": "World Bank WDI (PA.NUS.PRVT.PP) 2024 Extrapolation"
     },
     "AUD": {
       "currency": "AUD",
@@ -34,8 +34,8 @@
       "nominal_usd_multiplier": 0.657895,
       "ppp_conversion_factor_to_usd": 1.4200,
       "ppp_usd_multiplier": 0.704225,
-      "fx_source": "Reserve Bank of Australia / IMF IFS 2024",
-      "ppp_source": "World Bank ICP 2024 Revision Table 1.1"
+      "fx_source": "Reserve Bank of Australia 2024 Reference Average / IMF IFS",
+      "ppp_source": "World Bank WDI (PA.NUS.PRVT.PP) 2024 Extrapolation"
     },
     "SGD": {
       "currency": "SGD",
@@ -44,8 +44,8 @@
       "nominal_usd_multiplier": 0.743494,
       "ppp_conversion_factor_to_usd": 0.8400,
       "ppp_usd_multiplier": 1.190476,
-      "fx_source": "Monetary Authority of Singapore / SingStat 2024",
-      "ppp_source": "World Bank ICP 2024 Revision Table 1.1"
+      "fx_source": "Monetary Authority of Singapore 2024 Reference Average / SingStat",
+      "ppp_source": "World Bank WDI (PA.NUS.PRVT.PP) 2024 Extrapolation"
     },
     "INR": {
       "currency": "INR",
@@ -54,8 +54,8 @@
       "nominal_usd_multiplier": 0.011976,
       "ppp_conversion_factor_to_usd": 23.8000,
       "ppp_usd_multiplier": 0.042017,
-      "fx_source": "Reserve Bank of India Reference Rate 2024",
-      "ppp_source": "World Bank ICP 2024 Private Consumption PPP Factor"
+      "fx_source": "Reserve Bank of India 2024 Reference Average / IMF IFS",
+      "ppp_source": "World Bank WDI (PA.NUS.PRVT.PP) 2024 Extrapolation"
     }
   }
 }

@@ -11,7 +11,7 @@
     "pay_concept": "Gross annual straight-time wages excluding overtime, weekend premiums, and non-production bonuses",
     "frequency": "ANNUAL",
     "sample_coverage": "Semi-annual mail survey of 1.2 million non-farm business establishments over a 3-year cycle across all 50 states and territories",
-    "source_url": "https://www.bls.gov/oes/current/oes151252.htm",
+    "source_url": "https://www.bls.gov/oes/current/oes_nat.htm",
     "is_active": true
   },
   {
@@ -54,7 +54,7 @@
     "release_date": "2024-06-28",
     "license": "Singapore Open Data Licence",
     "currency": "SGD",
-    "pay_concept": "Gross monthly wage annualized including Annual Wage Supplement (AWS / 13th month bonus)",
+    "pay_concept": "Gross monthly wage annualized (monthly gross x 12). Excludes employer CPF, bonuses, and Annual Wage Supplement (AWS).",
     "frequency": "ANNUAL",
     "sample_coverage": "Annual survey of private sector establishments with at least 10 employees and public sector institutions",
     "source_url": "https://stats.mom.gov.sg/Pages/Occupational-Wages-Tables2023.aspx",

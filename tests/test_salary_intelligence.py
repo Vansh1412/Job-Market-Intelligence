@@ -63,6 +63,8 @@ def test_salary_rates_endpoint_and_strict_separation():
     assert data["base_currency"] == "USD"
     assert data["reference_year"] == "2024"
     assert "CRITICAL METHODOLOGICAL INVARIANT" in data["methodology"]["separation_warning"]
+    assert "Static 2024 Reference Annual Average Exchange Rates" in data["methodology"]["fx_description"]
+    assert "PA.NUS.PRVT.PP" in data["methodology"]["ppp_description"]
 
     rates = data["rates"]
     assert "USD" in rates
@@ -189,10 +191,21 @@ def test_cross_market_comparison_us_software_developer():
     # Singapore comparison
     sg_comp = next(c for c in comparisons if c["market_id"] == "SG")
     assert sg_comp["original_currency"] == "SGD"
-    assert sg_comp["original_median"] == 97500.0
-    assert sg_comp["nominal_usd_median"] == 72490.66
-    assert sg_comp["ppp_usd_median"] == 116071.41
+    assert sg_comp["original_median"] == 90000.0
+    assert sg_comp["nominal_usd_median"] == 66914.46
+    assert sg_comp["ppp_usd_median"] == 107142.84
+    assert sg_comp["percentiles_original"]["p10"] is None
+    assert sg_comp["percentiles_original"]["p90"] is None
+    assert sg_comp["percentiles_original"]["p50"] == 90000.0
     assert sg_comp["comparability_verdict"] == ComparabilityVerdict.COMPARABLE_WITH_ADJUSTMENTS
+
+    # Australia comparison
+    au_comp = next(c for c in comparisons if c["market_id"] == "AU")
+    assert au_comp["original_currency"] == "AUD"
+    assert au_comp["original_median"] == 121500.0
+    assert au_comp["percentiles_original"]["p10"] is None
+    assert au_comp["percentiles_original"]["p90"] is None
+    assert au_comp["percentiles_original"]["p50"] == 121500.0
 
     # India comparison
     in_comp = next(c for c in comparisons if c["market_id"] == "IN")
@@ -250,3 +263,73 @@ def test_legacy_salary_endpoints_remain_operational():
 
     res_comp = client.get("/api/salary/comparator")
     assert res_comp.status_code == 200
+
+
+def test_salary_singapore_and_australia_percentiles_null_provenance():
+    """Verify strict percentile non-fabrication: SG and AU extreme tails (p10, p90) must be None."""
+    res = client.get("/v1/salary/observations")
+    assert res.status_code == 200
+    obs = res.json()
+
+    # All 6 Singapore roles
+    sg_obs = [o for o in obs if o["market_id"] == "SG"]
+    assert len(sg_obs) == 6
+    for o in sg_obs:
+        pct = o["percentiles"]
+        assert pct["p10"] is None, f"SG occupation {o['occupation_id']} must have p10=None"
+        assert pct["p90"] is None, f"SG occupation {o['occupation_id']} must have p90=None"
+        assert pct["p25"] is not None
+        assert pct["p50"] is not None
+        assert pct["p75"] is not None
+        assert o["quality_flag"] == "OFFICIALLY_DERIVED"
+        assert "monthly gross x 12" in o["notes"]
+
+    # All 4 Australia roles
+    au_obs = [o for o in obs if o["market_id"] == "AU"]
+    assert len(au_obs) == 4
+    for o in au_obs:
+        pct = o["percentiles"]
+        assert pct["p10"] is None, f"AU occupation {o['occupation_id']} must have p10=None"
+        assert pct["p90"] is None, f"AU occupation {o['occupation_id']} must have p90=None"
+        assert pct["p25"] is not None
+        assert pct["p50"] is not None
+        assert pct["p75"] is not None
+        assert o["quality_flag"] == "OFFICIALLY_DERIVED"
+        assert "weekly x 52" in o["notes"]
+
+
+def test_comparability_not_comparable_branch():
+    """Verify that comparability evaluation returns NOT_COMPARABLE when confidence < 0.50 or unmapped."""
+    svc = get_salary_service()
+    us_profile = svc.get_salary_profile_for_occupation("US_SOC_2018:15-1252")
+    au_profile = svc.get_salary_profile_for_occupation("AU_OSCA_2024:261313")
+    assert us_profile is not None
+    assert au_profile is not None
+
+    # Test confidence below 0.50
+    verdict, caveats = svc.evaluate_comparability(
+        source_profile=us_profile,
+        target_profile=au_profile,
+        relationship_type="BROADER_THAN",
+        confidence_score=0.45,
+    )
+    assert verdict == ComparabilityVerdict.NOT_COMPARABLE
+    assert any("Statistical Non-Comparability" in c for c in caveats)
+
+    # Test NO_SUPPORTED_MAPPING
+    verdict_unmapped, caveats_unmapped = svc.evaluate_comparability(
+        source_profile=us_profile,
+        target_profile=au_profile,
+        relationship_type="NO_SUPPORTED_MAPPING",
+        confidence_score=0.90,
+    )
+    assert verdict_unmapped == ComparabilityVerdict.NOT_COMPARABLE
+    assert any("Statistical Non-Comparability" in c for c in caveats_unmapped)
+
+
+def test_us_bls_source_url_and_citation():
+    """Verify US BLS source metadata points to national OEWS index."""
+    res = client.get("/v1/salary/sources/US_BLS_OEWS_2023")
+    assert res.status_code == 200
+    src = res.json()
+    assert src["source_url"] == "https://www.bls.gov/oes/current/oes_nat.htm"
