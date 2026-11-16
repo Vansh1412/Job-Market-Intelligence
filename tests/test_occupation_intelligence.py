@@ -275,3 +275,68 @@ def test_api_retrieve_occupation_detail_and_mappings():
 
     res_404 = client.get("/api/v1/occupations/UK_SOC_2020:NONEXISTENT_CODE")
     assert res_404.status_code == 404
+
+
+def test_api_concordance_coverage_stats():
+    res = client.get("/api/v1/occupations/coverage")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["total_national_occupations"] == 30
+    assert data["mapped_national_occupations"] == 30
+    assert data["unmapped_national_occupations"] == 0
+    assert data["total_canonical_concepts"] == 12
+    assert data["linked_canonical_concepts"] == 11
+    assert data["unlinked_canonical_concepts"] == 1
+    assert data["total_mappings"] == 62
+    assert data["official_mappings_count"] == 4
+    assert data["expert_reviewed_mappings_count"] == 58
+
+
+def test_api_task_similarity_endpoint():
+    res = client.get("/api/v1/occupations/similarity?source_id=UK_SOC_2020:2134&target_id=US_SOC_2018:15-1252")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["source_id"] == "UK_SOC_2020:2134"
+    assert data["target_id"] == "US_SOC_2018:15-1252"
+    assert 0.0 <= data["jaccard_similarity"] <= 1.0
+    assert 0.0 <= data["tfidf_cosine_similarity"] <= 1.0
+    assert data["metric_type"] == "UNSUPERVISED_LEXICAL_SIMILARITY"
+    assert "not constitute empirical probability" in data["limitations"].lower()
+
+
+def test_occupation_task_provenance_tagging():
+    res_uk = client.get("/api/v1/occupations/UK_SOC_2020:2134")
+    assert res_uk.status_code == 200
+    assert res_uk.json()["task_provenance"] == "OFFICIAL_VERBATIM"
+
+    res_us = client.get("/api/v1/occupations/US_SOC_2018:15-1252")
+    assert res_us.status_code == 200
+    assert res_us.json()["task_provenance"] == "OFFICIALLY_DERIVED"
+
+    res_au = client.get("/api/v1/occupations/AU_OSCA_2024:261313")
+    assert res_au.status_code == 200
+    assert res_au.json()["task_provenance"] == "JOBINTEL_CURATED"
+
+
+def test_concordance_completion_and_canonical_activation():
+    service = get_occupation_service()
+    coverage = service.get_coverage_stats()
+    assert coverage.total_mappings == 62
+    assert coverage.mapped_national_occupations == 30
+    assert coverage.unmapped_national_occupations == 0
+
+    # Verify activated canonical concepts have mappings
+    activated_concepts = [
+        "CAN_OCC_DATABASE_ADMIN",
+        "CAN_OCC_SYSTEMS_ANALYST",
+        "CAN_OCC_NETWORK_ENGINEER",
+        "CAN_OCC_IT_PROJECT_MGR",
+    ]
+    for can_id in activated_concepts:
+        mappings = [m for m_list in service._mappings_by_source.values() for m in m_list if m.target_occupation_id == can_id]
+        assert len(mappings) >= 1, f"Expected {can_id} to be linked to at least 1 national occupation"
+
+    # Verify CAN_OCC_DATA_ENGINEER remains intentionally unmapped with 0 national links
+    de_mappings = [m for m_list in service._mappings_by_source.values() for m in m_list if m.target_occupation_id == "CAN_OCC_DATA_ENGINEER"]
+    assert len(de_mappings) == 0, "Expected CAN_OCC_DATA_ENGINEER to remain unlinked per defensibility standard"
+

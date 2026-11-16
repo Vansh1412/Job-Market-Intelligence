@@ -364,6 +364,7 @@ export interface NationalOccupation {
   parent_code?: string | null;
   is_leaf: boolean;
   alternate_titles: string[];
+  task_provenance?: 'OFFICIAL_VERBATIM' | 'OFFICIALLY_DERIVED' | 'JOBINTEL_CURATED';
 }
 
 export interface CanonicalOccupation {
@@ -402,6 +403,7 @@ export interface CrossMarketMatchItem {
   evidence_sources: string[];
   notes_and_limitations: string;
   approximation_warning?: string | null;
+  task_similarity?: number | null;
 }
 
 export interface CrossMarketComparisonResult {
@@ -410,4 +412,19 @@ export interface CrossMarketComparisonResult {
   unmapped_markets: string[];
   total_matches: number;
 }
+
+export interface ConcordanceCoverageStats {
+  total_national_occupations: number;
+  mapped_national_occupations: number;
+  unmapped_national_occupations: number;
+  total_canonical_concepts: number;
+  linked_canonical_concepts: number;
+  unlinked_canonical_concepts: number;
+  mappings_by_relationship: Record<string, number>;
+  mappings_by_review_status: Record<string, number>;
+  official_mappings_count: number;
+  expert_reviewed_mappings_count: number;
+  total_mappings: number;
+}
+
 

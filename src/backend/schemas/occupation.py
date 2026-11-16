@@ -83,6 +83,7 @@ class NationalOccupation(BaseModel):
     parent_code: str | None = Field(default=None, max_length=30)
     is_leaf: bool = True
     alternate_titles: tuple[str, ...] = ()
+    task_provenance: Literal["OFFICIAL_VERBATIM", "OFFICIALLY_DERIVED", "JOBINTEL_CURATED"] = "OFFICIAL_VERBATIM"
 
     @model_validator(mode="after")
     def validate_occupation_id(self) -> NationalOccupation:
@@ -168,6 +169,7 @@ class CrossMarketMatchItem(BaseModel):
     evidence_sources: tuple[str, ...]
     notes_and_limitations: str
     approximation_warning: str | None = None
+    task_similarity: float | None = None
 
 
 class CrossMarketComparisonResult(BaseModel):
@@ -177,3 +179,39 @@ class CrossMarketComparisonResult(BaseModel):
     matches: tuple[CrossMarketMatchItem, ...]
     unmapped_markets: tuple[str, ...]
     total_matches: int
+
+
+class ConcordanceCoverageStats(BaseModel):
+    model_config = ConfigDict(frozen=True)
+
+    total_national_occupations: int
+    mapped_national_occupations: int
+    unmapped_national_occupations: int
+    total_canonical_concepts: int
+    linked_canonical_concepts: int
+    unlinked_canonical_concepts: int
+    mappings_by_relationship: dict[str, int]
+    mappings_by_review_status: dict[str, int]
+    official_mappings_count: int
+    expert_reviewed_mappings_count: int
+    total_mappings: int
+
+
+class TaskSimilarityPayload(BaseModel):
+    model_config = ConfigDict(frozen=True)
+
+    source_id: str
+    target_id: str
+    source_title: str
+    target_title: str
+    source_task_count: int
+    target_task_count: int
+    jaccard_similarity: float
+    tfidf_cosine_similarity: float
+    metric_type: str = "UNSUPERVISED_LEXICAL_SIMILARITY"
+    calibration_status: str = "UNEMPIRICAL_HEURISTIC_SEPARATE_METRIC"
+    limitations: str = (
+        "Unsupervised lexical overlap metric based on word frequencies. "
+        "Does NOT constitute empirical probability or calibrated confidence of occupational interchangeability."
+    )
+

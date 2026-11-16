@@ -16,7 +16,13 @@
     "hierarchy_level": "Unit Group",
     "parent_code": "213",
     "is_leaf": true,
-    "alternate_titles": ["Software developer", "Software engineer", "Application programmer", "Full stack developer"]
+    "alternate_titles": [
+      "Software developer",
+      "Software engineer",
+      "Application programmer",
+      "Full stack developer"
+    ],
+    "task_provenance": "OFFICIAL_VERBATIM"
   },
   {
     "occupation_id": "UK_SOC_2020:2135",
@@ -35,7 +41,13 @@
     "hierarchy_level": "Unit Group",
     "parent_code": "213",
     "is_leaf": true,
-    "alternate_titles": ["Information security analyst", "Security engineer", "SOC analyst", "Penetration tester"]
+    "alternate_titles": [
+      "Information security analyst",
+      "Security engineer",
+      "SOC analyst",
+      "Penetration tester"
+    ],
+    "task_provenance": "OFFICIAL_VERBATIM"
   },
   {
     "occupation_id": "UK_SOC_2020:2136",
@@ -54,7 +66,13 @@
     "hierarchy_level": "Unit Group",
     "parent_code": "213",
     "is_leaf": true,
-    "alternate_titles": ["Software tester", "QA engineer", "Test automation engineer", "SDET"]
+    "alternate_titles": [
+      "Software tester",
+      "QA engineer",
+      "Test automation engineer",
+      "SDET"
+    ],
+    "task_provenance": "OFFICIAL_VERBATIM"
   },
   {
     "occupation_id": "UK_SOC_2020:2133",
@@ -73,7 +91,13 @@
     "hierarchy_level": "Unit Group",
     "parent_code": "213",
     "is_leaf": true,
-    "alternate_titles": ["Systems architect", "IT business analyst", "Solutions architect", "Enterprise architect"]
+    "alternate_titles": [
+      "Systems architect",
+      "IT business analyst",
+      "Solutions architect",
+      "Enterprise architect"
+    ],
+    "task_provenance": "OFFICIAL_VERBATIM"
   },
   {
     "occupation_id": "UK_SOC_2020:2137",
@@ -92,7 +116,12 @@
     "hierarchy_level": "Unit Group",
     "parent_code": "213",
     "is_leaf": true,
-    "alternate_titles": ["Network engineer", "Network architect", "Network administrator"]
+    "alternate_titles": [
+      "Network engineer",
+      "Network architect",
+      "Network administrator"
+    ],
+    "task_provenance": "OFFICIAL_VERBATIM"
   },
   {
     "occupation_id": "UK_SOC_2020:2131",
@@ -111,7 +140,12 @@
     "hierarchy_level": "Unit Group",
     "parent_code": "213",
     "is_leaf": true,
-    "alternate_titles": ["IT project manager", "Technical project manager", "Software delivery manager"]
+    "alternate_titles": [
+      "IT project manager",
+      "Technical project manager",
+      "Software delivery manager"
+    ],
+    "task_provenance": "OFFICIAL_VERBATIM"
   },
   {
     "occupation_id": "UK_SOC_2020:3133",
@@ -129,7 +163,12 @@
     "hierarchy_level": "Unit Group",
     "parent_code": "313",
     "is_leaf": true,
-    "alternate_titles": ["Database administrator", "DBA", "Database analyst"]
+    "alternate_titles": [
+      "Database administrator",
+      "DBA",
+      "Database analyst"
+    ],
+    "task_provenance": "OFFICIAL_VERBATIM"
   },
   {
     "occupation_id": "UK_SOC_2020:3544",
@@ -148,7 +187,13 @@
     "hierarchy_level": "Unit Group",
     "parent_code": "354",
     "is_leaf": true,
-    "alternate_titles": ["Data analyst", "BI analyst", "Business intelligence analyst", "Reporting analyst"]
+    "alternate_titles": [
+      "Data analyst",
+      "BI analyst",
+      "Business intelligence analyst",
+      "Reporting analyst"
+    ],
+    "task_provenance": "OFFICIAL_VERBATIM"
   },
   {
     "occupation_id": "US_SOC_2018:15-1252",
@@ -167,7 +212,13 @@
     "hierarchy_level": "Detailed Occupation",
     "parent_code": "15-1250",
     "is_leaf": true,
-    "alternate_titles": ["Software engineer", "Application developer", "Software developer", "Full stack engineer"]
+    "alternate_titles": [
+      "Software engineer",
+      "Application developer",
+      "Software developer",
+      "Full stack engineer"
+    ],
+    "task_provenance": "OFFICIALLY_DERIVED"
   },
   {
     "occupation_id": "US_SOC_2018:15-2051",
@@ -186,7 +237,13 @@
     "hierarchy_level": "Detailed Occupation",
     "parent_code": "15-2050",
     "is_leaf": true,
-    "alternate_titles": ["Data scientist", "Machine learning scientist", "Predictive modeler", "Applied scientist"]
+    "alternate_titles": [
+      "Data scientist",
+      "Machine learning scientist",
+      "Predictive modeler",
+      "Applied scientist"
+    ],
+    "task_provenance": "OFFICIALLY_DERIVED"
   },
   {
     "occupation_id": "US_SOC_2018:15-1253",
@@ -205,7 +262,13 @@
     "hierarchy_level": "Detailed Occupation",
     "parent_code": "15-1250",
     "is_leaf": true,
-    "alternate_titles": ["Software quality assurance engineer", "QA analyst", "Software tester", "SDET"]
+    "alternate_titles": [
+      "Software quality assurance engineer",
+      "QA analyst",
+      "Software tester",
+      "SDET"
+    ],
+    "task_provenance": "OFFICIALLY_DERIVED"
   },
   {
     "occupation_id": "US_SOC_2018:15-1212",
@@ -224,7 +287,12 @@
     "hierarchy_level": "Detailed Occupation",
     "parent_code": "15-1210",
     "is_leaf": true,
-    "alternate_titles": ["Cybersecurity analyst", "Information security specialist", "Security architect"]
+    "alternate_titles": [
+      "Cybersecurity analyst",
+      "Information security specialist",
+      "Security architect"
+    ],
+    "task_provenance": "OFFICIALLY_DERIVED"
   },
   {
     "occupation_id": "US_SOC_2018:15-1242",
@@ -243,7 +311,12 @@
     "hierarchy_level": "Detailed Occupation",
     "parent_code": "15-1240",
     "is_leaf": true,
-    "alternate_titles": ["Database administrator", "DBA", "Database manager"]
+    "alternate_titles": [
+      "Database administrator",
+      "DBA",
+      "Database manager"
+    ],
+    "task_provenance": "OFFICIALLY_DERIVED"
   },
   {
     "occupation_id": "US_SOC_2018:15-1244",
@@ -262,7 +335,12 @@
     "hierarchy_level": "Detailed Occupation",
     "parent_code": "15-1240",
     "is_leaf": true,
-    "alternate_titles": ["Systems administrator", "Network administrator", "Sysadmin"]
+    "alternate_titles": [
+      "Systems administrator",
+      "Network administrator",
+      "Sysadmin"
+    ],
+    "task_provenance": "OFFICIALLY_DERIVED"
   },
   {
     "occupation_id": "US_SOC_2018:15-1211",
@@ -281,7 +359,12 @@
     "hierarchy_level": "Detailed Occupation",
     "parent_code": "15-1210",
     "is_leaf": true,
-    "alternate_titles": ["Systems analyst", "Business systems analyst", "Computer systems architect"]
+    "alternate_titles": [
+      "Systems analyst",
+      "Business systems analyst",
+      "Computer systems architect"
+    ],
+    "task_provenance": "OFFICIALLY_DERIVED"
   },
   {
     "occupation_id": "AU_OSCA_2024:261313",
@@ -300,7 +383,12 @@
     "hierarchy_level": "Occupation",
     "parent_code": "2613",
     "is_leaf": true,
-    "alternate_titles": ["Software architect", "Software designer", "Software engineer"]
+    "alternate_titles": [
+      "Software architect",
+      "Software designer",
+      "Software engineer"
+    ],
+    "task_provenance": "JOBINTEL_CURATED"
   },
   {
     "occupation_id": "AU_OSCA_2024:224411",
@@ -319,7 +407,11 @@
     "hierarchy_level": "Occupation",
     "parent_code": "2244",
     "is_leaf": true,
-    "alternate_titles": ["Data scientist", "Predictive analytics specialist"]
+    "alternate_titles": [
+      "Data scientist",
+      "Predictive analytics specialist"
+    ],
+    "task_provenance": "JOBINTEL_CURATED"
   },
   {
     "occupation_id": "AU_OSCA_2024:262112",
@@ -338,7 +430,12 @@
     "hierarchy_level": "Occupation",
     "parent_code": "2621",
     "is_leaf": true,
-    "alternate_titles": ["Cyber security specialist", "Information security analyst", "Security administrator"]
+    "alternate_titles": [
+      "Cyber security specialist",
+      "Information security analyst",
+      "Security administrator"
+    ],
+    "task_provenance": "JOBINTEL_CURATED"
   },
   {
     "occupation_id": "AU_OSCA_2024:261314",
@@ -357,7 +454,12 @@
     "hierarchy_level": "Occupation",
     "parent_code": "2613",
     "is_leaf": true,
-    "alternate_titles": ["Software test analyst", "QA tester", "Test engineer"]
+    "alternate_titles": [
+      "Software test analyst",
+      "QA tester",
+      "Test engineer"
+    ],
+    "task_provenance": "JOBINTEL_CURATED"
   },
   {
     "occupation_id": "SG_SSOC_2024:25121",
@@ -376,7 +478,12 @@
     "hierarchy_level": "Detailed Occupation",
     "parent_code": "2512",
     "is_leaf": true,
-    "alternate_titles": ["Software developer", "Software engineer", "Application developer"]
+    "alternate_titles": [
+      "Software developer",
+      "Software engineer",
+      "Application developer"
+    ],
+    "task_provenance": "JOBINTEL_CURATED"
   },
   {
     "occupation_id": "SG_SSOC_2024:25131",
@@ -395,7 +502,13 @@
     "hierarchy_level": "Detailed Occupation",
     "parent_code": "2513",
     "is_leaf": true,
-    "alternate_titles": ["AI engineer", "Machine learning engineer", "MLOps engineer", "Deep learning engineer"]
+    "alternate_titles": [
+      "AI engineer",
+      "Machine learning engineer",
+      "MLOps engineer",
+      "Deep learning engineer"
+    ],
+    "task_provenance": "JOBINTEL_CURATED"
   },
   {
     "occupation_id": "SG_SSOC_2024:25132",
@@ -414,7 +527,12 @@
     "hierarchy_level": "Detailed Occupation",
     "parent_code": "2513",
     "is_leaf": true,
-    "alternate_titles": ["Data scientist", "Data analytics specialist", "Predictive modeler"]
+    "alternate_titles": [
+      "Data scientist",
+      "Data analytics specialist",
+      "Predictive modeler"
+    ],
+    "task_provenance": "JOBINTEL_CURATED"
   },
   {
     "occupation_id": "SG_SSOC_2024:25124",
@@ -433,7 +551,12 @@
     "hierarchy_level": "Detailed Occupation",
     "parent_code": "2512",
     "is_leaf": true,
-    "alternate_titles": ["Cloud architect", "Cloud solutions engineer", "Cloud infrastructure architect"]
+    "alternate_titles": [
+      "Cloud architect",
+      "Cloud solutions engineer",
+      "Cloud infrastructure architect"
+    ],
+    "task_provenance": "JOBINTEL_CURATED"
   },
   {
     "occupation_id": "SG_SSOC_2024:25125",
@@ -452,7 +575,13 @@
     "hierarchy_level": "Detailed Occupation",
     "parent_code": "2512",
     "is_leaf": true,
-    "alternate_titles": ["DevOps engineer", "Platform engineer", "Site reliability engineer", "SRE"]
+    "alternate_titles": [
+      "DevOps engineer",
+      "Platform engineer",
+      "Site reliability engineer",
+      "SRE"
+    ],
+    "task_provenance": "JOBINTEL_CURATED"
   },
   {
     "occupation_id": "SG_SSOC_2024:25211",
@@ -471,7 +600,12 @@
     "hierarchy_level": "Detailed Occupation",
     "parent_code": "2521",
     "is_leaf": true,
-    "alternate_titles": ["Cybersecurity analyst", "Information security specialist", "Cyber risk analyst"]
+    "alternate_titles": [
+      "Cybersecurity analyst",
+      "Information security specialist",
+      "Cyber risk analyst"
+    ],
+    "task_provenance": "JOBINTEL_CURATED"
   },
   {
     "occupation_id": "IN_NCO_2015:2512.0100",
@@ -490,7 +624,12 @@
     "hierarchy_level": "Detailed Occupation",
     "parent_code": "2512",
     "is_leaf": true,
-    "alternate_titles": ["Software developer", "Software engineer", "Programmer"]
+    "alternate_titles": [
+      "Software developer",
+      "Software engineer",
+      "Programmer"
+    ],
+    "task_provenance": "JOBINTEL_CURATED"
   },
   {
     "occupation_id": "IN_NCO_2015:2511.0100",
@@ -509,7 +648,11 @@
     "hierarchy_level": "Detailed Occupation",
     "parent_code": "2511",
     "is_leaf": true,
-    "alternate_titles": ["Systems analyst", "Business systems analyst"]
+    "alternate_titles": [
+      "Systems analyst",
+      "Business systems analyst"
+    ],
+    "task_provenance": "JOBINTEL_CURATED"
   },
   {
     "occupation_id": "IN_NCO_2015:2521.0100",
@@ -528,7 +671,12 @@
     "hierarchy_level": "Detailed Occupation",
     "parent_code": "2521",
     "is_leaf": true,
-    "alternate_titles": ["Database administrator", "DBA", "Database analyst"]
+    "alternate_titles": [
+      "Database administrator",
+      "DBA",
+      "Database analyst"
+    ],
+    "task_provenance": "JOBINTEL_CURATED"
   },
   {
     "occupation_id": "INT_ISCO_08:2512",
@@ -546,7 +694,12 @@
     "hierarchy_level": "Unit Group",
     "parent_code": "251",
     "is_leaf": true,
-    "alternate_titles": ["Software developer", "Applications programmer", "Software architect"]
+    "alternate_titles": [
+      "Software developer",
+      "Applications programmer",
+      "Software architect"
+    ],
+    "task_provenance": "OFFICIAL_VERBATIM"
   },
   {
     "occupation_id": "INT_ISCO_08:2511",
@@ -564,6 +717,10 @@
     "hierarchy_level": "Unit Group",
     "parent_code": "251",
     "is_leaf": true,
-    "alternate_titles": ["Systems analyst", "Business systems analyst"]
+    "alternate_titles": [
+      "Systems analyst",
+      "Business systems analyst"
+    ],
+    "task_provenance": "OFFICIAL_VERBATIM"
   }
 ]

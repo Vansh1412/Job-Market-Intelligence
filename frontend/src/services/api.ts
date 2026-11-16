@@ -22,6 +22,7 @@ import {
   CanonicalOccupation,
   OccupationMapping,
   CrossMarketComparisonResult,
+  ConcordanceCoverageStats,
 } from '../types';
 
 const envApiUrl = import.meta.env.VITE_API_BASE_URL;
@@ -187,4 +188,6 @@ export const api = {
   },
   getOccupationDetail: (occupationId: string) =>
     fetchJson<NationalOccupation>(`/v1/occupations/${occupationId}`),
+  getConcordanceCoverage: () =>
+    fetchJson<ConcordanceCoverageStats>('/v1/occupations/coverage'),
 };

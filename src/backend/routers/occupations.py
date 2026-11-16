@@ -8,10 +8,12 @@ from fastapi import APIRouter, Depends, HTTPException, Path, Query
 from src.backend.schemas.occupation import (
     CanonicalOccupation,
     ClassificationSystem,
+    ConcordanceCoverageStats,
     CrossMarketComparisonResult,
     NationalOccupation,
     OccupationMapping,
     OccupationPage,
+    TaskSimilarityPayload,
 )
 from src.backend.services.occupation_service import (
     CanonicalOccupationNotFoundError,
@@ -119,6 +121,27 @@ def compare_across_markets(
         return service.compare_across_markets(
             source_occupation_id=source_occupation_id, target_market=target_market
         )
+    except OccupationNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+
+
+@router.get("/coverage", response_model=ConcordanceCoverageStats)
+def get_concordance_coverage(
+    service: OccupationService = Depends(get_occupation_service),
+) -> ConcordanceCoverageStats:
+    """Retrieves authoritative concordance coverage, unmapped counts, and quality metrics."""
+    return service.get_coverage_stats()
+
+
+@router.get("/similarity", response_model=TaskSimilarityPayload)
+def compute_task_similarity(
+    source_id: Annotated[str, Query(description="Source occupation ID (e.g. UK_SOC_2020:2134)")],
+    target_id: Annotated[str, Query(description="Target occupation ID (e.g. US_SOC_2018:15-1252)")],
+    service: OccupationService = Depends(get_occupation_service),
+) -> TaskSimilarityPayload:
+    """Calculates unsupervised lexical task similarity (Jaccard and TF-IDF Cosine) between two occupations."""
+    try:
+        return service.compute_task_similarity(source_id=source_id, target_id=target_id)
     except OccupationNotFoundError as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
 

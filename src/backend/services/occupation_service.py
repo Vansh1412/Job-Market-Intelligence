@@ -10,6 +10,7 @@ from typing import Any
 from src.backend.schemas.occupation import (
     CanonicalOccupation,
     ClassificationSystem,
+    ConcordanceCoverageStats,
     CrossMarketComparisonResult,
     CrossMarketMatchItem,
     NationalOccupation,
@@ -17,6 +18,12 @@ from src.backend.schemas.occupation import (
     RelationshipType,
     ReviewStatus,
     TargetType,
+    TaskSimilarityPayload,
+)
+from src.backend.services.task_similarity import (
+    TfidfModel,
+    calculate_jaccard_similarity,
+    normalize_tasks,
 )
 
 logger = logging.getLogger("jobintel.occupation_service")
@@ -47,6 +54,7 @@ class OccupationService:
         self._canonical_occupations: dict[str, CanonicalOccupation] = {}
         self._mappings_by_source: dict[str, list[OccupationMapping]] = {}
         self._mappings_by_target: dict[str, list[OccupationMapping]] = {}
+        self._tfidf_model: TfidfModel | None = None
         self._load_and_validate()
 
     def _load_and_validate(self) -> None:
@@ -107,6 +115,10 @@ class OccupationService:
 
             self._mappings_by_source.setdefault(item.source_occupation_id, []).append(item)
             self._mappings_by_target.setdefault(item.target_occupation_id, []).append(item)
+
+        # 5. Initialize TF-IDF model on national occupation task descriptions
+        corpus = [normalize_tasks(occ.tasks) for occ in self._national_occupations.values()]
+        self._tfidf_model = TfidfModel(corpus)
 
         logger.info(
             "OccupationService initialized with %d classifications, %d national occupations, %d canonical concepts, %d mappings.",
@@ -274,6 +286,13 @@ class OccupationService:
                 if target_market and target_occ.market_id != target_market.upper():
                     continue
 
+                # Unsupervised task lexical similarity (separate from heuristic confidence)
+                similarity_score = None
+                if self._tfidf_model:
+                    tok_s = normalize_tasks(source_occ.tasks)
+                    tok_t = normalize_tasks(target_occ.tasks)
+                    similarity_score = self._tfidf_model.cosine_similarity(tok_s, tok_t)
+
                 covered_markets.add(target_occ.market_id)
                 matches.append(
                     CrossMarketMatchItem(
@@ -287,6 +306,7 @@ class OccupationService:
                         evidence_sources=m.evidence_sources,
                         notes_and_limitations=m.notes_and_limitations,
                         approximation_warning=warning,
+                        task_similarity=similarity_score,
                     )
                 )
             elif m.target_type == TargetType.CANONICAL:
@@ -295,6 +315,13 @@ class OccupationService:
                     continue
                 if target_market and target_market.upper() not in ("CANONICAL", "INT"):
                     continue
+
+                # Lexical similarity against canonical core competencies
+                similarity_score = None
+                if self._tfidf_model:
+                    tok_s = normalize_tasks(source_occ.tasks)
+                    tok_t = normalize_tasks(canonical_concept.core_competencies)
+                    similarity_score = self._tfidf_model.cosine_similarity(tok_s, tok_t)
 
                 matches.append(
                     CrossMarketMatchItem(
@@ -308,6 +335,7 @@ class OccupationService:
                         evidence_sources=m.evidence_sources,
                         notes_and_limitations=m.notes_and_limitations,
                         approximation_warning=warning,
+                        task_similarity=similarity_score,
                     )
                 )
 
@@ -320,6 +348,66 @@ class OccupationService:
             matches=tuple(matches),
             unmapped_markets=tuple(unmapped),
             total_matches=len(matches),
+        )
+
+    # -------------------------------------------------------------
+    # Coverage & Quality Statistics
+    # -------------------------------------------------------------
+
+    def get_coverage_stats(self) -> ConcordanceCoverageStats:
+        total_national = len(self._national_occupations)
+        all_mappings = [m for m_list in self._mappings_by_source.values() for m in m_list]
+        
+        source_ids = {m.source_occupation_id for m in all_mappings}
+        target_nat_ids = {m.target_occupation_id for m in all_mappings if m.target_type == TargetType.NATIONAL}
+        mapped_nat = len(source_ids.union(target_nat_ids))
+        unmapped_nat = max(0, total_national - mapped_nat)
+
+        total_canonical = len(self._canonical_occupations)
+        linked_canonical_ids = {m.target_occupation_id for m in all_mappings if m.target_type == TargetType.CANONICAL}
+        linked_canonical = len(linked_canonical_ids)
+        unlinked_canonical = max(0, total_canonical - linked_canonical)
+
+        from collections import Counter
+        rel_counts = dict(Counter(m.relationship_type.value for m in all_mappings))
+        status_counts = dict(Counter(m.review_status.value for m in all_mappings))
+
+        official_count = sum(1 for m in all_mappings if m.review_status == ReviewStatus.VERIFIED_OFFICIAL)
+        expert_count = len(all_mappings) - official_count
+
+        return ConcordanceCoverageStats(
+            total_national_occupations=total_national,
+            mapped_national_occupations=mapped_nat,
+            unmapped_national_occupations=unmapped_nat,
+            total_canonical_concepts=total_canonical,
+            linked_canonical_concepts=linked_canonical,
+            unlinked_canonical_concepts=unlinked_canonical,
+            mappings_by_relationship=rel_counts,
+            mappings_by_review_status=status_counts,
+            official_mappings_count=official_count,
+            expert_reviewed_mappings_count=expert_count,
+            total_mappings=len(all_mappings),
+        )
+
+    def compute_task_similarity(self, source_id: str, target_id: str) -> TaskSimilarityPayload:
+        source_occ = self.get_occupation(source_id)
+        target_occ = self.get_occupation(target_id)
+
+        tok_s = normalize_tasks(source_occ.tasks)
+        tok_t = normalize_tasks(target_occ.tasks)
+
+        jaccard = calculate_jaccard_similarity(tok_s, tok_t)
+        tfidf_cos = self._tfidf_model.cosine_similarity(tok_s, tok_t) if self._tfidf_model else 0.0
+
+        return TaskSimilarityPayload(
+            source_id=source_occ.occupation_id,
+            target_id=target_occ.occupation_id,
+            source_title=source_occ.occupation_title,
+            target_title=target_occ.occupation_title,
+            source_task_count=len(source_occ.tasks),
+            target_task_count=len(target_occ.tasks),
+            jaccard_similarity=jaccard,
+            tfidf_cosine_similarity=tfidf_cos,
         )
 
 

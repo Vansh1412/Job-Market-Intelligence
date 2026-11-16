@@ -41,7 +41,7 @@
     "target_occupation_id": "AU_OSCA_2024:261313",
     "target_type": "NATIONAL",
     "relationship_type": "BROADER_THAN",
-    "confidence_score": 0.90,
+    "confidence_score": 0.9,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
     "evidence_sources": [
@@ -59,7 +59,7 @@
     "target_occupation_id": "US_SOC_2018:15-1252",
     "target_type": "NATIONAL",
     "relationship_type": "NARROWER_THAN",
-    "confidence_score": 0.90,
+    "confidence_score": 0.9,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
     "evidence_sources": [
@@ -314,7 +314,9 @@
     "confidence_score": 0.95,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
-    "evidence_sources": ["https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020"],
+    "evidence_sources": [
+      "https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020"
+    ],
     "notes_and_limitations": "UK unit group 2134 represents the national realization of the canonical Software Engineer concept.",
     "reviewer": "JobIntel Taxonomy Review Committee",
     "effective_date": "2026-11-16",
@@ -329,7 +331,9 @@
     "confidence_score": 0.96,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
-    "evidence_sources": ["https://www.bls.gov/soc/2018/major_groups.htm#15-0000"],
+    "evidence_sources": [
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000"
+    ],
     "notes_and_limitations": "US detailed occupation 15-1252 represents the federal realization of the canonical Software Engineer concept.",
     "reviewer": "JobIntel Taxonomy Review Committee",
     "effective_date": "2026-11-16",
@@ -344,7 +348,9 @@
     "confidence_score": 0.98,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
-    "evidence_sources": ["https://www.abs.gov.au/about/key-priorities/about-osca/osca-2024"],
+    "evidence_sources": [
+      "https://www.abs.gov.au/about/key-priorities/about-osca/osca-2024"
+    ],
     "notes_and_limitations": "Direct alignment with Australian OSCA 2024 Software Engineer code.",
     "reviewer": "JobIntel Taxonomy Review Committee",
     "effective_date": "2026-11-16",
@@ -359,7 +365,9 @@
     "confidence_score": 0.98,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
-    "evidence_sources": ["https://www.singstat.gov.sg/standard-classifications/national-classifications/singapore-standard-occupational-classification-ssoc"],
+    "evidence_sources": [
+      "https://www.singstat.gov.sg/standard-classifications/national-classifications/singapore-standard-occupational-classification-ssoc"
+    ],
     "notes_and_limitations": "Direct alignment with Singapore SSOC 2024 Software Developer code.",
     "reviewer": "JobIntel Taxonomy Review Committee",
     "effective_date": "2026-11-16",
@@ -374,7 +382,9 @@
     "confidence_score": 0.95,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
-    "evidence_sources": ["https://dge.gov.in/dge/nco"],
+    "evidence_sources": [
+      "https://dge.gov.in/dge/nco"
+    ],
     "notes_and_limitations": "Direct alignment with Indian NCO-2015 Software Developer code.",
     "reviewer": "JobIntel Taxonomy Review Committee",
     "effective_date": "2026-11-16",
@@ -389,7 +399,9 @@
     "confidence_score": 0.98,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
-    "evidence_sources": ["https://www.bls.gov/soc/2018/major_groups.htm#15-0000"],
+    "evidence_sources": [
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000"
+    ],
     "notes_and_limitations": "US Data Scientists code aligns directly with canonical Data Scientist concept.",
     "reviewer": "JobIntel Taxonomy Review Committee",
     "effective_date": "2026-11-16",
@@ -404,7 +416,9 @@
     "confidence_score": 0.98,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
-    "evidence_sources": ["https://www.abs.gov.au/about/key-priorities/about-osca/osca-2024"],
+    "evidence_sources": [
+      "https://www.abs.gov.au/about/key-priorities/about-osca/osca-2024"
+    ],
     "notes_and_limitations": "AU OSCA 2024 Data Scientist aligns directly with canonical Data Scientist concept.",
     "reviewer": "JobIntel Taxonomy Review Committee",
     "effective_date": "2026-11-16",
@@ -419,7 +433,9 @@
     "confidence_score": 0.98,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
-    "evidence_sources": ["https://www.singstat.gov.sg/standard-classifications/national-classifications/singapore-standard-occupational-classification-ssoc"],
+    "evidence_sources": [
+      "https://www.singstat.gov.sg/standard-classifications/national-classifications/singapore-standard-occupational-classification-ssoc"
+    ],
     "notes_and_limitations": "Singapore SSOC 2024 Data Scientist aligns directly with canonical Data Scientist concept.",
     "reviewer": "JobIntel Taxonomy Review Committee",
     "effective_date": "2026-11-16",
@@ -434,7 +450,9 @@
     "confidence_score": 0.98,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
-    "evidence_sources": ["https://www.singstat.gov.sg/standard-classifications/national-classifications/singapore-standard-occupational-classification-ssoc"],
+    "evidence_sources": [
+      "https://www.singstat.gov.sg/standard-classifications/national-classifications/singapore-standard-occupational-classification-ssoc"
+    ],
     "notes_and_limitations": "Singapore SSOC 2024 AI / Machine Learning Engineer matches canonical ML Engineer concept.",
     "reviewer": "JobIntel Taxonomy Review Committee",
     "effective_date": "2026-11-16",
@@ -449,7 +467,9 @@
     "confidence_score": 0.98,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
-    "evidence_sources": ["https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020"],
+    "evidence_sources": [
+      "https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020"
+    ],
     "notes_and_limitations": "UK Cyber security professionals matches canonical Cybersecurity concept.",
     "reviewer": "JobIntel Taxonomy Review Committee",
     "effective_date": "2026-11-16",
@@ -464,7 +484,9 @@
     "confidence_score": 0.95,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
-    "evidence_sources": ["https://www.bls.gov/soc/2018/major_groups.htm#15-0000"],
+    "evidence_sources": [
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000"
+    ],
     "notes_and_limitations": "US Information Security Analysts matches canonical Cybersecurity concept.",
     "reviewer": "JobIntel Taxonomy Review Committee",
     "effective_date": "2026-11-16",
@@ -479,7 +501,9 @@
     "confidence_score": 0.98,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
-    "evidence_sources": ["https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020"],
+    "evidence_sources": [
+      "https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020"
+    ],
     "notes_and_limitations": "UK Data analysts unit group matches canonical Data Analyst concept.",
     "reviewer": "JobIntel Taxonomy Review Committee",
     "effective_date": "2026-11-16",
@@ -494,7 +518,9 @@
     "confidence_score": 0.98,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
-    "evidence_sources": ["https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020"],
+    "evidence_sources": [
+      "https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020"
+    ],
     "notes_and_limitations": "UK IT quality and testing professionals matches canonical QA concept.",
     "reviewer": "JobIntel Taxonomy Review Committee",
     "effective_date": "2026-11-16",
@@ -509,7 +535,9 @@
     "confidence_score": 0.98,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
-    "evidence_sources": ["https://www.bls.gov/soc/2018/major_groups.htm#15-0000"],
+    "evidence_sources": [
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000"
+    ],
     "notes_and_limitations": "US Software QA Analysts and Testers matches canonical QA concept.",
     "reviewer": "JobIntel Taxonomy Review Committee",
     "effective_date": "2026-11-16",
@@ -524,10 +552,538 @@
     "confidence_score": 0.98,
     "review_status": "VERIFIED_REVIEWED",
     "methodology": "EXPERT_ASSESSMENT",
-    "evidence_sources": ["https://www.singstat.gov.sg/standard-classifications/national-classifications/singapore-standard-occupational-classification-ssoc"],
+    "evidence_sources": [
+      "https://www.singstat.gov.sg/standard-classifications/national-classifications/singapore-standard-occupational-classification-ssoc"
+    ],
     "notes_and_limitations": "Singapore SSOC 2024 DevOps Engineer matches canonical DevOps concept.",
     "reviewer": "JobIntel Taxonomy Review Committee",
     "effective_date": "2026-11-16",
     "created_at": "2026-11-16T10:00:00Z"
+  },
+  {
+    "mapping_id": "map_can_dba_us151242_v1",
+    "source_occupation_id": "US_SOC_2018:15-1242",
+    "target_occupation_id": "CAN_OCC_DATABASE_ADMIN",
+    "target_type": "CANONICAL",
+    "relationship_type": "EXACT_MATCH",
+    "confidence_score": "0.98",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000"
+    ],
+    "notes_and_limitations": "US Database Administrators aligns directly with canonical Database Administrator & Architect concept.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_can_dba_uk3133_v1",
+    "source_occupation_id": "UK_SOC_2020:3133",
+    "target_occupation_id": "CAN_OCC_DATABASE_ADMIN",
+    "target_type": "CANONICAL",
+    "relationship_type": "CLOSE_MATCH",
+    "confidence_score": "0.92",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020"
+    ],
+    "notes_and_limitations": "UK SOC 2020 unit group 3133 combines database administrators with web content technicians, creating a slight breadth asymmetry relative to the pure canonical DBA concept.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_can_dba_in2521_v1",
+    "source_occupation_id": "IN_NCO_2015:2521.0100",
+    "target_occupation_id": "CAN_OCC_DATABASE_ADMIN",
+    "target_type": "CANONICAL",
+    "relationship_type": "CLOSE_MATCH",
+    "confidence_score": "0.95",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://dge.gov.in/dge/nco"
+    ],
+    "notes_and_limitations": "Indian NCO-2015 Database Administrator aligns closely with canonical DBA concept.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_uk3133_us151242_v1",
+    "source_occupation_id": "UK_SOC_2020:3133",
+    "target_occupation_id": "US_SOC_2018:15-1242",
+    "target_type": "NATIONAL",
+    "relationship_type": "BROADER_THAN",
+    "confidence_score": "0.90",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020",
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000"
+    ],
+    "notes_and_limitations": "UK 3133 includes web content technicians alongside database administrators, whereas US 15-1242 is restricted strictly to database administrators.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_us151242_uk3133_v1",
+    "source_occupation_id": "US_SOC_2018:15-1242",
+    "target_occupation_id": "UK_SOC_2020:3133",
+    "target_type": "NATIONAL",
+    "relationship_type": "NARROWER_THAN",
+    "confidence_score": "0.90",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000",
+      "https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020"
+    ],
+    "notes_and_limitations": "US 15-1242 focuses specifically on database administration; UK 3133 additionally subsumes web content publishing technicians.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_us151242_in2521_v1",
+    "source_occupation_id": "US_SOC_2018:15-1242",
+    "target_occupation_id": "IN_NCO_2015:2521.0100",
+    "target_type": "NATIONAL",
+    "relationship_type": "CLOSE_MATCH",
+    "confidence_score": "0.94",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000",
+      "https://dge.gov.in/dge/nco"
+    ],
+    "notes_and_limitations": "Core database administration duties are substantially equivalent between US SOC 15-1242 and Indian NCO 2521.0100.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_in2521_us151242_v1",
+    "source_occupation_id": "IN_NCO_2015:2521.0100",
+    "target_occupation_id": "US_SOC_2018:15-1242",
+    "target_type": "NATIONAL",
+    "relationship_type": "CLOSE_MATCH",
+    "confidence_score": "0.94",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://dge.gov.in/dge/nco",
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000"
+    ],
+    "notes_and_limitations": "Substantially identical primary core duties across database setup, security, performance tuning, and recovery.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_can_sysan_us151211_v1",
+    "source_occupation_id": "US_SOC_2018:15-1211",
+    "target_occupation_id": "CAN_OCC_SYSTEMS_ANALYST",
+    "target_type": "CANONICAL",
+    "relationship_type": "EXACT_MATCH",
+    "confidence_score": "0.98",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000"
+    ],
+    "notes_and_limitations": "US Computer Systems Analysts matches canonical Systems Analyst concept.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_can_sysan_uk2133_v1",
+    "source_occupation_id": "UK_SOC_2020:2133",
+    "target_occupation_id": "CAN_OCC_SYSTEMS_ANALYST",
+    "target_type": "CANONICAL",
+    "relationship_type": "CLOSE_MATCH",
+    "confidence_score": "0.92",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020"
+    ],
+    "notes_and_limitations": "UK 2133 bundles business analysts, enterprise architects, and systems designers, broader than standard systems analyst scope.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_can_sysan_in2511_v1",
+    "source_occupation_id": "IN_NCO_2015:2511.0100",
+    "target_occupation_id": "CAN_OCC_SYSTEMS_ANALYST",
+    "target_type": "CANONICAL",
+    "relationship_type": "CLOSE_MATCH",
+    "confidence_score": "0.95",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://dge.gov.in/dge/nco"
+    ],
+    "notes_and_limitations": "Indian Systems Analyst code aligns closely with canonical Systems Analyst concept.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_can_sysan_isco2511_v1",
+    "source_occupation_id": "INT_ISCO_08:2511",
+    "target_occupation_id": "CAN_OCC_SYSTEMS_ANALYST",
+    "target_type": "CANONICAL",
+    "relationship_type": "EXACT_MATCH",
+    "confidence_score": "0.98",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.ilo.org/public/english/bureau/stat/isco/isco08/"
+    ],
+    "notes_and_limitations": "ILO ISCO-08 Systems Analysts aligns directly with canonical Systems Analyst concept.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_in2511_isco2511_v1",
+    "source_occupation_id": "IN_NCO_2015:2511.0100",
+    "target_occupation_id": "INT_ISCO_08:2511",
+    "target_type": "NATIONAL",
+    "relationship_type": "EXACT_MATCH",
+    "confidence_score": "1.00",
+    "review_status": "VERIFIED_OFFICIAL",
+    "methodology": "OFFICIAL_CROSSWALK",
+    "evidence_sources": [
+      "https://dge.gov.in/dge/nco",
+      "https://www.ilo.org/public/english/bureau/stat/isco/isco08/"
+    ],
+    "notes_and_limitations": "Government of India Directorate General of Employment formal Concordance Table NCO-2015 to ISCO-08.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_isco2511_in2511_v1",
+    "source_occupation_id": "INT_ISCO_08:2511",
+    "target_occupation_id": "IN_NCO_2015:2511.0100",
+    "target_type": "NATIONAL",
+    "relationship_type": "EXACT_MATCH",
+    "confidence_score": "1.00",
+    "review_status": "VERIFIED_OFFICIAL",
+    "methodology": "OFFICIAL_CROSSWALK",
+    "evidence_sources": [
+      "https://dge.gov.in/dge/nco",
+      "https://www.ilo.org/public/english/bureau/stat/isco/isco08/"
+    ],
+    "notes_and_limitations": "Official concordance mapping between ISCO-08 unit group 2511 and NCO-2015 family 2511.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_uk2133_us151211_v1",
+    "source_occupation_id": "UK_SOC_2020:2133",
+    "target_occupation_id": "US_SOC_2018:15-1211",
+    "target_type": "NATIONAL",
+    "relationship_type": "BROADER_THAN",
+    "confidence_score": "0.88",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020",
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000"
+    ],
+    "notes_and_limitations": "UK 2133 aggregates business analysts, enterprise architects, and systems designers; US 15-1211 isolates computer systems analysts.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_us151211_uk2133_v1",
+    "source_occupation_id": "US_SOC_2018:15-1211",
+    "target_occupation_id": "UK_SOC_2020:2133",
+    "target_type": "NATIONAL",
+    "relationship_type": "NARROWER_THAN",
+    "confidence_score": "0.88",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000",
+      "https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020"
+    ],
+    "notes_and_limitations": "US 15-1211 is specific to systems analysis, whereas UK 2133 is a broader grouping incorporating solutions architects.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_can_neteng_uk2137_v1",
+    "source_occupation_id": "UK_SOC_2020:2137",
+    "target_occupation_id": "CAN_OCC_NETWORK_ENGINEER",
+    "target_type": "CANONICAL",
+    "relationship_type": "EXACT_MATCH",
+    "confidence_score": "0.98",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020"
+    ],
+    "notes_and_limitations": "UK IT network professionals unit group matches canonical Network Engineer concept.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_can_neteng_us151244_v1",
+    "source_occupation_id": "US_SOC_2018:15-1244",
+    "target_occupation_id": "CAN_OCC_NETWORK_ENGINEER",
+    "target_type": "CANONICAL",
+    "relationship_type": "CLOSE_MATCH",
+    "confidence_score": "0.94",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000"
+    ],
+    "notes_and_limitations": "US 15-1244 includes both network administration and general systems administration duties.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_uk2137_us151244_v1",
+    "source_occupation_id": "UK_SOC_2020:2137",
+    "target_occupation_id": "US_SOC_2018:15-1244",
+    "target_type": "NATIONAL",
+    "relationship_type": "CLOSE_MATCH",
+    "confidence_score": "0.92",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020",
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000"
+    ],
+    "notes_and_limitations": "Both cover enterprise network infrastructure, routing protocols, and switches; US 15-1244 includes general systems administration.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_us151244_uk2137_v1",
+    "source_occupation_id": "US_SOC_2018:15-1244",
+    "target_occupation_id": "UK_SOC_2020:2137",
+    "target_type": "NATIONAL",
+    "relationship_type": "CLOSE_MATCH",
+    "confidence_score": "0.92",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000",
+      "https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020"
+    ],
+    "notes_and_limitations": "Substantial core duties overlap across network administration, configuration, and security.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_can_itpm_uk2131_v1",
+    "source_occupation_id": "UK_SOC_2020:2131",
+    "target_occupation_id": "CAN_OCC_IT_PROJECT_MGR",
+    "target_type": "CANONICAL",
+    "relationship_type": "EXACT_MATCH",
+    "confidence_score": "0.98",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020"
+    ],
+    "notes_and_limitations": "UK IT project managers unit group matches canonical IT Project & Program Manager concept.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_can_qa_au261314_v1",
+    "source_occupation_id": "AU_OSCA_2024:261314",
+    "target_occupation_id": "CAN_OCC_QA_TEST_ENGINEER",
+    "target_type": "CANONICAL",
+    "relationship_type": "EXACT_MATCH",
+    "confidence_score": "0.98",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.abs.gov.au/about/key-priorities/about-osca/osca-2024"
+    ],
+    "notes_and_limitations": "AU OSCA 2024 Software Tester aligns directly with canonical QA & Software Test Engineer concept.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_au261314_us151253_v1",
+    "source_occupation_id": "AU_OSCA_2024:261314",
+    "target_occupation_id": "US_SOC_2018:15-1253",
+    "target_type": "NATIONAL",
+    "relationship_type": "CLOSE_MATCH",
+    "confidence_score": "0.94",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.abs.gov.au/about/key-priorities/about-osca/osca-2024",
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000"
+    ],
+    "notes_and_limitations": "Substantially identical duties across test automation, defect reporting, and regression testing.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_us151253_au261314_v1",
+    "source_occupation_id": "US_SOC_2018:15-1253",
+    "target_occupation_id": "AU_OSCA_2024:261314",
+    "target_type": "NATIONAL",
+    "relationship_type": "CLOSE_MATCH",
+    "confidence_score": "0.94",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000",
+      "https://www.abs.gov.au/about/key-priorities/about-osca/osca-2024"
+    ],
+    "notes_and_limitations": "Both denote dedicated software testing, test planning, and defect verification.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_can_cyber_au262112_v1",
+    "source_occupation_id": "AU_OSCA_2024:262112",
+    "target_occupation_id": "CAN_OCC_CYBERSECURITY_ANALYST",
+    "target_type": "CANONICAL",
+    "relationship_type": "EXACT_MATCH",
+    "confidence_score": "0.98",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.abs.gov.au/about/key-priorities/about-osca/osca-2024"
+    ],
+    "notes_and_limitations": "AU OSCA 2024 ICT Security Specialist aligns directly with canonical Cybersecurity concept.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_can_cyber_sg25211_v1",
+    "source_occupation_id": "SG_SSOC_2024:25211",
+    "target_occupation_id": "CAN_OCC_CYBERSECURITY_ANALYST",
+    "target_type": "CANONICAL",
+    "relationship_type": "EXACT_MATCH",
+    "confidence_score": "0.98",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.singstat.gov.sg/standard-classifications/national-classifications/singapore-standard-occupational-classification-ssoc"
+    ],
+    "notes_and_limitations": "Singapore SSOC 2024 Cybersecurity Specialist matches canonical Cybersecurity concept.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_au262112_us151212_v1",
+    "source_occupation_id": "AU_OSCA_2024:262112",
+    "target_occupation_id": "US_SOC_2018:15-1212",
+    "target_type": "NATIONAL",
+    "relationship_type": "CLOSE_MATCH",
+    "confidence_score": "0.94",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.abs.gov.au/about/key-priorities/about-osca/osca-2024",
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000"
+    ],
+    "notes_and_limitations": "Substantially identical focus on threat mitigation, vulnerability assessment, and security policy.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_us151212_au262112_v1",
+    "source_occupation_id": "US_SOC_2018:15-1212",
+    "target_occupation_id": "AU_OSCA_2024:262112",
+    "target_type": "NATIONAL",
+    "relationship_type": "CLOSE_MATCH",
+    "confidence_score": "0.94",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000",
+      "https://www.abs.gov.au/about/key-priorities/about-osca/osca-2024"
+    ],
+    "notes_and_limitations": "Core information security analysis and incident response duties are equivalent.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_sg25211_us151212_v1",
+    "source_occupation_id": "SG_SSOC_2024:25211",
+    "target_occupation_id": "US_SOC_2018:15-1212",
+    "target_type": "NATIONAL",
+    "relationship_type": "CLOSE_MATCH",
+    "confidence_score": "0.94",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.singstat.gov.sg/standard-classifications/national-classifications/singapore-standard-occupational-classification-ssoc",
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000"
+    ],
+    "notes_and_limitations": "Substantially identical primary core duties across cyber defense and compliance.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_us151212_sg25211_v1",
+    "source_occupation_id": "US_SOC_2018:15-1212",
+    "target_occupation_id": "SG_SSOC_2024:25211",
+    "target_type": "NATIONAL",
+    "relationship_type": "CLOSE_MATCH",
+    "confidence_score": "0.94",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.bls.gov/soc/2018/major_groups.htm#15-0000",
+      "https://www.singstat.gov.sg/standard-classifications/national-classifications/singapore-standard-occupational-classification-ssoc"
+    ],
+    "notes_and_limitations": "Both denote dedicated cybersecurity, incident monitoring, and security controls administration.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
+  },
+  {
+    "mapping_id": "map_can_devops_sg25124_v1",
+    "source_occupation_id": "SG_SSOC_2024:25124",
+    "target_occupation_id": "CAN_OCC_DEVOPS_ENGINEER",
+    "target_type": "CANONICAL",
+    "relationship_type": "CLOSE_MATCH",
+    "confidence_score": "0.90",
+    "review_status": "VERIFIED_REVIEWED",
+    "methodology": "EXPERT_ASSESSMENT",
+    "evidence_sources": [
+      "https://www.singstat.gov.sg/standard-classifications/national-classifications/singapore-standard-occupational-classification-ssoc"
+    ],
+    "notes_and_limitations": "Singapore SSOC 2024 Cloud Architect maps to canonical DevOps & Cloud Engineer concept with an emphasis on cloud infrastructure blueprints and governance.",
+    "reviewer": "Principal Data Architect (JOBINTEL Concordance Team)",
+    "effective_date": "2026-11-16",
+    "created_at": "2026-11-16T11:30:00Z"
   }
 ]

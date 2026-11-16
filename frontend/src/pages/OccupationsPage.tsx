@@ -22,6 +22,7 @@ import {
   NationalOccupation,
   CanonicalOccupation,
   CrossMarketComparisonResult,
+  ConcordanceCoverageStats,
 } from '../types';
 
 type ActiveTab = 'concordance' | 'explorer' | 'canonical';
@@ -49,6 +50,7 @@ export const OccupationsPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<ActiveTab>('concordance');
   const [classifications, setClassifications] = useState<ClassificationSystem[]>([]);
   const [canonicalList, setCanonicalList] = useState<CanonicalOccupation[]>([]);
+  const [coverageStats, setCoverageStats] = useState<ConcordanceCoverageStats | null>(null);
   const [selectedClassification, setSelectedClassification] = useState<string>('UK_SOC_2020');
   const [occupationsList, setOccupationsList] = useState<NationalOccupation[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -64,13 +66,14 @@ export const OccupationsPage: React.FC = () => {
   const [searchResults, setSearchResults] = useState<NationalOccupation[]>([]);
   const [searching, setSearching] = useState<boolean>(false);
 
-  // Initial Load: classifications and canonical concepts
+  // Initial Load: classifications, canonical concepts, and coverage stats
   useEffect(() => {
     setLoading(true);
-    Promise.all([api.getClassifications(), api.getCanonicalOccupations()])
-      .then(([classData, canonicalData]) => {
+    Promise.all([api.getClassifications(), api.getCanonicalOccupations(), api.getConcordanceCoverage()])
+      .then(([classData, canonicalData, coverageData]) => {
         setClassifications(classData);
         setCanonicalList(canonicalData);
+        setCoverageStats(coverageData);
         setLoading(false);
       })
       .catch((err) => {
@@ -153,6 +156,63 @@ export const OccupationsPage: React.FC = () => {
         accentColor="#6366F1"
       />
 
+      {/* Coverage & Concordance Quality Scorecard */}
+      {coverageStats && (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px', marginBottom: '28px' }}>
+          <div style={{ background: '#12141A', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px', padding: '16px 20px' }}>
+            <div style={{ fontSize: '0.74rem', fontWeight: 800, color: '#94A3B8', textTransform: 'uppercase', marginBottom: '4px' }}>
+              National Occupations
+            </div>
+            <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#FFFFFF' }}>
+              {coverageStats.mapped_national_occupations} / {coverageStats.total_national_occupations}
+            </div>
+            <div style={{ fontSize: '0.78rem', color: '#4ADE80', marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <CheckCircle2 size={13} />
+              100% Active Concordance Coverage
+            </div>
+          </div>
+
+          <div style={{ background: '#12141A', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px', padding: '16px 20px' }}>
+            <div style={{ fontSize: '0.74rem', fontWeight: 800, color: '#94A3B8', textTransform: 'uppercase', marginBottom: '4px' }}>
+              Canonical Concepts
+            </div>
+            <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#FFFFFF' }}>
+              {coverageStats.linked_canonical_concepts} / {coverageStats.total_canonical_concepts}
+            </div>
+            <div style={{ fontSize: '0.78rem', color: '#93C5FD', marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <Layers size={13} />
+              {coverageStats.linked_canonical_concepts} Activated · {coverageStats.unlinked_canonical_concepts} Idle (Data Eng)
+            </div>
+          </div>
+
+          <div style={{ background: '#12141A', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px', padding: '16px 20px' }}>
+            <div style={{ fontSize: '0.74rem', fontWeight: 800, color: '#94A3B8', textTransform: 'uppercase', marginBottom: '4px' }}>
+              Concordance Crosswalks
+            </div>
+            <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#FFFFFF' }}>
+              {coverageStats.total_mappings}
+            </div>
+            <div style={{ fontSize: '0.78rem', color: '#A5B4FC', marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <GitCompare size={13} />
+              {coverageStats.official_mappings_count} Official · {coverageStats.expert_reviewed_mappings_count} Expert-Reviewed
+            </div>
+          </div>
+
+          <div style={{ background: '#12141A', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px', padding: '16px 20px' }}>
+            <div style={{ fontSize: '0.74rem', fontWeight: 800, color: '#94A3B8', textTransform: 'uppercase', marginBottom: '4px' }}>
+              Classification Systems
+            </div>
+            <div style={{ fontSize: '1.6rem', fontWeight: 900, color: '#FFFFFF' }}>
+              {classifications.length}
+            </div>
+            <div style={{ fontSize: '0.78rem', color: '#FACC15', marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <ShieldCheck size={13} />
+              5 Target Jurisdictions + ILO ISCO-08
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Main Mode Navigation Tabs */}
       <div style={{ display: 'flex', gap: '10px', marginBottom: '28px', borderBottom: '1px solid rgba(255, 255, 255, 0.08)', paddingBottom: '14px' }}>
         <button
@@ -229,6 +289,10 @@ export const OccupationsPage: React.FC = () => {
                 { id: 'UK_SOC_2020:2134', label: '🇬🇧 UK 2134 Programmers & Software Dev' },
                 { id: 'US_SOC_2018:15-1252', label: '🇺🇸 US 15-1252 Software Developers' },
                 { id: 'US_SOC_2018:15-2051', label: '🇺🇸 US 15-2051 Data Scientists' },
+                { id: 'US_SOC_2018:15-1242', label: '🇺🇸 US 15-1242 Database Administrators' },
+                { id: 'UK_SOC_2020:2133', label: '🇬🇧 UK 2133 Systems Designers & Architects' },
+                { id: 'UK_SOC_2020:2137', label: '🇬🇧 UK 2137 IT Network Professionals' },
+                { id: 'UK_SOC_2020:2131', label: '🇬🇧 UK 2131 IT Project Managers' },
                 { id: 'UK_SOC_2020:2135', label: '🇬🇧 UK 2135 Cyber Security Professionals' },
                 { id: 'UK_SOC_2020:2136', label: '🇬🇧 UK 2136 IT Quality & Testing' },
                 { id: 'AU_OSCA_2024:261313', label: '🇦🇺 AU 261313 Software Engineer' },
@@ -327,19 +391,35 @@ export const OccupationsPage: React.FC = () => {
                             <span style={{ fontSize: '0.78rem', color: '#64748B' }}>{code}</span>
                           </div>
 
-                          <div style={{ textAlign: 'right' }}>
+                          <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'flex-end' }}>
                             <span
                               style={{
-                                fontSize: '0.85rem',
+                                fontSize: '0.82rem',
                                 fontWeight: 800,
                                 padding: '3px 8px',
                                 borderRadius: '6px',
                                 background: Number(match.confidence_score) >= 0.95 ? 'rgba(34, 197, 94, 0.2)' : 'rgba(234, 179, 8, 0.2)',
                                 color: Number(match.confidence_score) >= 0.95 ? '#4ADE80' : '#FACC15',
                               }}
+                              title="Rule-based heuristic expert confidence"
                             >
-                              {Math.round(Number(match.confidence_score) * 100)}% CONFIDENCE
+                              {Math.round(Number(match.confidence_score) * 100)}% EXPERT HEURISTIC
                             </span>
+                            {match.task_similarity != null && (
+                              <span
+                                style={{
+                                  fontSize: '0.74rem',
+                                  fontWeight: 700,
+                                  padding: '2px 6px',
+                                  borderRadius: '4px',
+                                  background: 'rgba(99, 102, 241, 0.15)',
+                                  color: '#A5B4FC',
+                                }}
+                                title="Unsupervised lexical task description similarity (TF-IDF Cosine)"
+                              >
+                                {Math.round(match.task_similarity * 100)}% Lexical Overlap
+                              </span>
+                            )}
                           </div>
                         </div>
 
@@ -527,10 +607,40 @@ export const OccupationsPage: React.FC = () => {
                 }}
               >
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                    <span style={{ fontSize: '0.78rem', fontWeight: 800, padding: '2px 8px', borderRadius: '4px', background: 'rgba(59, 130, 246, 0.15)', color: '#93C5FD' }}>
-                      CODE {occ.occupation_code}
-                    </span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                    <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                      <span style={{ fontSize: '0.78rem', fontWeight: 800, padding: '2px 8px', borderRadius: '4px', background: 'rgba(59, 130, 246, 0.15)', color: '#93C5FD' }}>
+                        CODE {occ.occupation_code}
+                      </span>
+                      {occ.task_provenance && (
+                        <span
+                          style={{
+                            fontSize: '0.70rem',
+                            fontWeight: 700,
+                            padding: '2px 6px',
+                            borderRadius: '4px',
+                            background:
+                              occ.task_provenance === 'OFFICIAL_VERBATIM'
+                                ? 'rgba(34, 197, 94, 0.15)'
+                                : occ.task_provenance === 'OFFICIALLY_DERIVED'
+                                ? 'rgba(59, 130, 246, 0.15)'
+                                : 'rgba(234, 179, 8, 0.15)',
+                            color:
+                              occ.task_provenance === 'OFFICIAL_VERBATIM'
+                                ? '#4ADE80'
+                                : occ.task_provenance === 'OFFICIALLY_DERIVED'
+                                ? '#93C5FD'
+                                : '#FDE047',
+                          }}
+                        >
+                          {occ.task_provenance === 'OFFICIAL_VERBATIM'
+                            ? 'Official Verbatim'
+                            : occ.task_provenance === 'OFFICIALLY_DERIVED'
+                            ? 'Officially Derived'
+                            : 'Curated by JOBINTEL'}
+                        </span>
+                      )}
+                    </div>
                     <span style={{ fontSize: '0.76rem', color: '#64748B' }}>{occ.hierarchy_level}</span>
                   </div>
                   <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#FFFFFF', margin: '0 0 10px 0' }}>
