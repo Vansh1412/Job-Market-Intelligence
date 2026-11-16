@@ -7,6 +7,7 @@ import {
   Dna,
   GitCompare,
   BookOpen,
+  Globe,
   Home,
   Menu,
   X,
@@ -23,6 +24,7 @@ export type NavigationPage =
   | 'skills'
   | 'archetypes'
   | 'comparison'
+  | 'occupations'
   | 'howitworks';
 
 interface AppHeaderProps {
@@ -41,6 +43,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ activePage, onSelectPage }
     { id: 'skills', label: 'Skills', icon: Layers },
     { id: 'archetypes', label: 'Archetypes', icon: Dna },
     { id: 'comparison', label: 'USA vs India', icon: GitCompare },
+    { id: 'occupations', label: 'Occupations', icon: Globe },
     { id: 'howitworks', label: 'How It Works', icon: BookOpen },
   ];
 

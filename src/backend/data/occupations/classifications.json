@@ -1,0 +1,98 @@
+[
+  {
+    "classification_id": "UK_SOC_2020",
+    "market_id": "UK",
+    "official_title": "UK Standard Occupational Classification 2020",
+    "version_edition": "2020 Volume 1 & 2",
+    "issuing_authority": "Office for National Statistics (ONS)",
+    "code_format": "^\\d{4}$",
+    "hierarchy_levels": ["Major Group", "Sub-Major Group", "Minor Group", "Unit Group"],
+    "is_active": true,
+    "source_reference": "https://www.ons.gov.uk/methodology/classificationsandstandards/standardoccupationalclassificationsoc/soc2020",
+    "license_attribution": "Open Government Licence v3.0 (OGL v3.0)"
+  },
+  {
+    "classification_id": "US_SOC_2018",
+    "market_id": "US",
+    "official_title": "Standard Occupational Classification 2018",
+    "version_edition": "2018 Revision",
+    "issuing_authority": "Bureau of Labor Statistics (BLS), US Department of Labor",
+    "code_format": "^\\d{2}-\\d{4}$",
+    "hierarchy_levels": ["Major Group", "Minor Group", "Broad Occupation", "Detailed Occupation"],
+    "is_active": true,
+    "source_reference": "https://www.bls.gov/soc/2018/home.htm",
+    "license_attribution": "US Government Work (Public Domain)"
+  },
+  {
+    "classification_id": "AU_OSCA_2024",
+    "market_id": "AU",
+    "official_title": "Occupation Standard Classification for Australia 2024",
+    "version_edition": "2024 Release 1.0",
+    "issuing_authority": "Australian Bureau of Statistics (ABS) & Jobs and Skills Australia (JSA)",
+    "code_format": "^\\d{6}$",
+    "hierarchy_levels": ["Major Group", "Sub-Major Group", "Minor Group", "Unit Group", "Occupation"],
+    "is_active": true,
+    "source_reference": "https://www.abs.gov.au/about/key-priorities/about-osca/osca-2024",
+    "license_attribution": "Creative Commons Attribution 4.0 International (CC BY 4.0)"
+  },
+  {
+    "classification_id": "AU_ANZSCO_2022",
+    "market_id": "AU",
+    "official_title": "Australian and New Zealand Standard Classification of Occupations 2022",
+    "version_edition": "2022 Release (ANZSCO 2021/2022)",
+    "issuing_authority": "Australian Bureau of Statistics (ABS)",
+    "code_format": "^\\d{6}$",
+    "hierarchy_levels": ["Major Group", "Sub-Major Group", "Minor Group", "Unit Group", "Occupation"],
+    "is_active": false,
+    "source_reference": "https://www.abs.gov.au/statistics/classifications/anzsco-australian-and-new-zealand-standard-classification-occupations",
+    "license_attribution": "Creative Commons Attribution 4.0 International (CC BY 4.0)"
+  },
+  {
+    "classification_id": "SG_SSOC_2024",
+    "market_id": "SG",
+    "official_title": "Singapore Standard Occupational Classification 2024",
+    "version_edition": "2024 Edition",
+    "issuing_authority": "Singapore Department of Statistics (SingStat)",
+    "code_format": "^\\d{5}$",
+    "hierarchy_levels": ["Major Group", "Sub-Major Group", "Minor Group", "Unit Group", "Detailed Occupation"],
+    "is_active": true,
+    "source_reference": "https://www.singstat.gov.sg/standard-classifications/national-classifications/singapore-standard-occupational-classification-ssoc",
+    "license_attribution": "Singapore Open Data Licence (Attribution Required)"
+  },
+  {
+    "classification_id": "SG_SSOC_2020",
+    "market_id": "SG",
+    "official_title": "Singapore Standard Occupational Classification 2020",
+    "version_edition": "2020 Edition",
+    "issuing_authority": "Singapore Department of Statistics (SingStat)",
+    "code_format": "^\\d{5}$",
+    "hierarchy_levels": ["Major Group", "Sub-Major Group", "Minor Group", "Unit Group", "Detailed Occupation"],
+    "is_active": false,
+    "source_reference": "https://www.singstat.gov.sg/standard-classifications/national-classifications/singapore-standard-occupational-classification-ssoc",
+    "license_attribution": "Singapore Open Data Licence (Attribution Required)"
+  },
+  {
+    "classification_id": "IN_NCO_2015",
+    "market_id": "IN",
+    "official_title": "National Classification of Occupations 2015",
+    "version_edition": "2015 Edition (Aligned with ISCO-08)",
+    "issuing_authority": "Directorate General of Employment, Ministry of Labour & Employment",
+    "code_format": "^\\d{4}(\\.\\d{4})?$",
+    "hierarchy_levels": ["Division", "Sub-Division", "Group", "Family", "Detailed Occupation"],
+    "is_active": true,
+    "source_reference": "https://dge.gov.in/dge/nco",
+    "license_attribution": "Government of India Open Data / NDSAP"
+  },
+  {
+    "classification_id": "INT_ISCO_08",
+    "market_id": "INT",
+    "official_title": "International Standard Classification of Occupations 2008",
+    "version_edition": "ISCO-08",
+    "issuing_authority": "International Labour Organization (ILO)",
+    "code_format": "^\\d{4}$",
+    "hierarchy_levels": ["Major Group", "Sub-Major Group", "Minor Group", "Unit Group"],
+    "is_active": true,
+    "source_reference": "https://www.ilo.org/public/english/bureau/stat/isco/isco08/",
+    "license_attribution": "United Nations / ILO Open Statistical Documentation"
+  }
+]

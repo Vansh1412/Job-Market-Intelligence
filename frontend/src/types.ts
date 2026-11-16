@@ -337,3 +337,77 @@ export interface CrossMarketSummary {
     };
   };
 }
+
+export interface ClassificationSystem {
+  classification_id: string;
+  market_id: string;
+  official_title: string;
+  version_edition: string;
+  issuing_authority: string;
+  code_format: string;
+  hierarchy_levels: string[];
+  is_active: boolean;
+  source_reference: string;
+  license_attribution: string;
+}
+
+export interface NationalOccupation {
+  occupation_id: string;
+  classification_id: string;
+  market_id: string;
+  occupation_code: string;
+  occupation_title: string;
+  official_definition: string;
+  tasks: string[];
+  entry_qualifications?: string | null;
+  hierarchy_level: string;
+  parent_code?: string | null;
+  is_leaf: boolean;
+  alternate_titles: string[];
+}
+
+export interface CanonicalOccupation {
+  canonical_occupation_id: string;
+  preferred_title: string;
+  concept_family: string;
+  description: string;
+  core_competencies: string[];
+  status: 'ACTIVE' | 'DEPRECATED' | 'PROVISIONAL';
+}
+
+export interface OccupationMapping {
+  mapping_id: string;
+  source_occupation_id: string;
+  target_occupation_id: string;
+  target_type: 'NATIONAL' | 'CANONICAL';
+  relationship_type: string;
+  confidence_score: number | string;
+  review_status: string;
+  methodology: string;
+  evidence_sources: string[];
+  notes_and_limitations: string;
+  reviewer: string;
+  effective_date: string;
+  created_at: string;
+}
+
+export interface CrossMarketMatchItem {
+  target_occupation: NationalOccupation | CanonicalOccupation;
+  target_type: 'NATIONAL' | 'CANONICAL';
+  target_market_id: string;
+  relationship_type: string;
+  confidence_score: number | string;
+  review_status: string;
+  methodology: string;
+  evidence_sources: string[];
+  notes_and_limitations: string;
+  approximation_warning?: string | null;
+}
+
+export interface CrossMarketComparisonResult {
+  source_occupation: NationalOccupation;
+  matches: CrossMarketMatchItem[];
+  unmapped_markets: string[];
+  total_matches: number;
+}
+

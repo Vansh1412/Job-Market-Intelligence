@@ -1,0 +1,569 @@
+[
+  {
+    "occupation_id": "UK_SOC_2020:2134",
+    "classification_id": "UK_SOC_2020",
+    "market_id": "UK",
+    "occupation_code": "2134",
+    "occupation_title": "Programmers and software development professionals",
+    "official_definition": "Programmers and software development professionals examine software requirements, and design, develop, test and maintain software programs, computer games and websites.",
+    "tasks": [
+      "examines operational requirements and designs software solutions",
+      "writes code in computer languages according to functional specifications",
+      "tests software solutions to identify and correct bugs",
+      "maintains and updates existing software programs and code libraries"
+    ],
+    "entry_qualifications": "Degree or equivalent in computer science or related discipline; vendor certifications or relevant technical experience.",
+    "hierarchy_level": "Unit Group",
+    "parent_code": "213",
+    "is_leaf": true,
+    "alternate_titles": ["Software developer", "Software engineer", "Application programmer", "Full stack developer"]
+  },
+  {
+    "occupation_id": "UK_SOC_2020:2135",
+    "classification_id": "UK_SOC_2020",
+    "market_id": "UK",
+    "occupation_code": "2135",
+    "occupation_title": "Cyber security professionals",
+    "official_definition": "Cyber security professionals design, implement and monitor cyber security measures to protect computer networks and systems from unauthorized access, cyber attacks and data breaches.",
+    "tasks": [
+      "analyzes security risks and vulnerabilities in digital infrastructure",
+      "implements firewall rules, intrusion detection systems, and encryption standards",
+      "monitors network traffic for security breaches and investigates incidents",
+      "conducts penetration testing and vulnerability assessments"
+    ],
+    "entry_qualifications": "Degree in cyber security, computer science, or equivalent professional qualifications (e.g., CISSP, CISM, CompTIA Security+).",
+    "hierarchy_level": "Unit Group",
+    "parent_code": "213",
+    "is_leaf": true,
+    "alternate_titles": ["Information security analyst", "Security engineer", "SOC analyst", "Penetration tester"]
+  },
+  {
+    "occupation_id": "UK_SOC_2020:2136",
+    "classification_id": "UK_SOC_2020",
+    "market_id": "UK",
+    "occupation_code": "2136",
+    "occupation_title": "IT quality and testing professionals",
+    "official_definition": "IT quality and testing professionals examine systems and software to ensure quality, performance and adherence to engineering standards through automated and manual test execution.",
+    "tasks": [
+      "develops test scripts, automated testing suites and test scenarios",
+      "executes regression, integration, load, and performance tests",
+      "logs, tracks, and verifies resolutions of identified software defects",
+      "enforces software quality assurance standards across the SDLC"
+    ],
+    "entry_qualifications": "Degree in computing or relevant vocational qualifications (e.g., ISTQB certification).",
+    "hierarchy_level": "Unit Group",
+    "parent_code": "213",
+    "is_leaf": true,
+    "alternate_titles": ["Software tester", "QA engineer", "Test automation engineer", "SDET"]
+  },
+  {
+    "occupation_id": "UK_SOC_2020:2133",
+    "classification_id": "UK_SOC_2020",
+    "market_id": "UK",
+    "occupation_code": "2133",
+    "occupation_title": "IT business analysts, architects and systems designers",
+    "official_definition": "IT business analysts, architects and systems designers examine operational procedures, specify system requirements and formulate technical architectures for organizational IT systems.",
+    "tasks": [
+      "interviews stakeholders to identify operational pain points and functional requirements",
+      "formulates logical and physical system designs and enterprise architectures",
+      "produces UML diagrams, data models, and API specifications",
+      "evaluates feasibility and cost-benefit of alternative technological solutions"
+    ],
+    "entry_qualifications": "Degree in computer science, business information systems, or equivalent industry experience.",
+    "hierarchy_level": "Unit Group",
+    "parent_code": "213",
+    "is_leaf": true,
+    "alternate_titles": ["Systems architect", "IT business analyst", "Solutions architect", "Enterprise architect"]
+  },
+  {
+    "occupation_id": "UK_SOC_2020:2137",
+    "classification_id": "UK_SOC_2020",
+    "market_id": "UK",
+    "occupation_code": "2137",
+    "occupation_title": "IT network professionals",
+    "official_definition": "IT network professionals plan, coordinate, install, maintain, and support telecommunications and computer network hardware, routers, switches, and software.",
+    "tasks": [
+      "plans network capacity, topologies, and routing protocols",
+      "configures network switches, firewalls, routers, and virtual subnets",
+      "diagnoses network outages, packet loss, and latency issues",
+      "manages network monitoring and performance optimization tools"
+    ],
+    "entry_qualifications": "Degree in networking, telecommunications, or vendor credentials (CCNA, CCNP, Network+).",
+    "hierarchy_level": "Unit Group",
+    "parent_code": "213",
+    "is_leaf": true,
+    "alternate_titles": ["Network engineer", "Network architect", "Network administrator"]
+  },
+  {
+    "occupation_id": "UK_SOC_2020:2131",
+    "classification_id": "UK_SOC_2020",
+    "market_id": "UK",
+    "occupation_code": "2131",
+    "occupation_title": "IT project managers",
+    "official_definition": "IT project managers plan, organize, and direct computer and information technology projects, managing delivery schedules, budgets, technical dependencies, and teams.",
+    "tasks": [
+      "defines project scope, milestones, deliverables, and resource plans",
+      "manages technical risks, dependency tracks, and budget allocations",
+      "coordinates multidisciplinary development and engineering teams",
+      "reports progress and escalations to senior steering committees"
+    ],
+    "entry_qualifications": "Degree level qualification with project management certification (PMP, PRINCE2, Scrum Master).",
+    "hierarchy_level": "Unit Group",
+    "parent_code": "213",
+    "is_leaf": true,
+    "alternate_titles": ["IT project manager", "Technical project manager", "Software delivery manager"]
+  },
+  {
+    "occupation_id": "UK_SOC_2020:3133",
+    "classification_id": "UK_SOC_2020",
+    "market_id": "UK",
+    "occupation_code": "3133",
+    "occupation_title": "Database administrators and web content technicians",
+    "official_definition": "Database administrators and web content technicians maintain, coordinate and operate database systems, and publish content to digital channels.",
+    "tasks": [
+      "maintains database schemas, transactional integrity, and data security",
+      "performs database performance tuning, indexing, and backup procedures",
+      "controls access permissions and privileges across databases"
+    ],
+    "entry_qualifications": "Vocational diploma, foundation degree, or relevant vendor certifications (Oracle, Microsoft, AWS).",
+    "hierarchy_level": "Unit Group",
+    "parent_code": "313",
+    "is_leaf": true,
+    "alternate_titles": ["Database administrator", "DBA", "Database analyst"]
+  },
+  {
+    "occupation_id": "UK_SOC_2020:3544",
+    "classification_id": "UK_SOC_2020",
+    "market_id": "UK",
+    "occupation_code": "3544",
+    "occupation_title": "Data analysts",
+    "official_definition": "Data analysts inspect, cleanse, transform, and model data using analytical and statistical tools to discover useful information and support business intelligence.",
+    "tasks": [
+      "extracts and cleans structured data from organizational databases",
+      "builds dashboards and automated reporting visualizations in BI tools",
+      "performs statistical trend analysis and KPI tracking",
+      "interprets data trends to inform commercial decision-making"
+    ],
+    "entry_qualifications": "Degree or diploma in mathematics, statistics, computing, or business analytics.",
+    "hierarchy_level": "Unit Group",
+    "parent_code": "354",
+    "is_leaf": true,
+    "alternate_titles": ["Data analyst", "BI analyst", "Business intelligence analyst", "Reporting analyst"]
+  },
+  {
+    "occupation_id": "US_SOC_2018:15-1252",
+    "classification_id": "US_SOC_2018",
+    "market_id": "US",
+    "occupation_code": "15-1252",
+    "occupation_title": "Software Developers",
+    "official_definition": "Research, design, and develop computer and network software or specialized utility programs. Analyze user needs and develop software solutions, applying principles and techniques of computer science, engineering, and mathematical analysis. Update software or enhance existing software capabilities.",
+    "tasks": [
+      "develop and direct software system testing and validation procedures",
+      "modify existing software to correct errors or improve its performance",
+      "analyze user needs and software requirements to determine feasibility of design",
+      "design or customize software for client use with the aim of optimizing operational efficiency"
+    ],
+    "entry_qualifications": "Bachelor's degree in computer and information technology or related field.",
+    "hierarchy_level": "Detailed Occupation",
+    "parent_code": "15-1250",
+    "is_leaf": true,
+    "alternate_titles": ["Software engineer", "Application developer", "Software developer", "Full stack engineer"]
+  },
+  {
+    "occupation_id": "US_SOC_2018:15-2051",
+    "classification_id": "US_SOC_2018",
+    "market_id": "US",
+    "occupation_code": "15-2051",
+    "occupation_title": "Data Scientists",
+    "official_definition": "Develop and implement algorithms and statistical models that enable computers to learn from data. Analyze large volumes of data to discover patterns, trends, and actionable insights. May specialize in machine learning, deep learning, natural language processing, or predictive modeling.",
+    "tasks": [
+      "apply machine learning algorithms and statistical models to solve complex business problems",
+      "clean, organize, and transform large unstructured and structured datasets",
+      "design experiments, validate hypotheses, and evaluate model performance metrics",
+      "communicate analytical findings and predictions through visual dashboards and executive reports"
+    ],
+    "entry_qualifications": "Master's degree or Bachelor's degree in data science, computer science, statistics, or mathematics.",
+    "hierarchy_level": "Detailed Occupation",
+    "parent_code": "15-2050",
+    "is_leaf": true,
+    "alternate_titles": ["Data scientist", "Machine learning scientist", "Predictive modeler", "Applied scientist"]
+  },
+  {
+    "occupation_id": "US_SOC_2018:15-1253",
+    "classification_id": "US_SOC_2018",
+    "market_id": "US",
+    "occupation_code": "15-1253",
+    "occupation_title": "Software Quality Assurance Analysts and Testers",
+    "official_definition": "Participate in software design reviews to provide input on functional requirements, product designs, schedules, or potential problems. Test system modifications to prepare for implementation. Document software defects using a bug tracking system and report defects to software developers.",
+    "tasks": [
+      "develop automated and manual test scripts to test software applications",
+      "conduct software system testing, performance testing, and regression testing",
+      "document software defects and verify fixes in issue tracking systems",
+      "evaluate software design and user requirements against quality standards"
+    ],
+    "entry_qualifications": "Bachelor's degree in computer science, software engineering, or related field.",
+    "hierarchy_level": "Detailed Occupation",
+    "parent_code": "15-1250",
+    "is_leaf": true,
+    "alternate_titles": ["Software quality assurance engineer", "QA analyst", "Software tester", "SDET"]
+  },
+  {
+    "occupation_id": "US_SOC_2018:15-1212",
+    "classification_id": "US_SOC_2018",
+    "market_id": "US",
+    "occupation_code": "15-1212",
+    "occupation_title": "Information Security Analysts",
+    "official_definition": "Plan, implement, upgrade, or monitor security measures for the protection of computer networks and information. May ensure appropriate security controls are in place that will safeguard digital files and vital electronic infrastructure. May respond to computer security breaches and viruses.",
+    "tasks": [
+      "monitor organizational networks for security breaches and investigate violations",
+      "install and use software such as firewalls and data encryption programs",
+      "prepare reports that document security breaches and the extent of the damage caused",
+      "conduct penetration testing and simulate cyber attacks to identify vulnerabilities"
+    ],
+    "entry_qualifications": "Bachelor's degree in computer and information technology, cybersecurity, or engineering.",
+    "hierarchy_level": "Detailed Occupation",
+    "parent_code": "15-1210",
+    "is_leaf": true,
+    "alternate_titles": ["Cybersecurity analyst", "Information security specialist", "Security architect"]
+  },
+  {
+    "occupation_id": "US_SOC_2018:15-1242",
+    "classification_id": "US_SOC_2018",
+    "market_id": "US",
+    "occupation_code": "15-1242",
+    "occupation_title": "Database Administrators",
+    "official_definition": "Administer, test, and implement computer databases, applying knowledge of database management systems. Coordinate changes to computer databases. May plan, coordinate, and implement security measures to safeguard computer databases.",
+    "tasks": [
+      "identify user needs to create and administer databases",
+      "ensure that database operations comply with security standards",
+      "backup and restore data to prevent data loss",
+      "test database programs and evaluate performance for query optimization"
+    ],
+    "entry_qualifications": "Bachelor's degree in management information systems, computer science, or equivalent.",
+    "hierarchy_level": "Detailed Occupation",
+    "parent_code": "15-1240",
+    "is_leaf": true,
+    "alternate_titles": ["Database administrator", "DBA", "Database manager"]
+  },
+  {
+    "occupation_id": "US_SOC_2018:15-1244",
+    "classification_id": "US_SOC_2018",
+    "market_id": "US",
+    "occupation_code": "15-1244",
+    "occupation_title": "Network and Computer Systems Administrators",
+    "official_definition": "Install, configure, and maintain an organization's local area network (LAN), wide area network (WAN), data communications network, operating systems, and physical and virtual servers.",
+    "tasks": [
+      "maintain and administer computer networks and related computing environments",
+      "perform data backups and disaster recovery operations",
+      "diagnose, troubleshoot, and resolve hardware, software, or other network and system problems",
+      "plan, coordinate, and implement network security measures"
+    ],
+    "entry_qualifications": "Bachelor's degree in computer networking, information science, or postsecondary certificate.",
+    "hierarchy_level": "Detailed Occupation",
+    "parent_code": "15-1240",
+    "is_leaf": true,
+    "alternate_titles": ["Systems administrator", "Network administrator", "Sysadmin"]
+  },
+  {
+    "occupation_id": "US_SOC_2018:15-1211",
+    "classification_id": "US_SOC_2018",
+    "market_id": "US",
+    "occupation_code": "15-1211",
+    "occupation_title": "Computer Systems Analysts",
+    "official_definition": "Analyze science, engineering, business, and other data processing problems to implement and improve computer systems. Analyze user requirements, procedures, and problems to automate or improve existing systems and review computer system capabilities, workflow, and scheduling limitations.",
+    "tasks": [
+      "consult with managers to determine the role of the IT system in an organization",
+      "research emerging technologies to decide if installing them can increase efficiency",
+      "prepare an analysis of costs and benefits so that management can decide on systems",
+      "devise ways to add new functionality to existing computer systems"
+    ],
+    "entry_qualifications": "Bachelor's degree in computer and information technology, business information, or related field.",
+    "hierarchy_level": "Detailed Occupation",
+    "parent_code": "15-1210",
+    "is_leaf": true,
+    "alternate_titles": ["Systems analyst", "Business systems analyst", "Computer systems architect"]
+  },
+  {
+    "occupation_id": "AU_OSCA_2024:261313",
+    "classification_id": "AU_OSCA_2024",
+    "market_id": "AU",
+    "occupation_code": "261313",
+    "occupation_title": "Software Engineer",
+    "official_definition": "Designs, constructs, tests, modifies, debugs, and maintains computer software applications, operating systems, and distributed computing solutions according to specified quality standards and technical specifications.",
+    "tasks": [
+      "researches, consults, and analyzes system program needs",
+      "identifies technical limitations and deficiencies in existing systems and associated processes",
+      "writes, tests and updates code according to agreed specifications and standards",
+      "coordinates with database administrators and systems architects to integrate solutions"
+    ],
+    "entry_qualifications": "Bachelor degree or higher qualification (AQF Level 7 or higher) or at least five years of relevant experience.",
+    "hierarchy_level": "Occupation",
+    "parent_code": "2613",
+    "is_leaf": true,
+    "alternate_titles": ["Software architect", "Software designer", "Software engineer"]
+  },
+  {
+    "occupation_id": "AU_OSCA_2024:224411",
+    "classification_id": "AU_OSCA_2024",
+    "market_id": "AU",
+    "occupation_code": "224411",
+    "occupation_title": "Data Scientist",
+    "official_definition": "Extracts insights from large-scale structured and unstructured data using advanced mathematical, statistical, machine learning, and data visualization techniques.",
+    "tasks": [
+      "formulates statistical hypotheses and designs experimental testing frameworks",
+      "engineers features and builds predictive machine learning models",
+      "evaluates statistical validity and accuracy of algorithmic outputs",
+      "communicates findings through data visualization and technical reports"
+    ],
+    "entry_qualifications": "Bachelor degree or higher in data science, mathematics, statistics, or computing.",
+    "hierarchy_level": "Occupation",
+    "parent_code": "2244",
+    "is_leaf": true,
+    "alternate_titles": ["Data scientist", "Predictive analytics specialist"]
+  },
+  {
+    "occupation_id": "AU_OSCA_2024:262112",
+    "classification_id": "AU_OSCA_2024",
+    "market_id": "AU",
+    "occupation_code": "262112",
+    "occupation_title": "ICT Security Specialist",
+    "official_definition": "Establishes, manages, and administers an organization's ICT security policy and procedures to protect against unauthorized access, integrity violations, and system vulnerabilities.",
+    "tasks": [
+      "assesses security risks and analyzes vulnerabilities across ICT environments",
+      "implements firewalls, access control lists, and encryption protocols",
+      "responds to cyber security breaches, incidents, and malware intrusions",
+      "audits adherence to national and organizational information security policies"
+    ],
+    "entry_qualifications": "Bachelor degree or higher in computing, cyber security, or equivalent professional credentials.",
+    "hierarchy_level": "Occupation",
+    "parent_code": "2621",
+    "is_leaf": true,
+    "alternate_titles": ["Cyber security specialist", "Information security analyst", "Security administrator"]
+  },
+  {
+    "occupation_id": "AU_OSCA_2024:261314",
+    "classification_id": "AU_OSCA_2024",
+    "market_id": "AU",
+    "occupation_code": "261314",
+    "occupation_title": "Software Tester",
+    "official_definition": "Specifies, designs, and executes software test cases, plans, and automated scripts to verify that software operates accurately and adheres to defined quality requirements.",
+    "tasks": [
+      "creates and executes automated and manual test scripts",
+      "records and reports defect details in defect tracking systems",
+      "verifies fixes and performs regression testing across build cycles",
+      "validates user experience and functional acceptance criteria"
+    ],
+    "entry_qualifications": "Bachelor degree or AQF Associate Degree / Advanced Diploma with relevant testing experience.",
+    "hierarchy_level": "Occupation",
+    "parent_code": "2613",
+    "is_leaf": true,
+    "alternate_titles": ["Software test analyst", "QA tester", "Test engineer"]
+  },
+  {
+    "occupation_id": "SG_SSOC_2024:25121",
+    "classification_id": "SG_SSOC_2024",
+    "market_id": "SG",
+    "occupation_code": "25121",
+    "occupation_title": "Software Developer",
+    "official_definition": "Researches, designs, writes, and modifies computer software, applications, and operating systems according to technical requirements.",
+    "tasks": [
+      "analyzes software requirements and designs system architecture",
+      "develops program code using structured programming languages",
+      "tests and verifies software performance against functional specs",
+      "maintains documentation and version histories of codebases"
+    ],
+    "entry_qualifications": "Bachelor's degree in computer science, information systems, or equivalent polytechnic diploma.",
+    "hierarchy_level": "Detailed Occupation",
+    "parent_code": "2512",
+    "is_leaf": true,
+    "alternate_titles": ["Software developer", "Software engineer", "Application developer"]
+  },
+  {
+    "occupation_id": "SG_SSOC_2024:25131",
+    "classification_id": "SG_SSOC_2024",
+    "market_id": "SG",
+    "occupation_code": "25131",
+    "occupation_title": "Artificial Intelligence / Machine Learning Engineer",
+    "official_definition": "Develops, optimizes, and implements artificial intelligence and machine learning algorithms, deep learning models, and automated inference pipelines for production applications.",
+    "tasks": [
+      "develops neural networks, computer vision models, and NLP architectures",
+      "optimizes model inference latency and manages distributed compute clusters",
+      "deploys models into cloud and edge production environments",
+      "monitors model performance and prevents data and concept drift"
+    ],
+    "entry_qualifications": "Bachelor's or Master's degree in artificial intelligence, computer science, or data science.",
+    "hierarchy_level": "Detailed Occupation",
+    "parent_code": "2513",
+    "is_leaf": true,
+    "alternate_titles": ["AI engineer", "Machine learning engineer", "MLOps engineer", "Deep learning engineer"]
+  },
+  {
+    "occupation_id": "SG_SSOC_2024:25132",
+    "classification_id": "SG_SSOC_2024",
+    "market_id": "SG",
+    "occupation_code": "25132",
+    "occupation_title": "Data Scientist",
+    "official_definition": "Analyzes complex datasets to extract insights, uncover patterns, and build predictive statistical models that solve strategic operational and business challenges.",
+    "tasks": [
+      "collects and synthesizes data from disparate enterprise systems",
+      "applies advanced statistical analysis and predictive modeling",
+      "interprets data trends to advise management on business strategy",
+      "creates analytical dashboards and data storytelling presentations"
+    ],
+    "entry_qualifications": "Degree in data science, mathematics, statistics, or related quantitative field.",
+    "hierarchy_level": "Detailed Occupation",
+    "parent_code": "2513",
+    "is_leaf": true,
+    "alternate_titles": ["Data scientist", "Data analytics specialist", "Predictive modeler"]
+  },
+  {
+    "occupation_id": "SG_SSOC_2024:25124",
+    "classification_id": "SG_SSOC_2024",
+    "market_id": "SG",
+    "occupation_code": "25124",
+    "occupation_title": "Cloud Architect",
+    "official_definition": "Designs and orchestrates cloud computing strategies, architectures, and infrastructure across public, private, and hybrid cloud environments.",
+    "tasks": [
+      "formulates cloud migration roadmaps and architectural blueprints",
+      "evaluates cloud security, compliance, and disaster recovery capabilities",
+      "optimizes cloud resource utilization and cost management",
+      "coordinates with DevOps engineers to implement automated infrastructure"
+    ],
+    "entry_qualifications": "Degree in computing or engineering with professional cloud certifications (AWS, Azure, GCP).",
+    "hierarchy_level": "Detailed Occupation",
+    "parent_code": "2512",
+    "is_leaf": true,
+    "alternate_titles": ["Cloud architect", "Cloud solutions engineer", "Cloud infrastructure architect"]
+  },
+  {
+    "occupation_id": "SG_SSOC_2024:25125",
+    "classification_id": "SG_SSOC_2024",
+    "market_id": "SG",
+    "occupation_code": "25125",
+    "occupation_title": "DevOps Engineer",
+    "official_definition": "Implements continuous integration and continuous deployment pipelines, automates infrastructure provisioning, and maintains platform reliability across development and production.",
+    "tasks": [
+      "develops CI/CD pipeline automation scripts and release schedules",
+      "manages containerized platforms using Kubernetes and Docker",
+      "monitors platform performance, system availability, and latency",
+      "automates infrastructure provisioning through code"
+    ],
+    "entry_qualifications": "Degree or diploma in computing with experience in infrastructure automation and CI/CD tools.",
+    "hierarchy_level": "Detailed Occupation",
+    "parent_code": "2512",
+    "is_leaf": true,
+    "alternate_titles": ["DevOps engineer", "Platform engineer", "Site reliability engineer", "SRE"]
+  },
+  {
+    "occupation_id": "SG_SSOC_2024:25211",
+    "classification_id": "SG_SSOC_2024",
+    "market_id": "SG",
+    "occupation_code": "25211",
+    "occupation_title": "Cybersecurity Specialist",
+    "official_definition": "Designs, implements, and monitors cybersecurity strategies, protocols, and technical controls to safeguard digital infrastructure against malicious threats and vulnerabilities.",
+    "tasks": [
+      "monitors network systems for anomalous activities and security events",
+      "performs threat modeling and vulnerability assessments",
+      "leads incident response and remediation during security emergencies",
+      "ensures compliance with Singapore Cybersecurity Act and international standards"
+    ],
+    "entry_qualifications": "Degree in cybersecurity, computer science, or equivalent professional certifications.",
+    "hierarchy_level": "Detailed Occupation",
+    "parent_code": "2521",
+    "is_leaf": true,
+    "alternate_titles": ["Cybersecurity analyst", "Information security specialist", "Cyber risk analyst"]
+  },
+  {
+    "occupation_id": "IN_NCO_2015:2512.0100",
+    "classification_id": "IN_NCO_2015",
+    "market_id": "IN",
+    "occupation_code": "2512.0100",
+    "occupation_title": "Software Developer",
+    "official_definition": "Researches, analyzes and evaluates requirements for software applications and operating systems; designs, develops, tests and maintains software solutions to meet user requirements.",
+    "tasks": [
+      "writes and codes software programs according to specifications",
+      "tests software programs to locate and correct errors",
+      "modifies and expands existing programs to meet operational demands",
+      "documents program design and operational instructions"
+    ],
+    "entry_qualifications": "Bachelor of Technology (B.Tech / B.E.) or Master of Computer Applications (MCA).",
+    "hierarchy_level": "Detailed Occupation",
+    "parent_code": "2512",
+    "is_leaf": true,
+    "alternate_titles": ["Software developer", "Software engineer", "Programmer"]
+  },
+  {
+    "occupation_id": "IN_NCO_2015:2511.0100",
+    "classification_id": "IN_NCO_2015",
+    "market_id": "IN",
+    "occupation_code": "2511.0100",
+    "occupation_title": "Systems Analyst",
+    "official_definition": "Researches, analyzes, and evaluates client business needs and operational requirements; formulates system technical specifications and architectural plans for information systems.",
+    "tasks": [
+      "interviews users and analyzes business workflow procedures",
+      "develops system architecture diagrams and technical documentation",
+      "evaluates compatibility of software and hardware platforms",
+      "coordinates with developers to ensure system conformance"
+    ],
+    "entry_qualifications": "Degree in computer science, information technology, or business management with IT specialization.",
+    "hierarchy_level": "Detailed Occupation",
+    "parent_code": "2511",
+    "is_leaf": true,
+    "alternate_titles": ["Systems analyst", "Business systems analyst"]
+  },
+  {
+    "occupation_id": "IN_NCO_2015:2521.0100",
+    "classification_id": "IN_NCO_2015",
+    "market_id": "IN",
+    "occupation_code": "2521.0100",
+    "occupation_title": "Database Administrator",
+    "official_definition": "Designs, implements, configures, manages, and secures database management systems to guarantee high performance, security, and data recoverability.",
+    "tasks": [
+      "creates and maintains database structures and access privileges",
+      "coordinates data backup, recovery procedures, and replication",
+      "tunes SQL queries and indexes to optimize performance",
+      "monitors database capacity and executes storage allocation"
+    ],
+    "entry_qualifications": "Degree in computing or database administration certifications.",
+    "hierarchy_level": "Detailed Occupation",
+    "parent_code": "2521",
+    "is_leaf": true,
+    "alternate_titles": ["Database administrator", "DBA", "Database analyst"]
+  },
+  {
+    "occupation_id": "INT_ISCO_08:2512",
+    "classification_id": "INT_ISCO_08",
+    "market_id": "INT",
+    "occupation_code": "2512",
+    "occupation_title": "Software Developers",
+    "official_definition": "Software developers research, analyze and evaluate requirements for existing or new software applications and operating systems, and design, develop, test and maintain software solutions to meet these requirements.",
+    "tasks": [
+      "researching, analyzing and evaluating requirements for software applications",
+      "designing, writing, testing, and debugging software programs",
+      "developing and maintaining technical documentation"
+    ],
+    "entry_qualifications": "University degree in computer science or related quantitative field.",
+    "hierarchy_level": "Unit Group",
+    "parent_code": "251",
+    "is_leaf": true,
+    "alternate_titles": ["Software developer", "Applications programmer", "Software architect"]
+  },
+  {
+    "occupation_id": "INT_ISCO_08:2511",
+    "classification_id": "INT_ISCO_08",
+    "market_id": "INT",
+    "occupation_code": "2511",
+    "occupation_title": "Systems Analysts",
+    "official_definition": "Systems analysts conduct research, analyze and evaluate client information technology requirements, procedures and problems, and develop and implement proposals, recommendations and plans for improvement.",
+    "tasks": [
+      "consulting with users to define system requirements",
+      "identifying inefficiencies and proposing technological solutions",
+      "preparing technical proposals and system specifications"
+    ],
+    "entry_qualifications": "University degree in computer science, business systems, or related discipline.",
+    "hierarchy_level": "Unit Group",
+    "parent_code": "251",
+    "is_leaf": true,
+    "alternate_titles": ["Systems analyst", "Business systems analyst"]
+  }
+]

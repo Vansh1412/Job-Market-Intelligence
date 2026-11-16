@@ -12,6 +12,7 @@ import { SkillsPage } from './pages/SkillsPage';
 import { ArchetypesPage } from './pages/ArchetypesPage';
 import { CrossMarketPage } from './pages/CrossMarketPage';
 import { MethodologyPage } from './pages/MethodologyPage';
+import { OccupationsPage } from './pages/OccupationsPage';
 
 const ROUTE_MAP: Record<string, NavigationPage> = {
   '/': 'home',
@@ -22,6 +23,7 @@ const ROUTE_MAP: Record<string, NavigationPage> = {
   '/archetypes': 'archetypes',
   '/cross-market': 'comparison',
   '/comparison': 'comparison',
+  '/occupations': 'occupations',
   '/how-it-works': 'howitworks',
   '/howitworks': 'howitworks',
 };
@@ -33,6 +35,7 @@ const PAGE_TO_ROUTE: Record<NavigationPage, string> = {
   skills: '/skills',
   archetypes: '/archetypes',
   comparison: '/cross-market',
+  occupations: '/occupations',
   howitworks: '/how-it-works',
 };
 
@@ -94,6 +97,8 @@ export const AppContent: React.FC = () => {
         return <ArchetypesPage onNavigate={(p) => navigateTo(p as NavigationPage)} />;
       case 'comparison':
         return <CrossMarketPage />;
+      case 'occupations':
+        return <OccupationsPage />;
       case 'howitworks':
         return <MethodologyPage />;
       default:

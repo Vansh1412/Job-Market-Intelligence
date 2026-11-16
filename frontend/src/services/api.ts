@@ -17,6 +17,11 @@ import {
   ArchetypeError,
   PipelineStage,
   CrossMarketSummary,
+  ClassificationSystem,
+  NationalOccupation,
+  CanonicalOccupation,
+  OccupationMapping,
+  CrossMarketComparisonResult,
 } from '../types';
 
 const envApiUrl = import.meta.env.VITE_API_BASE_URL;
@@ -146,4 +151,40 @@ export const api = {
   getPipelineStages: () => fetchJson<PipelineStage[]>('/methodology/pipeline-stages'),
   getLeakageControls: () => fetchJson<any[]>('/methodology/leakage-controls'),
   getLimitations: () => fetchJson<{ id: number; title: string; body: string }[]>('/methodology/limitations'),
+
+  // Global Occupation Intelligence Endpoints (Sprint 3A)
+  getClassifications: (market?: string) =>
+    fetchJson<ClassificationSystem[]>(`/v1/occupations/classifications${market ? `?market=${encodeURIComponent(market)}` : ''}`),
+  getClassification: (id: string) =>
+    fetchJson<ClassificationSystem>(`/v1/occupations/classifications/${encodeURIComponent(id)}`),
+  getOccupationsByClassification: (id: string, params?: { q?: string; page?: number; page_size?: number }) => {
+    const qp = new URLSearchParams();
+    if (params?.q) qp.set('q', params.q);
+    if (params?.page) qp.set('page', String(params.page));
+    if (params?.page_size) qp.set('page_size', String(params.page_size));
+    const qs = qp.toString();
+    return fetchJson<{ items: NationalOccupation[]; page: number; page_size: number; total_count: number; has_next: boolean }>(
+      `/v1/occupations/classifications/${encodeURIComponent(id)}/occupations${qs ? `?${qs}` : ''}`
+    );
+  },
+  searchOccupations: (query: string, market?: string, classificationId?: string) => {
+    const qp = new URLSearchParams({ q: query });
+    if (market) qp.set('market', market);
+    if (classificationId) qp.set('classification_id', classificationId);
+    return fetchJson<NationalOccupation[]>(`/v1/occupations/search?${qp.toString()}`);
+  },
+  getCanonicalOccupations: () => fetchJson<CanonicalOccupation[]>('/v1/occupations/canonical'),
+  getCanonicalOccupation: (id: string) =>
+    fetchJson<CanonicalOccupation>(`/v1/occupations/canonical/${encodeURIComponent(id)}`),
+  compareAcrossMarkets: (sourceOccupationId: string, targetMarket?: string) => {
+    const qp = new URLSearchParams({ source_occupation_id: sourceOccupationId });
+    if (targetMarket) qp.set('target_market', targetMarket);
+    return fetchJson<CrossMarketComparisonResult>(`/v1/occupations/compare?${qp.toString()}`);
+  },
+  getOccupationMappings: (occupationId: string, targetMarket?: string) => {
+    const qp = targetMarket ? `?target_market=${encodeURIComponent(targetMarket)}` : '';
+    return fetchJson<OccupationMapping[]>(`/v1/occupations/${occupationId}/mappings${qp}`);
+  },
+  getOccupationDetail: (occupationId: string) =>
+    fetchJson<NationalOccupation>(`/v1/occupations/${occupationId}`),
 };

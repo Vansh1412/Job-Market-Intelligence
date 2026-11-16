@@ -25,6 +25,7 @@ from src.backend.routers import (
     methodology,
     v1,
     uk_salary,
+    occupations,
 )
 
 from contextlib import asynccontextmanager
@@ -128,6 +129,8 @@ for r in api_routers:
 
 app.include_router(v1.router, prefix="/api")
 app.include_router(uk_salary.router, prefix="/api")
+app.include_router(occupations.router, prefix="/api")
+app.include_router(occupations.router)
 
 
 @app.get("/")

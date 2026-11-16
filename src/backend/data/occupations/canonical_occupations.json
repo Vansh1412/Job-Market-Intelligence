@@ -1,0 +1,170 @@
+[
+  {
+    "canonical_occupation_id": "CAN_OCC_SOFTWARE_ENGINEER",
+    "preferred_title": "Software Engineer",
+    "concept_family": "Software & Applications Development",
+    "description": "Researches, analyzes, designs, writes, tests, debugs, and maintains computer software applications, operating systems, and distributed platforms.",
+    "core_competencies": [
+      "Software Architecture & Design",
+      "Object-Oriented & Functional Programming",
+      "Data Structures & Algorithms",
+      "Version Control & CI/CD",
+      "Automated Testing & Code Review"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "canonical_occupation_id": "CAN_OCC_DATA_SCIENTIST",
+    "preferred_title": "Data Scientist",
+    "concept_family": "Data & Advanced Analytics",
+    "description": "Applies statistical modeling, machine learning algorithms, mathematical optimization, and exploratory data analysis to extract insights and solve complex business problems from large structured and unstructured datasets.",
+    "core_competencies": [
+      "Statistical Inference & Hypothesis Testing",
+      "Machine Learning Algorithms",
+      "Python / R Programming",
+      "Feature Engineering & Dimensionality Reduction",
+      "Experimental Design & A/B Testing"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "canonical_occupation_id": "CAN_OCC_DATA_ANALYST",
+    "preferred_title": "Data Analyst",
+    "concept_family": "Data & Business Intelligence",
+    "description": "Collects, cleans, transforms, models, and visualizes structured data to discover trends, evaluate operational performance, and support business decision-making through reports and dashboards.",
+    "core_competencies": [
+      "SQL Querying & Data Manipulation",
+      "BI Dashboards (Tableau, Power BI)",
+      "Descriptive & Exploratory Statistics",
+      "Data Cleansing & Validation",
+      "Executive Storytelling & Visualization"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "canonical_occupation_id": "CAN_OCC_ML_ENGINEER",
+    "preferred_title": "Machine Learning Engineer",
+    "concept_family": "Artificial Intelligence & MLOps",
+    "description": "Designs, builds, optimizes, and productionizes machine learning pipelines, deep learning models, low-latency inference endpoints, and automated continuous-training workflows.",
+    "core_competencies": [
+      "Deep Learning & Neural Architectures",
+      "MLOps & Model Lifecycle Management",
+      "High-Performance Computing (CUDA, GPU)",
+      "Model Monitoring & Drift Detection",
+      "Distributed Model Training & Serving"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "canonical_occupation_id": "CAN_OCC_DATA_ENGINEER",
+    "preferred_title": "Data Engineer",
+    "concept_family": "Data Infrastructure & Architecture",
+    "description": "Architects, constructs, tests, and maintains scalable data pipelines, data warehouses, streaming architectures, and distributed storage systems.",
+    "core_competencies": [
+      "Distributed Compute (Spark, Flink)",
+      "Data Warehousing (BigQuery, Snowflake)",
+      "Data Pipeline Orchestration (Airflow, Dagster)",
+      "Data Modeling (Kimball, Data Vault)",
+      "Streaming Ingestion (Kafka, Pub/Sub)"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "canonical_occupation_id": "CAN_OCC_DEVOPS_ENGINEER",
+    "preferred_title": "DevOps & Cloud Engineer",
+    "concept_family": "Infrastructure & Cloud Platforms",
+    "description": "Designs, implements, and automates scalable cloud infrastructure, deployment pipelines, container orchestration, monitoring, and site reliability engineering practices.",
+    "core_competencies": [
+      "Infrastructure as Code (Terraform, CloudFormation)",
+      "Container Orchestration (Kubernetes, Docker)",
+      "CI/CD Pipeline Automation",
+      "Site Reliability & Observability (Prometheus, Grafana)",
+      "Cloud Architecture (AWS, GCP, Azure)"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "canonical_occupation_id": "CAN_OCC_CYBERSECURITY_ANALYST",
+    "preferred_title": "Cybersecurity & Information Security Professional",
+    "concept_family": "Security & Risk Management",
+    "description": "Plans, implements, and monitors security measures to protect computer networks, cloud infrastructure, and organizational information assets from cyber attacks, unauthorized access, and data breaches.",
+    "core_competencies": [
+      "Threat Detection & Incident Response",
+      "Vulnerability Assessment & Penetration Testing",
+      "Network Security Architecture & Firewalls",
+      "Identity & Access Management (IAM)",
+      "Security Compliance & Risk Frameworks (ISO 27001, SOC 2)"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "canonical_occupation_id": "CAN_OCC_DATABASE_ADMIN",
+    "preferred_title": "Database Administrator & Architect",
+    "concept_family": "Data Infrastructure & Architecture",
+    "description": "Coordinates physical database structures, enforces high availability, tunes query performance, executes backup/recovery procedures, and maintains transactional integrity.",
+    "core_competencies": [
+      "Relational & NoSQL Database Engines",
+      "Query Performance Tuning & Indexing",
+      "Backup, Replication & High Availability",
+      "Database Security & Access Control",
+      "Storage & Capacity Planning"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "canonical_occupation_id": "CAN_OCC_SYSTEMS_ANALYST",
+    "preferred_title": "Systems Analyst & Solutions Architect",
+    "concept_family": "Systems & Enterprise Architecture",
+    "description": "Examines business and technology requirements, analyzes existing systems and architectures, and translates operational needs into comprehensive technical specifications and software architectures.",
+    "core_competencies": [
+      "Requirements Engineering & UML Modeling",
+      "Enterprise & Solutions Architecture",
+      "System Integration & API Design",
+      "Gap Analysis & Feasibility Evaluation",
+      "Technical Stakeholder Communication"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "canonical_occupation_id": "CAN_OCC_NETWORK_ENGINEER",
+    "preferred_title": "Network & Systems Engineer",
+    "concept_family": "Infrastructure & Cloud Platforms",
+    "description": "Plans, installs, configures, manages, and troubleshoots physical and virtual computer networks, routing protocols, switches, and enterprise operating systems.",
+    "core_competencies": [
+      "Network Protocols (TCP/IP, BGP, OSPF)",
+      "Switching, Routing & SD-WAN",
+      "Operating System Administration (Linux, Windows Server)",
+      "Network Troubleshooting & Packet Analysis",
+      "Hardware & Telecommunications Infrastructure"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "canonical_occupation_id": "CAN_OCC_QA_TEST_ENGINEER",
+    "preferred_title": "Quality Assurance & Software Test Engineer",
+    "concept_family": "Quality Assurance & Verification",
+    "description": "Designs, executes, and automates comprehensive software test suites, integration tests, performance benchmarks, and regression runs to ensure code reliability and conformance to specifications.",
+    "core_competencies": [
+      "Test Automation Frameworks (Selenium, Cypress, Playwright)",
+      "Test Strategy, Test Plans & Test Cases",
+      "Performance & Load Testing (JMeter, k6)",
+      "Bug Tracking & Root Cause Analysis",
+      "API Testing (Postman, REST Assured)"
+    ],
+    "status": "ACTIVE"
+  },
+  {
+    "canonical_occupation_id": "CAN_OCC_IT_PROJECT_MGR",
+    "preferred_title": "IT Project & Program Manager",
+    "concept_family": "Technology Management & Governance",
+    "description": "Plans, organizes, leads, and delivers complex technology projects, managing timelines, budgets, technical dependencies, cross-functional engineering teams, and stakeholder expectations.",
+    "core_competencies": [
+      "Agile & Scrum Methodologies",
+      "Project Scheduling & Resource Allocation",
+      "Risk Management & Mitigation",
+      "Technical Budgeting & Vendor Management",
+      "Cross-Functional Team Leadership"
+    ],
+    "status": "ACTIVE"
+  }
+]
