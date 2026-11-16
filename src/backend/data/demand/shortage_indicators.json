@@ -1,0 +1,165 @@
+[
+  {
+    "market_id": "AU",
+    "source": "Jobs and Skills Australia (SPL 2024)",
+    "shortages": [
+      {
+        "occupation_id": "AU_OSCA_2024:261313",
+        "title": "Software Engineer",
+        "status": "NATIONAL_SHORTAGE",
+        "future_demand": "Strong",
+        "state_shortages": [
+          "NSW",
+          "VIC",
+          "QLD",
+          "WA",
+          "SA",
+          "ACT"
+        ]
+      },
+      {
+        "occupation_id": "AU_OSCA_2024:224411",
+        "title": "Data Scientist",
+        "status": "NATIONAL_SHORTAGE",
+        "future_demand": "Strong",
+        "state_shortages": [
+          "NSW",
+          "VIC",
+          "QLD",
+          "WA"
+        ]
+      },
+      {
+        "occupation_id": "AU_OSCA_2024:262112",
+        "title": "ICT Security Specialist",
+        "status": "NATIONAL_SHORTAGE",
+        "future_demand": "Strong",
+        "state_shortages": [
+          "NSW",
+          "VIC",
+          "ACT",
+          "QLD"
+        ]
+      },
+      {
+        "occupation_id": "AU_OSCA_2024:261314",
+        "title": "Software Tester",
+        "status": "NO_SHORTAGE",
+        "future_demand": "Moderate",
+        "state_shortages": []
+      }
+    ]
+  },
+  {
+    "market_id": "UK",
+    "source": "UK Immigration Salary List & MAC 2024",
+    "shortages": [
+      {
+        "occupation_id": "UK_SOC_2020:2134",
+        "title": "Programmers and software development professionals",
+        "status": "NATIONAL_SHORTAGE",
+        "future_demand": "Strong",
+        "on_salary_list": true
+      },
+      {
+        "occupation_id": "UK_SOC_2020:2135",
+        "title": "Cyber security professionals",
+        "status": "NATIONAL_SHORTAGE",
+        "future_demand": "Strong",
+        "on_salary_list": true
+      },
+      {
+        "occupation_id": "UK_SOC_2020:2133",
+        "title": "IT business analysts, architects and systems designers",
+        "status": "NATIONAL_SHORTAGE",
+        "future_demand": "Moderate",
+        "on_salary_list": true
+      },
+      {
+        "occupation_id": "UK_SOC_2020:2136",
+        "title": "IT quality and testing professionals",
+        "status": "NO_SHORTAGE",
+        "future_demand": "Moderate",
+        "on_salary_list": false
+      }
+    ]
+  },
+  {
+    "market_id": "SG",
+    "source": "Singapore MOM Job Vacancy Report 2024",
+    "shortages": [
+      {
+        "occupation_id": "SG_SSOC_2024:25121",
+        "title": "Software Developer",
+        "status": "NATIONAL_SHORTAGE",
+        "unfilled_over_6m_pct": 32.4
+      },
+      {
+        "occupation_id": "SG_SSOC_2024:25131",
+        "title": "AI / ML Engineer",
+        "status": "NATIONAL_SHORTAGE",
+        "unfilled_over_6m_pct": 44.2
+      },
+      {
+        "occupation_id": "SG_SSOC_2024:25132",
+        "title": "Data Scientist",
+        "status": "NATIONAL_SHORTAGE",
+        "unfilled_over_6m_pct": 36.8
+      },
+      {
+        "occupation_id": "SG_SSOC_2024:25124",
+        "title": "Cloud Architect",
+        "status": "NATIONAL_SHORTAGE",
+        "unfilled_over_6m_pct": 38.0
+      },
+      {
+        "occupation_id": "SG_SSOC_2024:25125",
+        "title": "DevOps Engineer",
+        "status": "NATIONAL_SHORTAGE",
+        "unfilled_over_6m_pct": 35.1
+      },
+      {
+        "occupation_id": "SG_SSOC_2024:25211",
+        "title": "Cybersecurity Specialist",
+        "status": "NATIONAL_SHORTAGE",
+        "unfilled_over_6m_pct": 41.5
+      }
+    ]
+  },
+  {
+    "market_id": "US",
+    "source": "US BLS Occupational Outlook Handbook",
+    "shortages": [
+      {
+        "occupation_id": "US_SOC_2018:15-2051",
+        "title": "Data Scientists",
+        "status": "NATIONAL_SHORTAGE",
+        "projected_growth_pct": 36.0
+      },
+      {
+        "occupation_id": "US_SOC_2018:15-1212",
+        "title": "Information Security Analysts",
+        "status": "NATIONAL_SHORTAGE",
+        "projected_growth_pct": 33.0
+      },
+      {
+        "occupation_id": "US_SOC_2018:15-1252",
+        "title": "Software Developers",
+        "status": "NO_SHORTAGE",
+        "projected_growth_pct": 17.0
+      }
+    ]
+  },
+  {
+    "market_id": "IN",
+    "source": "JobIntel Tech Demand Benchmark",
+    "shortages": [
+      {
+        "occupation_id": "IN_NCO_2015:2512.0100",
+        "title": "Software Developer",
+        "status": "REGIONAL_SHORTAGE",
+        "notes": "Specialized/Senior Tech Roles in Bangalore & Hyderabad"
+      }
+    ]
+  }
+]

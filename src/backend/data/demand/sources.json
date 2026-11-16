@@ -1,0 +1,131 @@
+[
+  {
+    "source_id": "us.bls.ep",
+    "source_name": "US BLS Employment Projections 2023-2033",
+    "publisher": "U.S. Bureau of Labor Statistics",
+    "canonical_url": "https://www.bls.gov/emp/",
+    "license": "Public Domain (17 U.S.C. \u00a7 105)",
+    "frequency": "Annual / 10-Year Cycle",
+    "reference_period": "2023-2033",
+    "country": "US",
+    "reliability_tier": "OFFICIAL_STATISTICS",
+    "publication_status": "PUBLISHED"
+  },
+  {
+    "source_id": "us.onet.skills",
+    "source_name": "O*NET Technology Skills and KSA Content Model",
+    "publisher": "U.S. Department of Labor / Employment and Training Administration",
+    "canonical_url": "https://www.onetonline.org/",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "frequency": "Annual Release (Release 28.2 / 29.0)",
+    "reference_period": "2024",
+    "country": "US",
+    "reliability_tier": "OFFICIAL_STATISTICS",
+    "publication_status": "PUBLISHED"
+  },
+  {
+    "source_id": "au.jsa.ivi",
+    "source_name": "Jobs and Skills Australia Internet Vacancy Index",
+    "publisher": "Jobs and Skills Australia",
+    "canonical_url": "https://www.jobsandskills.gov.au/data/internet-vacancy-index",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "frequency": "Monthly Series",
+    "reference_period": "2023-2024",
+    "country": "AU",
+    "reliability_tier": "OFFICIAL_STATISTICS",
+    "publication_status": "PUBLISHED"
+  },
+  {
+    "source_id": "au.jsa.spl",
+    "source_name": "Jobs and Skills Australia Skills Priority List 2024",
+    "publisher": "Jobs and Skills Australia",
+    "canonical_url": "https://www.jobsandskills.gov.au/data/skills-priority-list",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "frequency": "Annual Assessment",
+    "reference_period": "2024",
+    "country": "AU",
+    "reliability_tier": "OFFICIAL_STATISTICS",
+    "publication_status": "PUBLISHED"
+  },
+  {
+    "source_id": "uk.ons.labour-demand",
+    "source_name": "ONS Labour Demand Volumes by SOC 2020",
+    "publisher": "Office for National Statistics (ONS) / Textkernel",
+    "canonical_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/datasets/labourdemandvolumesbystandardoccupationalclassificationsoc2020uk",
+    "license": "Open Government Licence v3.0 (OGL v3.0) / Textkernel Terms Under Review",
+    "frequency": "Monthly Experimental Statistics",
+    "reference_period": "2023-2024",
+    "country": "UK",
+    "reliability_tier": "OFFICIAL_STATISTICS",
+    "publication_status": "REVIEW_REQUIRED",
+    "rights_notice": "Experimental statistics compiled by ONS using Textkernel online job vacancy data. Commercial SaaS redistribution and derived index redistribution terms are currently subject to review.",
+    "allowed_use": [
+      "INTERNAL_RESEARCH",
+      "ACADEMIC_EVALUATION"
+    ],
+    "restricted_use": [
+      "PUBLIC_REDISTRIBUTION",
+      "COMMERCIAL_SAAS_DISPLAY"
+    ]
+  },
+  {
+    "source_id": "uk.gov.shortage",
+    "source_name": "UK Immigration Salary List & Shortage Indicators",
+    "publisher": "UK Home Office / Migration Advisory Committee / Skills England",
+    "canonical_url": "https://www.gov.uk/government/publications/immigration-salary-list",
+    "license": "Open Government Licence v3.0 (OGL v3.0)",
+    "frequency": "Periodic Policy Reviews",
+    "reference_period": "2024",
+    "country": "UK",
+    "reliability_tier": "OFFICIAL_STATISTICS",
+    "publication_status": "PUBLISHED"
+  },
+  {
+    "source_id": "sg.mom.vacancies",
+    "source_name": "Singapore MOM Job Vacancy Report",
+    "publisher": "Ministry of Manpower, Singapore",
+    "canonical_url": "https://stats.mom.gov.sg/SL/Pages/Job-Vacancy-Data-and-Other-Resources.aspx",
+    "license": "Singapore Open Data Licence v1.0",
+    "frequency": "Quarterly & Annual Survey",
+    "reference_period": "2023-2024",
+    "country": "SG",
+    "reliability_tier": "OFFICIAL_STATISTICS",
+    "publication_status": "PUBLISHED"
+  },
+  {
+    "source_id": "sg.ssg.skills",
+    "source_name": "SkillsFuture Singapore ICT Skills Framework",
+    "publisher": "SkillsFuture Singapore (SSG) & IMDA",
+    "canonical_url": "https://www.skillsfuture.gov.sg/skills-framework/ict",
+    "license": "Singapore Government Open Access",
+    "frequency": "Periodic Framework Updates",
+    "reference_period": "2024",
+    "country": "SG",
+    "reliability_tier": "OFFICIAL_STATISTICS",
+    "publication_status": "PUBLISHED"
+  },
+  {
+    "source_id": "in.mospi.plfs",
+    "source_name": "Periodic Labour Force Survey (PLFS) Annual Report",
+    "publisher": "Ministry of Statistics and Programme Implementation (MOSPI), India",
+    "canonical_url": "https://mospi.gov.in/",
+    "license": "Government Open Data Licence - India (GODL)",
+    "frequency": "Annual Survey Release",
+    "reference_period": "2023-2024",
+    "country": "IN",
+    "reliability_tier": "OFFICIAL_STATISTICS",
+    "publication_status": "PUBLISHED"
+  },
+  {
+    "source_id": "in.jobintel.tech-demand",
+    "source_name": "JobIntel Tech Demand Benchmark Corpus",
+    "publisher": "JobIntel Research Engineering",
+    "canonical_url": "https://github.com/Vansh1412/Job-Market-Intelligence",
+    "license": "Open Academic & Research Use",
+    "frequency": "Calibrated Static Benchmark Snapshot",
+    "reference_period": "2023-2024",
+    "country": "IN",
+    "reliability_tier": "CALIBRATED_BENCHMARK",
+    "publication_status": "PUBLISHED"
+  }
+]

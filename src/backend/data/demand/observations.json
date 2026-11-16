@@ -1,0 +1,2564 @@
+[
+  {
+    "observation_id": "dmd-us-15-1252-2024",
+    "market_id": "US",
+    "occupation_id": "US_SOC_2018:15-1252",
+    "canonical_id": "CAN_OCC_SOFTWARE_ENGINEER",
+    "source_id": "us.bls.ep",
+    "metric_type": "ANNUAL_JOB_OPENINGS",
+    "metric_unit": "Annual Openings",
+    "value": 140100.0,
+    "reference_period": "2023-2033",
+    "geographic_scope": "National (United States)",
+    "time_series": [
+      {
+        "period": "2021",
+        "value": 128500.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2022",
+        "value": 134200.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023",
+        "value": 138000.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024",
+        "value": 140100.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2033-Projected",
+        "value": 165000.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": true
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "CA",
+        "region_name": "California",
+        "value": 29420.0,
+        "share_percentage": 21.0,
+        "index_vs_national": 150.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      },
+      {
+        "region_code": "TX",
+        "region_name": "Texas",
+        "value": 12600.0,
+        "share_percentage": 9.0,
+        "index_vs_national": 105.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      },
+      {
+        "region_code": "WA",
+        "region_name": "Washington",
+        "value": 11200.0,
+        "share_percentage": 8.0,
+        "index_vs_national": 180.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      },
+      {
+        "region_code": "NY",
+        "region_name": "New York",
+        "value": 9800.0,
+        "share_percentage": 7.0,
+        "index_vs_national": 110.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      },
+      {
+        "region_code": "FL",
+        "region_name": "Florida",
+        "value": 7000.0,
+        "share_percentage": 5.0,
+        "index_vs_national": 85.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      }
+    ],
+    "shortage_status": "NO_SHORTAGE",
+    "future_demand_rating": "Much faster than average (+17%)",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Bachelor's degree",
+    "work_experience_required": "None",
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": "US BLS Employment Projections 2023-2033. Base 2023 employment: 1,631.2k, projected 2033 employment: 1,902.9k.",
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "BLS_TABLE_1_7_ANNUALIZED_PLUS_OEWS_STATE_WEIGHTS",
+    "derivation_summary": "Projected annual openings from BLS EP Table 1.7. Historical points and state allocations derived from OEWS state employment distributions."
+  },
+  {
+    "observation_id": "dmd-us-15-2051-2024",
+    "market_id": "US",
+    "occupation_id": "US_SOC_2018:15-2051",
+    "canonical_id": "CAN_OCC_DATA_SCIENTIST",
+    "source_id": "us.bls.ep",
+    "metric_type": "ANNUAL_JOB_OPENINGS",
+    "metric_unit": "Annual Openings",
+    "value": 20800.0,
+    "reference_period": "2023-2033",
+    "geographic_scope": "National (United States)",
+    "time_series": [
+      {
+        "period": "2021",
+        "value": 14200.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2022",
+        "value": 16800.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023",
+        "value": 18900.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024",
+        "value": 20800.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2033-Projected",
+        "value": 28500.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": true
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "CA",
+        "region_name": "California",
+        "value": 4580.0,
+        "share_percentage": 22.0,
+        "index_vs_national": 165.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      },
+      {
+        "region_code": "NY",
+        "region_name": "New York",
+        "value": 2500.0,
+        "share_percentage": 12.0,
+        "index_vs_national": 140.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      },
+      {
+        "region_code": "TX",
+        "region_name": "Texas",
+        "value": 1660.0,
+        "share_percentage": 8.0,
+        "index_vs_national": 95.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      },
+      {
+        "region_code": "WA",
+        "region_name": "Washington",
+        "value": 1450.0,
+        "share_percentage": 7.0,
+        "index_vs_national": 155.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      }
+    ],
+    "shortage_status": "NATIONAL_SHORTAGE",
+    "future_demand_rating": "Much faster than average (+36%)",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Bachelor's or Master's degree",
+    "work_experience_required": "Less than 5 years",
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": "US BLS Employment Projections 2023-2033. Base 2023: 208.8k, projected 2033: 283.4k (+36%).",
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "BLS_TABLE_1_7_ANNUALIZED_PLUS_OEWS_STATE_WEIGHTS",
+    "derivation_summary": "Projected annual openings from BLS EP Table 1.7. Historical points and state allocations derived from OEWS state employment distributions."
+  },
+  {
+    "observation_id": "dmd-us-15-1212-2024",
+    "market_id": "US",
+    "occupation_id": "US_SOC_2018:15-1212",
+    "canonical_id": "CAN_OCC_CYBERSECURITY_ANALYST",
+    "source_id": "us.bls.ep",
+    "metric_type": "ANNUAL_JOB_OPENINGS",
+    "metric_unit": "Annual Openings",
+    "value": 16800.0,
+    "reference_period": "2023-2033",
+    "geographic_scope": "National (United States)",
+    "time_series": [
+      {
+        "period": "2021",
+        "value": 11900.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2022",
+        "value": 13800.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023",
+        "value": 15200.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024",
+        "value": 16800.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2033-Projected",
+        "value": 22400.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": true
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "VA",
+        "region_name": "Virginia / DC Metro",
+        "value": 3190.0,
+        "share_percentage": 19.0,
+        "index_vs_national": 240.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      },
+      {
+        "region_code": "CA",
+        "region_name": "California",
+        "value": 2690.0,
+        "share_percentage": 16.0,
+        "index_vs_national": 120.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      },
+      {
+        "region_code": "TX",
+        "region_name": "Texas",
+        "value": 1680.0,
+        "share_percentage": 10.0,
+        "index_vs_national": 105.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      }
+    ],
+    "shortage_status": "NATIONAL_SHORTAGE",
+    "future_demand_rating": "Much faster than average (+33%)",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Bachelor's degree",
+    "work_experience_required": "Less than 5 years",
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": "US BLS EP 2023-2033. High cyber infrastructure defense demand.",
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "BLS_TABLE_1_7_ANNUALIZED_PLUS_OEWS_STATE_WEIGHTS",
+    "derivation_summary": "Projected annual openings from BLS EP Table 1.7. Historical points and state allocations derived from OEWS state employment distributions."
+  },
+  {
+    "observation_id": "dmd-us-15-1253-2024",
+    "market_id": "US",
+    "occupation_id": "US_SOC_2018:15-1253",
+    "canonical_id": "CAN_OCC_QA_TEST_ENGINEER",
+    "source_id": "us.bls.ep",
+    "metric_type": "ANNUAL_JOB_OPENINGS",
+    "metric_unit": "Annual Openings",
+    "value": 15300.0,
+    "reference_period": "2023-2033",
+    "geographic_scope": "National (United States)",
+    "time_series": [
+      {
+        "period": "2021",
+        "value": 13900.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2022",
+        "value": 14600.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023",
+        "value": 15000.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024",
+        "value": 15300.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2033-Projected",
+        "value": 17200.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": true
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "CA",
+        "region_name": "California",
+        "value": 3200.0,
+        "share_percentage": 20.9,
+        "index_vs_national": 145.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      },
+      {
+        "region_code": "TX",
+        "region_name": "Texas",
+        "value": 1530.0,
+        "share_percentage": 10.0,
+        "index_vs_national": 100.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      }
+    ],
+    "shortage_status": "NO_SHORTAGE",
+    "future_demand_rating": "Faster than average (+10%)",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Bachelor's degree",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "BLS_TABLE_1_7_ANNUALIZED_PLUS_OEWS_STATE_WEIGHTS",
+    "derivation_summary": "Projected annual openings from BLS EP Table 1.7. Historical points and state allocations derived from OEWS state employment distributions."
+  },
+  {
+    "observation_id": "dmd-us-15-1242-2024",
+    "market_id": "US",
+    "occupation_id": "US_SOC_2018:15-1242",
+    "canonical_id": "CAN_OCC_DATABASE_ADMIN",
+    "source_id": "us.bls.ep",
+    "metric_type": "ANNUAL_JOB_OPENINGS",
+    "metric_unit": "Annual Openings",
+    "value": 10200.0,
+    "reference_period": "2023-2033",
+    "geographic_scope": "National (United States)",
+    "time_series": [
+      {
+        "period": "2021",
+        "value": 9800.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2022",
+        "value": 10000.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023",
+        "value": 10100.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024",
+        "value": 10200.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2033-Projected",
+        "value": 11100.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": true
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "CA",
+        "region_name": "California",
+        "value": 1836.0,
+        "share_percentage": 18.0,
+        "index_vs_national": 125.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      },
+      {
+        "region_code": "TX",
+        "region_name": "Texas",
+        "value": 1122.0,
+        "share_percentage": 11.0,
+        "index_vs_national": 110.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      }
+    ],
+    "shortage_status": "NO_SHORTAGE",
+    "future_demand_rating": "As fast as average (+5%)",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Bachelor's degree",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "BLS_TABLE_1_7_ANNUALIZED_PLUS_OEWS_STATE_WEIGHTS",
+    "derivation_summary": "Projected annual openings from BLS EP Table 1.7. Historical points and state allocations derived from OEWS state employment distributions."
+  },
+  {
+    "observation_id": "dmd-us-15-1211-2024",
+    "market_id": "US",
+    "occupation_id": "US_SOC_2018:15-1211",
+    "canonical_id": "CAN_OCC_SYSTEMS_ANALYST",
+    "source_id": "us.bls.ep",
+    "metric_type": "ANNUAL_JOB_OPENINGS",
+    "metric_unit": "Annual Openings",
+    "value": 38000.0,
+    "reference_period": "2023-2033",
+    "geographic_scope": "National (United States)",
+    "time_series": [
+      {
+        "period": "2021",
+        "value": 35200.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2022",
+        "value": 36800.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023",
+        "value": 37400.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024",
+        "value": 38000.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2033-Projected",
+        "value": 42500.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": true
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "CA",
+        "region_name": "California",
+        "value": 6840.0,
+        "share_percentage": 18.0,
+        "index_vs_national": 120.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      },
+      {
+        "region_code": "NY",
+        "region_name": "New York",
+        "value": 3800.0,
+        "share_percentage": 10.0,
+        "index_vs_national": 115.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      }
+    ],
+    "shortage_status": "NO_SHORTAGE",
+    "future_demand_rating": "Faster than average (+9%)",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Bachelor's degree",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "BLS_TABLE_1_7_ANNUALIZED_PLUS_OEWS_STATE_WEIGHTS",
+    "derivation_summary": "Projected annual openings from BLS EP Table 1.7. Historical points and state allocations derived from OEWS state employment distributions."
+  },
+  {
+    "observation_id": "dmd-us-15-1244-2024",
+    "market_id": "US",
+    "occupation_id": "US_SOC_2018:15-1244",
+    "canonical_id": "CAN_OCC_NETWORK_ENGINEER",
+    "source_id": "us.bls.ep",
+    "metric_type": "ANNUAL_JOB_OPENINGS",
+    "metric_unit": "Annual Openings",
+    "value": 18900.0,
+    "reference_period": "2023-2033",
+    "geographic_scope": "National (United States)",
+    "time_series": [
+      {
+        "period": "2021",
+        "value": 19800.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2022",
+        "value": 19400.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023",
+        "value": 19100.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024",
+        "value": 18900.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2033-Projected",
+        "value": 18200.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": true
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "TX",
+        "region_name": "Texas",
+        "value": 2079.0,
+        "share_percentage": 11.0,
+        "index_vs_national": 105.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      },
+      {
+        "region_code": "CA",
+        "region_name": "California",
+        "value": 2646.0,
+        "share_percentage": 14.0,
+        "index_vs_national": 95.0,
+        "is_derived": true,
+        "derivation_method": "OEWS_STATE_EMPLOYMENT_WEIGHTS",
+        "disclosure_label": "Derived state allocation"
+      }
+    ],
+    "shortage_status": "NO_SHORTAGE",
+    "future_demand_rating": "Little or no change (-2%)",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Bachelor's degree",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "BLS_TABLE_1_7_ANNUALIZED_PLUS_OEWS_STATE_WEIGHTS",
+    "derivation_summary": "Projected annual openings from BLS EP Table 1.7. Historical points and state allocations derived from OEWS state employment distributions."
+  },
+  {
+    "observation_id": "dmd-au-261313-2024",
+    "market_id": "AU",
+    "occupation_id": "AU_OSCA_2024:261313",
+    "canonical_id": "CAN_OCC_SOFTWARE_ENGINEER",
+    "source_id": "au.jsa.ivi",
+    "metric_type": "OBSERVED_JOB_ADVERTISEMENTS",
+    "metric_unit": "Monthly Online Job Adverts",
+    "value": 4820.0,
+    "reference_period": "2024-Q3",
+    "geographic_scope": "National (Australia)",
+    "time_series": [
+      {
+        "period": "2023-Q1",
+        "value": 4600.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q2",
+        "value": 4550.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q3",
+        "value": 4620.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q4",
+        "value": 4710.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q1",
+        "value": 4750.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q2",
+        "value": 4790.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q3",
+        "value": 4820.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "NSW",
+        "region_name": "New South Wales",
+        "value": 1832.0,
+        "share_percentage": 38.0,
+        "index_vs_national": 125.0,
+        "is_derived": true,
+        "derivation_method": "JSA_IVI_STATE_SHARES",
+        "disclosure_label": "State IVI distribution"
+      },
+      {
+        "region_code": "VIC",
+        "region_name": "Victoria",
+        "value": 1494.0,
+        "share_percentage": 31.0,
+        "index_vs_national": 115.0,
+        "is_derived": true,
+        "derivation_method": "JSA_IVI_STATE_SHARES",
+        "disclosure_label": "State IVI distribution"
+      },
+      {
+        "region_code": "QLD",
+        "region_name": "Queensland",
+        "value": 675.0,
+        "share_percentage": 14.0,
+        "index_vs_national": 75.0,
+        "is_derived": true,
+        "derivation_method": "JSA_IVI_STATE_SHARES",
+        "disclosure_label": "State IVI distribution"
+      },
+      {
+        "region_code": "WA",
+        "region_name": "Western Australia",
+        "value": 434.0,
+        "share_percentage": 9.0,
+        "index_vs_national": 80.0,
+        "is_derived": true,
+        "derivation_method": "JSA_IVI_STATE_SHARES",
+        "disclosure_label": "State IVI distribution"
+      },
+      {
+        "region_code": "SA",
+        "region_name": "South Australia",
+        "value": 241.0,
+        "share_percentage": 5.0,
+        "index_vs_national": 70.0,
+        "is_derived": true,
+        "derivation_method": "JSA_IVI_STATE_SHARES",
+        "disclosure_label": "State IVI distribution"
+      },
+      {
+        "region_code": "ACT",
+        "region_name": "Australian Capital Territory",
+        "value": 145.0,
+        "share_percentage": 3.0,
+        "index_vs_national": 160.0,
+        "is_derived": true,
+        "derivation_method": "JSA_IVI_STATE_SHARES",
+        "disclosure_label": "State IVI distribution"
+      }
+    ],
+    "shortage_status": "NATIONAL_SHORTAGE",
+    "future_demand_rating": "Strong",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Bachelor's degree or higher",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": "Jobs and Skills Australia IVI & Skills Priority List 2024. National shortage rating (S).",
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "JSA_IVI_4DIGIT_ANZSCO_TO_6DIGIT_OSCA_SCALING",
+    "derivation_summary": "Online advert volumes derived by scaling 4-digit ANZSCO IVI data to 6-digit OSCA units using empirical employment shares. Shortage status directly from JSA SPL 2024."
+  },
+  {
+    "observation_id": "dmd-au-224411-2024",
+    "market_id": "AU",
+    "occupation_id": "AU_OSCA_2024:224411",
+    "canonical_id": "CAN_OCC_DATA_SCIENTIST",
+    "source_id": "au.jsa.ivi",
+    "metric_type": "OBSERVED_JOB_ADVERTISEMENTS",
+    "metric_unit": "Monthly Online Job Adverts",
+    "value": 1340.0,
+    "reference_period": "2024-Q3",
+    "geographic_scope": "National (Australia)",
+    "time_series": [
+      {
+        "period": "2023-Q1",
+        "value": 1190.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q2",
+        "value": 1210.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q3",
+        "value": 1230.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q4",
+        "value": 1270.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q1",
+        "value": 1290.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q2",
+        "value": 1310.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q3",
+        "value": 1340.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "NSW",
+        "region_name": "New South Wales",
+        "value": 563.0,
+        "share_percentage": 42.0,
+        "index_vs_national": 135.0,
+        "is_derived": true,
+        "derivation_method": "JSA_IVI_STATE_SHARES",
+        "disclosure_label": "State IVI distribution"
+      },
+      {
+        "region_code": "VIC",
+        "region_name": "Victoria",
+        "value": 442.0,
+        "share_percentage": 33.0,
+        "index_vs_national": 120.0,
+        "is_derived": true,
+        "derivation_method": "JSA_IVI_STATE_SHARES",
+        "disclosure_label": "State IVI distribution"
+      },
+      {
+        "region_code": "QLD",
+        "region_name": "Queensland",
+        "value": 147.0,
+        "share_percentage": 11.0,
+        "index_vs_national": 65.0,
+        "is_derived": true,
+        "derivation_method": "JSA_IVI_STATE_SHARES",
+        "disclosure_label": "State IVI distribution"
+      }
+    ],
+    "shortage_status": "NATIONAL_SHORTAGE",
+    "future_demand_rating": "Strong",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Postgraduate / Bachelor's degree",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "JSA_IVI_4DIGIT_ANZSCO_TO_6DIGIT_OSCA_SCALING",
+    "derivation_summary": "Online advert volumes derived by scaling 4-digit ANZSCO IVI data to 6-digit OSCA units using empirical employment shares. Shortage status directly from JSA SPL 2024."
+  },
+  {
+    "observation_id": "dmd-au-262112-2024",
+    "market_id": "AU",
+    "occupation_id": "AU_OSCA_2024:262112",
+    "canonical_id": "CAN_OCC_CYBERSECURITY_ANALYST",
+    "source_id": "au.jsa.ivi",
+    "metric_type": "OBSERVED_JOB_ADVERTISEMENTS",
+    "metric_unit": "Monthly Online Job Adverts",
+    "value": 1180.0,
+    "reference_period": "2024-Q3",
+    "geographic_scope": "National (Australia)",
+    "time_series": [
+      {
+        "period": "2023-Q1",
+        "value": 1080.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q2",
+        "value": 1110.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q3",
+        "value": 1120.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q4",
+        "value": 1140.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q1",
+        "value": 1150.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q2",
+        "value": 1170.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q3",
+        "value": 1180.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "NSW",
+        "region_name": "New South Wales",
+        "value": 425.0,
+        "share_percentage": 36.0,
+        "index_vs_national": 120.0,
+        "is_derived": true,
+        "derivation_method": "JSA_IVI_STATE_SHARES",
+        "disclosure_label": "State IVI distribution"
+      },
+      {
+        "region_code": "ACT",
+        "region_name": "Australian Capital Territory",
+        "value": 283.0,
+        "share_percentage": 24.0,
+        "index_vs_national": 310.0,
+        "is_derived": true,
+        "derivation_method": "JSA_IVI_STATE_SHARES",
+        "disclosure_label": "State IVI distribution"
+      },
+      {
+        "region_code": "VIC",
+        "region_name": "Victoria",
+        "value": 260.0,
+        "share_percentage": 22.0,
+        "index_vs_national": 90.0,
+        "is_derived": true,
+        "derivation_method": "JSA_IVI_STATE_SHARES",
+        "disclosure_label": "State IVI distribution"
+      }
+    ],
+    "shortage_status": "NATIONAL_SHORTAGE",
+    "future_demand_rating": "Strong",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Bachelor's degree",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "JSA_IVI_4DIGIT_ANZSCO_TO_6DIGIT_OSCA_SCALING",
+    "derivation_summary": "Online advert volumes derived by scaling 4-digit ANZSCO IVI data to 6-digit OSCA units using empirical employment shares. Shortage status directly from JSA SPL 2024."
+  },
+  {
+    "observation_id": "dmd-au-261314-2024",
+    "market_id": "AU",
+    "occupation_id": "AU_OSCA_2024:261314",
+    "canonical_id": "CAN_OCC_QA_TEST_ENGINEER",
+    "source_id": "au.jsa.ivi",
+    "metric_type": "OBSERVED_JOB_ADVERTISEMENTS",
+    "metric_unit": "Monthly Online Job Adverts",
+    "value": 890.0,
+    "reference_period": "2024-Q3",
+    "geographic_scope": "National (Australia)",
+    "time_series": [
+      {
+        "period": "2023-Q1",
+        "value": 910.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q2",
+        "value": 905.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q3",
+        "value": 900.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q4",
+        "value": 895.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q1",
+        "value": 890.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q2",
+        "value": 885.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q3",
+        "value": 890.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "NSW",
+        "region_name": "New South Wales",
+        "value": 329.0,
+        "share_percentage": 37.0,
+        "index_vs_national": 120.0,
+        "is_derived": true,
+        "derivation_method": "JSA_IVI_STATE_SHARES",
+        "disclosure_label": "State IVI distribution"
+      },
+      {
+        "region_code": "VIC",
+        "region_name": "Victoria",
+        "value": 285.0,
+        "share_percentage": 32.0,
+        "index_vs_national": 115.0,
+        "is_derived": true,
+        "derivation_method": "JSA_IVI_STATE_SHARES",
+        "disclosure_label": "State IVI distribution"
+      }
+    ],
+    "shortage_status": "NO_SHORTAGE",
+    "future_demand_rating": "Moderate",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Bachelor's degree",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "JSA_IVI_4DIGIT_ANZSCO_TO_6DIGIT_OSCA_SCALING",
+    "derivation_summary": "Online advert volumes derived by scaling 4-digit ANZSCO IVI data to 6-digit OSCA units using empirical employment shares. Shortage status directly from JSA SPL 2024."
+  },
+  {
+    "observation_id": "dmd-uk-2134-2024",
+    "market_id": "UK",
+    "occupation_id": "UK_SOC_2020:2134",
+    "canonical_id": "CAN_OCC_SOFTWARE_ENGINEER",
+    "source_id": "uk.ons.labour-demand",
+    "metric_type": "OBSERVED_JOB_ADVERTISEMENTS",
+    "metric_unit": "Online Job Advert Index (Base=100)",
+    "value": 112.5,
+    "reference_period": "2024-Q3",
+    "geographic_scope": "National (United Kingdom)",
+    "time_series": [
+      {
+        "period": "2023-Q1",
+        "value": 108.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q2",
+        "value": 109.2,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q3",
+        "value": 109.8,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q4",
+        "value": 110.5,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q1",
+        "value": 111.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q2",
+        "value": 111.8,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q3",
+        "value": 112.5,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "ENG-LON",
+        "region_name": "London",
+        "value": 46.1,
+        "share_percentage": 41.0,
+        "index_vs_national": 175.0,
+        "is_derived": false,
+        "derivation_method": "NATIONAL_TOTAL",
+        "disclosure_label": "National index"
+      },
+      {
+        "region_code": "ENG-SE",
+        "region_name": "South East",
+        "value": 20.3,
+        "share_percentage": 18.0,
+        "index_vs_national": 110.0,
+        "is_derived": false,
+        "derivation_method": "NATIONAL_TOTAL",
+        "disclosure_label": "National index"
+      },
+      {
+        "region_code": "ENG-NW",
+        "region_name": "North West",
+        "value": 10.1,
+        "share_percentage": 9.0,
+        "index_vs_national": 85.0,
+        "is_derived": false,
+        "derivation_method": "NATIONAL_TOTAL",
+        "disclosure_label": "National index"
+      },
+      {
+        "region_code": "SCT",
+        "region_name": "Scotland",
+        "value": 7.9,
+        "share_percentage": 7.0,
+        "index_vs_national": 80.0,
+        "is_derived": false,
+        "derivation_method": "NATIONAL_TOTAL",
+        "disclosure_label": "National index"
+      }
+    ],
+    "shortage_status": "NATIONAL_SHORTAGE",
+    "future_demand_rating": "Strong",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Degree or equivalent technical experience",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": "ONS experimental online job adverts. Shortage recognized on UK Immigration Salary List.",
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "ONS_TEXTKERNEL_EXPERIMENTAL_INDEX",
+    "derivation_summary": "Experimental online job advert volume index (Base 2019=100) produced by ONS in collaboration with Textkernel."
+  },
+  {
+    "observation_id": "dmd-uk-2135-2024",
+    "market_id": "UK",
+    "occupation_id": "UK_SOC_2020:2135",
+    "canonical_id": "CAN_OCC_CYBERSECURITY_ANALYST",
+    "source_id": "uk.ons.labour-demand",
+    "metric_type": "OBSERVED_JOB_ADVERTISEMENTS",
+    "metric_unit": "Online Job Advert Index (Base=100)",
+    "value": 119.8,
+    "reference_period": "2024-Q3",
+    "geographic_scope": "National (United Kingdom)",
+    "time_series": [
+      {
+        "period": "2023-Q1",
+        "value": 111.5,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q2",
+        "value": 113.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q3",
+        "value": 114.8,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q4",
+        "value": 116.2,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q1",
+        "value": 117.5,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q2",
+        "value": 118.9,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q3",
+        "value": 119.8,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "ENG-LON",
+        "region_name": "London",
+        "value": 45.5,
+        "share_percentage": 38.0,
+        "index_vs_national": 160.0,
+        "is_derived": false,
+        "derivation_method": "NATIONAL_TOTAL",
+        "disclosure_label": "National index"
+      },
+      {
+        "region_code": "ENG-SE",
+        "region_name": "South East",
+        "value": 22.8,
+        "share_percentage": 19.0,
+        "index_vs_national": 120.0,
+        "is_derived": false,
+        "derivation_method": "NATIONAL_TOTAL",
+        "disclosure_label": "National index"
+      },
+      {
+        "region_code": "ENG-SW",
+        "region_name": "South West / Cheltenham",
+        "value": 14.4,
+        "share_percentage": 12.0,
+        "index_vs_national": 140.0,
+        "is_derived": false,
+        "derivation_method": "NATIONAL_TOTAL",
+        "disclosure_label": "National index"
+      }
+    ],
+    "shortage_status": "NATIONAL_SHORTAGE",
+    "future_demand_rating": "Strong",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Degree in cyber security / computer science",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "ONS_TEXTKERNEL_EXPERIMENTAL_INDEX",
+    "derivation_summary": "Experimental online job advert volume index (Base 2019=100) produced by ONS in collaboration with Textkernel."
+  },
+  {
+    "observation_id": "dmd-uk-2136-2024",
+    "market_id": "UK",
+    "occupation_id": "UK_SOC_2020:2136",
+    "canonical_id": "CAN_OCC_QA_TEST_ENGINEER",
+    "source_id": "uk.ons.labour-demand",
+    "metric_type": "OBSERVED_JOB_ADVERTISEMENTS",
+    "metric_unit": "Online Job Advert Index (Base=100)",
+    "value": 96.2,
+    "reference_period": "2024-Q3",
+    "geographic_scope": "National (United Kingdom)",
+    "time_series": [
+      {
+        "period": "2023-Q1",
+        "value": 100.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q2",
+        "value": 99.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q3",
+        "value": 98.5,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q4",
+        "value": 97.8,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q1",
+        "value": 97.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q2",
+        "value": 96.5,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q3",
+        "value": 96.2,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "ENG-LON",
+        "region_name": "London",
+        "value": 35.6,
+        "share_percentage": 37.0,
+        "index_vs_national": 140.0,
+        "is_derived": false,
+        "derivation_method": "NATIONAL_TOTAL",
+        "disclosure_label": "National index"
+      },
+      {
+        "region_code": "ENG-SE",
+        "region_name": "South East",
+        "value": 18.3,
+        "share_percentage": 19.0,
+        "index_vs_national": 105.0,
+        "is_derived": false,
+        "derivation_method": "NATIONAL_TOTAL",
+        "disclosure_label": "National index"
+      }
+    ],
+    "shortage_status": "NO_SHORTAGE",
+    "future_demand_rating": "Moderate",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Degree in computing or ISTQB certification",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "ONS_TEXTKERNEL_EXPERIMENTAL_INDEX",
+    "derivation_summary": "Experimental online job advert volume index (Base 2019=100) produced by ONS in collaboration with Textkernel."
+  },
+  {
+    "observation_id": "dmd-uk-2133-2024",
+    "market_id": "UK",
+    "occupation_id": "UK_SOC_2020:2133",
+    "canonical_id": "CAN_OCC_SYSTEMS_ANALYST",
+    "source_id": "uk.ons.labour-demand",
+    "metric_type": "OBSERVED_JOB_ADVERTISEMENTS",
+    "metric_unit": "Online Job Advert Index (Base=100)",
+    "value": 108.4,
+    "reference_period": "2024-Q3",
+    "geographic_scope": "National (United Kingdom)",
+    "time_series": [
+      {
+        "period": "2023-Q1",
+        "value": 106.2,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q2",
+        "value": 107.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q3",
+        "value": 107.5,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q4",
+        "value": 107.9,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q1",
+        "value": 108.1,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q2",
+        "value": 108.3,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q3",
+        "value": 108.4,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "ENG-LON",
+        "region_name": "London",
+        "value": 42.3,
+        "share_percentage": 39.0,
+        "index_vs_national": 165.0,
+        "is_derived": false,
+        "derivation_method": "NATIONAL_TOTAL",
+        "disclosure_label": "National index"
+      },
+      {
+        "region_code": "ENG-SE",
+        "region_name": "South East",
+        "value": 19.5,
+        "share_percentage": 18.0,
+        "index_vs_national": 110.0,
+        "is_derived": false,
+        "derivation_method": "NATIONAL_TOTAL",
+        "disclosure_label": "National index"
+      }
+    ],
+    "shortage_status": "NATIONAL_SHORTAGE",
+    "future_demand_rating": "Moderate",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Degree in computer science or business systems",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "ONS_TEXTKERNEL_EXPERIMENTAL_INDEX",
+    "derivation_summary": "Experimental online job advert volume index (Base 2019=100) produced by ONS in collaboration with Textkernel."
+  },
+  {
+    "observation_id": "dmd-uk-2137-2024",
+    "market_id": "UK",
+    "occupation_id": "UK_SOC_2020:2137",
+    "canonical_id": "CAN_OCC_NETWORK_ENGINEER",
+    "source_id": "uk.ons.labour-demand",
+    "metric_type": "OBSERVED_JOB_ADVERTISEMENTS",
+    "metric_unit": "Online Job Advert Index (Base=100)",
+    "value": 94.0,
+    "reference_period": "2024-Q3",
+    "geographic_scope": "National (United Kingdom)",
+    "time_series": [
+      {
+        "period": "2023-Q1",
+        "value": 100.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q2",
+        "value": 98.2,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q3",
+        "value": 97.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q4",
+        "value": 96.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q1",
+        "value": 95.2,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q2",
+        "value": 94.5,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q3",
+        "value": 94.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "ENG-LON",
+        "region_name": "London",
+        "value": 32.9,
+        "share_percentage": 35.0,
+        "index_vs_national": 130.0,
+        "is_derived": false,
+        "derivation_method": "NATIONAL_TOTAL",
+        "disclosure_label": "National index"
+      }
+    ],
+    "shortage_status": "NO_SHORTAGE",
+    "future_demand_rating": "Soft",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Degree or network certifications (CCNA)",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "ONS_TEXTKERNEL_EXPERIMENTAL_INDEX",
+    "derivation_summary": "Experimental online job advert volume index (Base 2019=100) produced by ONS in collaboration with Textkernel."
+  },
+  {
+    "observation_id": "dmd-uk-2131-2024",
+    "market_id": "UK",
+    "occupation_id": "UK_SOC_2020:2131",
+    "canonical_id": "CAN_OCC_IT_PROJECT_MGR",
+    "source_id": "uk.ons.labour-demand",
+    "metric_type": "OBSERVED_JOB_ADVERTISEMENTS",
+    "metric_unit": "Online Job Advert Index (Base=100)",
+    "value": 104.2,
+    "reference_period": "2024-Q3",
+    "geographic_scope": "National (United Kingdom)",
+    "time_series": [
+      {
+        "period": "2023-Q1",
+        "value": 102.7,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q2",
+        "value": 103.1,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q3",
+        "value": 103.5,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q4",
+        "value": 103.8,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q1",
+        "value": 104.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q2",
+        "value": 104.1,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q3",
+        "value": 104.2,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "ENG-LON",
+        "region_name": "London",
+        "value": 43.8,
+        "share_percentage": 42.0,
+        "index_vs_national": 180.0,
+        "is_derived": false,
+        "derivation_method": "NATIONAL_TOTAL",
+        "disclosure_label": "National index"
+      }
+    ],
+    "shortage_status": "NO_SHORTAGE",
+    "future_demand_rating": "Moderate",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Degree plus project management qualification",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "ONS_TEXTKERNEL_EXPERIMENTAL_INDEX",
+    "derivation_summary": "Experimental online job advert volume index (Base 2019=100) produced by ONS in collaboration with Textkernel."
+  },
+  {
+    "observation_id": "dmd-uk-3133-2024",
+    "market_id": "UK",
+    "occupation_id": "UK_SOC_2020:3133",
+    "canonical_id": "CAN_OCC_DATABASE_ADMIN",
+    "source_id": "uk.ons.labour-demand",
+    "metric_type": "OBSERVED_JOB_ADVERTISEMENTS",
+    "metric_unit": "Online Job Advert Index (Base=100)",
+    "value": 98.0,
+    "reference_period": "2024-Q3",
+    "geographic_scope": "National (United Kingdom)",
+    "time_series": [
+      {
+        "period": "2023-Q1",
+        "value": 100.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q2",
+        "value": 99.4,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q3",
+        "value": 99.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q4",
+        "value": 98.7,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q1",
+        "value": 98.4,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q2",
+        "value": 98.1,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q3",
+        "value": 98.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "ENG-LON",
+        "region_name": "London",
+        "value": 37.2,
+        "share_percentage": 38.0,
+        "index_vs_national": 140.0,
+        "is_derived": false,
+        "derivation_method": "NATIONAL_TOTAL",
+        "disclosure_label": "National index"
+      }
+    ],
+    "shortage_status": "NO_SHORTAGE",
+    "future_demand_rating": "Stable",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Vocational / Technical degree",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "ONS_TEXTKERNEL_EXPERIMENTAL_INDEX",
+    "derivation_summary": "Experimental online job advert volume index (Base 2019=100) produced by ONS in collaboration with Textkernel."
+  },
+  {
+    "observation_id": "dmd-uk-3544-2024",
+    "market_id": "UK",
+    "occupation_id": "UK_SOC_2020:3544",
+    "canonical_id": "CAN_OCC_DATA_ANALYST",
+    "source_id": "uk.ons.labour-demand",
+    "metric_type": "OBSERVED_JOB_ADVERTISEMENTS",
+    "metric_unit": "Online Job Advert Index (Base=100)",
+    "value": 115.0,
+    "reference_period": "2024-Q3",
+    "geographic_scope": "National (United Kingdom)",
+    "time_series": [
+      {
+        "period": "2023-Q1",
+        "value": 109.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q2",
+        "value": 110.5,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q3",
+        "value": 111.8,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q4",
+        "value": 112.9,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q1",
+        "value": 113.8,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q2",
+        "value": 114.5,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q3",
+        "value": 115.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "ENG-LON",
+        "region_name": "London",
+        "value": 46.0,
+        "share_percentage": 40.0,
+        "index_vs_national": 160.0,
+        "is_derived": false,
+        "derivation_method": "NATIONAL_TOTAL",
+        "disclosure_label": "National index"
+      },
+      {
+        "region_code": "ENG-SE",
+        "region_name": "South East",
+        "value": 20.7,
+        "share_percentage": 18.0,
+        "index_vs_national": 110.0,
+        "is_derived": false,
+        "derivation_method": "NATIONAL_TOTAL",
+        "disclosure_label": "National index"
+      }
+    ],
+    "shortage_status": "NO_SHORTAGE",
+    "future_demand_rating": "Moderate",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "Degree in quantitative discipline",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "ONS_TEXTKERNEL_EXPERIMENTAL_INDEX",
+    "derivation_summary": "Experimental online job advert volume index (Base 2019=100) produced by ONS in collaboration with Textkernel."
+  },
+  {
+    "observation_id": "dmd-sg-25121-2024",
+    "market_id": "SG",
+    "occupation_id": "SG_SSOC_2024:25121",
+    "canonical_id": "CAN_OCC_SOFTWARE_ENGINEER",
+    "source_id": "sg.mom.vacancies",
+    "metric_type": "OBSERVED_VACANCIES",
+    "metric_unit": "Job Vacancies (Count)",
+    "value": 3420.0,
+    "reference_period": "2024",
+    "geographic_scope": "National (Singapore)",
+    "time_series": [
+      {
+        "period": "2022",
+        "value": 3150.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023",
+        "value": 3310.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024",
+        "value": 3420.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "SG-CENTRAL",
+        "region_name": "Central Region (CBD, One-North)",
+        "value": 2462.0,
+        "share_percentage": 72.0,
+        "index_vs_national": 145.0,
+        "is_derived": true,
+        "derivation_method": "PLANNING_AREA_PROXIES",
+        "disclosure_label": "Modelled regional distribution"
+      },
+      {
+        "region_code": "SG-WEST",
+        "region_name": "West Region (Jurong Innovation)",
+        "value": 479.0,
+        "share_percentage": 14.0,
+        "index_vs_national": 85.0,
+        "is_derived": true,
+        "derivation_method": "PLANNING_AREA_PROXIES",
+        "disclosure_label": "Modelled regional distribution"
+      },
+      {
+        "region_code": "SG-EAST",
+        "region_name": "East Region (Changi Business Park)",
+        "value": 342.0,
+        "share_percentage": 10.0,
+        "index_vs_national": 75.0,
+        "is_derived": true,
+        "derivation_method": "PLANNING_AREA_PROXIES",
+        "disclosure_label": "Modelled regional distribution"
+      },
+      {
+        "region_code": "SG-NORTH",
+        "region_name": "North / North-East",
+        "value": 137.0,
+        "share_percentage": 4.0,
+        "index_vs_national": 40.0,
+        "is_derived": true,
+        "derivation_method": "PLANNING_AREA_PROXIES",
+        "disclosure_label": "Modelled regional distribution"
+      }
+    ],
+    "shortage_status": "NATIONAL_SHORTAGE",
+    "future_demand_rating": "Strong",
+    "percent_unfilled_over_6_months": 32.4,
+    "typical_education": "Bachelor's degree in Computer Science / IT",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": "Singapore MOM Job Vacancy Report 2024. PMET vacancy share: 88.5%. 32.4% unfilled for >= 6 months.",
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "MOM_PMET_SURVEY_VACANCIES_PLUS_PLANNING_AREA_PROXIES",
+    "derivation_summary": "Enterprise survey vacancies from MOM Job Vacancies Table 3. Sub-national regional distributions are planning area proxies."
+  },
+  {
+    "observation_id": "dmd-sg-25131-2024",
+    "market_id": "SG",
+    "occupation_id": "SG_SSOC_2024:25131",
+    "canonical_id": "CAN_OCC_ML_ENGINEER",
+    "source_id": "sg.mom.vacancies",
+    "metric_type": "OBSERVED_VACANCIES",
+    "metric_unit": "Job Vacancies (Count)",
+    "value": 860.0,
+    "reference_period": "2024",
+    "geographic_scope": "National (Singapore)",
+    "time_series": [
+      {
+        "period": "2022",
+        "value": 580.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023",
+        "value": 720.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024",
+        "value": 860.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "SG-CENTRAL",
+        "region_name": "Central Region",
+        "value": 670.0,
+        "share_percentage": 78.0,
+        "index_vs_national": 155.0,
+        "is_derived": true,
+        "derivation_method": "PLANNING_AREA_PROXIES",
+        "disclosure_label": "Modelled regional distribution"
+      }
+    ],
+    "shortage_status": "NATIONAL_SHORTAGE",
+    "future_demand_rating": "Strong",
+    "percent_unfilled_over_6_months": 44.2,
+    "typical_education": "Master's / Bachelor's in CS or AI",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": "Singapore MOM. Acute shortage in high-tier AI/ML engineering roles.",
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "MOM_PMET_SURVEY_VACANCIES_PLUS_PLANNING_AREA_PROXIES",
+    "derivation_summary": "Enterprise survey vacancies from MOM Job Vacancies Table 3. Sub-national regional distributions are planning area proxies."
+  },
+  {
+    "observation_id": "dmd-sg-25132-2024",
+    "market_id": "SG",
+    "occupation_id": "SG_SSOC_2024:25132",
+    "canonical_id": "CAN_OCC_DATA_SCIENTIST",
+    "source_id": "sg.mom.vacancies",
+    "metric_type": "OBSERVED_VACANCIES",
+    "metric_unit": "Job Vacancies (Count)",
+    "value": 1120.0,
+    "reference_period": "2024",
+    "geographic_scope": "National (Singapore)",
+    "time_series": [
+      {
+        "period": "2022",
+        "value": 890.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023",
+        "value": 1010.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024",
+        "value": 1120.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "SG-CENTRAL",
+        "region_name": "Central Region",
+        "value": 840.0,
+        "share_percentage": 75.0,
+        "index_vs_national": 150.0,
+        "is_derived": true,
+        "derivation_method": "PLANNING_AREA_PROXIES",
+        "disclosure_label": "Modelled regional distribution"
+      }
+    ],
+    "shortage_status": "NATIONAL_SHORTAGE",
+    "future_demand_rating": "Strong",
+    "percent_unfilled_over_6_months": 36.8,
+    "typical_education": "Degree in Data Science / Mathematics / CS",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "MOM_PMET_SURVEY_VACANCIES_PLUS_PLANNING_AREA_PROXIES",
+    "derivation_summary": "Enterprise survey vacancies from MOM Job Vacancies Table 3. Sub-national regional distributions are planning area proxies."
+  },
+  {
+    "observation_id": "dmd-sg-25124-2024",
+    "market_id": "SG",
+    "occupation_id": "SG_SSOC_2024:25124",
+    "canonical_id": "CAN_OCC_DEVOPS_ENGINEER",
+    "source_id": "sg.mom.vacancies",
+    "metric_type": "OBSERVED_VACANCIES",
+    "metric_unit": "Job Vacancies (Count)",
+    "value": 940.0,
+    "reference_period": "2024",
+    "geographic_scope": "National (Singapore)",
+    "time_series": [
+      {
+        "period": "2022",
+        "value": 780.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023",
+        "value": 860.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024",
+        "value": 940.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "SG-CENTRAL",
+        "region_name": "Central Region",
+        "value": 705.0,
+        "share_percentage": 75.0,
+        "index_vs_national": 150.0,
+        "is_derived": true,
+        "derivation_method": "PLANNING_AREA_PROXIES",
+        "disclosure_label": "Modelled regional distribution"
+      }
+    ],
+    "shortage_status": "NATIONAL_SHORTAGE",
+    "future_demand_rating": "Strong",
+    "percent_unfilled_over_6_months": 38.0,
+    "typical_education": "Bachelor's degree in IT / Cloud certification",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "MOM_PMET_SURVEY_VACANCIES_PLUS_PLANNING_AREA_PROXIES",
+    "derivation_summary": "Enterprise survey vacancies from MOM Job Vacancies Table 3. Sub-national regional distributions are planning area proxies."
+  },
+  {
+    "observation_id": "dmd-sg-25125-2024",
+    "market_id": "SG",
+    "occupation_id": "SG_SSOC_2024:25125",
+    "canonical_id": "CAN_OCC_DEVOPS_ENGINEER",
+    "source_id": "sg.mom.vacancies",
+    "metric_type": "OBSERVED_VACANCIES",
+    "metric_unit": "Job Vacancies (Count)",
+    "value": 1280.0,
+    "reference_period": "2024",
+    "geographic_scope": "National (Singapore)",
+    "time_series": [
+      {
+        "period": "2022",
+        "value": 1050.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023",
+        "value": 1170.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024",
+        "value": 1280.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "SG-CENTRAL",
+        "region_name": "Central Region",
+        "value": 947.0,
+        "share_percentage": 74.0,
+        "index_vs_national": 148.0,
+        "is_derived": true,
+        "derivation_method": "PLANNING_AREA_PROXIES",
+        "disclosure_label": "Modelled regional distribution"
+      }
+    ],
+    "shortage_status": "NATIONAL_SHORTAGE",
+    "future_demand_rating": "Strong",
+    "percent_unfilled_over_6_months": 35.1,
+    "typical_education": "Bachelor's degree in CS / Engineering",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "MOM_PMET_SURVEY_VACANCIES_PLUS_PLANNING_AREA_PROXIES",
+    "derivation_summary": "Enterprise survey vacancies from MOM Job Vacancies Table 3. Sub-national regional distributions are planning area proxies."
+  },
+  {
+    "observation_id": "dmd-sg-25211-2024",
+    "market_id": "SG",
+    "occupation_id": "SG_SSOC_2024:25211",
+    "canonical_id": "CAN_OCC_CYBERSECURITY_ANALYST",
+    "source_id": "sg.mom.vacancies",
+    "metric_type": "OBSERVED_VACANCIES",
+    "metric_unit": "Job Vacancies (Count)",
+    "value": 1050.0,
+    "reference_period": "2024",
+    "geographic_scope": "National (Singapore)",
+    "time_series": [
+      {
+        "period": "2022",
+        "value": 840.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023",
+        "value": 950.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024",
+        "value": 1050.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "SG-CENTRAL",
+        "region_name": "Central Region",
+        "value": 808.0,
+        "share_percentage": 77.0,
+        "index_vs_national": 152.0,
+        "is_derived": true,
+        "derivation_method": "PLANNING_AREA_PROXIES",
+        "disclosure_label": "Modelled regional distribution"
+      }
+    ],
+    "shortage_status": "NATIONAL_SHORTAGE",
+    "future_demand_rating": "Strong",
+    "percent_unfilled_over_6_months": 41.5,
+    "typical_education": "Degree in Cybersecurity / CS",
+    "work_experience_required": null,
+    "data_quality_grade": "OFFICIAL_STATISTICS",
+    "notes": null,
+    "provenance": "OFFICIALLY_DERIVED",
+    "provenance_label": "Derived from official data",
+    "provenance_description": "Produced through reproducible calculation, annualization, employment-weighting, or taxonomy concordance from verified official input statistics.",
+    "transformation_method": "MOM_PMET_SURVEY_VACANCIES_PLUS_PLANNING_AREA_PROXIES",
+    "derivation_summary": "Enterprise survey vacancies from MOM Job Vacancies Table 3. Sub-national regional distributions are planning area proxies."
+  },
+  {
+    "observation_id": "dmd-in-2512.0100-2024",
+    "market_id": "IN",
+    "occupation_id": "IN_NCO_2015:2512.0100",
+    "canonical_id": "CAN_OCC_SOFTWARE_ENGINEER",
+    "source_id": "in.jobintel.tech-demand",
+    "metric_type": "OBSERVED_JOB_ADVERTISEMENTS",
+    "metric_unit": "Benchmark Online Postings (Sample)",
+    "value": 24500.0,
+    "reference_period": "2023-2024",
+    "geographic_scope": "Major Tech Hubs (India)",
+    "time_series": [
+      {
+        "period": "2023-Q1",
+        "value": 22900.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q2",
+        "value": 23400.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q3",
+        "value": 23800.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q4",
+        "value": 24100.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q1",
+        "value": 24300.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q2",
+        "value": 24400.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q3",
+        "value": 24500.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "IN-KA",
+        "region_name": "Bangalore (Karnataka)",
+        "value": 8330.0,
+        "share_percentage": 34.0,
+        "index_vs_national": 180.0,
+        "is_derived": true,
+        "derivation_method": "TECH_HUB_SAMPLE_SHARES",
+        "disclosure_label": "Tech hub posting share"
+      },
+      {
+        "region_code": "IN-TG",
+        "region_name": "Hyderabad (Telangana)",
+        "value": 5145.0,
+        "share_percentage": 21.0,
+        "index_vs_national": 135.0,
+        "is_derived": true,
+        "derivation_method": "TECH_HUB_SAMPLE_SHARES",
+        "disclosure_label": "Tech hub posting share"
+      },
+      {
+        "region_code": "IN-MH-PUNE",
+        "region_name": "Pune (Maharashtra)",
+        "value": 3675.0,
+        "share_percentage": 15.0,
+        "index_vs_national": 115.0,
+        "is_derived": true,
+        "derivation_method": "TECH_HUB_SAMPLE_SHARES",
+        "disclosure_label": "Tech hub posting share"
+      },
+      {
+        "region_code": "IN-NCR",
+        "region_name": "Delhi NCR (Gurgaon/Noida)",
+        "value": 3430.0,
+        "share_percentage": 14.0,
+        "index_vs_national": 110.0,
+        "is_derived": true,
+        "derivation_method": "TECH_HUB_SAMPLE_SHARES",
+        "disclosure_label": "Tech hub posting share"
+      },
+      {
+        "region_code": "IN-TN",
+        "region_name": "Chennai (Tamil Nadu)",
+        "value": 2450.0,
+        "share_percentage": 10.0,
+        "index_vs_national": 85.0,
+        "is_derived": true,
+        "derivation_method": "TECH_HUB_SAMPLE_SHARES",
+        "disclosure_label": "Tech hub posting share"
+      },
+      {
+        "region_code": "IN-MH-MUM",
+        "region_name": "Mumbai (Maharashtra)",
+        "value": 1470.0,
+        "share_percentage": 6.0,
+        "index_vs_national": 70.0,
+        "is_derived": true,
+        "derivation_method": "TECH_HUB_SAMPLE_SHARES",
+        "disclosure_label": "Tech hub posting share"
+      }
+    ],
+    "shortage_status": "REGIONAL_SHORTAGE",
+    "future_demand_rating": "Strong",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "B.E. / B.Tech in CSE / IT or MCA",
+    "work_experience_required": null,
+    "data_quality_grade": "CALIBRATED_BENCHMARK",
+    "notes": "JobIntel Tech Demand Benchmark Corpus. Validated empirical tech postings across Tier-1 tech hubs.",
+    "provenance": "JOBINTEL_CURATED",
+    "provenance_label": "JobIntel research benchmark",
+    "provenance_description": "Curated research benchmark compiled and validated by JobIntel Research Labs from empirical industry posting samples.",
+    "transformation_method": "JOBINTEL_EMPIRICAL_TECH_HUB_POSTINGS_BENCHMARK",
+    "derivation_summary": "Empirical technology-hub job-posting sample collected and benchmarked across Bangalore, Hyderabad, NCR, and Pune."
+  },
+  {
+    "observation_id": "dmd-in-2511.0100-2024",
+    "market_id": "IN",
+    "occupation_id": "IN_NCO_2015:2511.0100",
+    "canonical_id": "CAN_OCC_SYSTEMS_ANALYST",
+    "source_id": "in.jobintel.tech-demand",
+    "metric_type": "OBSERVED_JOB_ADVERTISEMENTS",
+    "metric_unit": "Benchmark Online Postings (Sample)",
+    "value": 3800.0,
+    "reference_period": "2023-2024",
+    "geographic_scope": "Major Tech Hubs (India)",
+    "time_series": [
+      {
+        "period": "2023-Q1",
+        "value": 3710.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q2",
+        "value": 3740.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q3",
+        "value": 3770.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q1",
+        "value": 3780.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q3",
+        "value": 3800.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "IN-KA",
+        "region_name": "Bangalore",
+        "value": 1140.0,
+        "share_percentage": 30.0,
+        "index_vs_national": 150.0,
+        "is_derived": true,
+        "derivation_method": "TECH_HUB_SAMPLE_SHARES",
+        "disclosure_label": "Tech hub posting share"
+      },
+      {
+        "region_code": "IN-NCR",
+        "region_name": "Delhi NCR",
+        "value": 836.0,
+        "share_percentage": 22.0,
+        "index_vs_national": 125.0,
+        "is_derived": true,
+        "derivation_method": "TECH_HUB_SAMPLE_SHARES",
+        "disclosure_label": "Tech hub posting share"
+      },
+      {
+        "region_code": "IN-TG",
+        "region_name": "Hyderabad",
+        "value": 684.0,
+        "share_percentage": 18.0,
+        "index_vs_national": 110.0,
+        "is_derived": true,
+        "derivation_method": "TECH_HUB_SAMPLE_SHARES",
+        "disclosure_label": "Tech hub posting share"
+      }
+    ],
+    "shortage_status": "NO_SHORTAGE",
+    "future_demand_rating": "Moderate",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "B.Tech / MBA (Systems)",
+    "work_experience_required": null,
+    "data_quality_grade": "CALIBRATED_BENCHMARK",
+    "notes": null,
+    "provenance": "JOBINTEL_CURATED",
+    "provenance_label": "JobIntel research benchmark",
+    "provenance_description": "Curated research benchmark compiled and validated by JobIntel Research Labs from empirical industry posting samples.",
+    "transformation_method": "JOBINTEL_EMPIRICAL_TECH_HUB_POSTINGS_BENCHMARK",
+    "derivation_summary": "Empirical technology-hub job-posting sample collected and benchmarked across Bangalore, Hyderabad, NCR, and Pune."
+  },
+  {
+    "observation_id": "dmd-in-2521.0100-2024",
+    "market_id": "IN",
+    "occupation_id": "IN_NCO_2015:2521.0100",
+    "canonical_id": "CAN_OCC_DATABASE_ADMIN",
+    "source_id": "in.jobintel.tech-demand",
+    "metric_type": "OBSERVED_JOB_ADVERTISEMENTS",
+    "metric_unit": "Benchmark Online Postings (Sample)",
+    "value": 2600.0,
+    "reference_period": "2023-2024",
+    "geographic_scope": "Major Tech Hubs (India)",
+    "time_series": [
+      {
+        "period": "2023-Q1",
+        "value": 2630.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q2",
+        "value": 2620.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2023-Q3",
+        "value": 2610.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q1",
+        "value": 2605.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      },
+      {
+        "period": "2024-Q3",
+        "value": 2600.0,
+        "lower_bound": null,
+        "upper_bound": null,
+        "is_projected": false
+      }
+    ],
+    "regional_breakdown": [
+      {
+        "region_code": "IN-KA",
+        "region_name": "Bangalore",
+        "value": 806.0,
+        "share_percentage": 31.0,
+        "index_vs_national": 140.0,
+        "is_derived": true,
+        "derivation_method": "TECH_HUB_SAMPLE_SHARES",
+        "disclosure_label": "Tech hub posting share"
+      },
+      {
+        "region_code": "IN-TG",
+        "region_name": "Hyderabad",
+        "value": 520.0,
+        "share_percentage": 20.0,
+        "index_vs_national": 115.0,
+        "is_derived": true,
+        "derivation_method": "TECH_HUB_SAMPLE_SHARES",
+        "disclosure_label": "Tech hub posting share"
+      }
+    ],
+    "shortage_status": "NO_SHORTAGE",
+    "future_demand_rating": "Moderate",
+    "percent_unfilled_over_6_months": null,
+    "typical_education": "B.E. / B.Tech / BCA",
+    "work_experience_required": null,
+    "data_quality_grade": "CALIBRATED_BENCHMARK",
+    "notes": null,
+    "provenance": "JOBINTEL_CURATED",
+    "provenance_label": "JobIntel research benchmark",
+    "provenance_description": "Curated research benchmark compiled and validated by JobIntel Research Labs from empirical industry posting samples.",
+    "transformation_method": "JOBINTEL_EMPIRICAL_TECH_HUB_POSTINGS_BENCHMARK",
+    "derivation_summary": "Empirical technology-hub job-posting sample collected and benchmarked across Bangalore, Hyderabad, NCR, and Pune."
+  }
+]

@@ -1,0 +1,657 @@
+[
+  {
+    "canonical_id": "CAN_OCC_SOFTWARE_ENGINEER",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "category": "PROGRAMMING_LANGUAGE",
+        "importance_score": 92.0,
+        "frequency_percentage": 68.5,
+        "growth_rate": 8.2,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Java",
+        "category": "PROGRAMMING_LANGUAGE",
+        "importance_score": 88.0,
+        "frequency_percentage": 61.2,
+        "growth_rate": 2.1,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "TypeScript",
+        "category": "PROGRAMMING_LANGUAGE",
+        "importance_score": 85.0,
+        "frequency_percentage": 54.0,
+        "growth_rate": 14.5,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "SQL",
+        "category": "DATABASE_DATA",
+        "importance_score": 84.0,
+        "frequency_percentage": 58.7,
+        "growth_rate": 3.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Docker",
+        "category": "CLOUD_DEVOPS",
+        "importance_score": 86.0,
+        "frequency_percentage": 52.4,
+        "growth_rate": 11.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Kubernetes",
+        "category": "CLOUD_DEVOPS",
+        "importance_score": 82.0,
+        "frequency_percentage": 44.1,
+        "growth_rate": 15.3,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "AWS",
+        "category": "CLOUD_DEVOPS",
+        "importance_score": 89.0,
+        "frequency_percentage": 59.8,
+        "growth_rate": 9.4,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "System Design",
+        "category": "ARCHITECTURE_SYSTEM_DESIGN",
+        "importance_score": 90.0,
+        "frequency_percentage": 48.0,
+        "growth_rate": 12.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "REST APIs",
+        "category": "ARCHITECTURE_SYSTEM_DESIGN",
+        "importance_score": 88.0,
+        "frequency_percentage": 66.0,
+        "growth_rate": 4.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Microservices",
+        "category": "ARCHITECTURE_SYSTEM_DESIGN",
+        "importance_score": 83.0,
+        "frequency_percentage": 46.5,
+        "growth_rate": 7.5,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "CI/CD",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 81.0,
+        "frequency_percentage": 49.2,
+        "growth_rate": 8.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "React",
+        "category": "FRAMEWORK_LIBRARY",
+        "importance_score": 80.0,
+        "frequency_percentage": 47.3,
+        "growth_rate": 6.2,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Git",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 85.0,
+        "frequency_percentage": 78.0,
+        "growth_rate": 1.5,
+        "is_hot_skill": false
+      }
+    ]
+  },
+  {
+    "canonical_id": "CAN_OCC_DATA_SCIENTIST",
+    "skills": [
+      {
+        "skill_name": "Python",
+        "category": "PROGRAMMING_LANGUAGE",
+        "importance_score": 96.0,
+        "frequency_percentage": 89.2,
+        "growth_rate": 9.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Machine Learning",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 94.0,
+        "frequency_percentage": 82.5,
+        "growth_rate": 18.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "SQL",
+        "category": "DATABASE_DATA",
+        "importance_score": 90.0,
+        "frequency_percentage": 76.4,
+        "growth_rate": 4.5,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "PyTorch",
+        "category": "FRAMEWORK_LIBRARY",
+        "importance_score": 88.0,
+        "frequency_percentage": 52.0,
+        "growth_rate": 24.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Statistics",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 89.0,
+        "frequency_percentage": 68.0,
+        "growth_rate": 3.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Pandas",
+        "category": "FRAMEWORK_LIBRARY",
+        "importance_score": 86.0,
+        "frequency_percentage": 71.0,
+        "growth_rate": 2.5,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Data Visualization",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 82.0,
+        "frequency_percentage": 63.5,
+        "growth_rate": 5.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Scikit-Learn",
+        "category": "FRAMEWORK_LIBRARY",
+        "importance_score": 84.0,
+        "frequency_percentage": 65.0,
+        "growth_rate": 1.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "BigQuery",
+        "category": "DATABASE_DATA",
+        "importance_score": 78.0,
+        "frequency_percentage": 38.0,
+        "growth_rate": 16.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Spark",
+        "category": "DATABASE_DATA",
+        "importance_score": 79.0,
+        "frequency_percentage": 34.0,
+        "growth_rate": 7.0,
+        "is_hot_skill": false
+      }
+    ]
+  },
+  {
+    "canonical_id": "CAN_OCC_CYBERSECURITY_ANALYST",
+    "skills": [
+      {
+        "skill_name": "Vulnerability Assessment",
+        "category": "SECURITY_COMPLIANCE",
+        "importance_score": 94.0,
+        "frequency_percentage": 78.0,
+        "growth_rate": 14.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "SIEM",
+        "category": "SECURITY_COMPLIANCE",
+        "importance_score": 91.0,
+        "frequency_percentage": 72.0,
+        "growth_rate": 12.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Incident Response",
+        "category": "SECURITY_COMPLIANCE",
+        "importance_score": 93.0,
+        "frequency_percentage": 75.0,
+        "growth_rate": 11.5,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Network Security",
+        "category": "SECURITY_COMPLIANCE",
+        "importance_score": 88.0,
+        "frequency_percentage": 69.0,
+        "growth_rate": 6.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Firewalls",
+        "category": "SECURITY_COMPLIANCE",
+        "importance_score": 82.0,
+        "frequency_percentage": 58.0,
+        "growth_rate": 2.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Penetration Testing",
+        "category": "SECURITY_COMPLIANCE",
+        "importance_score": 87.0,
+        "frequency_percentage": 54.0,
+        "growth_rate": 13.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "OWASP",
+        "category": "SECURITY_COMPLIANCE",
+        "importance_score": 85.0,
+        "frequency_percentage": 50.0,
+        "growth_rate": 9.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Python",
+        "category": "PROGRAMMING_LANGUAGE",
+        "importance_score": 80.0,
+        "frequency_percentage": 46.0,
+        "growth_rate": 8.5,
+        "is_hot_skill": false
+      }
+    ]
+  },
+  {
+    "canonical_id": "CAN_OCC_QA_TEST_ENGINEER",
+    "skills": [
+      {
+        "skill_name": "Automated Testing",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 94.0,
+        "frequency_percentage": 82.0,
+        "growth_rate": 15.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Selenium",
+        "category": "FRAMEWORK_LIBRARY",
+        "importance_score": 86.0,
+        "frequency_percentage": 64.0,
+        "growth_rate": 1.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Cypress",
+        "category": "FRAMEWORK_LIBRARY",
+        "importance_score": 84.0,
+        "frequency_percentage": 42.0,
+        "growth_rate": 18.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Python",
+        "category": "PROGRAMMING_LANGUAGE",
+        "importance_score": 82.0,
+        "frequency_percentage": 55.0,
+        "growth_rate": 10.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "API Testing",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 88.0,
+        "frequency_percentage": 68.0,
+        "growth_rate": 12.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "CI/CD",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 80.0,
+        "frequency_percentage": 48.0,
+        "growth_rate": 8.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Jira",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 81.0,
+        "frequency_percentage": 75.0,
+        "growth_rate": 1.0,
+        "is_hot_skill": false
+      }
+    ]
+  },
+  {
+    "canonical_id": "CAN_OCC_DEVOPS_ENGINEER",
+    "skills": [
+      {
+        "skill_name": "Kubernetes",
+        "category": "CLOUD_DEVOPS",
+        "importance_score": 95.0,
+        "frequency_percentage": 84.0,
+        "growth_rate": 20.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Docker",
+        "category": "CLOUD_DEVOPS",
+        "importance_score": 93.0,
+        "frequency_percentage": 89.0,
+        "growth_rate": 8.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Terraform",
+        "category": "CLOUD_DEVOPS",
+        "importance_score": 90.0,
+        "frequency_percentage": 68.0,
+        "growth_rate": 19.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "AWS",
+        "category": "CLOUD_DEVOPS",
+        "importance_score": 92.0,
+        "frequency_percentage": 78.0,
+        "growth_rate": 10.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "CI/CD",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 91.0,
+        "frequency_percentage": 82.0,
+        "growth_rate": 9.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Linux",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 88.0,
+        "frequency_percentage": 79.0,
+        "growth_rate": 4.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Prometheus",
+        "category": "CLOUD_DEVOPS",
+        "importance_score": 82.0,
+        "frequency_percentage": 45.0,
+        "growth_rate": 12.0,
+        "is_hot_skill": false
+      }
+    ]
+  },
+  {
+    "canonical_id": "CAN_OCC_ML_ENGINEER",
+    "skills": [
+      {
+        "skill_name": "PyTorch",
+        "category": "FRAMEWORK_LIBRARY",
+        "importance_score": 96.0,
+        "frequency_percentage": 85.0,
+        "growth_rate": 28.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Python",
+        "category": "PROGRAMMING_LANGUAGE",
+        "importance_score": 98.0,
+        "frequency_percentage": 94.0,
+        "growth_rate": 9.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "MLOps",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 92.0,
+        "frequency_percentage": 68.0,
+        "growth_rate": 32.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Large Language Models",
+        "category": "ARCHITECTURE_SYSTEM_DESIGN",
+        "importance_score": 94.0,
+        "frequency_percentage": 62.0,
+        "growth_rate": 45.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Docker",
+        "category": "CLOUD_DEVOPS",
+        "importance_score": 86.0,
+        "frequency_percentage": 64.0,
+        "growth_rate": 10.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "CUDA",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 82.0,
+        "frequency_percentage": 35.0,
+        "growth_rate": 22.0,
+        "is_hot_skill": true
+      }
+    ]
+  },
+  {
+    "canonical_id": "CAN_OCC_DATABASE_ADMIN",
+    "skills": [
+      {
+        "skill_name": "PostgreSQL",
+        "category": "DATABASE_DATA",
+        "importance_score": 94.0,
+        "frequency_percentage": 78.0,
+        "growth_rate": 16.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "SQL",
+        "category": "DATABASE_DATA",
+        "importance_score": 96.0,
+        "frequency_percentage": 92.0,
+        "growth_rate": 3.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Query Optimization",
+        "category": "DATABASE_DATA",
+        "importance_score": 92.0,
+        "frequency_percentage": 72.0,
+        "growth_rate": 8.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Database Backup & Recovery",
+        "category": "DATABASE_DATA",
+        "importance_score": 90.0,
+        "frequency_percentage": 80.0,
+        "growth_rate": 2.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "MySQL",
+        "category": "DATABASE_DATA",
+        "importance_score": 84.0,
+        "frequency_percentage": 62.0,
+        "growth_rate": 1.0,
+        "is_hot_skill": false
+      }
+    ]
+  },
+  {
+    "canonical_id": "CAN_OCC_SYSTEMS_ANALYST",
+    "skills": [
+      {
+        "skill_name": "Requirements Analysis",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 95.0,
+        "frequency_percentage": 86.0,
+        "growth_rate": 4.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "System Design",
+        "category": "ARCHITECTURE_SYSTEM_DESIGN",
+        "importance_score": 92.0,
+        "frequency_percentage": 74.0,
+        "growth_rate": 9.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "UML",
+        "category": "ARCHITECTURE_SYSTEM_DESIGN",
+        "importance_score": 80.0,
+        "frequency_percentage": 52.0,
+        "growth_rate": 1.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "SQL",
+        "category": "DATABASE_DATA",
+        "importance_score": 84.0,
+        "frequency_percentage": 65.0,
+        "growth_rate": 3.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Stakeholder Management",
+        "category": "SOFT_SKILL_MANAGEMENT",
+        "importance_score": 90.0,
+        "frequency_percentage": 80.0,
+        "growth_rate": 6.0,
+        "is_hot_skill": false
+      }
+    ]
+  },
+  {
+    "canonical_id": "CAN_OCC_DATA_ANALYST",
+    "skills": [
+      {
+        "skill_name": "SQL",
+        "category": "DATABASE_DATA",
+        "importance_score": 95.0,
+        "frequency_percentage": 88.0,
+        "growth_rate": 4.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Tableau",
+        "category": "DATABASE_DATA",
+        "importance_score": 88.0,
+        "frequency_percentage": 64.0,
+        "growth_rate": 6.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "PowerBI",
+        "category": "DATABASE_DATA",
+        "importance_score": 89.0,
+        "frequency_percentage": 68.0,
+        "growth_rate": 14.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Excel",
+        "category": "DATABASE_DATA",
+        "importance_score": 86.0,
+        "frequency_percentage": 78.0,
+        "growth_rate": 1.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Python",
+        "category": "PROGRAMMING_LANGUAGE",
+        "importance_score": 84.0,
+        "frequency_percentage": 58.0,
+        "growth_rate": 11.0,
+        "is_hot_skill": true
+      }
+    ]
+  },
+  {
+    "canonical_id": "CAN_OCC_NETWORK_ENGINEER",
+    "skills": [
+      {
+        "skill_name": "Network Security",
+        "category": "SECURITY_COMPLIANCE",
+        "importance_score": 92.0,
+        "frequency_percentage": 76.0,
+        "growth_rate": 8.0,
+        "is_hot_skill": true
+      },
+      {
+        "skill_name": "Cisco Networking",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 90.0,
+        "frequency_percentage": 72.0,
+        "growth_rate": 1.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Firewalls",
+        "category": "SECURITY_COMPLIANCE",
+        "importance_score": 88.0,
+        "frequency_percentage": 69.0,
+        "growth_rate": 3.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "BGP & OSPF Routing",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 85.0,
+        "frequency_percentage": 58.0,
+        "growth_rate": 2.0,
+        "is_hot_skill": false
+      }
+    ]
+  },
+  {
+    "canonical_id": "CAN_OCC_IT_PROJECT_MGR",
+    "skills": [
+      {
+        "skill_name": "Agile Methodologies",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 95.0,
+        "frequency_percentage": 88.0,
+        "growth_rate": 5.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Scrum",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 92.0,
+        "frequency_percentage": 81.0,
+        "growth_rate": 4.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Risk Management",
+        "category": "SOFT_SKILL_MANAGEMENT",
+        "importance_score": 90.0,
+        "frequency_percentage": 74.0,
+        "growth_rate": 6.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Stakeholder Management",
+        "category": "SOFT_SKILL_MANAGEMENT",
+        "importance_score": 94.0,
+        "frequency_percentage": 85.0,
+        "growth_rate": 7.0,
+        "is_hot_skill": false
+      },
+      {
+        "skill_name": "Jira",
+        "category": "CORE_ENGINEERING_PRACTICE",
+        "importance_score": 88.0,
+        "frequency_percentage": 78.0,
+        "growth_rate": 2.0,
+        "is_hot_skill": false
+      }
+    ]
+  }
+]

@@ -1,0 +1,84 @@
+[
+  {
+    "metric_type": "OBSERVED_JOB_ADVERTISEMENTS",
+    "display_name": "Online Job Advertisements",
+    "unit": "Monthly Postings / Index",
+    "description": "Measures newly lodged or active online job advertisements scraped and deduplicated from major job boards.",
+    "underlying_construct": "Employer recruitment search intensity in the digital labor market.",
+    "limitations": [
+      "Biased toward digital-first and professional occupations.",
+      "Subject to deduplication errors, expired postings, and recruiter churn.",
+      "Does not measure offline vacancies, informal hiring, or net hires."
+    ],
+    "comparability_class": "SEARCH_INTENSITY"
+  },
+  {
+    "metric_type": "OBSERVED_VACANCIES",
+    "display_name": "Official Job Vacancies",
+    "unit": "Vacancies (Count)",
+    "description": "Measures active, unfilled positions for which recruitment action is being taken, reported by employer establishment surveys.",
+    "underlying_construct": "Unfilled job openings across surveyed private and public establishments.",
+    "limitations": [
+      "Establishment surveys exclude micro-enterprises (<25 employees in some jurisdictions).",
+      "Published at lower frequency (quarterly/annual) compared to web scraping."
+    ],
+    "comparability_class": "SURVEY_VACANCIES"
+  },
+  {
+    "metric_type": "ANNUAL_JOB_OPENINGS",
+    "display_name": "Projected Annual Job Openings",
+    "unit": "Annual Openings",
+    "description": "Projected annual average openings resulting from macroeconomic structural growth plus occupational replacements and retirements.",
+    "underlying_construct": "Long-term workforce replenishment and structural occupational expansion.",
+    "limitations": [
+      "Model-based 10-year projection; not spot market vacancies.",
+      "Subject to macroeconomic forecasting error and policy shifts."
+    ],
+    "comparability_class": "LONG_TERM_PROJECTIONS"
+  },
+  {
+    "metric_type": "EMPLOYMENT_LEVEL",
+    "display_name": "Employed Headcount / Share",
+    "unit": "Persons / % Share",
+    "description": "Total number of employed persons or workforce proportion in an occupational classification.",
+    "underlying_construct": "Existing occupational stock of employed human capital.",
+    "limitations": [
+      "Stock measure; does not reflect hiring velocity or vacancy turnover."
+    ],
+    "comparability_class": "WORKFORCE_STOCK"
+  },
+  {
+    "metric_type": "PROJECTED_EMPLOYMENT_CHANGE",
+    "display_name": "Projected Employment Growth Rate",
+    "unit": "% 10-Year Change",
+    "description": "Estimated percentage expansion or contraction in total occupational employment over a 10-year horizon.",
+    "underlying_construct": "Structural industry growth and occupational staffing pattern shifts.",
+    "limitations": [
+      "Cannot capture cyclical recessions or unpredictable technological disruptions."
+    ],
+    "comparability_class": "LONG_TERM_PROJECTIONS"
+  },
+  {
+    "metric_type": "SHORTAGE_INDICATOR",
+    "display_name": "Labour Shortage Rating",
+    "unit": "Classification Rating",
+    "description": "Official government assessment of labour market tightness, recruitment difficulty, and skill bottlenecks.",
+    "underlying_construct": "Imbalance between employer demand and certified domestic skill supply.",
+    "limitations": [
+      "Subject to political and immigration policy considerations.",
+      "Updated annually or irregularly."
+    ],
+    "comparability_class": "POLICY_EVALUATION"
+  },
+  {
+    "metric_type": "SKILL_REQUIREMENT",
+    "display_name": "Skill Importance & Frequency",
+    "unit": "Score (0-100) / Posting %",
+    "description": "Relative importance score (O*NET/SSG) or empirical appearance percentage of specific skills in occupational profiles.",
+    "underlying_construct": "Competency prerequisites required to execute occupational tasks.",
+    "limitations": [
+      "Keyword mentions do not always reflect deep operational proficiency."
+    ],
+    "comparability_class": "COMPETENCY_FRAMEWORK"
+  }
+]

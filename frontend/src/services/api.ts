@@ -28,6 +28,15 @@ import {
   OccupationSalaryProfile,
   CrossMarketSalaryComparisonResult,
   SalaryConversionResult,
+  DemandMarketOverview,
+  DemandMetricDefinition,
+  DemandObservation,
+  OccupationDemandProfile,
+  RegionalDemandPoint,
+  SkillDemandItem,
+  DemandComparisonResult,
+  SkillGapAnalysisRequest,
+  SkillGapAnalysisResult,
 } from '../types';
 
 const envApiUrl = import.meta.env.VITE_API_BASE_URL;
@@ -213,4 +222,44 @@ export const api = {
     fetchJson<SalaryConversionResult>(
       `/v1/salary/convert?amount=${encodeURIComponent(amount)}&from_currency=${encodeURIComponent(fromCurrency)}`
     ),
+
+  // Global Job Demand Intelligence (Sprint 3B.2)
+  getDemandMarkets: () =>
+    fetchJson<DemandMarketOverview[]>('/v1/demand/markets'),
+  getDemandMetrics: () =>
+    fetchJson<DemandMetricDefinition[]>('/v1/demand/metrics'),
+  getDemandSources: () =>
+    fetchJson<any[]>('/v1/demand/sources'),
+  getDemandOccupations: (market?: string, canonicalId?: string) => {
+    const qp = new URLSearchParams();
+    if (market) qp.set('market', market);
+    if (canonicalId) qp.set('canonical_id', canonicalId);
+    return fetchJson<DemandObservation[]>(`/v1/demand/occupations?${qp.toString()}`);
+  },
+  getOccupationDemandProfile: (occupationId: string, market: string = 'US') =>
+    fetchJson<OccupationDemandProfile>(
+      `/v1/demand/occupations/${encodeURIComponent(occupationId)}?market=${encodeURIComponent(market)}`
+    ),
+  getOccupationDemandTrends: (occupationId: string, market: string = 'US') =>
+    fetchJson<any>(
+      `/v1/demand/occupations/${encodeURIComponent(occupationId)}/trends?market=${encodeURIComponent(market)}`
+    ),
+  getOccupationRegionalDemand: (occupationId: string, market: string = 'US') =>
+    fetchJson<RegionalDemandPoint[]>(
+      `/v1/demand/occupations/${encodeURIComponent(occupationId)}/regions?market=${encodeURIComponent(market)}`
+    ),
+  getOccupationDemandSkills: (occupationId: string, market: string = 'US') =>
+    fetchJson<SkillDemandItem[]>(
+      `/v1/demand/occupations/${encodeURIComponent(occupationId)}/skills?market=${encodeURIComponent(market)}`
+    ),
+  compareDemand: (canonicalId: string, marketA: string, marketB: string) =>
+    fetchJson<DemandComparisonResult>(
+      `/v1/demand/compare?canonical_id=${encodeURIComponent(canonicalId)}&market_a=${encodeURIComponent(marketA)}&market_b=${encodeURIComponent(marketB)}`
+    ),
+  analyzeSkillGaps: (payload: SkillGapAnalysisRequest) =>
+    fetchJson<SkillGapAnalysisResult>('/v1/demand/skills/gaps', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    }),
 };

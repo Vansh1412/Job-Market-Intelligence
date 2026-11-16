@@ -552,4 +552,225 @@ export interface SalaryConversionResult {
   ppp_factor_to_usd: number;
 }
 
+// =========================================================================
+// SPRINT 3B.2 — Global Demand Intelligence Types
+// =========================================================================
+
+export type DemandProvenance =
+  | 'OFFICIAL_PUBLISHED'
+  | 'OFFICIALLY_DERIVED'
+  | 'JOBINTEL_CURATED'
+  | 'JOBINTEL_MODEL_ESTIMATE'
+  | 'SYNTHETIC_TEST_FIXTURE'
+  | 'UNVERIFIED';
+
+export type DemandMetricType =
+  | 'OBSERVED_JOB_ADVERTISEMENTS'
+  | 'OBSERVED_VACANCIES'
+  | 'ANNUAL_JOB_OPENINGS'
+  | 'EMPLOYMENT_LEVEL'
+  | 'EMPLOYMENT_CHANGE'
+  | 'PROJECTED_EMPLOYMENT_CHANGE'
+  | 'SHORTAGE_INDICATOR'
+  | 'SKILL_REQUIREMENT';
+
+export type DemandTrendDirection =
+  | 'STRONG_GROWTH'
+  | 'MODERATE_GROWTH'
+  | 'STABLE'
+  | 'MODERATE_DECLINE'
+  | 'STRONG_DECLINE'
+  | 'INSUFFICIENT_DATA';
+
+export type ShortageStatus =
+  | 'NATIONAL_SHORTAGE'
+  | 'REGIONAL_SHORTAGE'
+  | 'NO_SHORTAGE'
+  | 'NOT_ASSESSED';
+
+export type DemandComparabilityVerdict =
+  | 'DIRECTLY_COMPARABLE'
+  | 'DIRECTIONALLY_COMPARABLE'
+  | 'METHODOLOGICALLY_DISTINCT'
+  | 'NOT_COMPARABLE'
+  | 'INSUFFICIENT_DATA';
+
+export type SkillCategory =
+  | 'PROGRAMMING_LANGUAGE'
+  | 'FRAMEWORK_LIBRARY'
+  | 'CLOUD_DEVOPS'
+  | 'DATABASE_DATA'
+  | 'ARCHITECTURE_SYSTEM_DESIGN'
+  | 'SECURITY_COMPLIANCE'
+  | 'CORE_ENGINEERING_PRACTICE'
+  | 'SOFT_SKILL_MANAGEMENT';
+
+export interface DemandMetricDefinition {
+  metric_type: DemandMetricType;
+  display_name: string;
+  unit: string;
+  description: string;
+  underlying_construct: string;
+  limitations: string[];
+  comparability_class: string;
+}
+
+export interface DemandTimeSeriesPoint {
+  period: string;
+  value: number;
+  lower_bound?: number | null;
+  upper_bound?: number | null;
+  is_projected: boolean;
+}
+
+export interface RegionalDemandPoint {
+  region_code: string;
+  region_name: string;
+  value: number;
+  share_percentage?: number | null;
+  index_vs_national?: number | null;
+  is_derived?: boolean;
+  derivation_method?: string | null;
+  disclosure_label?: string | null;
+}
+
+export interface SkillDemandItem {
+  skill_name: string;
+  category: SkillCategory;
+  importance_score: number;
+  frequency_percentage?: number | null;
+  growth_rate?: number | null;
+  is_hot_skill: boolean;
+}
+
+export interface DemandObservation {
+  observation_id: string;
+  market_id: string;
+  occupation_id: string;
+  canonical_id?: string | null;
+  source_id: string;
+  metric_type: DemandMetricType;
+  metric_unit: string;
+  value: number | null;
+  reference_period: string;
+  geographic_scope: string;
+  time_series: DemandTimeSeriesPoint[];
+  regional_breakdown: RegionalDemandPoint[];
+  shortage_status: ShortageStatus;
+  future_demand_rating?: string | null;
+  percent_unfilled_over_6_months?: number | null;
+  typical_education?: string | null;
+  work_experience_required?: string | null;
+  data_quality_grade: string;
+  notes?: string | null;
+  provenance: DemandProvenance;
+  provenance_label: string;
+  provenance_description: string;
+  transformation_method?: string | null;
+  derivation_summary?: string | null;
+}
+
+export interface OccupationDemandProfile {
+  occupation_id: string;
+  occupation_title: string;
+  market_id: string;
+  canonical_id?: string | null;
+  canonical_title?: string | null;
+  primary_metric_type: DemandMetricType;
+  primary_metric_value: number | null;
+  primary_metric_unit: string;
+  reference_period: string;
+  trend_direction: DemandTrendDirection;
+  trend_percentage_change?: number | null;
+  trend_time_series: DemandTimeSeriesPoint[];
+  regional_distribution: RegionalDemandPoint[];
+  top_skills: SkillDemandItem[];
+  shortage_status: ShortageStatus;
+  future_demand_rating?: string | null;
+  unfilled_rate_over_6_months?: number | null;
+  entry_requirements: Record<string, string>;
+  source_attributions: Array<Record<string, any>>;
+  methodology_disclaimers: string[];
+  provenance: DemandProvenance;
+  provenance_label: string;
+  provenance_description: string;
+  transformation_method?: string | null;
+  derivation_summary?: string | null;
+  regional_disclosure?: string | null;
+  occupation_inheritance_disclosure?: string | null;
+  benchmark_disclosure?: string | null;
+  publication_gate_active?: boolean;
+  publication_gate_code?: string | null;
+  publication_gate_message?: string | null;
+}
+
+export interface DemandComparabilityDimensionResult {
+  dimension: string;
+  market_a_value: string;
+  market_b_value: string;
+  match: boolean;
+  severity: 'NONE' | 'LOW' | 'MODERATE' | 'CRITICAL';
+  comment: string;
+}
+
+export interface DemandComparisonResult {
+  canonical_id: string;
+  canonical_title: string;
+  market_a: string;
+  market_b: string;
+  occupation_a_id: string;
+  occupation_b_id: string;
+  verdict: DemandComparabilityVerdict;
+  verdict_summary: string;
+  dimension_evaluations: DemandComparabilityDimensionResult[];
+  warnings: string[];
+  metric_a: Record<string, any>;
+  metric_b: Record<string, any>;
+}
+
+export interface DemandMarketOverview {
+  market_id: string;
+  market_name: string;
+  coverage_status: string;
+  publication_status?: string;
+  total_observations: number;
+  primary_source_id: string;
+  primary_source_name: string;
+  primary_metric_type: string;
+  metric_label: string;
+  license: string;
+}
+
+export interface SkillGapItem {
+  skill_name: string;
+  category: SkillCategory;
+  importance_score: number;
+  frequency_percentage?: number | null;
+  priority: 'CRITICAL' | 'HIGH' | 'NICE_TO_HAVE';
+}
+
+export interface SkillGapAnalysisRequest {
+  target_occupation_id: string;
+  market_id: string;
+  user_skills: string[];
+}
+
+export interface SkillGapAnalysisResult {
+  target_occupation_id: string;
+  target_occupation_title: string;
+  market_id: string;
+  user_skills_submitted: string[];
+  matched_skills: string[];
+  missing_critical_skills: SkillGapItem[];
+  missing_secondary_skills: SkillGapItem[];
+  match_percentage: number;
+  matched_skill_weight?: number;
+  total_required_weight?: number;
+  formula_explanation?: string;
+  methodology_notes?: string;
+  readiness_level: 'HIGH' | 'MODERATE' | 'EMERGING' | 'FOUNDATIONAL';
+  recommendations: string[];
+}
+
+
 
