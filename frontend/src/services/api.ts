@@ -23,6 +23,11 @@ import {
   OccupationMapping,
   CrossMarketComparisonResult,
   ConcordanceCoverageStats,
+  SalarySourceMeta,
+  PppFxRatesPayload,
+  OccupationSalaryProfile,
+  CrossMarketSalaryComparisonResult,
+  SalaryConversionResult,
 } from '../types';
 
 const envApiUrl = import.meta.env.VITE_API_BASE_URL;
@@ -190,4 +195,22 @@ export const api = {
     fetchJson<NationalOccupation>(`/v1/occupations/${occupationId}`),
   getConcordanceCoverage: () =>
     fetchJson<ConcordanceCoverageStats>('/v1/occupations/coverage'),
+
+  // Cross-Market Salary Intelligence (Sprint 3B.1)
+  getSalarySources: (activeOnly: boolean = true) =>
+    fetchJson<SalarySourceMeta[]>(`/v1/salary/sources?active_only=${activeOnly}`),
+  getSalaryRates: () =>
+    fetchJson<PppFxRatesPayload>('/v1/salary/rates'),
+  getSalaryObservations: (marketId?: string) => {
+    const qp = marketId ? `?market_id=${encodeURIComponent(marketId)}` : '';
+    return fetchJson<OccupationSalaryProfile[]>(`/v1/salary/observations${qp}`);
+  },
+  getOccupationSalaryProfile: (occupationId: string) =>
+    fetchJson<OccupationSalaryProfile>(`/v1/salary/occupations/${encodeURIComponent(occupationId)}`),
+  compareCrossMarketSalaries: (occupationId: string) =>
+    fetchJson<CrossMarketSalaryComparisonResult>(`/v1/salary/compare?occupation_id=${encodeURIComponent(occupationId)}`),
+  convertSalaryAmount: (amount: number, fromCurrency: string) =>
+    fetchJson<SalaryConversionResult>(
+      `/v1/salary/convert?amount=${encodeURIComponent(amount)}&from_currency=${encodeURIComponent(fromCurrency)}`
+    ),
 };

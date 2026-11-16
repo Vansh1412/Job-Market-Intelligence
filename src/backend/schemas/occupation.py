@@ -187,6 +187,10 @@ class ConcordanceCoverageStats(BaseModel):
     total_national_occupations: int
     mapped_national_occupations: int
     unmapped_national_occupations: int
+    total_international_references: int = 2
+    mapped_international_references: int = 2
+    unmapped_international_references: int = 0
+    total_catalog_occupations: int = 30
     total_canonical_concepts: int
     linked_canonical_concepts: int
     unlinked_canonical_concepts: int

@@ -1,6 +1,7 @@
 from datetime import datetime
 from decimal import Decimal, InvalidOperation
 from enum import StrEnum
+from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
@@ -15,6 +16,129 @@ class SalaryPeriod(StrEnum):
     MONTHLY = "MONTHLY"
     ANNUAL = "ANNUAL"
     OTHER = "OTHER"
+
+
+class ComparabilityVerdict(StrEnum):
+    DIRECTLY_COMPARABLE_WITHIN_SOURCE_LIMITATIONS = "DIRECTLY_COMPARABLE_WITHIN_SOURCE_LIMITATIONS"
+    COMPARABLE_WITH_ADJUSTMENTS = "COMPARABLE_WITH_ADJUSTMENTS"
+    COMPARABLE_WITH_MAJOR_CAVEATS = "COMPARABLE_WITH_MAJOR_CAVEATS"
+    NOT_COMPARABLE = "NOT_COMPARABLE"
+    INSUFFICIENT_DATA = "INSUFFICIENT_DATA"
+
+
+class SalaryPercentiles(BaseModel):
+    model_config = ConfigDict(frozen=True)
+
+    p10: float | None = None
+    p25: float | None = None
+    p50: float | None = None
+    p75: float | None = None
+    p90: float | None = None
+
+
+class SalarySourceMeta(BaseModel):
+    model_config = ConfigDict(frozen=True)
+
+    source_id: str
+    market_id: str
+    authority: str
+    publication_name: str
+    reference_period: str
+    release_date: str
+    license: str
+    currency: str
+    pay_concept: str
+    frequency: str
+    sample_coverage: str
+    source_url: str
+    is_active: bool = True
+    governance_gate: str | None = None
+
+
+class CurrencyRateInfo(BaseModel):
+    model_config = ConfigDict(frozen=True)
+
+    currency: str
+    market_id: str
+    nominal_fx_to_usd: float
+    nominal_usd_multiplier: float
+    ppp_conversion_factor_to_usd: float
+    ppp_usd_multiplier: float
+    fx_source: str
+    ppp_source: str
+
+
+class PppFxRatesPayload(BaseModel):
+    model_config = ConfigDict(frozen=True)
+
+    base_currency: str
+    reference_year: str
+    methodology: dict[str, str]
+    rates: dict[str, CurrencyRateInfo]
+
+
+class OccupationSalaryProfile(BaseModel):
+    model_config = ConfigDict(frozen=True)
+
+    observation_id: str
+    occupation_id: str
+    occupation_title: str
+    market_id: str
+    source_id: str
+    currency: str
+    period_type: str = "ANNUAL"
+    mean: float | None = None
+    percentiles: SalaryPercentiles
+    nominal_usd_median: float | None = None
+    ppp_usd_median: float | None = None
+    sample_size: int | None = None
+    standard_error: float | None = None
+    is_suppressed: bool = False
+    quality_flag: str
+    source_meta: SalarySourceMeta | None = None
+    notes: str
+
+
+class CrossMarketSalaryComparisonItem(BaseModel):
+    model_config = ConfigDict(frozen=True)
+
+    market_id: str
+    occupation_id: str
+    occupation_title: str
+    relationship_to_source: str
+    relationship_type: str
+    confidence_score: float
+    source_id: str
+    currency: str
+    original_currency: str
+    original_median: float | None
+    nominal_usd_median: float | None
+    ppp_usd_median: float | None
+    percentiles_original: dict[str, float | None]
+    percentiles_nominal_usd: dict[str, float | None]
+    percentiles_ppp_usd: dict[str, float | None]
+    comparability_verdict: ComparabilityVerdict
+    comparability_caveats: tuple[str, ...]
+    is_suppressed: bool = False
+    quality_flag: str
+    notes: str
+
+
+class CrossMarketSalaryComparisonResult(BaseModel):
+    model_config = ConfigDict(frozen=True)
+
+    source_occupation_id: str
+    source_occupation_title: str
+    source_market_id: str
+    source_currency: str
+    source_median_original: float | None
+    source_median_nominal_usd: float | None
+    source_median_ppp_usd: float | None
+    comparisons: tuple[CrossMarketSalaryComparisonItem, ...]
+    fx_rates_metadata: dict[str, Any]
+    ppp_factors_metadata: dict[str, Any]
+    methodology_disclaimer: str
+    comparability_dimensions: tuple[str, ...]
 
 
 class SalaryObservation(BaseModel):

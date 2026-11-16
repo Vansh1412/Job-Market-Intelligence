@@ -417,6 +417,10 @@ export interface ConcordanceCoverageStats {
   total_national_occupations: number;
   mapped_national_occupations: number;
   unmapped_national_occupations: number;
+  total_international_references?: number;
+  mapped_international_references?: number;
+  unmapped_international_references?: number;
+  total_catalog_occupations?: number;
   total_canonical_concepts: number;
   linked_canonical_concepts: number;
   unlinked_canonical_concepts: number;
@@ -425,6 +429,127 @@ export interface ConcordanceCoverageStats {
   official_mappings_count: number;
   expert_reviewed_mappings_count: number;
   total_mappings: number;
+}
+
+// =====================================================================
+// Cross-Market Salary Intelligence Types (Sprint 3B.1)
+// =====================================================================
+
+export interface SalaryPercentiles {
+  p10: number | null;
+  p25: number | null;
+  p50: number | null;
+  p75: number | null;
+  p90: number | null;
+}
+
+export interface SalarySourceMeta {
+  source_id: string;
+  market_id: string;
+  authority: string;
+  publication_name: string;
+  reference_period: string;
+  release_date: string;
+  license: string;
+  currency: string;
+  pay_concept: string;
+  frequency: string;
+  sample_coverage: string;
+  source_url: string;
+  is_active: boolean;
+  governance_gate?: string;
+}
+
+export interface CurrencyRateInfo {
+  currency: string;
+  market_id: string;
+  nominal_fx_to_usd: number;
+  nominal_usd_multiplier: number;
+  ppp_conversion_factor_to_usd: number;
+  ppp_usd_multiplier: number;
+  fx_source: string;
+  ppp_source: string;
+}
+
+export interface PppFxRatesPayload {
+  base_currency: string;
+  reference_year: string;
+  methodology: Record<string, string>;
+  rates: Record<string, CurrencyRateInfo>;
+}
+
+export interface OccupationSalaryProfile {
+  observation_id: string;
+  occupation_id: string;
+  occupation_title: string;
+  market_id: string;
+  source_id: string;
+  currency: string;
+  period_type: string;
+  mean: number | null;
+  percentiles: SalaryPercentiles;
+  nominal_usd_median: number | null;
+  ppp_usd_median: number | null;
+  sample_size: number | null;
+  standard_error: number | null;
+  is_suppressed: boolean;
+  quality_flag: string;
+  source_meta?: SalarySourceMeta;
+  notes: string;
+}
+
+export type ComparabilityVerdict =
+  | 'DIRECTLY_COMPARABLE_WITHIN_SOURCE_LIMITATIONS'
+  | 'COMPARABLE_WITH_ADJUSTMENTS'
+  | 'COMPARABLE_WITH_MAJOR_CAVEATS'
+  | 'NOT_COMPARABLE'
+  | 'INSUFFICIENT_DATA';
+
+export interface CrossMarketSalaryComparisonItem {
+  market_id: string;
+  occupation_id: string;
+  occupation_title: string;
+  relationship_to_source: string;
+  relationship_type: string;
+  confidence_score: number;
+  source_id: string;
+  currency: string;
+  original_currency: string;
+  original_median: number | null;
+  nominal_usd_median: number | null;
+  ppp_usd_median: number | null;
+  percentiles_original: Record<string, number | null>;
+  percentiles_nominal_usd: Record<string, number | null>;
+  percentiles_ppp_usd: Record<string, number | null>;
+  comparability_verdict: ComparabilityVerdict;
+  comparability_caveats: string[];
+  is_suppressed: boolean;
+  quality_flag: string;
+  notes: string;
+}
+
+export interface CrossMarketSalaryComparisonResult {
+  source_occupation_id: string;
+  source_occupation_title: string;
+  source_market_id: string;
+  source_currency: string;
+  source_median_original: number | null;
+  source_median_nominal_usd: number | null;
+  source_median_ppp_usd: number | null;
+  comparisons: CrossMarketSalaryComparisonItem[];
+  fx_rates_metadata: Record<string, any>;
+  ppp_factors_metadata: Record<string, any>;
+  methodology_disclaimer: string;
+  comparability_dimensions: string[];
+}
+
+export interface SalaryConversionResult {
+  original_amount: number;
+  original_currency: string;
+  nominal_usd: number;
+  ppp_usd: number;
+  nominal_fx_to_usd: number;
+  ppp_factor_to_usd: number;
 }
 
 

@@ -355,13 +355,20 @@ class OccupationService:
     # -------------------------------------------------------------
 
     def get_coverage_stats(self) -> ConcordanceCoverageStats:
-        total_national = len(self._national_occupations)
+        national_occs = [o for o in self._national_occupations.values() if o.market_id != "INT"]
+        intl_occs = [o for o in self._national_occupations.values() if o.market_id == "INT"]
+
         all_mappings = [m for m_list in self._mappings_by_source.values() for m in m_list]
-        
+
         source_ids = {m.source_occupation_id for m in all_mappings}
         target_nat_ids = {m.target_occupation_id for m in all_mappings if m.target_type == TargetType.NATIONAL}
-        mapped_nat = len(source_ids.union(target_nat_ids))
-        unmapped_nat = max(0, total_national - mapped_nat)
+        all_mapped_occ_ids = source_ids.union(target_nat_ids)
+
+        mapped_nat = sum(1 for o in national_occs if o.occupation_id in all_mapped_occ_ids)
+        unmapped_nat = max(0, len(national_occs) - mapped_nat)
+
+        mapped_intl = sum(1 for o in intl_occs if o.occupation_id in all_mapped_occ_ids)
+        unmapped_intl = max(0, len(intl_occs) - mapped_intl)
 
         total_canonical = len(self._canonical_occupations)
         linked_canonical_ids = {m.target_occupation_id for m in all_mappings if m.target_type == TargetType.CANONICAL}
@@ -376,9 +383,13 @@ class OccupationService:
         expert_count = len(all_mappings) - official_count
 
         return ConcordanceCoverageStats(
-            total_national_occupations=total_national,
+            total_national_occupations=len(national_occs),
             mapped_national_occupations=mapped_nat,
             unmapped_national_occupations=unmapped_nat,
+            total_international_references=len(intl_occs),
+            mapped_international_references=mapped_intl,
+            unmapped_international_references=unmapped_intl,
+            total_catalog_occupations=len(self._national_occupations),
             total_canonical_concepts=total_canonical,
             linked_canonical_concepts=linked_canonical,
             unlinked_canonical_concepts=unlinked_canonical,

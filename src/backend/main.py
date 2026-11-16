@@ -131,6 +131,8 @@ app.include_router(v1.router, prefix="/api")
 app.include_router(uk_salary.router, prefix="/api")
 app.include_router(occupations.router, prefix="/api")
 app.include_router(occupations.router)
+app.include_router(salary.v1_salary_router, prefix="/api")
+app.include_router(salary.v1_salary_router)
 
 
 @app.get("/")

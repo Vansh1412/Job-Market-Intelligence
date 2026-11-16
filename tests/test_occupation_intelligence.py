@@ -281,9 +281,13 @@ def test_api_concordance_coverage_stats():
     res = client.get("/api/v1/occupations/coverage")
     assert res.status_code == 200
     data = res.json()
-    assert data["total_national_occupations"] == 30
-    assert data["mapped_national_occupations"] == 30
+    assert data["total_national_occupations"] == 28
+    assert data["mapped_national_occupations"] == 28
     assert data["unmapped_national_occupations"] == 0
+    assert data["total_international_references"] == 2
+    assert data["mapped_international_references"] == 2
+    assert data["unmapped_international_references"] == 0
+    assert data["total_catalog_occupations"] == 30
     assert data["total_canonical_concepts"] == 12
     assert data["linked_canonical_concepts"] == 11
     assert data["unlinked_canonical_concepts"] == 1
@@ -322,8 +326,12 @@ def test_concordance_completion_and_canonical_activation():
     service = get_occupation_service()
     coverage = service.get_coverage_stats()
     assert coverage.total_mappings == 62
-    assert coverage.mapped_national_occupations == 30
+    assert coverage.total_national_occupations == 28
+    assert coverage.mapped_national_occupations == 28
     assert coverage.unmapped_national_occupations == 0
+    assert coverage.total_international_references == 2
+    assert coverage.mapped_international_references == 2
+    assert coverage.total_catalog_occupations == 30
 
     # Verify activated canonical concepts have mappings
     activated_concepts = [
