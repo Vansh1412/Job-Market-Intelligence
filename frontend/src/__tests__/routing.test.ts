@@ -12,6 +12,7 @@ const ROUTE_MAP: Record<string, string> = {
   '/comparison': 'comparison',
   '/occupations': 'occupations',
   '/demand': 'demand',
+  '/employers': 'employers',
   '/how-it-works': 'howitworks',
   '/howitworks': 'howitworks',
 };
@@ -25,12 +26,13 @@ const PAGE_TO_ROUTE: Record<string, string> = {
   comparison: '/cross-market',
   occupations: '/occupations',
   demand: '/demand',
+  employers: '/employers',
   howitworks: '/how-it-works',
 };
 
 describe('Routing Architecture & Contract', () => {
   it('maps every primary navigation target to a defined route', () => {
-    const pages = ['home', 'calculator', 'explore', 'skills', 'archetypes', 'comparison', 'occupations', 'demand', 'howitworks'];
+    const pages = ['home', 'calculator', 'explore', 'skills', 'archetypes', 'comparison', 'occupations', 'demand', 'employers', 'howitworks'];
     for (const page of pages) {
       const route = PAGE_TO_ROUTE[page];
       expect(route).toBeDefined();

@@ -14,6 +14,7 @@ import {
   Sparkles,
   ArrowRight,
   TrendingUp,
+  Building2,
 } from 'lucide-react';
 import { MarketSwitcher } from './MarketSwitcher';
 import { useMarket } from '../context/MarketContext';
@@ -27,6 +28,7 @@ export type NavigationPage =
   | 'comparison'
   | 'occupations'
   | 'demand'
+  | 'employers'
   | 'howitworks';
 
 interface AppHeaderProps {
@@ -47,6 +49,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ activePage, onSelectPage }
     { id: 'comparison', label: 'USA vs India', icon: GitCompare },
     { id: 'occupations', label: 'Occupations', icon: Globe },
     { id: 'demand', label: 'Demand Intelligence', icon: TrendingUp },
+    { id: 'employers', label: 'Employer Intelligence', icon: Building2 },
     { id: 'howitworks', label: 'How It Works', icon: BookOpen },
   ];
 

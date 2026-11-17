@@ -776,5 +776,99 @@ export interface SkillGapAnalysisResult {
   recommendations: string[];
 }
 
+// =========================================================================
+// SPRINT 3B.3.4 — Employer Intelligence & Entity Resolution Types
+// =========================================================================
+
+export type EmployerCategory =
+  | 'INDIAN_HEADQUARTERED'
+  | 'MULTINATIONAL_OPERATING_IN_INDIA'
+  | 'OTHER_INTERNATIONAL';
+
+export type EmployerVerificationStatus =
+  | 'UNVERIFIED'
+  | 'REVIEW_REQUIRED'
+  | 'VERIFIED';
+
+export type EmployerLocationType =
+  | 'HEADQUARTERS'
+  | 'OFFICE'
+  | 'RESEARCH'
+  | 'OTHER';
+
+export interface EmployerSourceReference {
+  source_name: string;
+  source_organization: string;
+  source_reference: string;
+  collected_at?: string | null;
+}
+
+export interface EmployerLocation {
+  city: string;
+  state_or_region?: string | null;
+  country_code: string;
+  location_type: EmployerLocationType;
+  verification_status: EmployerVerificationStatus;
+  verification_source: EmployerSourceReference;
+  verified_at?: string | null;
+}
+
+export interface EmployerProfile {
+  company_id: string;
+  company_name: string;
+  headquarters_country: string;
+  company_category: EmployerCategory;
+  industry?: string | null;
+  official_website?: string | null;
+  operating_markets: string[];
+  source_references: EmployerSourceReference[];
+  verification_status: EmployerVerificationStatus;
+  verified_at?: string | null;
+  locations: EmployerLocation[];
+}
+
+export type ResolutionMatchType =
+  | 'EXACT_IDENTIFIER_MATCH'
+  | 'STRONG_CANDIDATE_MATCH'
+  | 'AMBIGUOUS_CANDIDATE'
+  | 'NO_MATCH';
+
+export type EntityReviewStatus =
+  | 'AUTOMATICALLY_RESOLVED'
+  | 'MANUAL_REVIEW_REQUIRED'
+  | 'CONFIRMED_DISTINCT'
+  | 'HUMAN_VERIFIED_MERGE';
+
+export interface EntityMatchCandidate {
+  target_company_id: string;
+  target_company_name: string;
+  target_market_id: string;
+  match_type: ResolutionMatchType;
+  similarity_score: number;
+  shared_brand_detected: boolean;
+  is_subsidiary_relationship: boolean;
+  evidence_summary: string;
+  review_status: EntityReviewStatus;
+  requires_human_approval: boolean;
+}
+
+export interface EmployerResolutionRequest {
+  candidate_name: string;
+  market_id?: string | null;
+  statutory_identifier?: string | null;
+  statutory_authority?: string | null;
+}
+
+export interface EmployerResolutionResponse {
+  query_name: string;
+  query_market_id?: string | null;
+  resolution_match_type: ResolutionMatchType;
+  resolved_company_id: string | null;
+  review_status: EntityReviewStatus;
+  candidates: EntityMatchCandidate[];
+  governance_caveat: string;
+}
+
+
 
 

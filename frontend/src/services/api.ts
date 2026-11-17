@@ -37,6 +37,9 @@ import {
   DemandComparisonResult,
   SkillGapAnalysisRequest,
   SkillGapAnalysisResult,
+  EmployerProfile,
+  EmployerResolutionRequest,
+  EmployerResolutionResponse,
 } from '../types';
 
 const envApiUrl = import.meta.env.VITE_API_BASE_URL;
@@ -262,4 +265,21 @@ export const api = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     }),
+
+  // Employer Intelligence & Entity Resolution Endpoints (Sprint 3B.3.4)
+  getEmployers: (params?: { limit?: number; offset?: number }) => {
+    const qp = new URLSearchParams();
+    if (params?.limit !== undefined) qp.set('limit', String(params.limit));
+    if (params?.offset !== undefined) qp.set('offset', String(params.offset));
+    const qs = qp.toString();
+    return fetchJson<EmployerProfile[]>(`/v1/employers${qs ? `?${qs}` : ''}`);
+  },
+  resolveEmployer: (payload: EmployerResolutionRequest) =>
+    fetchJson<EmployerResolutionResponse>('/v1/employers/resolve', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    }),
+  getEmployerDetail: (companyId: string) =>
+    fetchJson<EmployerProfile>(`/v1/employers/${encodeURIComponent(companyId)}`),
 };
