@@ -173,18 +173,19 @@ def get_skill_detail(skill_name: str):
 
     # Discover associated roles from USA cohort
     roles = []
-    cohort_df = MarketService.get_usa_cohort_df()
     target_skill_col = f"skill_{clean_search.replace(' ', '_').replace('-', '_')}"
-    if target_skill_col not in cohort_df.columns:
-        for col in cohort_df.columns:
-            if col.startswith("skill_") and col.replace("skill_", "").lower() == clean_search.replace(" ", "_"):
-                target_skill_col = col
-                break
+    cohort_df = MarketService.get_usa_cohort_df()
+    if cohort_df is not None:
+        if target_skill_col not in cohort_df.columns:
+            for col in cohort_df.columns:
+                if col.startswith("skill_") and col.replace("skill_", "").lower() == clean_search.replace(" ", "_"):
+                    target_skill_col = col
+                    break
 
-    if target_skill_col in cohort_df.columns:
-        matched_cohort = cohort_df[cohort_df[target_skill_col] == 1]
-        if len(matched_cohort) > 0:
-            roles = matched_cohort["role_family"].value_counts().head(4).index.tolist()
+        if target_skill_col in cohort_df.columns:
+            matched_cohort = cohort_df[cohort_df[target_skill_col] == 1]
+            if len(matched_cohort) > 0:
+                roles = matched_cohort["role_family"].value_counts().head(4).index.tolist()
 
     # Discover associated archetypes from Phase 4.1 lift table
     archetypes = []
