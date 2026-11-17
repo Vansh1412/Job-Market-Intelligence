@@ -49,7 +49,10 @@ const API_BASE = (typeof envApiUrl === 'string' && envApiUrl.trim() !== '')
 
 async function fetchJson<T>(url: string, options?: RequestInit): Promise<T> {
   const normalizedUrl = url.startsWith('/') ? url : `/${url}`;
-  const fullUrl = `${API_BASE}${normalizedUrl}`;
+  const base = API_BASE.endsWith('/api') && normalizedUrl.startsWith('/api/')
+    ? API_BASE.slice(0, -4)
+    : API_BASE;
+  const fullUrl = `${base}${normalizedUrl}`;
   const res = await fetch(fullUrl, options);
   if (!res.ok) {
     const errorText = await res.text();
@@ -272,14 +275,14 @@ export const api = {
     if (params?.limit !== undefined) qp.set('limit', String(params.limit));
     if (params?.offset !== undefined) qp.set('offset', String(params.offset));
     const qs = qp.toString();
-    return fetchJson<EmployerProfile[]>(`/v1/employers${qs ? `?${qs}` : ''}`);
+    return fetchJson<EmployerProfile[]>(`/api/v1/employers${qs ? `?${qs}` : ''}`);
   },
   resolveEmployer: (payload: EmployerResolutionRequest) =>
-    fetchJson<EmployerResolutionResponse>('/v1/employers/resolve', {
+    fetchJson<EmployerResolutionResponse>('/api/v1/employers/resolve', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     }),
   getEmployerDetail: (companyId: string) =>
-    fetchJson<EmployerProfile>(`/v1/employers/${encodeURIComponent(companyId)}`),
+    fetchJson<EmployerProfile>(`/api/v1/employers/${encodeURIComponent(companyId)}`),
 };
