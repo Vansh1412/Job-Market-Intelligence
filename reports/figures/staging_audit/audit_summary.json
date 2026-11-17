@@ -1,0 +1,406 @@
+{
+  "routesTested": [
+    "/",
+    "/predictor",
+    "/skills",
+    "/occupations",
+    "/demand"
+  ],
+  "networkRequests": [
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/index-BKeSACas.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/rolldown-runtime-hePW80VL.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/icons-U57YbQqR.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/recharts-Bew2LLin.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/vendor-Ch4wDmfG.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/index-ghKHOxN1.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/predictor"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/index-BKeSACas.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/rolldown-runtime-hePW80VL.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/icons-U57YbQqR.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/recharts-Bew2LLin.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/vendor-Ch4wDmfG.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/index-ghKHOxN1.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/usa/options"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/skills"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/index-BKeSACas.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/rolldown-runtime-hePW80VL.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/icons-U57YbQqR.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/recharts-Bew2LLin.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/vendor-Ch4wDmfG.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/index-ghKHOxN1.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/skills/landscape"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/skills/detail/python"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/occupations"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/index-BKeSACas.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/rolldown-runtime-hePW80VL.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/icons-U57YbQqR.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/recharts-Bew2LLin.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/vendor-Ch4wDmfG.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/index-ghKHOxN1.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/occupations/classifications"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/occupations/canonical"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/occupations/coverage"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/occupations/classifications/UK_SOC_2020/occupations?page=1&page_size=50"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/occupations/compare?source_occupation_id=UK_SOC_2020%3A2134"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/salary/rates"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/salary/sources?active_only=true"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/salary/compare?occupation_id=US_SOC_2018%3A15-1252"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/salary/occupations/US_SOC_2018%3A15-1252"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/salary/convert?amount=1200000&from_currency=INR"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/demand"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/index-BKeSACas.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/rolldown-runtime-hePW80VL.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/icons-U57YbQqR.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/recharts-Bew2LLin.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/vendor-Ch4wDmfG.js"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-staging.vercel.app/assets/index-ghKHOxN1.css"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/demand/markets"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/demand/metrics"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/demand/occupations?market=US"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/demand/occupations/US_SOC_2018%3A15-1252?market=US"
+    }
+  ],
+  "backendRequests": [
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/usa/options"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/skills/landscape"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/skills/detail/python"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/occupations/classifications"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/occupations/canonical"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/occupations/coverage"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/occupations/classifications/UK_SOC_2020/occupations?page=1&page_size=50"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/occupations/compare?source_occupation_id=UK_SOC_2020%3A2134"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/salary/rates"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/salary/sources?active_only=true"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/salary/compare?occupation_id=US_SOC_2018%3A15-1252"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/salary/occupations/US_SOC_2018%3A15-1252"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/salary/convert?amount=1200000&from_currency=INR"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/demand/markets"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/demand/metrics"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/demand/occupations?market=US"
+    },
+    {
+      "method": "GET",
+      "url": "https://jobintel-backend-staging.onrender.com/v1/demand/occupations/US_SOC_2018%3A15-1252?market=US"
+    }
+  ],
+  "productionLeakAttempts": [],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "uiVerifications": {
+    "landing": {
+      "title": "JOBINTEL — Job Market Intelligence | Skills · Archetypes · Salaries · Machine Learning",
+      "hasHeroText": true,
+      "hasMarkets": true
+    },
+    "predictor": {
+      "predictButtonClicked": true,
+      "hasEmpiricalDispersionNote": false,
+      "hasConfidenceInterval": true
+    },
+    "skills": {
+      "hasPython": true,
+      "hasGeneralCorpusDenominator": true,
+      "notSalaryModelSize": true
+    },
+    "occupations": {
+      "hasTaxonomy": true
+    },
+    "demand": {
+      "hasDemandHeader": true,
+      "hasSkillGaps": true,
+      "ukGating": {
+        "hasGatingMessage": false
+      }
+    }
+  },
+  "screenshots": [
+    "E:\\Job Market\\reports\\figures\\staging_audit\\01_landing_page.png",
+    "E:\\Job Market\\reports\\figures\\staging_audit\\02_predictor_page.png",
+    "E:\\Job Market\\reports\\figures\\staging_audit\\03_skills_page.png",
+    "E:\\Job Market\\reports\\figures\\staging_audit\\04_occupations_page.png",
+    "E:\\Job Market\\reports\\figures\\staging_audit\\05_demand_page.png"
+  ]
+}
