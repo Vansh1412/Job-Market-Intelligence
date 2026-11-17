@@ -1,0 +1,902 @@
+[
+  {
+    "id": "title_001",
+    "title": "Senior Software Engineer - Backend (Java)",
+    "market": "AU",
+    "expected_occ": "CAN_OCC_SOFTWARE_ENGINEER",
+    "taxonomy_code": "261313",
+    "taxonomy_sys": "AU_ANZSCO_2022",
+    "is_jargon": false
+  },
+  {
+    "id": "title_002",
+    "title": "Lead Software Engineer - Core Infrastructure",
+    "market": "AU",
+    "expected_occ": "CAN_OCC_SOFTWARE_ENGINEER",
+    "taxonomy_code": "261313",
+    "taxonomy_sys": "AU_ANZSCO_2022",
+    "is_jargon": false
+  },
+  {
+    "id": "title_003",
+    "title": "Principal Full Stack Developer",
+    "market": "US",
+    "expected_occ": "CAN_OCC_SOFTWARE_ENGINEER",
+    "taxonomy_code": "15-1252.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_004",
+    "title": "Software Development Engineer II (C# / .NET)",
+    "market": "US",
+    "expected_occ": "CAN_OCC_SOFTWARE_ENGINEER",
+    "taxonomy_code": "15-1252.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_005",
+    "title": "Staff Platform Engineer",
+    "market": "US",
+    "expected_occ": "CAN_OCC_SOFTWARE_ENGINEER",
+    "taxonomy_code": "15-1252.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_006",
+    "title": "Senior Systems Programmer (C++)",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_SOFTWARE_ENGINEER",
+    "taxonomy_code": "2134",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_007",
+    "title": "Full Stack Web Developer (React / Node.js)",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_SOFTWARE_ENGINEER",
+    "taxonomy_code": "2134",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_008",
+    "title": "Backend Software Engineer (Golang)",
+    "market": "SG",
+    "expected_occ": "CAN_OCC_SOFTWARE_ENGINEER",
+    "taxonomy_code": "25121",
+    "taxonomy_sys": "SG_SSOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_009",
+    "title": "Mobile Application Developer (iOS / Swift)",
+    "market": "SG",
+    "expected_occ": "CAN_OCC_SOFTWARE_ENGINEER",
+    "taxonomy_code": "25123",
+    "taxonomy_sys": "SG_SSOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_010",
+    "title": "Software Developer - Enterprise Applications",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_SOFTWARE_ENGINEER",
+    "taxonomy_code": "2512.0101",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_011",
+    "title": "Senior Java Developer - Microservices",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_SOFTWARE_ENGINEER",
+    "taxonomy_code": "2512.0101",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_012",
+    "title": "Frontend Engineer (TypeScript / Vue.js)",
+    "market": "AU",
+    "expected_occ": "CAN_OCC_SOFTWARE_ENGINEER",
+    "taxonomy_code": "261312",
+    "taxonomy_sys": "AU_ANZSCO_2022",
+    "is_jargon": false
+  },
+  {
+    "id": "title_013",
+    "title": "Lead Application Architect",
+    "market": "US",
+    "expected_occ": "CAN_OCC_SOFTWARE_ENGINEER",
+    "taxonomy_code": "15-1252.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_014",
+    "title": "Full Stack Software Ninja",
+    "market": "US",
+    "expected_occ": "CAN_OCC_SOFTWARE_ENGINEER",
+    "taxonomy_code": "15-1252.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": true
+  },
+  {
+    "id": "title_015",
+    "title": "Rockstar Code Crafter - Distributed Services",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_SOFTWARE_ENGINEER",
+    "taxonomy_code": "2134",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": true
+  },
+  {
+    "id": "title_016",
+    "title": "Data Scientist - Statistical Modeling",
+    "market": "AU",
+    "expected_occ": "CAN_OCC_DATA_SCIENTIST",
+    "taxonomy_code": "224999",
+    "taxonomy_sys": "AU_ANZSCO_2022",
+    "is_jargon": false
+  },
+  {
+    "id": "title_017",
+    "title": "Lead Data Scientist - Predictive Analytics",
+    "market": "US",
+    "expected_occ": "CAN_OCC_DATA_SCIENTIST",
+    "taxonomy_code": "15-2051.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_018",
+    "title": "Principal Data Scientist - Experimentation",
+    "market": "US",
+    "expected_occ": "CAN_OCC_DATA_SCIENTIST",
+    "taxonomy_code": "15-2051.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_019",
+    "title": "Senior Data Scientist (R / Python)",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_DATA_SCIENTIST",
+    "taxonomy_code": "2425",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_020",
+    "title": "Decision Science Specialist",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_DATA_SCIENTIST",
+    "taxonomy_code": "2425",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_021",
+    "title": "Data Scientist - Customer Insights",
+    "market": "SG",
+    "expected_occ": "CAN_OCC_DATA_SCIENTIST",
+    "taxonomy_code": "21211",
+    "taxonomy_sys": "SG_SSOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_022",
+    "title": "Staff Data Scientist - Econometrics",
+    "market": "SG",
+    "expected_occ": "CAN_OCC_DATA_SCIENTIST",
+    "taxonomy_code": "21211",
+    "taxonomy_sys": "SG_SSOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_023",
+    "title": "Data Scientist - Advanced Analytics",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_DATA_SCIENTIST",
+    "taxonomy_code": "2120.0201",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_024",
+    "title": "Quantitative Modeling Scientist",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_DATA_SCIENTIST",
+    "taxonomy_code": "2120.0201",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_025",
+    "title": "Chief Data Alchemist",
+    "market": "US",
+    "expected_occ": "CAN_OCC_DATA_SCIENTIST",
+    "taxonomy_code": "15-2051.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": true
+  },
+  {
+    "id": "title_026",
+    "title": "Senior Business Intelligence Analyst",
+    "market": "AU",
+    "expected_occ": "CAN_OCC_DATA_ANALYST",
+    "taxonomy_code": "261112",
+    "taxonomy_sys": "AU_ANZSCO_2022",
+    "is_jargon": false
+  },
+  {
+    "id": "title_027",
+    "title": "Data Analyst - Operations (SQL / Tableau)",
+    "market": "US",
+    "expected_occ": "CAN_OCC_DATA_ANALYST",
+    "taxonomy_code": "15-2051.02",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_028",
+    "title": "Marketing Data Analyst",
+    "market": "US",
+    "expected_occ": "CAN_OCC_DATA_ANALYST",
+    "taxonomy_code": "15-2051.02",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_029",
+    "title": "Commercial Insights Analyst",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_DATA_ANALYST",
+    "taxonomy_code": "2425",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_030",
+    "title": "Product Data Analyst",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_DATA_ANALYST",
+    "taxonomy_code": "2425",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_031",
+    "title": "Business Analytics Specialist",
+    "market": "SG",
+    "expected_occ": "CAN_OCC_DATA_ANALYST",
+    "taxonomy_code": "25112",
+    "taxonomy_sys": "SG_SSOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_032",
+    "title": "Financial Data Analyst",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_DATA_ANALYST",
+    "taxonomy_code": "2413.0101",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_033",
+    "title": "Reporting Analyst (PowerBI)",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_DATA_ANALYST",
+    "taxonomy_code": "2511.0201",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_034",
+    "title": "Machine Learning Engineer - NLP",
+    "market": "AU",
+    "expected_occ": "CAN_OCC_ML_ENGINEER",
+    "taxonomy_code": "261399",
+    "taxonomy_sys": "AU_ANZSCO_2022",
+    "is_jargon": false
+  },
+  {
+    "id": "title_035",
+    "title": "Senior ML Engineer - Recommendation Systems",
+    "market": "US",
+    "expected_occ": "CAN_OCC_ML_ENGINEER",
+    "taxonomy_code": "15-1252.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_036",
+    "title": "Applied AI / Deep Learning Engineer",
+    "market": "US",
+    "expected_occ": "CAN_OCC_ML_ENGINEER",
+    "taxonomy_code": "15-1252.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_037",
+    "title": "Computer Vision Research Engineer",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_ML_ENGINEER",
+    "taxonomy_code": "2134",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_038",
+    "title": "Machine Learning Scientist - Generative AI",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_ML_ENGINEER",
+    "taxonomy_code": "2134",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_039",
+    "title": "Lead AI Engineer (PyTorch / MLOps)",
+    "market": "SG",
+    "expected_occ": "CAN_OCC_ML_ENGINEER",
+    "taxonomy_code": "25121",
+    "taxonomy_sys": "SG_SSOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_040",
+    "title": "Machine Learning Systems Architect",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_ML_ENGINEER",
+    "taxonomy_code": "2512.0101",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_041",
+    "title": "Cognitive AI Guru",
+    "market": "US",
+    "expected_occ": "CAN_OCC_ML_ENGINEER",
+    "taxonomy_code": "15-1252.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": true
+  },
+  {
+    "id": "title_042",
+    "title": "Senior Data Engineer (Spark / Databricks)",
+    "market": "AU",
+    "expected_occ": "CAN_OCC_DATA_ENGINEER",
+    "taxonomy_code": "261313",
+    "taxonomy_sys": "AU_ANZSCO_2022",
+    "is_jargon": false
+  },
+  {
+    "id": "title_043",
+    "title": "Big Data Platform Engineer (Snowflake / DBT)",
+    "market": "US",
+    "expected_occ": "CAN_OCC_DATA_ENGINEER",
+    "taxonomy_code": "15-1252.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_044",
+    "title": "Data Pipeline Infrastructure Engineer",
+    "market": "US",
+    "expected_occ": "CAN_OCC_DATA_ENGINEER",
+    "taxonomy_code": "15-1252.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_045",
+    "title": "Lead Data Warehouse Engineer",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_DATA_ENGINEER",
+    "taxonomy_code": "2134",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_046",
+    "title": "ETL Solutions Developer",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_DATA_ENGINEER",
+    "taxonomy_code": "2134",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_047",
+    "title": "Data Infrastructure Engineer (Kafka / Flink)",
+    "market": "SG",
+    "expected_occ": "CAN_OCC_DATA_ENGINEER",
+    "taxonomy_code": "25121",
+    "taxonomy_sys": "SG_SSOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_048",
+    "title": "Data Platform Architect",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_DATA_ENGINEER",
+    "taxonomy_code": "2512.0101",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_049",
+    "title": "Analytics Engineer - Data Ops",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_DATA_ENGINEER",
+    "taxonomy_code": "2512.0101",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_050",
+    "title": "Senior DevOps Engineer (AWS / Terraform)",
+    "market": "AU",
+    "expected_occ": "CAN_OCC_DEVOPS_ENGINEER",
+    "taxonomy_code": "261313",
+    "taxonomy_sys": "AU_ANZSCO_2022",
+    "is_jargon": false
+  },
+  {
+    "id": "title_051",
+    "title": "Site Reliability Engineer (SRE - Kubernetes)",
+    "market": "US",
+    "expected_occ": "CAN_OCC_DEVOPS_ENGINEER",
+    "taxonomy_code": "15-1252.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_052",
+    "title": "Cloud Infrastructure Architect (Azure)",
+    "market": "US",
+    "expected_occ": "CAN_OCC_DEVOPS_ENGINEER",
+    "taxonomy_code": "15-1252.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_053",
+    "title": "Platform SRE Lead",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_DEVOPS_ENGINEER",
+    "taxonomy_code": "2134",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_054",
+    "title": "Build and Release Engineer",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_DEVOPS_ENGINEER",
+    "taxonomy_code": "2134",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_055",
+    "title": "DevOps Specialist (GCP / Docker)",
+    "market": "SG",
+    "expected_occ": "CAN_OCC_DEVOPS_ENGINEER",
+    "taxonomy_code": "25121",
+    "taxonomy_sys": "SG_SSOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_056",
+    "title": "Cloud Operations Lead",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_DEVOPS_ENGINEER",
+    "taxonomy_code": "2512.0101",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_057",
+    "title": "Continuous Delivery Wizard",
+    "market": "US",
+    "expected_occ": "CAN_OCC_DEVOPS_ENGINEER",
+    "taxonomy_code": "15-1252.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": true
+  },
+  {
+    "id": "title_058",
+    "title": "Information Security Specialist",
+    "market": "AU",
+    "expected_occ": "CAN_OCC_CYBERSECURITY_ANALYST",
+    "taxonomy_code": "262112",
+    "taxonomy_sys": "AU_ANZSCO_2022",
+    "is_jargon": false
+  },
+  {
+    "id": "title_059",
+    "title": "Cybersecurity Analyst - SOC Level 2",
+    "market": "US",
+    "expected_occ": "CAN_OCC_CYBERSECURITY_ANALYST",
+    "taxonomy_code": "15-1212.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_060",
+    "title": "Penetration Tester / Ethical Hacker",
+    "market": "US",
+    "expected_occ": "CAN_OCC_CYBERSECURITY_ANALYST",
+    "taxonomy_code": "15-1212.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_061",
+    "title": "Information Security Officer (CISO Office)",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_CYBERSECURITY_ANALYST",
+    "taxonomy_code": "2137",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_062",
+    "title": "Cloud Security Architect",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_CYBERSECURITY_ANALYST",
+    "taxonomy_code": "2137",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_063",
+    "title": "Cyber Incident Responder",
+    "market": "SG",
+    "expected_occ": "CAN_OCC_CYBERSECURITY_ANALYST",
+    "taxonomy_code": "25291",
+    "taxonomy_sys": "SG_SSOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_064",
+    "title": "Application Security Engineer",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_CYBERSECURITY_ANALYST",
+    "taxonomy_code": "2529.0101",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_065",
+    "title": "Identity & Access Management (IAM) Engineer",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_CYBERSECURITY_ANALYST",
+    "taxonomy_code": "2529.0101",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_066",
+    "title": "Database Administrator (PostgreSQL)",
+    "market": "AU",
+    "expected_occ": "CAN_OCC_DATABASE_ADMIN",
+    "taxonomy_code": "262111",
+    "taxonomy_sys": "AU_ANZSCO_2022",
+    "is_jargon": false
+  },
+  {
+    "id": "title_067",
+    "title": "Senior SQL Server DBA",
+    "market": "US",
+    "expected_occ": "CAN_OCC_DATABASE_ADMIN",
+    "taxonomy_code": "15-1242.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_068",
+    "title": "Oracle Database Architect",
+    "market": "US",
+    "expected_occ": "CAN_OCC_DATABASE_ADMIN",
+    "taxonomy_code": "15-1243.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_069",
+    "title": "Database Reliability Engineer",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_DATABASE_ADMIN",
+    "taxonomy_code": "2135",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_070",
+    "title": "NoSQL Database Specialist (MongoDB / Cassandra)",
+    "market": "SG",
+    "expected_occ": "CAN_OCC_DATABASE_ADMIN",
+    "taxonomy_code": "25211",
+    "taxonomy_sys": "SG_SSOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_071",
+    "title": "Lead Database Developer",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_DATABASE_ADMIN",
+    "taxonomy_code": "2521.0101",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_072",
+    "title": "Cloud Database Administrator (RDS / DynamoDB)",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_DATABASE_ADMIN",
+    "taxonomy_code": "2521.0101",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_073",
+    "title": "Senior Systems Analyst - Core Banking",
+    "market": "AU",
+    "expected_occ": "CAN_OCC_SYSTEMS_ANALYST",
+    "taxonomy_code": "261112",
+    "taxonomy_sys": "AU_ANZSCO_2022",
+    "is_jargon": false
+  },
+  {
+    "id": "title_074",
+    "title": "Enterprise Solutions Architect",
+    "market": "US",
+    "expected_occ": "CAN_OCC_SYSTEMS_ANALYST",
+    "taxonomy_code": "15-1211.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_075",
+    "title": "Technical Business Systems Analyst",
+    "market": "US",
+    "expected_occ": "CAN_OCC_SYSTEMS_ANALYST",
+    "taxonomy_code": "15-1211.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_076",
+    "title": "IT Business Systems Consultant",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_SYSTEMS_ANALYST",
+    "taxonomy_code": "2133",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_077",
+    "title": "Integration Solutions Architect",
+    "market": "SG",
+    "expected_occ": "CAN_OCC_SYSTEMS_ANALYST",
+    "taxonomy_code": "25111",
+    "taxonomy_sys": "SG_SSOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_078",
+    "title": "Principal Systems Analyst",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_SYSTEMS_ANALYST",
+    "taxonomy_code": "2511.0101",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_079",
+    "title": "ERP Systems Analyst (SAP S/4HANA)",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_SYSTEMS_ANALYST",
+    "taxonomy_code": "2511.0101",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_080",
+    "title": "Network Support Engineer",
+    "market": "AU",
+    "expected_occ": "CAN_OCC_NETWORK_ENGINEER",
+    "taxonomy_code": "263111",
+    "taxonomy_sys": "AU_ANZSCO_2022",
+    "is_jargon": false
+  },
+  {
+    "id": "title_081",
+    "title": "Senior Network Architect (BGP / MPLS)",
+    "market": "US",
+    "expected_occ": "CAN_OCC_NETWORK_ENGINEER",
+    "taxonomy_code": "15-1241.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_082",
+    "title": "Wireless Network Infrastructure Engineer",
+    "market": "US",
+    "expected_occ": "CAN_OCC_NETWORK_ENGINEER",
+    "taxonomy_code": "15-1241.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_083",
+    "title": "Telecommunications Network Planner",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_NETWORK_ENGINEER",
+    "taxonomy_code": "2135",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_084",
+    "title": "Data Center Network Specialist",
+    "market": "SG",
+    "expected_occ": "CAN_OCC_NETWORK_ENGINEER",
+    "taxonomy_code": "25231",
+    "taxonomy_sys": "SG_SSOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_085",
+    "title": "Network Operations Center (NOC) Engineer",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_NETWORK_ENGINEER",
+    "taxonomy_code": "2523.0101",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_086",
+    "title": "Enterprise WAN Engineer",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_NETWORK_ENGINEER",
+    "taxonomy_code": "2523.0101",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_087",
+    "title": "Quality Assurance Automation Engineer",
+    "market": "AU",
+    "expected_occ": "CAN_OCC_QA_TEST_ENGINEER",
+    "taxonomy_code": "261314",
+    "taxonomy_sys": "AU_ANZSCO_2022",
+    "is_jargon": false
+  },
+  {
+    "id": "title_088",
+    "title": "Software Development Engineer in Test (SDET)",
+    "market": "US",
+    "expected_occ": "CAN_OCC_QA_TEST_ENGINEER",
+    "taxonomy_code": "15-1253.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_089",
+    "title": "Performance Test Engineer (JMeter)",
+    "market": "US",
+    "expected_occ": "CAN_OCC_QA_TEST_ENGINEER",
+    "taxonomy_code": "15-1253.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_090",
+    "title": "Lead QA Analyst - Mobile Applications",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_QA_TEST_ENGINEER",
+    "taxonomy_code": "2134",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_091",
+    "title": "Software Test Automation Architect",
+    "market": "SG",
+    "expected_occ": "CAN_OCC_QA_TEST_ENGINEER",
+    "taxonomy_code": "25122",
+    "taxonomy_sys": "SG_SSOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_092",
+    "title": "QA Automation Lead (Cypress / Selenium)",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_QA_TEST_ENGINEER",
+    "taxonomy_code": "2512.0201",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_093",
+    "title": "Senior QA Verification Specialist",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_QA_TEST_ENGINEER",
+    "taxonomy_code": "2512.0201",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_094",
+    "title": "IT Project Manager - Cloud Migration",
+    "market": "AU",
+    "expected_occ": "CAN_OCC_IT_PROJECT_MGR",
+    "taxonomy_code": "135112",
+    "taxonomy_sys": "AU_ANZSCO_2022",
+    "is_jargon": false
+  },
+  {
+    "id": "title_095",
+    "title": "Technical Program Manager (TPM) - Infrastructure",
+    "market": "US",
+    "expected_occ": "CAN_OCC_IT_PROJECT_MGR",
+    "taxonomy_code": "11-3021.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_096",
+    "title": "Scrum Master / Agile Delivery Manager",
+    "market": "US",
+    "expected_occ": "CAN_OCC_IT_PROJECT_MGR",
+    "taxonomy_code": "11-3021.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": false
+  },
+  {
+    "id": "title_097",
+    "title": "Head of Engineering Operations",
+    "market": "UK",
+    "expected_occ": "CAN_OCC_IT_PROJECT_MGR",
+    "taxonomy_code": "1136",
+    "taxonomy_sys": "UK_SOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_098",
+    "title": "IT Delivery Lead - Digital Banking",
+    "market": "SG",
+    "expected_occ": "CAN_OCC_IT_PROJECT_MGR",
+    "taxonomy_code": "13301",
+    "taxonomy_sys": "SG_SSOC_2020",
+    "is_jargon": false
+  },
+  {
+    "id": "title_099",
+    "title": "Senior IT Project Manager - SAP Rollout",
+    "market": "IN",
+    "expected_occ": "CAN_OCC_IT_PROJECT_MGR",
+    "taxonomy_code": "1330.0101",
+    "taxonomy_sys": "IN_NCO_2015",
+    "is_jargon": false
+  },
+  {
+    "id": "title_100",
+    "title": "Agile Transformation Champion",
+    "market": "US",
+    "expected_occ": "CAN_OCC_IT_PROJECT_MGR",
+    "taxonomy_code": "11-3021.00",
+    "taxonomy_sys": "US_SOC_2018",
+    "is_jargon": true
+  }
+]

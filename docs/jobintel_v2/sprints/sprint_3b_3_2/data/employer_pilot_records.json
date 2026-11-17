@@ -1,0 +1,833 @@
+[
+  {
+    "company_id": "comp_au_atlassian",
+    "company_name": "Atlassian Pty Ltd",
+    "legal_entity_name": "Atlassian Pty Ltd",
+    "trading_name": "Atlassian",
+    "market_id": "AU",
+    "registration_identifier": "53102443916",
+    "registration_identifier_type": "ABN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "atlassian.com",
+    "headquarters_country": "AU",
+    "industry_sector": "Technology & Software Development",
+    "industry_classification_system": "ANZSIC_2006",
+    "industry_classification_version": "Division M (Professional, Scientific and Technical Services)",
+    "parent_company_id": "comp_us_atlassian_corp",
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_au_abr",
+      "src_au_wgea",
+      "src_first_party_greenhouse"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Sydney",
+        "state_or_region": "NSW",
+        "country_code": "AU",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_au_canva",
+    "company_name": "Canva Pty Ltd",
+    "legal_entity_name": "Canva Pty Ltd",
+    "trading_name": "Canva",
+    "market_id": "AU",
+    "registration_identifier": "80158929938",
+    "registration_identifier_type": "ABN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "canva.com",
+    "headquarters_country": "AU",
+    "industry_sector": "Technology & Design Software",
+    "industry_classification_system": "ANZSIC_2006",
+    "industry_classification_version": "Division J (Information Media and Telecommunications)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_au_abr",
+      "src_au_wgea",
+      "src_first_party_lever"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Sydney",
+        "state_or_region": "NSW",
+        "country_code": "AU",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_au_cba",
+    "company_name": "Commonwealth Bank of Australia",
+    "legal_entity_name": "Commonwealth Bank of Australia",
+    "trading_name": "CommBank",
+    "market_id": "AU",
+    "registration_identifier": "48123123124",
+    "registration_identifier_type": "ABN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "commbank.com.au",
+    "headquarters_country": "AU",
+    "industry_sector": "Financial Services & Banking",
+    "industry_classification_system": "ANZSIC_2006",
+    "industry_classification_version": "Division K (Financial and Insurance Services)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_au_abr",
+      "src_au_wgea"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Sydney",
+        "state_or_region": "NSW",
+        "country_code": "AU",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_au_bhp",
+    "company_name": "BHP Group Limited",
+    "legal_entity_name": "BHP Group Limited",
+    "trading_name": "BHP",
+    "market_id": "AU",
+    "registration_identifier": "49004028077",
+    "registration_identifier_type": "ABN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "bhp.com",
+    "headquarters_country": "AU",
+    "industry_sector": "Mining & Natural Resources",
+    "industry_classification_system": "ANZSIC_2006",
+    "industry_classification_version": "Division B (Mining)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_au_abr",
+      "src_au_wgea"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Melbourne",
+        "state_or_region": "VIC",
+        "country_code": "AU",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_au_woolworths",
+    "company_name": "Woolworths Group Limited",
+    "legal_entity_name": "Woolworths Group Limited",
+    "trading_name": "Woolworths Group",
+    "market_id": "AU",
+    "registration_identifier": "88000014675",
+    "registration_identifier_type": "ABN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "woolworthsgroup.com.au",
+    "headquarters_country": "AU",
+    "industry_sector": "Retail & Consumer Goods",
+    "industry_classification_system": "ANZSIC_2006",
+    "industry_classification_version": "Division G (Retail Trade)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_au_abr",
+      "src_au_wgea"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Bella Vista",
+        "state_or_region": "NSW",
+        "country_code": "AU",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_au_telstra",
+    "company_name": "Telstra Group Limited",
+    "legal_entity_name": "Telstra Group Limited",
+    "trading_name": "Telstra",
+    "market_id": "AU",
+    "registration_identifier": "56086174781",
+    "registration_identifier_type": "ABN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "telstra.com.au",
+    "headquarters_country": "AU",
+    "industry_sector": "Telecommunications & Digital Infrastructure",
+    "industry_classification_system": "ANZSIC_2006",
+    "industry_classification_version": "Division J (Information Media and Telecommunications)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_au_abr",
+      "src_au_wgea"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Melbourne",
+        "state_or_region": "VIC",
+        "country_code": "AU",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_us_microsoft",
+    "company_name": "Microsoft Corporation",
+    "legal_entity_name": "Microsoft Corporation",
+    "trading_name": "Microsoft",
+    "market_id": "US",
+    "registration_identifier": "0000789019",
+    "registration_identifier_type": "CIK",
+    "registration_status": "ACTIVE",
+    "primary_domain": "microsoft.com",
+    "headquarters_country": "US",
+    "industry_sector": "Software & Cloud Computing",
+    "industry_classification_system": "NAICS_2022",
+    "industry_classification_version": "511210 (Software Publishers)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_us_sec_edgar",
+      "src_first_party_greenhouse"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Redmond",
+        "state_or_region": "WA",
+        "country_code": "US",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_us_alphabet",
+    "company_name": "Alphabet Inc.",
+    "legal_entity_name": "Alphabet Inc.",
+    "trading_name": "Google / Alphabet",
+    "market_id": "US",
+    "registration_identifier": "0001652044",
+    "registration_identifier_type": "CIK",
+    "registration_status": "ACTIVE",
+    "primary_domain": "abc.xyz",
+    "headquarters_country": "US",
+    "industry_sector": "Internet, Search & Cloud Services",
+    "industry_classification_system": "NAICS_2022",
+    "industry_classification_version": "518210 (Computing Infrastructure and Web Hosting)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_us_sec_edgar"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Mountain View",
+        "state_or_region": "CA",
+        "country_code": "US",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_us_jpmorgan",
+    "company_name": "JPMorgan Chase & Co.",
+    "legal_entity_name": "JPMorgan Chase & Co.",
+    "trading_name": "Chase / J.P. Morgan",
+    "market_id": "US",
+    "registration_identifier": "0000019617",
+    "registration_identifier_type": "CIK",
+    "registration_status": "ACTIVE",
+    "primary_domain": "jpmorganchase.com",
+    "headquarters_country": "US",
+    "industry_sector": "Financial Services & Investment Banking",
+    "industry_classification_system": "NAICS_2022",
+    "industry_classification_version": "522110 (Commercial Banking)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_us_sec_edgar"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "New York",
+        "state_or_region": "NY",
+        "country_code": "US",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_us_pfizer",
+    "company_name": "Pfizer Inc.",
+    "legal_entity_name": "Pfizer Inc.",
+    "trading_name": "Pfizer",
+    "market_id": "US",
+    "registration_identifier": "0000078003",
+    "registration_identifier_type": "CIK",
+    "registration_status": "ACTIVE",
+    "primary_domain": "pfizer.com",
+    "headquarters_country": "US",
+    "industry_sector": "Pharmaceuticals & Biotechnology",
+    "industry_classification_system": "NAICS_2022",
+    "industry_classification_version": "325412 (Pharmaceutical Preparation Manufacturing)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_us_sec_edgar"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "New York",
+        "state_or_region": "NY",
+        "country_code": "US",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_us_cisco",
+    "company_name": "Cisco Systems, Inc.",
+    "legal_entity_name": "Cisco Systems, Inc.",
+    "trading_name": "Cisco",
+    "market_id": "US",
+    "registration_identifier": "0000858877",
+    "registration_identifier_type": "CIK",
+    "registration_status": "ACTIVE",
+    "primary_domain": "cisco.com",
+    "headquarters_country": "US",
+    "industry_sector": "Networking & Communications Equipment",
+    "industry_classification_system": "NAICS_2022",
+    "industry_classification_version": "334210 (Telephone Apparatus Manufacturing)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_us_sec_edgar",
+      "src_first_party_greenhouse"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "San Jose",
+        "state_or_region": "CA",
+        "country_code": "US",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_us_fed_va",
+    "company_name": "U.S. Department of Veterans Affairs",
+    "legal_entity_name": "U.S. Department of Veterans Affairs",
+    "trading_name": "Veterans Health Administration / VA",
+    "market_id": "US",
+    "registration_identifier": "VA",
+    "registration_identifier_type": "AGENCY_CODE",
+    "registration_status": "ACTIVE",
+    "primary_domain": "va.gov",
+    "headquarters_country": "US",
+    "industry_sector": "Public Administration & Healthcare",
+    "industry_classification_system": "NAICS_2022",
+    "industry_classification_version": "923140 (Administration of Veteran Affairs)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_us_usajobs"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Washington",
+        "state_or_region": "DC",
+        "country_code": "US",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_uk_arm",
+    "company_name": "Arm Limited",
+    "legal_entity_name": "Arm Limited",
+    "trading_name": "Arm",
+    "market_id": "UK",
+    "registration_identifier": "02557590",
+    "registration_identifier_type": "CRN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "arm.com",
+    "headquarters_country": "UK",
+    "industry_sector": "Semiconductors & Processor Architecture",
+    "industry_classification_system": "UK_SIC_2007",
+    "industry_classification_version": "72190 (Other research and experimental development on natural sciences)",
+    "parent_company_id": "comp_uk_arm_holdings",
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_uk_companies_house",
+      "src_uk_gender_pay_gap",
+      "src_first_party_greenhouse"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Cambridge",
+        "state_or_region": "Cambridgeshire",
+        "country_code": "UK",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_uk_deepmind",
+    "company_name": "DeepMind Technologies Limited",
+    "legal_entity_name": "DeepMind Technologies Limited",
+    "trading_name": "Google DeepMind",
+    "market_id": "UK",
+    "registration_identifier": "07386357",
+    "registration_identifier_type": "CRN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "deepmind.google",
+    "headquarters_country": "UK",
+    "industry_sector": "Artificial Intelligence & Fundamental Research",
+    "industry_classification_system": "UK_SIC_2007",
+    "industry_classification_version": "72190 (R&D on natural sciences and engineering)",
+    "parent_company_id": "comp_us_alphabet",
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_uk_companies_house"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "London",
+        "state_or_region": "Greater London",
+        "country_code": "UK",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_uk_astrazeneca",
+    "company_name": "AstraZeneca PLC",
+    "legal_entity_name": "AstraZeneca PLC",
+    "trading_name": "AstraZeneca",
+    "market_id": "UK",
+    "registration_identifier": "03512362",
+    "registration_identifier_type": "CRN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "astrazeneca.com",
+    "headquarters_country": "UK",
+    "industry_sector": "Biopharmaceuticals & Healthcare",
+    "industry_classification_system": "UK_SIC_2007",
+    "industry_classification_version": "21200 (Manufacture of pharmaceutical preparations)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_uk_companies_house",
+      "src_uk_gender_pay_gap"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Cambridge",
+        "state_or_region": "Cambridgeshire",
+        "country_code": "UK",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_uk_barclays",
+    "company_name": "Barclays PLC",
+    "legal_entity_name": "Barclays PLC",
+    "trading_name": "Barclays",
+    "market_id": "UK",
+    "registration_identifier": "00048839",
+    "registration_identifier_type": "CRN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "barclays.com",
+    "headquarters_country": "UK",
+    "industry_sector": "Financial Services & Retail Banking",
+    "industry_classification_system": "UK_SIC_2007",
+    "industry_classification_version": "64191 (Banks)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_uk_companies_house",
+      "src_uk_gender_pay_gap"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "London",
+        "state_or_region": "Greater London",
+        "country_code": "UK",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_uk_unilever",
+    "company_name": "Unilever PLC",
+    "legal_entity_name": "Unilever PLC",
+    "trading_name": "Unilever",
+    "market_id": "UK",
+    "registration_identifier": "00041424",
+    "registration_identifier_type": "CRN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "unilever.com",
+    "headquarters_country": "UK",
+    "industry_sector": "Fast Moving Consumer Goods (FMCG)",
+    "industry_classification_system": "UK_SIC_2007",
+    "industry_classification_version": "70100 (Activities of head offices)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_uk_companies_house",
+      "src_uk_gender_pay_gap"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "London",
+        "state_or_region": "Greater London",
+        "country_code": "UK",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_uk_bt",
+    "company_name": "BT Group plc",
+    "legal_entity_name": "BT Group plc",
+    "trading_name": "BT / EE",
+    "market_id": "UK",
+    "registration_identifier": "04190816",
+    "registration_identifier_type": "CRN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "bt.com",
+    "headquarters_country": "UK",
+    "industry_sector": "Telecommunications & Broadband",
+    "industry_classification_system": "UK_SIC_2007",
+    "industry_classification_version": "61100 (Wired telecommunications activities)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_uk_companies_house",
+      "src_uk_gender_pay_gap"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "London",
+        "state_or_region": "Greater London",
+        "country_code": "UK",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_sg_grab",
+    "company_name": "Grabtaxi Holdings Pte. Ltd.",
+    "legal_entity_name": "Grabtaxi Holdings Pte. Ltd.",
+    "trading_name": "Grab",
+    "market_id": "SG",
+    "registration_identifier": "201318499Z",
+    "registration_identifier_type": "UEN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "grab.com",
+    "headquarters_country": "SG",
+    "industry_sector": "Technology, Mobility & Fintech",
+    "industry_classification_system": "SSIC_2020",
+    "industry_classification_version": "62011 (Development of software and applications)",
+    "parent_company_id": "comp_sg_grab_holdings",
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_sg_acra",
+      "src_first_party_greenhouse"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Singapore",
+        "state_or_region": "Central",
+        "country_code": "SG",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_sg_shopee",
+    "company_name": "Shopee Singapore Private Limited",
+    "legal_entity_name": "Shopee Singapore Private Limited",
+    "trading_name": "Shopee",
+    "market_id": "SG",
+    "registration_identifier": "201502486Z",
+    "registration_identifier_type": "UEN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "shopee.sg",
+    "headquarters_country": "SG",
+    "industry_sector": "E-commerce & Digital Platforms",
+    "industry_classification_system": "SSIC_2020",
+    "industry_classification_version": "47910 (Retail sale via internet)",
+    "parent_company_id": "comp_sg_sea_ltd",
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_sg_acra",
+      "src_first_party_lever"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Singapore",
+        "state_or_region": "Kent Ridge",
+        "country_code": "SG",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_sg_dbs",
+    "company_name": "DBS Bank Ltd.",
+    "legal_entity_name": "DBS Bank Ltd.",
+    "trading_name": "DBS Bank",
+    "market_id": "SG",
+    "registration_identifier": "196800306E",
+    "registration_identifier_type": "UEN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "dbs.com",
+    "headquarters_country": "SG",
+    "industry_sector": "Financial Services & Banking",
+    "industry_classification_system": "SSIC_2020",
+    "industry_classification_version": "64120 (Full banks)",
+    "parent_company_id": "comp_sg_dbs_group",
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_sg_acra"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Singapore",
+        "state_or_region": "Marina Bay",
+        "country_code": "SG",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_sg_singtel",
+    "company_name": "Singapore Telecommunications Limited",
+    "legal_entity_name": "Singapore Telecommunications Limited",
+    "trading_name": "Singtel",
+    "market_id": "SG",
+    "registration_identifier": "199201624D",
+    "registration_identifier_type": "UEN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "singtel.com",
+    "headquarters_country": "SG",
+    "industry_sector": "Telecommunications & ICT Infrastructure",
+    "industry_classification_system": "SSIC_2020",
+    "industry_classification_version": "61011 (Wired telecommunications services)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_sg_acra"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Singapore",
+        "state_or_region": "Exeter Road",
+        "country_code": "SG",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_sg_carousell",
+    "company_name": "Carousell Pte. Ltd.",
+    "legal_entity_name": "Carousell Pte. Ltd.",
+    "trading_name": "Carousell",
+    "market_id": "SG",
+    "registration_identifier": "201200479M",
+    "registration_identifier_type": "UEN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "carousell.com",
+    "headquarters_country": "SG",
+    "industry_sector": "E-commerce & Classifieds Marketplace",
+    "industry_classification_system": "SSIC_2020",
+    "industry_classification_version": "62012 (Development of other software)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_sg_acra",
+      "src_first_party_greenhouse"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Singapore",
+        "state_or_region": "Tanjong Pagar",
+        "country_code": "SG",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_in_tcs",
+    "company_name": "Tata Consultancy Services Limited",
+    "legal_entity_name": "Tata Consultancy Services Limited",
+    "trading_name": "TCS",
+    "market_id": "IN",
+    "registration_identifier": "L22210MH1995PLC084781",
+    "registration_identifier_type": "CIN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "tcs.com",
+    "headquarters_country": "IN",
+    "industry_sector": "IT Services & Consulting",
+    "industry_classification_system": "NIC_2008",
+    "industry_classification_version": "6201 (Computer programming activities)",
+    "parent_company_id": "comp_in_tata_sons",
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_in_sebi_brsr"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Mumbai",
+        "state_or_region": "Maharashtra",
+        "country_code": "IN",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_in_infosys",
+    "company_name": "Infosys Limited",
+    "legal_entity_name": "Infosys Limited",
+    "trading_name": "Infosys",
+    "market_id": "IN",
+    "registration_identifier": "L85110KA1981PLC013115",
+    "registration_identifier_type": "CIN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "infosys.com",
+    "headquarters_country": "IN",
+    "industry_sector": "IT Services & Digital Transformation",
+    "industry_classification_system": "NIC_2008",
+    "industry_classification_version": "6202 (Computer consultancy activities)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_in_sebi_brsr"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Bengaluru",
+        "state_or_region": "Karnataka",
+        "country_code": "IN",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_in_wipro",
+    "company_name": "Wipro Limited",
+    "legal_entity_name": "Wipro Limited",
+    "trading_name": "Wipro",
+    "market_id": "IN",
+    "registration_identifier": "L32102KA1945PLC020800",
+    "registration_identifier_type": "CIN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "wipro.com",
+    "headquarters_country": "IN",
+    "industry_sector": "IT Services & Enterprise Cloud",
+    "industry_classification_system": "NIC_2008",
+    "industry_classification_version": "6201 (Computer programming activities)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_in_sebi_brsr"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Bengaluru",
+        "state_or_region": "Karnataka",
+        "country_code": "IN",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_in_hdfcbank",
+    "company_name": "HDFC Bank Limited",
+    "legal_entity_name": "HDFC Bank Limited",
+    "trading_name": "HDFC Bank",
+    "market_id": "IN",
+    "registration_identifier": "L65920MH1994PLC080618",
+    "registration_identifier_type": "CIN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "hdfcbank.com",
+    "headquarters_country": "IN",
+    "industry_sector": "Financial Services & Private Banking",
+    "industry_classification_system": "NIC_2008",
+    "industry_classification_version": "64191 (Monetary intermediation of commercial banks)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_in_sebi_brsr"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Mumbai",
+        "state_or_region": "Maharashtra",
+        "country_code": "IN",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  },
+  {
+    "company_id": "comp_in_reliance",
+    "company_name": "Reliance Industries Limited",
+    "legal_entity_name": "Reliance Industries Limited",
+    "trading_name": "Reliance / Jio / Reliance Retail",
+    "market_id": "IN",
+    "registration_identifier": "L17110MH1973PLC019786",
+    "registration_identifier_type": "CIN",
+    "registration_status": "ACTIVE",
+    "primary_domain": "ril.com",
+    "headquarters_country": "IN",
+    "industry_sector": "Conglomerate, Telecom & Retail",
+    "industry_classification_system": "NIC_2008",
+    "industry_classification_version": "19201 (Refining of petroleum / Telecom / Retail)",
+    "parent_company_id": null,
+    "identity_verification_status": "VERIFIED_OFFICIAL",
+    "source_ids": [
+      "src_in_sebi_brsr"
+    ],
+    "last_verified_at": "2026-11-17T12:00:00Z",
+    "locations": [
+      {
+        "city": "Mumbai",
+        "state_or_region": "Maharashtra",
+        "country_code": "IN",
+        "location_type": "HEADQUARTERS"
+      }
+    ]
+  }
+]
