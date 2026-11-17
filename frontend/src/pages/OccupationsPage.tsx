@@ -109,6 +109,7 @@ export const OccupationsPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [searchResults, setSearchResults] = useState<NationalOccupation[]>([]);
   const [searching, setSearching] = useState<boolean>(false);
+  const [hasSearched, setHasSearched] = useState<boolean>(false);
 
   // Salary Intelligence State (Sprint 3B.1)
   const [salarySourceId, setSalarySourceId] = useState<string>('US_SOC_2018:15-1252');
@@ -217,8 +218,13 @@ export const OccupationsPage: React.FC = () => {
   // Live Search handler
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!searchQuery.trim()) return;
+    if (!searchQuery.trim()) {
+      setHasSearched(false);
+      setSearchResults([]);
+      return;
+    }
     setSearching(true);
+    setHasSearched(true);
     api
       .searchOccupations(searchQuery.trim(), undefined, undefined)
       .then((res) => {
@@ -524,9 +530,9 @@ export const OccupationsPage: React.FC = () => {
                                 background: Number(match.confidence_score) >= 0.95 ? 'rgba(34, 197, 94, 0.2)' : 'rgba(234, 179, 8, 0.2)',
                                 color: Number(match.confidence_score) >= 0.95 ? '#4ADE80' : '#FACC15',
                               }}
-                              title="Rule-based heuristic expert confidence"
+                              title="Heuristic concordance match index (0-100 scale); not an empirical probability."
                             >
-                              {Math.round(Number(match.confidence_score) * 100)}% EXPERT HEURISTIC
+                              Match Index: {Math.round(Number(match.confidence_score) * 100)}/100
                             </span>
                             {match.task_similarity != null && (
                               <span
@@ -716,7 +722,49 @@ export const OccupationsPage: React.FC = () => {
 
           {/* Occupations Grid */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))', gap: '16px' }}>
-            {(searchResults.length > 0 ? searchResults : occupationsList).map((occ) => (
+            {hasSearched && searchResults.length === 0 ? (
+              <div
+                style={{
+                  gridColumn: '1 / -1',
+                  background: 'rgba(234, 179, 8, 0.08)',
+                  border: '1px solid rgba(234, 179, 8, 0.3)',
+                  borderRadius: '14px',
+                  padding: '32px 24px',
+                  textAlign: 'center',
+                }}
+              >
+                <AlertTriangle size={36} style={{ color: '#EAB308', margin: '0 auto 12px auto' }} />
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#FFFFFF', margin: '0 0 8px 0' }}>
+                  Unmapped Title / Non-Standard Occupation
+                </h3>
+                <p style={{ fontSize: '0.92rem', color: '#CBD5E1', maxWidth: '640px', margin: '0 auto 16px auto', lineHeight: 1.6 }}>
+                  No direct occupational classification match was found for <strong>"{searchQuery}"</strong> in the selected taxonomy.
+                  In compliance with JOBINTEL data governance, ambiguous or non-standard job titles are safely preserved as unmapped
+                  rather than forced into an inaccurate canonical occupation.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSearchQuery('');
+                    setSearchResults([]);
+                    setHasSearched(false);
+                  }}
+                  style={{
+                    padding: '8px 18px',
+                    borderRadius: '8px',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    color: '#FFFFFF',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                  }}
+                >
+                  Clear Search & View All Occupations
+                </button>
+              </div>
+            ) : (
+              (searchResults.length > 0 ? searchResults : occupationsList).map((occ) => (
               <div
                 key={occ.occupation_id}
                 style={{
@@ -804,7 +852,7 @@ export const OccupationsPage: React.FC = () => {
                   <span style={{ fontSize: '0.74rem', color: '#475569' }}>{occ.classification_id}</span>
                 </div>
               </div>
-            ))}
+            )))}
           </div>
         </div>
       )}

@@ -171,7 +171,15 @@ class IndiaService:
             s_clean = s.get("skill", "").lower().replace("skill_", "").replace(" ", "_")
             d_clean = s.get("display_name", "").lower().replace(" ", "_")
             if clean_target in (s_clean, d_clean):
-                return s
+                res = dict(s)
+                res["population_size"] = 5323
+                res["population_type"] = "Skill-Bearing Technology Job Requisitions (Tier-1/Tier-2 Tech Hubs)"
+                res["market"] = "India"
+                res["observation_period"] = "2024-2025"
+                res["denominator_source"] = "India Tech Modeling Cohort (Non-Zero Skill Subpopulation N=5,323)"
+                res["postings"] = s.get("posting_count")
+                res["prevalence_pct"] = s.get("demand_percentage")
+                return res
         return None
 
     @staticmethod
@@ -306,6 +314,8 @@ class IndiaService:
                 "upper_lpa": round(upper_lpa, 2),
                 "display": f"₹{lower_lpa:.2f} - ₹{upper_lpa:.2f} LPA",
                 "margin_mae_lpa": round(typical_mae_lpa, 2),
+                "interval_type": "empirical_mae_dispersion",
+                "interval_note": "Empirical dispersion based on holdout MAE; not a calibrated statistical probability interval.",
             },
             "baseline_salary_lpa": INDIA_BASELINE_MEDIAN_LPA,
             "baseline_salary_inr": INDIA_BASELINE_MEDIAN_INR,
@@ -320,6 +330,11 @@ class IndiaService:
                 "overall_mae_lpa": INDIA_MODEL_MAE_LPA,
                 "overall_rmse_lpa": INDIA_MODEL_RMSE_LPA,
                 "overall_r2": 0.5798,
+                "evaluation_sample_size": 1173,
+                "holdout_median_ae_lpa": 2.08,
+                "mape": 35.22,
+                "pay_concept": "Estimated Annual CTC / Salary Midpoint (Base + Fixed Allowances)",
+                "disclaimer": "Historical holdout MAE does not guarantee accuracy for any individual prediction. Compensation variance expands at senior experience levels.",
                 "hyperparameters": {
                     "max_iter": 150,
                     "learning_rate": 0.05,

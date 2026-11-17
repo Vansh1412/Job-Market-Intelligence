@@ -106,3 +106,56 @@ class EmployerProfile(BaseModel):
         if self.verification_status == EmployerVerificationStatus.VERIFIED and self.verified_at is None:
             raise ValueError("verified employers require verified_at")
         return self
+
+
+class ResolutionMatchType(StrEnum):
+    EXACT_IDENTIFIER_MATCH = "EXACT_IDENTIFIER_MATCH"
+    STRONG_CANDIDATE_MATCH = "STRONG_CANDIDATE_MATCH"
+    AMBIGUOUS_CANDIDATE = "AMBIGUOUS_CANDIDATE"
+    NO_MATCH = "NO_MATCH"
+
+
+class EntityReviewStatus(StrEnum):
+    AUTOMATICALLY_RESOLVED = "AUTOMATICALLY_RESOLVED"
+    MANUAL_REVIEW_REQUIRED = "MANUAL_REVIEW_REQUIRED"
+    CONFIRMED_DISTINCT = "CONFIRMED_DISTINCT"
+    HUMAN_VERIFIED_MERGE = "HUMAN_VERIFIED_MERGE"
+
+
+class EntityMatchCandidate(BaseModel):
+    model_config = ConfigDict(frozen=True)
+
+    target_company_id: str
+    target_company_name: str
+    target_market_id: str
+    match_type: ResolutionMatchType
+    similarity_score: float = Field(ge=0.0, le=1.0)
+    shared_brand_detected: bool = False
+    is_subsidiary_relationship: bool = False
+    evidence_summary: str
+    review_status: EntityReviewStatus
+    requires_human_approval: bool = True
+
+
+class EmployerResolutionRequest(BaseModel):
+    model_config = ConfigDict(frozen=True)
+
+    candidate_name: str = Field(min_length=1, max_length=200)
+    market_id: str | None = Field(default=None, max_length=10)
+    statutory_identifier: str | None = Field(default=None, max_length=80)
+    statutory_authority: str | None = Field(default=None, max_length=80)
+
+
+class EmployerResolutionResponse(BaseModel):
+    model_config = ConfigDict(frozen=True)
+
+    query_name: str
+    query_market_id: str | None = None
+    resolution_match_type: ResolutionMatchType
+    resolved_company_id: str | None = None
+    review_status: EntityReviewStatus
+    candidates: tuple[EntityMatchCandidate, ...] = ()
+    governance_caveat: str = (
+        "JOBINTEL strict resolution policy: shared brand names and parent-subsidiary relationships "
+        "do not constitute proof of identical legal identity. Ambiguous candidates require manual review."
+    )

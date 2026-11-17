@@ -141,6 +141,10 @@ export interface SkillDetail {
   companions?: ({ skill: string; cooccurrences: number } | string)[];
   combos?: string[];
   cooccurring_skills?: string[];
+  population_size?: number;
+  population_type?: string;
+  observation_period?: string;
+  denominator_source?: string;
 }
 
 export interface ArchetypeItem {

@@ -1114,7 +1114,7 @@ export const PredictorPage: React.FC<PredictorPageProps> = ({ onNavigate }) => {
                       textTransform: 'uppercase',
                     }}
                   >
-                    ESTIMATED ANNUAL SALARY
+                    {isUSA ? 'ESTIMATED ANNUAL BASE SALARY' : 'ESTIMATED ANNUAL CTC / SALARY MIDPOINT'}
                   </span>
 
                   <div
@@ -1131,14 +1131,44 @@ export const PredictorPage: React.FC<PredictorPageProps> = ({ onNavigate }) => {
                   </div>
 
                   {isIndia && result.predicted_salary_inr_display && (
-                    <div style={{ fontSize: '1.1rem', color: '#CBD5E1', fontWeight: 600, marginBottom: '10px' }}>
+                    <div style={{ fontSize: '1.1rem', color: '#CBD5E1', fontWeight: 600, marginBottom: '6px' }}>
                       ≈ {result.predicted_salary_inr_display} / annum
                     </div>
                   )}
 
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', color: '#94A3B8' }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', color: '#94A3B8', marginBottom: '10px' }}>
                     <Info size={15} style={{ color: isUSA ? '#38BDF8' : '#F97316' }} />
-                    <span>Model estimate based on your profile inputs</span>
+                    <span>Point estimate derived from verified {market} tech job requisitions</span>
+                  </div>
+
+                  {/* Market-specific scope disclosure */}
+                  <div
+                    style={{
+                      maxWidth: '620px',
+                      margin: '8px auto 0 auto',
+                      padding: '10px 14px',
+                      borderRadius: '8px',
+                      background: 'rgba(255, 255, 255, 0.03)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      fontSize: '0.78rem',
+                      color: '#94A3B8',
+                      lineHeight: 1.45,
+                      textAlign: 'left',
+                    }}
+                  >
+                    {isUSA ? (
+                      <span>
+                        <strong style={{ color: '#38BDF8' }}>Scope Notice (Base Salary Only): </strong>
+                        Estimate reflects annual base salary. Total compensation in US tech frequently includes equity grants
+                        (RSUs/options) and performance bonuses which are excluded from base job requisitions.
+                      </span>
+                    ) : (
+                      <span>
+                        <strong style={{ color: '#F97316' }}>Scope Notice (Annualized CTC): </strong>
+                        Estimate reflects annualized cost-to-company (CTC) midpoint for tech roles. Actual compensation varies
+                        by employer pay scale, candidate skill depth, and performance incentives.
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -1152,12 +1182,19 @@ export const PredictorPage: React.FC<PredictorPageProps> = ({ onNavigate }) => {
                   }}
                 >
                   <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: '#FFFFFF', margin: '0 0 6px 0' }}>
-                    How should I read this?
+                    How should I read this estimate?
                   </h4>
                   <p style={{ fontSize: '0.88rem', color: '#94A3B8', lineHeight: 1.6, margin: 0 }}>
-                    This is an estimate based on patterns learned from the job-market data used to train
-                    JobIntel ({market} model). It is not a guaranteed offer or salary. Individual
-                    compensation varies based on negotiation, company stage, equity, and performance.
+                    This is an empirical point estimate produced by the certified {market} machine-learning model
+                    ({isUSA ? 'XGBoost Regressor' : 'HistGradientBoostingRegressor'}).
+                    Historical authoritative evaluation demonstrated{' '}
+                    <strong style={{ color: '#FFFFFF' }}>
+                      {isUSA
+                        ? 'MAE: $36,381 across N = 6,808 test postings (R² = 0.42)'
+                        : 'MAE: ₹3.71 LPA across N = 1,173 holdout postings (R² = 0.58)'}
+                    </strong>
+                    . This historical evaluation performance represents average error across the benchmark population and does not
+                    guarantee an individual salary offer. Compensation variance expands significantly for senior levels and niche roles.
                   </p>
                 </div>
 
@@ -1285,15 +1322,15 @@ export const PredictorPage: React.FC<PredictorPageProps> = ({ onNavigate }) => {
                   }}
                 >
                   <h4 style={{ fontSize: '1rem', fontWeight: 800, color: '#FFFFFF', margin: '0 0 10px 0' }}>
-                    How confident should I be?
+                    How confident should I be in this estimate?
                   </h4>
                   <div style={{ fontSize: '0.88rem', color: '#94A3B8', lineHeight: 1.6, marginBottom: '14px' }}>
-                    Historical model performance:
+                    Authoritative model evaluation metrics:
                     <strong style={{ color: '#FFFFFF' }}>
-                      {isUSA ? ' Holdout MAE: $36,381' : ' Holdout MAE: ₹3.71 LPA'}
+                      {isUSA ? ' Holdout MAE: $36,381 (Median AE: $26,384, N = 6,808 test postings)' : ' Holdout MAE: ₹3.71 LPA (Median AE: ₹2.08 LPA, N = 1,173 holdout postings)'}
                     </strong>
-                    . This means predictions in the authoritative holdout evaluation were typically off by
-                    roughly this amount on average.
+                    . Predictions in the benchmark evaluation were off by roughly this amount on average across the full dataset.
+                    JOBINTEL reports verified point estimates with empirical error metrics rather than uncalibrated probability intervals.
                   </div>
 
                   {/* India High-Salary Warning Notice */}

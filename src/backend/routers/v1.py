@@ -1,10 +1,17 @@
-from fastapi import APIRouter, HTTPException
+from typing import Annotated
+
+from fastapi import APIRouter, HTTPException, Query
 
 from src.backend.data_catalog.registry import get_source, get_sources
 from src.backend.employers.registry import get_employer, get_employers
+from src.backend.employers.resolver import EmployerEntityResolver
 from src.backend.markets.registry import get_market, get_markets
 from src.backend.schemas.data import DataSource
-from src.backend.schemas.employer import EmployerProfile
+from src.backend.schemas.employer import (
+    EmployerProfile,
+    EmployerResolutionRequest,
+    EmployerResolutionResponse,
+)
 from src.backend.schemas.market import MarketConfig
 
 
@@ -38,8 +45,20 @@ def retrieve_source(source_id: str) -> DataSource:
 
 
 @router.get("/employers", response_model=list[EmployerProfile])
-def list_employers() -> list[EmployerProfile]:
-    return get_employers()
+def list_employers(
+    limit: Annotated[int | None, Query(ge=1, le=50, description="Maximum employers to return")] = None,
+    offset: Annotated[int, Query(ge=0, description="Offset for pagination")] = 0,
+) -> list[EmployerProfile]:
+    all_emp = get_employers()
+    if limit is not None:
+        return all_emp[offset : offset + limit]
+    return all_emp
+
+
+@router.post("/employers/resolve", response_model=EmployerResolutionResponse)
+def resolve_employer_endpoint(request: EmployerResolutionRequest) -> EmployerResolutionResponse:
+    resolver = EmployerEntityResolver()
+    return resolver.resolve(request)
 
 
 @router.get("/employers/{company_id}", response_model=EmployerProfile)
