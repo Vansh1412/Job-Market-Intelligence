@@ -1,0 +1,23 @@
+{
+  "tested_at": "2026-11-18T15:16:14.660Z",
+  "frontend_url": "https://jobintel-staging.vercel.app/employers",
+  "backend_url": "https://jobintel-backend-staging.onrender.com",
+  "checks": {
+    "page_title": "JOBINTEL — Job Market Intelligence | Skills · Archetypes · Salaries · Machine Learning",
+    "has_employer_intelligence": true,
+    "has_entity_resolution_tab": true,
+    "has_registry_explorer_tab": true,
+    "screenshot_landing": "E:\\Job Market\\reports\\figures\\live_staging_verification\\01_live_employers_landing.png",
+    "has_atlassian": true,
+    "has_microsoft": true,
+    "has_arm": true,
+    "has_dbs": true,
+    "has_infosys": true,
+    "screenshot_registry": "E:\\Job Market\\reports\\figures\\live_staging_verification\\02_live_registry_explorer.png",
+    "screenshot_standards": "E:\\Job Market\\reports\\figures\\live_staging_verification\\03_live_statutory_standards.png",
+    "resolution_has_atlassian": true,
+    "resolution_has_match": true,
+    "screenshot_resolution": "E:\\Job Market\\reports\\figures\\live_staging_verification\\04_live_resolution_result.png"
+  },
+  "console_errors": []
+}
