@@ -120,6 +120,26 @@ def load_staging_seed(
     return EmployerRegistry(profiles)
 
 
+def _is_staging_environment(env: Optional[str] = None) -> bool:
+    """Determine whether the current process is running in the staging environment."""
+    if env is not None and str(env).strip().lower() == "staging":
+        return True
+    system_env = os.environ.get("JOBINTEL_ENV", "").strip().lower()
+    if system_env == "staging":
+        return True
+    # Render cloud service detection for staging backend
+    render_service = os.environ.get("RENDER_SERVICE_NAME", "").strip().lower()
+    render_host = os.environ.get("RENDER_EXTERNAL_HOSTNAME", "").strip().lower()
+    render_branch = os.environ.get("RENDER_GIT_BRANCH", "").strip()
+    if (
+        render_service == "jobintel-backend-staging"
+        or render_host == "jobintel-backend-staging.onrender.com"
+        or render_branch == "staging/sprint2c3"
+    ):
+        return True
+    return False
+
+
 def load_registry_for_environment(
     env: str | None,
     seed_path: Path | None = None,
@@ -127,13 +147,15 @@ def load_registry_for_environment(
 ) -> EmployerRegistry:
     """
     Explicit, deterministic factory for loading employer registries based on environment.
-    - None / empty: Fails closed with ValueError.
+    - None / empty: Fails closed with ValueError unless staging cloud container detected.
     - 'production': Returns an unseeded registry. Production must never load staging seeds.
     - 'test': Returns an empty registry by default, allowing explicit injection.
     - 'staging': Loads the certified staging seed with checksum verification.
     - Any other value: Fails closed with ValueError.
     """
     if env is None or not str(env).strip():
+        if _is_staging_environment():
+            return load_staging_seed(seed_path=seed_path, manifest_path=manifest_path)
         raise ValueError("Missing environment configuration: JOBINTEL_ENV must be set")
 
     normalized = str(env).strip().lower()
@@ -143,7 +165,7 @@ def load_registry_for_environment(
     elif normalized == "test":
         # Test environment initializes empty by default
         return EmployerRegistry(())
-    elif normalized == "staging":
+    elif normalized == "staging" or _is_staging_environment(normalized):
         return load_staging_seed(seed_path=seed_path, manifest_path=manifest_path)
     else:
         raise ValueError(
@@ -153,11 +175,10 @@ def load_registry_for_environment(
 
 def _load_initial_registry() -> EmployerRegistry:
     """
-    Bootstraps the module-level singleton based strictly on JOBINTEL_ENV.
+    Bootstraps the module-level singleton based strictly on environment.
     Zero runtime test-runner sniffing ('sys.modules').
     """
-    env = os.environ.get("JOBINTEL_ENV", "").strip().lower()
-    if env == "staging":
+    if _is_staging_environment():
         try:
             return load_staging_seed()
         except Exception as exc:
