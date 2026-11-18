@@ -1,0 +1,10 @@
+classification,gold_label,predicted_label,count,percentage,definition,wilson_95_ci
+True Positive (TP),Same Legal Entity,Matched Same Entity,31,31.00%,True duplicate or alias correctly resolved to same canonical entity,[22.37% - 40.85%]
+False Positive (FP),Different Legal Entity,Matched Same Entity,0,0.00%,Fatal False Merge: Distinct entities erroneously merged into one,[0.00% - 6.53%]
+True Negative (TN),Different Legal Entity,Kept Distinct,55,55.00%,Distinct entities correctly kept separate,[44.73% - 64.97%]
+False Negative (FN),Same Legal Entity,Kept Distinct,14,14.00%,Non-fatal Missed Link: True aliases not resolved automatically,[7.89% - 22.37%]
+Total Benchmark Pairs,All Pairs,All Predictions,100,100.00%,Total gold benchmark entity pair evaluations,[100.00% - 100.00%]
+Precision (PPV),TP / (TP + FP),N/A,31/31,100.00%,Pairwise precision on matched entities,[88.78% - 100.00%]
+Recall (Sensitivity),TP / (TP + FN),N/A,31/45,68.89%,Pairwise recall on actual duplicate entity pairs,[54.33% - 80.47%]
+False Merge Rate (FPR),FP / (FP + TN),N/A,0/55,0.00%,False merge rate across true negative pairs,[0.00% - 6.53%]
+Rule of Three Sample Requirement,-ln(0.05) / 0.001,N/A,3000,N/A,Minimum negative pairs required to claim error rate < 0.1% at 95% CI,N/A

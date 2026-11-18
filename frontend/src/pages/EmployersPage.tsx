@@ -1102,6 +1102,16 @@ export const EmployersPage: React.FC = () => {
                             {emp.industry}
                           </span>
                         )}
+                        {emp.statutory_identifier && (
+                          <span style={{ fontSize: '0.75rem', color: '#38BDF8', background: 'rgba(56, 189, 248, 0.1)', padding: '2px 8px', borderRadius: '4px', fontFamily: 'monospace' }}>
+                            {emp.statutory_authority || 'ID'}: {emp.statutory_identifier}
+                          </span>
+                        )}
+                        {(emp.headcount_band || emp.headcount_value) && (
+                          <span style={{ fontSize: '0.75rem', color: '#34D399', background: 'rgba(52, 211, 153, 0.1)', padding: '2px 8px', borderRadius: '4px' }}>
+                            Workforce: {emp.headcount_band || emp.headcount_value?.toLocaleString()}
+                          </span>
+                        )}
                       </div>
                     </div>
 

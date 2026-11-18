@@ -1,0 +1,40 @@
+{
+  "routeResults": {
+    "/": {
+      "status": "PASS",
+      "title": "JOBINTEL — Job Market Intelligence | Skills · Archetypes · Salaries · Machine Learning"
+    },
+    "/employers": {
+      "status": "PASS"
+    },
+    "/predictor": {
+      "status": "FAIL"
+    },
+    "/skills": {
+      "status": "PASS"
+    },
+    "/occupations": {
+      "status": "PASS"
+    },
+    "/demand": {
+      "status": "PASS"
+    },
+    "/market-explorer": {
+      "status": "PASS"
+    }
+  },
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Failed to load resource: the server responded with a status of 404 ()"
+  ],
+  "networkErrors": [
+    {
+      "url": "https://jobintel-backend-staging.onrender.com/v1/employers?limit=10&offset=0",
+      "status": 404
+    },
+    {
+      "url": "https://jobintel-backend-staging.onrender.com/v1/employers/resolve",
+      "status": 404
+    }
+  ]
+}

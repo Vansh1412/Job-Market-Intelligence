@@ -1,0 +1,21 @@
+test_case_id,target_skill,input_text,is_technical_skill,expected_extraction,contextual_guard_result,outcome,status
+SK-001,Go,"We need a Go developer with 4 years experience",TRUE,["Go"],Extracted via 'Go developer',PASS,CONFIRMED
+SK-002,Go,"Let us go to the market tomorrow",FALSE,[],Rejected colloquial verb 'go',PASS,CONFIRMED
+SK-003,Go,"Looking for Golang software engineers",TRUE,["Go"],Extracted canonical 'Go' from 'Golang',PASS,CONFIRMED
+SK-004,C,"Proficient in C programming and embedded systems",TRUE,["C"],Extracted via 'C programming',PASS,CONFIRMED
+SK-005,C,"Applicants must possess a valid Class C driver license",FALSE,[],Rejected license classification 'Class C',PASS,CONFIRMED
+SK-006,C,"Expertise in C++ and C# required",TRUE,["C++","C#"],Extracted multi-character variants accurately,PASS,CONFIRMED
+SK-007,R,"Data scientist skilled in R programming and statistical modeling",TRUE,["R"],Extracted via 'R programming',PASS,CONFIRMED
+SK-008,R,"Please see Section R of the employee handbook",FALSE,[],Rejected regulatory section marker 'Section R',PASS,CONFIRMED
+SK-009,R,"Candidates should know Python and R for data science",TRUE,["Python","R"],Extracted via 'Python and R' co-occurrence,PASS,CONFIRMED
+SK-010,SQL,"Must write complex SQL queries and stored procedures",TRUE,["SQL"],Extracted technical keyword 'SQL',PASS,CONFIRMED
+SK-011,SQL,"NoSQL database experience with MongoDB or Cassandra",TRUE,["NoSQL","MongoDB","Cassandra"],Extracted distinct NoSQL technologies,PASS,CONFIRMED
+SK-012,AWS,"Architect cloud workloads on AWS cloud platform",TRUE,["AWS"],Extracted cloud platform 'AWS',PASS,CONFIRMED
+SK-013,AWS,"Candidate must pass drug test as well as background check",FALSE,[],Rejected substring overlap 'as well as' (AWS),PASS,CONFIRMED
+SK-014,ML,"Senior ML engineer building LLM applications",TRUE,["ML"],Extracted tech abbreviation 'ML engineer',PASS,CONFIRMED
+SK-015,ML,"Apply 50 ml of solution during manufacturing",FALSE,[],Rejected metric volume unit 'ml',PASS,CONFIRMED
+SK-016,AI,"Deploying AI models to production environments",TRUE,["AI"],Extracted tech acronym 'AI models',PASS,CONFIRMED
+SK-017,AI,"Ai Weiwei modern art museum design curator",FALSE,[],Rejected proper name 'Ai',PASS,CONFIRMED
+SK-018,Java,"Core Java backend development with Spring Boot",TRUE,["Java","Spring Boot"],Extracted language and framework,PASS,CONFIRMED
+SK-019,Java,"Travel to Java island for offshore customer site audit",FALSE,[],Rejected geographic location 'Java island',PASS,CONFIRMED
+SK-020,Docker,"Container orchestration using Docker and Kubernetes",TRUE,["Docker","Kubernetes"],Extracted devops tools,PASS,CONFIRMED

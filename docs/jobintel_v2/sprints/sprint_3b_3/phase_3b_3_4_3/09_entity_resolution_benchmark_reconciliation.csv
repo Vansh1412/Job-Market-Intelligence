@@ -1,0 +1,14 @@
+metric_name,gold_truth_count,resolver_v1_count,resolver_v2_hardened,reproduced_value,wilson_95_ci,status,definition_and_formula
+total_benchmark_pairs,100,100,100,100,[100.0% - 100.0%],REPRODUCED,Total gold benchmark entity pair evaluations (N = 100)
+actual_positive_pairs (MATCH),45,45,45,45,[35.6% - 54.8%],REPRODUCED,Actual duplicate or alias pairs in gold truth (TP + FN)
+actual_negative_pairs (DISTINCT),55,55,55,55,[45.2% - 64.4%],REPRODUCED,Actual distinct corporate entity pairs in gold truth (TN + FP)
+true_positives_tp,45,39,31,31,[22.37% - 40.85%],REPRODUCED,Correctly resolved matching entity pairs (auto-merged with valid statutory ID)
+false_positives_fp (False Merges),0,3,0,0,[0.00% - 6.53%],REPRODUCED,Fatal False Merge: Distinct legal entities erroneously merged (0 in V2!)
+true_negatives_tn,55,52,55,55,[44.73% - 64.97%],REPRODUCED,Distinct entities correctly kept separate or routed to manual review
+false_negatives_fn (False Splits),0,6,14,14,[7.89% - 22.37%],REPRODUCED,Non-fatal Missed Link: True matches routed to manual review due to missing statutory ID
+precision_ppv,1.0000,0.9286,1.0000,1.0000 (100.0%),[88.78% - 100.0%],REPRODUCED,TP / (TP + FP) = 31 / (31 + 0)
+recall_sensitivity,1.0000,0.8667,0.6889,0.6889 (68.89%),[54.33% - 80.47%],REPRODUCED,TP / (TP + FN) = 31 / (31 + 14)
+specificity,1.0000,0.9455,1.0000,1.0000 (100.0%),[93.47% - 100.0%],REPRODUCED,TN / (TN + FP) = 55 / (55 + 0)
+false_positive_rate_fpr,0.0000,0.0545,0.0000,0.0000 (0.00%),[0.00% - 6.53%],REPRODUCED,FP / (TN + FP) = 0 / 55 (Type I error rate)
+f1_score,1.0000,0.8966,0.8158,0.8158,N/A,REPRODUCED,2 * (Precision * Recall) / (Precision + Recall)
+rule_of_three_sample_requirement,N/A,N/A,3000,2996,N/A,REPRODUCED,-ln(0.05) / 0.001: Minimum negative trials needed to bound FPR < 0.1% at 95% CI

@@ -1,0 +1,12 @@
+model_id,market,target_variable,metric_name,reported_value_sprint3b3_2_2,verified_artifact_value,unit,sample_size,holdout_type,verification_status,divergence_or_alignment_notes
+MOD_IN_SALARY_HGBR,IN,salary_midpoint_inr,MAE,371472.71,371472.71,INR,1173,Stratified Holdout (20%),EXACT_MATCH,Verified against models/india/final_evaluation.json test_mae_inr
+MOD_IN_SALARY_HGBR,IN,salary_midpoint_inr,MAE (LPA),3.71,3.7147,LPA,1173,Stratified Holdout (20%),EXACT_MATCH,₹3.7147 LPA rounded to 2 decimal places in UI display
+MOD_IN_SALARY_HGBR,IN,salary_midpoint_inr,RMSE (LPA),6.22,6.2188,LPA,1173,Stratified Holdout (20%),EXACT_MATCH,₹6.2188 LPA rounded to 2 decimal places in UI display
+MOD_IN_SALARY_HGBR,IN,salary_midpoint_inr,R_Squared,0.5798,0.5798,score,1173,Stratified Holdout (20%),EXACT_MATCH,Verified against models/india/final_evaluation.json test_r2
+MOD_IN_SALARY_HGBR,IN,salary_midpoint_inr,Median_AE (LPA),2.08,2.0770,LPA,1173,Stratified Holdout (20%),EXACT_MATCH,₹2.0770 LPA (robust error indicator)
+MOD_IN_SALARY_HGBR,IN,salary_midpoint_inr,MAPE,35.22,35.22,percent,1173,Stratified Holdout (20%),EXACT_MATCH,Verified against models/india/final_evaluation.json test_mape
+MOD_IN_SALARY_HGBR,IN,salary_midpoint_inr,MAE_Improvement_vs_Dummy,51.92,51.92,percent,1173,Stratified Holdout (20%),EXACT_MATCH,Baseline dummy MAE ₹7.73 LPA reduced to ₹3.71 LPA (51.92% gain)
+MOD_US_SALARY_XGB,US,salary_midpoint,MAE,36380.64,36380.64,USD,6808,Random Test Split (20%),EXACT_MATCH,Verified against models/phase5/model_metrics.json test_mae
+MOD_US_SALARY_XGB,US,salary_midpoint,RMSE,51082.06,51082.06,USD,6808,Random Test Split (20%),EXACT_MATCH,Verified against models/phase5/model_metrics.json test_rmse
+MOD_US_SALARY_XGB,US,salary_midpoint,R_Squared,0.4233,0.4233,score,6808,Random Test Split (20%),EXACT_MATCH,Verified against models/phase5/model_metrics.json test_r2
+MOD_US_SALARY_XGB,US,salary_midpoint,MAPE,21.71,21.71,percent,6808,Random Test Split (20%),EXACT_MATCH,Verified against models/phase5/model_metrics.json test_mape

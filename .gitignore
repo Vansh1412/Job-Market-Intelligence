@@ -3,6 +3,7 @@ data/raw/
 data/processed/
 *.parquet
 *.csv
+!docs/**/*.csv
 # Whitelist verified aggregate research tables (zero row-level data)
 !reports/tables/phase3/dataset_selection_funnel.csv
 !reports/tables/phase3/salary_summary.csv
@@ -75,6 +76,7 @@ wheels/
 !.env.example
 
 # IDE and OS
+node_modules/
 .vscode/
 .idea/
 *.swp

@@ -188,6 +188,19 @@ def parse_statutory_token(
     return None
 
 
+def markets_compatible(m1: str | None, m2: str | None) -> bool:
+    if not m1 or not m2:
+        return True
+    u1 = m1.upper().strip()
+    u2 = m2.upper().strip()
+    if u1 == u2:
+        return True
+    # UK platform market vs GB ISO-3166-1 alpha-2 equivalence
+    if (u1 in ("UK", "GB")) and (u2 in ("UK", "GB")):
+        return True
+    return False
+
+
 class EmployerEntityResolver:
     """
     Evidence-grounded, hardened corporate entity resolver for JOBINTEL 2.0.
@@ -249,7 +262,7 @@ class EmployerEntityResolver:
             similarity = SequenceMatcher(None, cand_name_norm, emp_name_norm).ratio()
             brand_sim = SequenceMatcher(None, cand_brand, emp_brand).ratio() if (cand_brand and emp_brand) else 0.0
             has_shared_brand = bool(cand_brand and emp_brand and (cand_brand == emp_brand or brand_sim >= 0.85))
-            is_cross_market = bool(cand_market and emp_market and cand_market != emp_market)
+            is_cross_market = bool(cand_market and emp_market and not markets_compatible(cand_market, emp_market))
 
             # Check subsidiary markers in both candidate and target symmetrically
             cand_tokens = set(cand_name_norm.split())
@@ -264,23 +277,37 @@ class EmployerEntityResolver:
                 cand_auth_family, cand_token = cand_stat_parsed
 
                 # If statutory authority jurisdiction was specified, it must match emp_market
-                if authority_jurisdiction and authority_jurisdiction != emp_market:
+                if authority_jurisdiction and not markets_compatible(authority_jurisdiction, emp_market):
                     stat_match = False
-                elif cand_market and cand_market != emp_market:
+                elif cand_market and not markets_compatible(cand_market, emp_market):
                     # Cross-jurisdiction identifier match requires manual review
                     stat_match = False
                 else:
-                    for src in emp.source_references:
+                    # Primary check: First-class statutory_identifier on EmployerProfile
+                    if getattr(emp, "statutory_identifier", None):
                         ref_parsed = parse_statutory_token(
-                            str(src.source_reference),
-                            authority_hint=src.source_organization,
+                            emp.statutory_identifier,
+                            authority_hint=getattr(emp, "statutory_authority", None) or emp_market,
                             market_hint=emp_market,
                         )
                         if ref_parsed:
                             ref_auth_family, ref_token = ref_parsed
                             if cand_token == ref_token and (cand_auth_family == "GENERIC" or cand_auth_family == ref_auth_family):
                                 stat_match = True
-                                break
+
+                    # Secondary fallback: parse statutory token from source_references URLs
+                    if not stat_match:
+                        for src in emp.source_references:
+                            ref_parsed = parse_statutory_token(
+                                str(src.source_reference),
+                                authority_hint=src.source_organization,
+                                market_hint=emp_market,
+                            )
+                            if ref_parsed:
+                                ref_auth_family, ref_token = ref_parsed
+                                if cand_token == ref_token and (cand_auth_family == "GENERIC" or cand_auth_family == ref_auth_family):
+                                    stat_match = True
+                                    break
 
             if stat_match:
                 statutory_matches.append((emp, similarity, subsidiary_indicated))

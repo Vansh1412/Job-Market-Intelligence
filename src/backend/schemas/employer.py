@@ -82,6 +82,21 @@ class EmployerProfile(BaseModel):
     verified_at: datetime | None = None
     locations: tuple[EmployerLocation, ...] = ()
 
+    # First-class corporate identity & statutory governance fields (Sprint 3B.3.3.4.6)
+    statutory_identifier: str | None = Field(default=None, max_length=80)
+    statutory_authority: str | None = Field(default=None, max_length=80)
+    jurisdiction: str | None = Field(default=None, max_length=80)
+    platform_market: str | None = Field(default=None, max_length=10)
+    headquarters_country_code: str | None = Field(default=None, pattern=r"^[A-Z]{2}$")
+    headcount_value: int | None = Field(default=None, ge=1)
+    headcount_band: str | None = Field(default=None, max_length=80)
+    headcount_basis: str | None = Field(default=None, max_length=120)
+    headcount_scope: str | None = Field(default=None, max_length=80)
+    observation_date: str | None = Field(default=None, max_length=40)
+    source_license: str | None = Field(default=None, max_length=120)
+    attribution_requirement: str | None = Field(default=None, max_length=200)
+    publication_status: str | None = Field(default="APPROVED", max_length=40)
+
     @field_validator("operating_markets")
     @classmethod
     def operating_markets_are_unique(cls, value: tuple[MarketId, ...]) -> tuple[MarketId, ...]:

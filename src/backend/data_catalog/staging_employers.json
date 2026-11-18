@@ -1,0 +1,267 @@
+[
+  {
+    "attribution_requirement": "Source: Australian Business Register / WGEA, licensed under CC BY 4.0",
+    "company_category": "OTHER_INTERNATIONAL",
+    "company_id": "comp_au_atlassian",
+    "company_name": "Atlassian Pty Ltd",
+    "headcount_band": "1,000 to 4,999",
+    "headcount_basis": "WGEA Size Band (1,000 to 4,999)",
+    "headcount_scope": "DOMESTIC_OPERATING_BAND",
+    "headcount_value": null,
+    "headquarters_country": "AU",
+    "headquarters_country_code": "AU",
+    "industry": "Software & Cloud Collaboration Tools",
+    "jurisdiction": "Australia",
+    "locations": [
+      {
+        "city": "Sydney",
+        "country_code": "AU",
+        "location_type": "HEADQUARTERS",
+        "state_or_region": "New South Wales",
+        "verification_source": {
+          "collected_at": "2026-11-18T00:00:00Z",
+          "source_name": "ASIC Registered Entity Record",
+          "source_organization": "ASIC",
+          "source_reference": "https://abr.business.gov.au/ABN/View?id=53102443916"
+        },
+        "verification_status": "VERIFIED",
+        "verified_at": "2026-11-18T00:00:00Z"
+      }
+    ],
+    "observation_date": "2024",
+    "official_website": "https://www.atlassian.com/",
+    "operating_markets": [
+      "AU",
+      "US",
+      "IN"
+    ],
+    "platform_market": "AU",
+    "publication_status": "APPROVED",
+    "source_license": "CC-BY 4.0 (Australian Government)",
+    "source_references": [
+      {
+        "collected_at": "2026-11-18T00:00:00Z",
+        "source_name": "Australian Business Register",
+        "source_organization": "Australian Taxation Office",
+        "source_reference": "https://abr.business.gov.au/ABN/View?id=53102443916"
+      }
+    ],
+    "statutory_authority": "ASIC",
+    "statutory_identifier": "53102443916",
+    "verification_status": "VERIFIED",
+    "verified_at": "2026-11-18T00:00:00Z"
+  },
+  {
+    "attribution_requirement": "Source: U.S. Securities and Exchange Commission Form 10-K",
+    "company_category": "OTHER_INTERNATIONAL",
+    "company_id": "comp_us_microsoft",
+    "company_name": "Microsoft Corporation",
+    "headcount_band": null,
+    "headcount_basis": "SEC Form 10-K Consolidated Full-Time Employees",
+    "headcount_scope": "GLOBAL_CONSOLIDATED",
+    "headcount_value": 228000,
+    "headquarters_country": "US",
+    "headquarters_country_code": "US",
+    "industry": "Cloud Computing, Enterprise Software & Hardware",
+    "jurisdiction": "United States",
+    "locations": [
+      {
+        "city": "Redmond",
+        "country_code": "US",
+        "location_type": "HEADQUARTERS",
+        "state_or_region": "Washington",
+        "verification_source": {
+          "collected_at": "2026-11-18T00:00:00Z",
+          "source_name": "SEC Form 10-K Filing",
+          "source_organization": "U.S. Securities and Exchange Commission",
+          "source_reference": "https://www.sec.gov/edgar/browse/?CIK=0000789019"
+        },
+        "verification_status": "VERIFIED",
+        "verified_at": "2026-11-18T00:00:00Z"
+      }
+    ],
+    "observation_date": "2024-06-30",
+    "official_website": "https://www.microsoft.com/",
+    "operating_markets": [
+      "US",
+      "UK",
+      "IN",
+      "AU",
+      "SG"
+    ],
+    "platform_market": "US",
+    "publication_status": "APPROVED",
+    "source_license": "Public Domain (17 U.S.C. 105)",
+    "source_references": [
+      {
+        "collected_at": "2026-11-18T00:00:00Z",
+        "source_name": "SEC EDGAR",
+        "source_organization": "U.S. Securities and Exchange Commission",
+        "source_reference": "https://www.sec.gov/edgar/browse/?CIK=0000789019"
+      }
+    ],
+    "statutory_authority": "U.S. SEC",
+    "statutory_identifier": "0000789019",
+    "verification_status": "VERIFIED",
+    "verified_at": "2026-11-18T00:00:00Z"
+  },
+  {
+    "attribution_requirement": "Contains public sector information licensed under the Open Government Licence v3.0",
+    "company_category": "OTHER_INTERNATIONAL",
+    "company_id": "comp_uk_arm",
+    "company_name": "Arm Limited",
+    "headcount_band": "1,000 to 4,999",
+    "headcount_basis": "UK Gender Pay Gap Reporting Band",
+    "headcount_scope": "UK_OPERATING_BAND",
+    "headcount_value": null,
+    "headquarters_country": "UK",
+    "headquarters_country_code": "GB",
+    "industry": "Semiconductor IP & Processor Architecture",
+    "jurisdiction": "United Kingdom",
+    "locations": [
+      {
+        "city": "Cambridge",
+        "country_code": "GB",
+        "location_type": "HEADQUARTERS",
+        "state_or_region": "Cambridgeshire",
+        "verification_source": {
+          "collected_at": "2026-11-18T00:00:00Z",
+          "source_name": "Companies House Certificate of Incorporation",
+          "source_organization": "Companies House (UK)",
+          "source_reference": "https://find-and-update.company-information.service.gov.uk/company/02557590"
+        },
+        "verification_status": "VERIFIED",
+        "verified_at": "2026-11-18T00:00:00Z"
+      }
+    ],
+    "observation_date": "2024-04-05",
+    "official_website": "https://www.arm.com/",
+    "operating_markets": [
+      "UK",
+      "US",
+      "IN"
+    ],
+    "platform_market": "UK",
+    "publication_status": "APPROVED",
+    "source_license": "Open Government Licence v3.0",
+    "source_references": [
+      {
+        "collected_at": "2026-11-18T00:00:00Z",
+        "source_name": "Companies House (UK)",
+        "source_organization": "UK Department for Business and Trade",
+        "source_reference": "https://find-and-update.company-information.service.gov.uk/company/02557590"
+      }
+    ],
+    "statutory_authority": "Companies House",
+    "statutory_identifier": "02557590",
+    "verification_status": "VERIFIED",
+    "verified_at": "2026-11-18T00:00:00Z"
+  },
+  {
+    "attribution_requirement": "Source: ACRA Bizfile / DBS Annual Disclosures under Singapore Open Data Licence",
+    "company_category": "OTHER_INTERNATIONAL",
+    "company_id": "comp_sg_dbs",
+    "company_name": "DBS Bank Ltd.",
+    "headcount_band": null,
+    "headcount_basis": "Disclosed Operating Workforce",
+    "headcount_scope": "GROUP_OPERATING_TOTAL",
+    "headcount_value": 36000,
+    "headquarters_country": "SG",
+    "headquarters_country_code": "SG",
+    "industry": "Financial Services & Commercial Banking",
+    "jurisdiction": "Singapore",
+    "locations": [
+      {
+        "city": "Singapore",
+        "country_code": "SG",
+        "location_type": "HEADQUARTERS",
+        "state_or_region": "Marina Bay Financial Centre",
+        "verification_source": {
+          "collected_at": "2026-11-18T00:00:00Z",
+          "source_name": "ACRA Business Register",
+          "source_organization": "ACRA",
+          "source_reference": "https://www.tis.bizfile.gov.sg/uen/196800306E"
+        },
+        "verification_status": "VERIFIED",
+        "verified_at": "2026-11-18T00:00:00Z"
+      }
+    ],
+    "observation_date": "2023-12-31",
+    "official_website": "https://www.dbs.com/",
+    "operating_markets": [
+      "SG",
+      "IN",
+      "AU",
+      "UK"
+    ],
+    "platform_market": "SG",
+    "publication_status": "APPROVED",
+    "source_license": "Singapore Open Data Licence",
+    "source_references": [
+      {
+        "collected_at": "2026-11-18T00:00:00Z",
+        "source_name": "ACRA Bizfile",
+        "source_organization": "Accounting and Corporate Regulatory Authority Singapore",
+        "source_reference": "https://www.tis.bizfile.gov.sg/uen/196800306E"
+      }
+    ],
+    "statutory_authority": "ACRA",
+    "statutory_identifier": "196800306E",
+    "verification_status": "VERIFIED",
+    "verified_at": "2026-11-18T00:00:00Z"
+  },
+  {
+    "attribution_requirement": "Source: Ministry of Corporate Affairs / SEBI BRSR Annual Regulatory Filings",
+    "company_category": "INDIAN_HEADQUARTERED",
+    "company_id": "comp_in_infosys",
+    "company_name": "Infosys Limited",
+    "headcount_band": null,
+    "headcount_basis": "SEBI BRSR Audited Total",
+    "headcount_scope": "GLOBAL_AUDITED_TOTAL",
+    "headcount_value": 317240,
+    "headquarters_country": "IN",
+    "headquarters_country_code": "IN",
+    "industry": "IT Services, Consulting & Business Solutions",
+    "jurisdiction": "India",
+    "locations": [
+      {
+        "city": "Bengaluru",
+        "country_code": "IN",
+        "location_type": "HEADQUARTERS",
+        "state_or_region": "Karnataka",
+        "verification_source": {
+          "collected_at": "2026-11-18T00:00:00Z",
+          "source_name": "MCA Master Data",
+          "source_organization": "Ministry of Corporate Affairs",
+          "source_reference": "https://www.mca.gov.in/mcafoportal/companyLLPMasterData.do?cin=L85110KA1981PLC013115"
+        },
+        "verification_status": "VERIFIED",
+        "verified_at": "2026-11-18T00:00:00Z"
+      }
+    ],
+    "observation_date": "2024-03-31",
+    "official_website": "https://www.infosys.com/",
+    "operating_markets": [
+      "IN",
+      "US",
+      "UK",
+      "AU",
+      "SG"
+    ],
+    "platform_market": "IN",
+    "publication_status": "APPROVED",
+    "source_license": "Statutory Public Regulatory Disclosure",
+    "source_references": [
+      {
+        "collected_at": "2026-11-18T00:00:00Z",
+        "source_name": "Ministry of Corporate Affairs",
+        "source_organization": "Ministry of Corporate Affairs India",
+        "source_reference": "https://www.mca.gov.in/mcafoportal/companyLLPMasterData.do?cin=L85110KA1981PLC013115"
+      }
+    ],
+    "statutory_authority": "MCA",
+    "statutory_identifier": "L85110KA1981PLC013115",
+    "verification_status": "VERIFIED",
+    "verified_at": "2026-11-18T00:00:00Z"
+  }
+]

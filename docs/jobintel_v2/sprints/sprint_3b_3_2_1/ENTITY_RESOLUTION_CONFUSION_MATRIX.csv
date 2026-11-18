@@ -1,0 +1,18 @@
+metric_name,resolver_v1,resolver_v2,definition_and_formula
+total_pairs,100,100,Total benchmark pairs evaluated (N)
+true_positive_pairs,45,45,Actual matching pairs in gold truth (TP + FN)
+true_negative_pairs,55,55,Actual distinct pairs in gold truth (FP + TN)
+positive_predictions,42,31,Pairs predicted as MATCH (TP + FP)
+negative_predictions,58,69,Pairs predicted as DISTINCT (TN + FN)
+true_positives_tp,39,31,Correctly identified matches
+false_positives_fp,3,0,False merges (distinct entities merged)
+true_negatives_tn,52,55,Correctly separated distinct entities
+false_negatives_fn,6,14,False splits (same entity separated)
+precision,0.9286,1.0000,TP / (TP + FP) - Positive predictive value
+recall_sensitivity,0.8667,0.6889,TP / (TP + fn) - True positive rate
+specificity,0.9455,1.0000,TN / (TN + FP) - True negative rate
+false_positive_rate_fpr,0.0545,0.0000,FP / (TN + FP) - Pairwise False Merge Rate (Type I error)
+false_discovery_rate_fdr,0.0714,0.0000,FP / (TP + FP) - Proportion of false positives among matches
+f1_score,0.8966,0.8158,2 * (Precision * Recall) / (Precision + Recall)
+wilson_95ci_lower,0.0187,0.0000,Wilson score 95% lower confidence bound on FPR
+wilson_95ci_upper,0.1485,0.0653,Wilson score 95% upper confidence bound on FPR

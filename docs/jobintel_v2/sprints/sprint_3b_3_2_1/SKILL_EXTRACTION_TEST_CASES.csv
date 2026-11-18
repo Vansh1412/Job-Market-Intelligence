@@ -1,0 +1,21 @@
+token,phrase_text,case_type,expected_detection,raw_regex_detection,context_filter_detection,test_result
+Go,Seeking a Backend Engineer proficient in Go (Golang) and microservices.,TECHNICAL,True,True,True,PASS
+Go,Must be ready to go to market with the sales leadership team.,COLLOQUIAL,False,False,False,PASS
+Go,"Experience with Go goroutines, channels, and Docker.",TECHNICAL,True,True,True,PASS
+Go,A go-getter personality who can drive initiatives.,COLLOQUIAL,False,False,False,PASS
+C,Embedded firmware developer required with strong C and C++ skills.,TECHNICAL,True,True,True,PASS
+C,Company recently closed Series C funding round in New York.,COLLOQUIAL,False,True,False,PASS
+C,Kernel programming in C with memory management.,TECHNICAL,True,True,True,PASS
+C,Grade C certification or equivalent required.,COLLOQUIAL,False,True,False,PASS
+R,"Biostatistician skilled in R programming, ggplot2, and SAS.",TECHNICAL,True,True,True,PASS
+R,Candidates must have an R&D mindset for creative discovery.,COLLOQUIAL,False,True,False,PASS
+R,Statistical modeling and hypothesis testing using R.,TECHNICAL,True,True,True,PASS
+R,Section R of the employee handbook applies.,COLLOQUIAL,False,True,False,PASS
+SQL,Write complex SQL queries and optimize PostgreSQL indexes.,TECHNICAL,True,True,True,PASS
+SQL,High SQ/L ratio observed in quarterly metrics.,COLLOQUIAL,False,False,False,PASS
+AWS,"Cloud architect certified in AWS (EC2, S3, IAM, Lambda).",TECHNICAL,True,True,True,PASS
+AWS,A.W.S. company internal code reference.,COLLOQUIAL,False,False,False,PASS
+ML,Build and deploy production ML models using Scikit-Learn.,TECHNICAL,True,True,True,PASS
+ML,Administer 50 ml liquid dosage in testing.,COLLOQUIAL,False,False,False,PASS
+AI,Research Scientist specializing in Generative AI and LLMs.,TECHNICAL,True,True,True,PASS
+AI,In ai-r conditioned corporate office environment.,COLLOQUIAL,False,False,False,PASS

@@ -1,0 +1,6 @@
+id,name,statutory_identifier,statutory_authority,jurisdiction,platform_market,headquarters_country_code,sector,headcount_value,headcount_band,headcount_basis,headcount_scope,observation_date,source_license,publication_status
+comp_au_atlassian,Atlassian Pty Ltd,53102443916,ASIC,Australia,AU,AU,Software & Cloud Collaboration Tools,,1000 to 4999,WGEA Size Band (1000 to 4999),DOMESTIC_OPERATING_BAND,2024,CC-BY 4.0 (Australian Government),APPROVED
+comp_us_microsoft,Microsoft Corporation,0000789019,U.S. SEC,United States,US,US,Cloud Computing Enterprise Software & Hardware,228000,,SEC Form 10-K Consolidated Full-Time Employees,GLOBAL_CONSOLIDATED,2024-06-30,Public Domain (17 U.S.C. 105),APPROVED
+comp_uk_arm,Arm Limited,02557590,Companies House,United Kingdom,UK,GB,Semiconductor IP & Processor Architecture,,1000 to 4999,UK Gender Pay Gap Reporting Band,UK_OPERATING_BAND,2024-04-05,Open Government Licence v3.0,APPROVED
+comp_sg_dbs,DBS Bank Ltd.,196800306E,ACRA,Singapore,SG,SG,Financial Services & Commercial Banking,36000,,Disclosed Operating Workforce,GROUP_OPERATING_TOTAL,2023-12-31,Singapore Open Data Licence,APPROVED
+comp_in_infosys,Infosys Limited,L85110KA1981PLC013115,MCA,India,IN,IN,IT Services Consulting & Business Solutions,317240,,SEBI BRSR Audited Total,GLOBAL_AUDITED_TOTAL,2024-03-31,Statutory Public Regulatory Disclosure,APPROVED

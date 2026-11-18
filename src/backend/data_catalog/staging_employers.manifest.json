@@ -1,0 +1,57 @@
+{
+  "created_at": "2026-11-18T00:00:00+00:00",
+  "environment": "staging",
+  "evidence_references": [
+    {
+      "company_id": "comp_au_atlassian",
+      "source_name": "Australian Business Register",
+      "source_organization": "Australian Taxation Office",
+      "source_reference": "https://abr.business.gov.au/ABN/View?id=53102443916",
+      "statutory_authority": "ASIC",
+      "statutory_id": "53102443916"
+    },
+    {
+      "company_id": "comp_us_microsoft",
+      "source_name": "SEC EDGAR",
+      "source_organization": "U.S. Securities and Exchange Commission",
+      "source_reference": "https://www.sec.gov/edgar/browse/?CIK=0000789019",
+      "statutory_authority": "U.S. SEC",
+      "statutory_id": "0000789019"
+    },
+    {
+      "company_id": "comp_uk_arm",
+      "source_name": "Companies House (UK)",
+      "source_organization": "UK Department for Business and Trade",
+      "source_reference": "https://find-and-update.company-information.service.gov.uk/company/02557590",
+      "statutory_authority": "Companies House",
+      "statutory_id": "02557590"
+    },
+    {
+      "company_id": "comp_sg_dbs",
+      "source_name": "ACRA Bizfile",
+      "source_organization": "Accounting and Corporate Regulatory Authority Singapore",
+      "source_reference": "https://www.tis.bizfile.gov.sg/uen/196800306E",
+      "statutory_authority": "ACRA",
+      "statutory_id": "196800306E"
+    },
+    {
+      "company_id": "comp_in_infosys",
+      "source_name": "Ministry of Corporate Affairs",
+      "source_organization": "Ministry of Corporate Affairs India",
+      "source_reference": "https://www.mca.gov.in/mcafoportal/companyLLPMasterData.do?cin=L85110KA1981PLC013115",
+      "statutory_authority": "MCA",
+      "statutory_id": "L85110KA1981PLC013115"
+    }
+  ],
+  "record_count": 5,
+  "record_ids": [
+    "comp_au_atlassian",
+    "comp_us_microsoft",
+    "comp_uk_arm",
+    "comp_sg_dbs",
+    "comp_in_infosys"
+  ],
+  "seed_file": "staging_employers.json",
+  "seed_sha256": "d0ead7dd297d6eeb5cfc7e35b1249e0813c52d02c4c7b48d04c5aac21c81d62d",
+  "seed_version": "1.0.0"
+}

@@ -1,0 +1,24 @@
+model_id,metric_category,metric_name,measured_value,unit,confidence_interval,evaluation_dataset,sample_size,benchmark_status
+MOD_IN_SALARY_HGBR,Regression Error,MAE (INR),371472.71,INR,N/A,India Holdout Set,1173,REPRODUCED_INDEPENDENTLY
+MOD_IN_SALARY_HGBR,Regression Error,MAE (LPA),3.71,LPA,N/A,India Holdout Set,1173,REPRODUCED_INDEPENDENTLY
+MOD_IN_SALARY_HGBR,Regression Error,RMSE (LPA),6.22,LPA,N/A,India Holdout Set,1173,REPRODUCED_INDEPENDENTLY
+MOD_IN_SALARY_HGBR,Goodness of Fit,R-Squared,0.5798,score,N/A,India Holdout Set,1173,REPRODUCED_INDEPENDENTLY
+MOD_IN_SALARY_HGBR,Robust Error,Median Absolute Error (LPA),2.08,LPA,N/A,India Holdout Set,1173,REPRODUCED_INDEPENDENTLY
+MOD_IN_SALARY_HGBR,Relative Error,MAPE,35.22,percent,N/A,India Holdout Set,1173,REPRODUCED_INDEPENDENTLY
+MOD_IN_SALARY_HGBR,Baseline Comparison,MAE Improvement vs Dummy,51.92,percent,N/A,India Holdout Set,1173,REPRODUCED_INDEPENDENTLY
+MOD_US_SALARY_XGB,Regression Error,MAE,36380.64,USD,N/A,USA Test Set,6808,REPRODUCED_INDEPENDENTLY
+MOD_US_SALARY_XGB,Regression Error,RMSE,51082.06,USD,N/A,USA Test Set,6808,REPRODUCED_INDEPENDENTLY
+MOD_US_SALARY_XGB,Goodness of Fit,R-Squared,0.4233,score,N/A,USA Test Set,6808,REPRODUCED_INDEPENDENTLY
+MOD_US_SALARY_XGB,Relative Error,MAPE,21.71,percent,N/A,USA Test Set,6808,REPRODUCED_INDEPENDENTLY
+SYS_OCC_MAPPER,Classification Accuracy,Overall Mapping Accuracy,97.0,percent,[91.48% - 99.38%],Gold Title Benchmark,100,REPRODUCED_INDEPENDENTLY
+SYS_OCC_MAPPER,Classification Quality,Macro F1 Score,0.9852,score,N/A,Gold Title Benchmark,100,REPRODUCED_INDEPENDENTLY
+SYS_OCC_MAPPER,Error Discipline,Misclassification Rate,0.0,percent,[0.00% - 3.69%],Gold Title Benchmark,100,REPRODUCED_INDEPENDENTLY
+SYS_OCC_MAPPER,Coverage Discipline,Unmapped Jargon Fallback Rate,3.0,percent,[0.62% - 8.52%],Gold Title Benchmark,100,REPRODUCED_INDEPENDENTLY
+SYS_OCC_MAPPER,Calibration,Raw Expected Calibration Error (ECE),0.0587,score,N/A,Gold Title Benchmark,100,REPRODUCED_INDEPENDENTLY
+SYS_OCC_MAPPER,Calibration,Calibrated ECE (T=1.24),0.0381,score,N/A,Gold Title Benchmark,100,REPRODUCED_INDEPENDENTLY
+SYS_EMP_RESOLVER_V2,Pairwise Precision,Precision (PPV),100.0,percent,[88.78% - 100.00%],Gold Entity Pair Benchmark,31,REPRODUCED_INDEPENDENTLY
+SYS_EMP_RESOLVER_V2,Pairwise Recall,Recall (Sensitivity),68.89,percent,[54.33% - 80.47%],Gold Entity Pair Benchmark,45,REPRODUCED_INDEPENDENTLY
+SYS_EMP_RESOLVER_V2,Fatal Error Rate,False Merge Rate (Type I),0.0,percent,[0.00% - 6.53%],Gold Entity Pair Benchmark,55,REPRODUCED_INDEPENDENTLY
+SYS_EMP_RESOLVER_V2,Pairwise F1,F1 Score,0.8158,score,N/A,Gold Entity Pair Benchmark,100,REPRODUCED_INDEPENDENTLY
+SYS_SKILL_EXTRACTOR,Adversarial Test Accuracy,Short-Token Accuracy,100.0,percent,[83.89% - 100.00%],Adversarial Skill Phrases,20,REPRODUCED_INDEPENDENTLY
+SYS_SKILL_EXTRACTOR,Adversarial Specificity,Colloquial Rejection Rate,100.0,percent,[72.25% - 100.00%],Adversarial Skill Phrases,10,REPRODUCED_INDEPENDENTLY

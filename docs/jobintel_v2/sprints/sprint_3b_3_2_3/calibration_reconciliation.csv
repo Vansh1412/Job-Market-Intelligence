@@ -1,0 +1,4 @@
+method,temperature_parameter,sample_size,raw_ece,calibrated_ece,calibration_status,limitation_notes
+Raw Softmax / Heuristic Score,T=1.00,100,0.0587,0.0587,UNCALIBRATED,Overconfident in middle confidence band [0.70 - 0.85]
+Post-Hoc Temperature Scaling,T=1.24,100,0.0587,0.0381,FITTED_ON_EVAL_SAMPLE,Temperature parameter 1.24 lowers ECE from 5.87% to 3.81% on 100 gold benchmark titles
+Independent Calibration Benchmark,T=1.24,Pending N>=500,TBD,TBD,REQUIRES_INDEPENDENT_SET,Standard JOBINTEL-STD-PRED-001 mandates fitting temperature on separate calibration split

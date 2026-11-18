@@ -825,6 +825,19 @@ export interface EmployerProfile {
   verification_status: EmployerVerificationStatus;
   verified_at?: string | null;
   locations: EmployerLocation[];
+  statutory_identifier?: string | null;
+  statutory_authority?: string | null;
+  jurisdiction?: string | null;
+  platform_market?: string | null;
+  headquarters_country_code?: string | null;
+  headcount_value?: number | null;
+  headcount_band?: string | null;
+  headcount_basis?: string | null;
+  headcount_scope?: string | null;
+  observation_date?: string | null;
+  source_license?: string | null;
+  attribution_requirement?: string | null;
+  publication_status?: string | null;
 }
 
 export type ResolutionMatchType =

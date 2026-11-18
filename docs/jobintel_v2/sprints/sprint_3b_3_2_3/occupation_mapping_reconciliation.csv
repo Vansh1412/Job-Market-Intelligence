@@ -1,0 +1,6 @@
+metric_name,formula,numerator,denominator,raw_ratio,percentage,wilson_95_ci_lower,wilson_95_ci_upper,status,interpretation
+Overall Population Accuracy,TP / Total_Gold_Titles,97,100,0.9700,97.00%,91.48%,99.38%,VERIFIED,97 of 100 gold titles correctly assigned to canonical occupation categories
+Conditional Accuracy Among Mapped,TP / Total_Mapped,97,97,1.0000,100.00%,96.28%,100.00%,VERIFIED,Zero incorrect mappings among the 97 titles that received a non-null category
+Unmapped Fallback Rate,Unmapped / Total_Gold_Titles,3,100,0.0300,3.00%,0.62%,8.52%,VERIFIED,3 titles routed safely to Unmapped/Other fallback rather than forced
+Misclassification Rate,FP / Total_Gold_Titles,0,100,0.0000,0.00%,0.00%,3.69%,VERIFIED,Zero false category assignments across all 100 gold benchmark titles
+Macro F1 Score,Unweighted mean of category F1s,N/A,N/A,0.9852,98.52%,N/A,N/A,VERIFIED,Across all 12 canonical SOC/O*NET occupation buckets

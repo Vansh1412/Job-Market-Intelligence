@@ -1,0 +1,51 @@
+{
+  "directNav": {
+    "pass": true,
+    "title": "JOBINTEL — Job Market Intelligence | Skills · Archetypes · Salaries · Machine Learning"
+  },
+  "refreshNav": {
+    "pass": true
+  },
+  "registryExplorer": {
+    "pass": true
+  },
+  "standardsTab": {
+    "pass": true
+  },
+  "resolutionSubmission": {
+    "pass": true,
+    "hasVerdict": true,
+    "hasStatusBadge": true,
+    "hasCaveat": true
+  },
+  "network": {
+    "employerCalls": [
+      {
+        "method": "GET",
+        "url": "https://jobintel-staging.vercel.app/employers"
+      },
+      {
+        "method": "GET",
+        "url": "https://jobintel-staging.vercel.app/employers"
+      },
+      {
+        "method": "GET",
+        "url": "https://jobintel-backend-staging.onrender.com/api/v1/employers?limit=10&offset=0"
+      },
+      {
+        "method": "OPTIONS",
+        "url": "https://jobintel-backend-staging.onrender.com/api/v1/employers/resolve"
+      },
+      {
+        "method": "POST",
+        "url": "https://jobintel-backend-staging.onrender.com/api/v1/employers/resolve"
+      }
+    ],
+    "hasCorrectResolvePrefix": true,
+    "noUnprefixedResolve": true,
+    "hasCorrectListPrefix": true,
+    "noUnprefixedList": true,
+    "httpErrors": [],
+    "consoleErrors": []
+  }
+}
